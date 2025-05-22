@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)",
+      "Bash(pip install:*)",
+      "Bash(source:*)",
+      "Bash(python:*)",
+      "Bash(npm run dev:*)",
+      "mcp__figma-mcp__add_figma_page",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run test:api:*)"
+    ],
+    "deny": []
+  }
+}

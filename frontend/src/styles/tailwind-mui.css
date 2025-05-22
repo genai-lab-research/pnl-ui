@@ -1,0 +1,120 @@
+/* Tailwind utility classes for Material UI components */
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary border border-primary font-medium py-2 px-4 rounded-lg shadow-sm hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+  }
+
+  .btn-destructive {
+    @apply bg-error text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-error-dark focus:outline-none focus:ring-2 focus:ring-error focus:ring-opacity-50;
+  }
+
+  /* Input fields */
+  .input-standard {
+    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg shadow p-4 border border-gray-100;
+  }
+
+  /* Typography */
+  .heading-large {
+    @apply text-2xl font-semibold text-text-primary;
+  }
+
+  .heading-medium {
+    @apply text-xl font-semibold text-text-primary;
+  }
+
+  .heading-small {
+    @apply text-lg font-medium text-text-primary;
+  }
+
+  .body-text {
+    @apply text-base text-text-primary;
+  }
+
+  .body-text-secondary {
+    @apply text-base text-text-secondary;
+  }
+
+  .label-text {
+    @apply text-sm text-text-secondary;
+  }
+
+  /* Drawer styles */
+  .drawer {
+    @apply fixed inset-y-0 right-0 bg-white shadow-lg transition-transform duration-300 ease-in-out transform;
+  }
+
+  .drawer-open {
+    @apply translate-x-0;
+  }
+
+  .drawer-closed {
+    @apply translate-x-full;
+  }
+
+  /* Form elements */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-text-secondary mb-1;
+  }
+
+  /* Switch */
+  .switch-track {
+    @apply bg-gray-300 relative inline-block h-6 w-11 rounded-full transition-colors ease-in-out duration-200;
+  }
+
+  .switch-track-checked {
+    @apply bg-primary-light;
+  }
+
+  .switch-thumb {
+    @apply absolute top-0.5 left-0.5 bg-white h-5 w-5 rounded-full shadow transform transition-transform duration-200 ease-in-out;
+  }
+
+  .switch-thumb-checked {
+    @apply translate-x-5 bg-primary;
+  }
+
+  /* Chip styles */
+  .chip {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .chip-primary {
+    @apply bg-primary-light text-primary;
+  }
+
+  .chip-secondary {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  /* Status indicators */
+  .status-active {
+    @apply bg-success-light text-success;
+  }
+
+  .status-inactive {
+    @apply bg-gray-100 text-gray-500;
+  }
+
+  .status-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .status-error {
+    @apply bg-error-light text-error;
+  }
+}

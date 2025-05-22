@@ -1,0 +1,1060 @@
+INFO:     Will watch for changes in these directories: ['/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [25295] using StatReload
+/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:317: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [25297]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Sample data updated successfully with specified containers and alerts!
+Creating sample data for container details page...
+Created sample container with id: container-details-04
+Sample crops and metrics created. Activity logs added.
+Container details sample data added successfully!
+INFO:     127.0.0.1:51982 - "GET /api/v1/containers HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52596 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52596 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52612 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52598 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52612 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/containers/4/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/containers/4/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/4/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52602 - "GET /api/v1/containers/4/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/containers/4/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52614 - "GET /api/v1/containers/4/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52634 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52637 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52634 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52637 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/containers/2/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/containers/2/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/2/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/v1/containers/2/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/2/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/v1/containers/2/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52661 - "GET /api/v1/containers/container-crops-demo/crops?page=0&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52711 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52714 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52711 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52714 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52712 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52745 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52748 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52745 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52748 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52749 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52747 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52745 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52749 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52747 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52748 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52745 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52748 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52801 - "GET /api/v1/containers/container-crops-demo/crops?page=0&page_size=5&seed_type=Basil HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: ambiguous column name: seed_types.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/concurrency.py", line 42, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/app/api/v1/endpoints/containers.py", line 682, in get_container_crops
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3146, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2835, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2808, in one
+    return self._iter().one()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) ambiguous column name: seed_types.name
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT crops.id AS crops_id, crops.seed_type_id AS crops_seed_type_id, crops.seed_date AS crops_seed_date, crops.transplanting_date_planned AS crops_transplanting_date_planned, crops.harvesting_date_planned AS crops_harvesting_date_planned, crops.transplanted_date AS crops_transplanted_date, crops.harvesting_date AS crops_harvesting_date, crops.lifecycle_status AS crops_lifecycle_status, crops.health_check AS crops_health_check, crops.current_location_type AS crops_current_location_type, crops.tray_id AS crops_tray_id, crops.panel_id AS crops_panel_id, crops.tray_row AS crops_tray_row, crops.tray_column AS crops_tray_column, crops.panel_channel AS crops_panel_channel, crops.panel_position AS crops_panel_position, crops.radius AS crops_radius, crops.width AS crops_width, crops.height AS crops_height, crops.area AS crops_area, crops.weight AS crops_weight 
+FROM crops JOIN seed_types ON crops.seed_type_id = seed_types.id JOIN seed_types ON seed_types.id = crops.seed_type_id 
+WHERE (crops.tray_id IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) OR crops.panel_id IN (?, ?, ?, ?, ?)) AND lower(seed_types.name) LIKE lower(?)) AS anon_1]
+[parameters: ('tray-div-1', 'tray-div-2', 'tray-div-3', 'tray-div-4', 'tray-div-5', 'tray-div-6', 'tray-div-7', 'tray-div-8', 'tray-div-9', 'tray-div-10', 'panel-div-1', 'panel-div-2', 'panel-div-3', 'panel-div-4', 'panel-div-5', '%Basil%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:52822 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52822 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52824 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52824 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52822 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52824 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52822 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52822 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52843 - "GET /api/v1/containers HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:52883 - "GET /api/v1/containers/container-crops-demo/crops?seed_type=Basil HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: ambiguous column name: seed_types.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/fastapi/routing.py", line 193, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/starlette/concurrency.py", line 42, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/app/api/v1/endpoints/containers.py", line 682, in get_container_crops
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3146, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2835, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2808, in one
+    return self._iter().one()  # type: ignore
+           ^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) ambiguous column name: seed_types.name
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT crops.id AS crops_id, crops.seed_type_id AS crops_seed_type_id, crops.seed_date AS crops_seed_date, crops.transplanting_date_planned AS crops_transplanting_date_planned, crops.harvesting_date_planned AS crops_harvesting_date_planned, crops.transplanted_date AS crops_transplanted_date, crops.harvesting_date AS crops_harvesting_date, crops.lifecycle_status AS crops_lifecycle_status, crops.health_check AS crops_health_check, crops.current_location_type AS crops_current_location_type, crops.tray_id AS crops_tray_id, crops.panel_id AS crops_panel_id, crops.tray_row AS crops_tray_row, crops.tray_column AS crops_tray_column, crops.panel_channel AS crops_panel_channel, crops.panel_position AS crops_panel_position, crops.radius AS crops_radius, crops.width AS crops_width, crops.height AS crops_height, crops.area AS crops_area, crops.weight AS crops_weight 
+FROM crops JOIN seed_types ON crops.seed_type_id = seed_types.id JOIN seed_types ON seed_types.id = crops.seed_type_id 
+WHERE (crops.tray_id IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) OR crops.panel_id IN (?, ?, ?, ?, ?)) AND lower(seed_types.name) LIKE lower(?)) AS anon_1]
+[parameters: ('tray-div-1', 'tray-div-2', 'tray-div-3', 'tray-div-4', 'tray-div-5', 'tray-div-6', 'tray-div-7', 'tray-div-8', 'tray-div-9', 'tray-div-10', 'panel-div-1', 'panel-div-2', 'panel-div-3', 'panel-div-4', 'panel-div-5', '%Basil%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52973 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52975 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52975 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53164 - "GET /api/v1/seed-types HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53162 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53166 - "GET /api/v1/containers?limit=1 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53163 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53168 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53165 - "GET /api/v1/alerts/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53167 - "GET /api/v1/seed-types/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53162 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53170 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53167 - "GET /api/v1/seed-types HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53170 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53163 - "POST /api/v1/containers/form HTTP/1.1" 201 Created
+INFO:     127.0.0.1:53169 - "GET /api/v1/containers/?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53165 - "GET /api/v1/alerts/?active=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53163 - "GET /api/v1/containers?name=test-container-1747892910452 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53162 - "GET /api/v1/tenants/?skip=0&limit=100&name=Sky HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53169 - "GET /api/v1/metrics/container/1/?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53165 - "GET /api/v1/containers?limit=1 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53171 - "GET /api/v1/seed-types/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53172 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53173 - "GET /api/v1/containers/?name=test-container-1747892910452 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53171 - "GET /api/v1/seed-types/seed-001 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53162 - "POST /api/v1/tenants/ HTTP/1.1" 201 Created
+INFO:     127.0.0.1:53176 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53162 - "GET /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53174 - "GET /api/v1/metrics/container/1?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53176 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53175 - "GET /api/v1/containers/?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53174 - "GET /api/v1/containers?limit=1 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53173 - "DELETE /api/v1/containers/8c13aa85-323d-4ae7-9234-1215d3f7a227 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:53177 - "GET /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53178 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53177 - "PUT /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53175 - "GET /api/v1/alerts/?container_id=1&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53179 - "GET /api/v1/containers/?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53173 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53179 - "GET /api/v1/metrics/container/1/?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53173 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53175 - "GET /api/v1/alerts/?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53175 - "GET /api/v1/alerts/e0ded37a-40cc-4b4b-ac68-e63762cdbd57/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53180 - "PUT /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53181 - "GET /api/v1/metrics/container/1?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53180 - "DELETE /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53181 - "GET /api/v1/containers?limit=1 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53173 - "POST /api/v1/containers/form HTTP/1.1" 201 Created
+INFO:     127.0.0.1:53182 - "GET /api/v1/alerts/e0ded37a-40cc-4b4b-ac68-e63762cdbd57 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53183 - "DELETE /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:53173 - "POST /api/v1/containers/form HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:53183 - "GET /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e/ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53184 - "GET /api/v1/containers/?limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53185 - "GET /api/v1/tenants/358af114-13a5-44f4-8fd7-41071f990c5e HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53184 - "GET /api/v1/metrics/snapshots/1/?limit=100 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53173 - "DELETE /api/v1/containers/4726693a-fdc3-44dd-87f9-a7cc4f9393ec HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:53173 - "GET /api/v1/containers HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53186 - "GET /api/v1/metrics/snapshots/1?limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53187 - "GET /api/v1/containers/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53187 - "GET /api/v1/containers?type=Physical HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53188 - "GET /api/v1/containers/?type=Physical HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53188 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53497 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53497 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53497 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53499 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53497 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53497 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53499 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53499 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53595 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53593 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53601 - "GET /api/v1/containers/1/crops?page=0&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53609 - "GET /api/v1/containers/4/crops?page=0&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53614 - "GET /api/v1/containers/6/crops?page=0&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53621 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53621 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53621 - "GET /api/v1/containers/1/crops?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53621 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/crops?page=2&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/crops?page=3&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/crops?page=2&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/crops?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53623 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/metrics?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/metrics?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/metrics?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53626 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53630 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53633 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53630 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53633 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53631 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53634 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53631 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53634 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53631 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53634 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53631 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53634 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53638 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53645 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53645 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53646 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53640 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53650 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53652 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53652 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53652 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53653 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53674 - "GET /api/v1/containers/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53674 - "GET /api/v1/containers/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /api/v1/containers/2/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /api/v1/containers/2/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53674 - "GET /api/v1/containers/2/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /api/v1/containers/2/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53674 - "GET /api/v1/containers/2/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53674 - "GET /api/v1/containers/2/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53682 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53685 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53682 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53685 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53686 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53684 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53696 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/crops?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/crops?page=2&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53706 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/crops?page=3&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/crops?page=2&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/crops?page=1&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53708 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53763 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53763 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53763 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53763 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53763 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53765 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/metrics?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/metrics?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/metrics?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53767 - "GET /api/v1/containers/5/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53772 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53775 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53772 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53775 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53774 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53776 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53774 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53776 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53774 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53776 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53774 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53776 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /api/v1/containers?skip=0&limit=10&has_alerts=true HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53781 - "GET /api/v1/containers/?skip=0&limit=10&has_alerts=true HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53784 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53787 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53787 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53787 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53787 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53787 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53814 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53787 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53814 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53813 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53815 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53815 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53813 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53824 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53822 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53824 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53822 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53822 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:53822 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54107 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54107 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54139 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54144 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54139 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54144 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54142 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54142 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54145 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54142 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54144 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54142 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54218 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54223 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54218 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54223 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54222 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54224 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54224 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54222 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54224 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54222 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54224 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54222 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=v HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=v HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=vi HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=vi HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=vir HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=vir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=virt HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=virt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=virtu HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=virtu HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=virtua HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=virtua HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10&name=virtual HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10&name=virtual HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54240 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers?skip=0&limit=10&name=f HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers/?skip=0&limit=10&name=f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers?skip=0&limit=10&name=fa HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers/?skip=0&limit=10&name=fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers?skip=0&limit=10&name=far HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers/?skip=0&limit=10&name=far HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers?skip=0&limit=10&name=farm HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers/?skip=0&limit=10&name=farm HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers?skip=0&limit=10&name=farm_ HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54262 - "GET /api/v1/containers/?skip=0&limit=10&name=farm_ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm- HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm- HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm-c HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm-c HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm-co HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm-co HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm-con HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm-con HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm-cont HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm-cont HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10&name=farm-conta HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10&name=farm-conta HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54264 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54266 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54266 - "GET /api/v1/containers/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54268 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54268 - "GET /api/v1/containers/1/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54266 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54268 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54266 - "GET /api/v1/containers/1/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54266 - "GET /api/v1/containers/1/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54274 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54277 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54274 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54277 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54276 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54278 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54278 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54276 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54278 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54276 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54278 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54276 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54283 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54309 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54309 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54309 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54309 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54396 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54400 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54396 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54400 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54398 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54401 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54401 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54398 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54401 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54398 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54401 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54398 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54406 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54406 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54406 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54406 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54408 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54408 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54408 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54408 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54410 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54410 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54435 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54438 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54435 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54438 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54436 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54439 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54439 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54439 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54439 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54436 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54442 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54445 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54447 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54447 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54458 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54458 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54458 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54476 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54458 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54476 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54474 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54478 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54478 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54478 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54478 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54474 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54480 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54480 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54484 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54484 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54505 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54508 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54507 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54509 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54507 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54509 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54527 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54530 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54527 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54530 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54531 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54529 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54531 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54529 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54535 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54534 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54542 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54542 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54564 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54566 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54566 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54566 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54566 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54577 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54577 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54579 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54582 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54611 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54616 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54611 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54616 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:54617 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54613 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54617 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/api/v1/endpoints/performance.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [25297]
+/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:317: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [30179]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Sample data updated successfully with specified containers and alerts!
+Creating sample data for container details page...
+Created sample container with id: container-details-04
+Sample crops and metrics created. Activity logs added.
+Container details sample data added successfully!
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54970 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "GET /api/v1/containers/container-details-04 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "GET /api/v1/containers/container-details-04/metrics?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55232 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55230 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55232 - "GET /api/v1/containers/container-details-04/crops?page=0&page_size=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55232 - "GET /api/v1/containers/container-details-04/activities?limit=5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55275 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55278 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55275 - "GET /api/v1/containers?skip=0&limit=10 HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55278 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55277 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55279 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55279 - "GET /api/v1/containers/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/tenants/?skip=0&limit=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55279 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55279 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/containers/?skip=0&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55277 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55297 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance/?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55320 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance/?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance/?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55342 - "GET /api/v1/performance/?time_range=YEAR HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app/api/v1/endpoints/metrics.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30179]
+/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/backend/venv/lib/python3.12/site-packages/pydantic/_internal/_config.py:317: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [30400]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+Sample data updated successfully with specified containers and alerts!
+Creating sample data for container details page...
+Created sample container with id: container-details-04
+Sample crops and metrics created. Activity logs added.
+Container details sample data added successfully!
+INFO:     127.0.0.1:55937 - "GET /api/v1/performance?time_range=WEEK HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55939 - "GET /api/v1/performance?time_range=MONTH HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55941 - "GET /api/v1/performance?time_range=QUARTER HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55943 - "GET /api/v1/performance?time_range=YEAR HTTP/1.1" 307 Temporary Redirect
+INFO:     127.0.0.1:55945 - "GET /api/v1/metrics/container/1?time_range=WEEK HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55947 - "GET /api/v1/metrics/container/1?time_range=MONTH HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55953 - "GET /api/v1/metrics/container/1?time_range=QUARTER HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55955 - "GET /api/v1/metrics/container/1?time_range=YEAR HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30400]
+INFO:     Stopping reloader process [25295]
