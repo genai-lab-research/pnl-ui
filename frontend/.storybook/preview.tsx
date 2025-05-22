@@ -1,6 +1,7 @@
 import '../src/styles/tailwind.css';
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import type { Preview } from '@storybook/react';
 
 // Create a basic theme for Material UI components
 const theme = createTheme({
@@ -17,8 +18,19 @@ const theme = createTheme({
   },
 });
 
-/** @type { import('@storybook/react').Preview } */
-const preview = {
+// Create a function that returns the decorator component
+// This approach avoids direct JSX in the decorators array
+const withThemeProvider = (Story: React.ComponentType) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <div className="p-4">
+        <Story />
+      </div>
+    </ThemeProvider>
+  );
+};
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -27,14 +39,11 @@ const preview = {
         date: /Date$/,
       },
     },
+    backgrounds: {
+      default: 'light',
+    },
   },
-  decorators: [
-    (Story) => (
-      <ThemeProvider theme={theme}>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
+  decorators: [withThemeProvider],
 };
 
 export default preview;
