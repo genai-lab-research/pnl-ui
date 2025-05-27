@@ -1,48 +1,48 @@
-#name: SonarCloud Scan
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#
-#jobs:
-#  sonarcloud:
-#    name: SonarCloud
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
-#
-#      - name: Set up Node.js
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '18'
-#
-#      - name: Set up Java 17 for SonarCloud
-#        id: setup-java
-#        uses: actions/setup-java@v3
-#        with:
-#          distribution: 'temurin'
-#          java-version: '17'
-#
-#      - name: Check Java version
-#        run: java -version
-#        env:
-#          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
-#          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
-#
-#      - name: Install dependencies
-#        working-directory: frontend
-#        run: npm ci
-#
-#      - name: Run SonarCloud scan
-#        uses: SonarSource/sonarcloud-github-action@master
-#        with:
-#          projectBaseDir: frontend
-#        env:
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#          SONAR_PROJECT_KEY: genai-lab-research
-#          SONAR_ORGANIZATION: genai-lab-research
-#          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
-#          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Set up Java 17 for SonarCloud
+        id: setup-java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Check Java version
+        run: java -version
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
+          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: frontend
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: genai-lab-research_pnl-ui
+          SONAR_ORGANIZATION: genai-lab-research
+          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
+          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
