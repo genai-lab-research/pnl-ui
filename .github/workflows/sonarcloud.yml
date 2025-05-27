@@ -26,6 +26,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Check Java version
+        run: java -version
+        env:
+          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
+          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
+
       - name: Install dependencies
         working-directory: frontend
         run: npm ci
@@ -39,3 +45,4 @@ jobs:
           SONAR_PROJECT_KEY: genai-lab-research
           SONAR_ORGANIZATION: genai-lab-research
           JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
+          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
