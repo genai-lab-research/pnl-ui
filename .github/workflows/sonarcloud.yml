@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -32,9 +34,6 @@ jobs:
           JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
           PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
 
-      - name: Install dependencies
-        working-directory: frontend
-        run: npm ci
 
       - name: Run SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
