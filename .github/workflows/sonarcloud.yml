@@ -19,6 +19,12 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Set up Java (required for SonarCloud)
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Install dependencies
         working-directory: frontend
         run: npm ci
