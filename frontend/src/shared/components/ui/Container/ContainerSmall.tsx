@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Box, Paper } from '@mui/material';
 import clsx from 'clsx';
 
@@ -8,7 +9,7 @@ export interface ContainerSmallProps {
   noPadding?: boolean;
 }
 
-export const ContainerSmall: React.FC<ContainerSmallProps> = ({ 
+export const ContainerSmall: React.FC<ContainerSmallProps> = ({
   children,
   className,
   noPadding = false,
@@ -16,15 +17,13 @@ export const ContainerSmall: React.FC<ContainerSmallProps> = ({
   return (
     <Paper
       className={clsx(
-        'bg-white border border-gray-200 rounded-md shadow-sm',
+        'rounded-md border border-gray-200 bg-white shadow-sm',
         !noPadding && 'p-3',
-        className
+        className,
       )}
       elevation={0}
     >
-      <Box className="w-full">
-        {children}
-      </Box>
+      <Box className="w-full">{children}</Box>
     </Paper>
   );
 };

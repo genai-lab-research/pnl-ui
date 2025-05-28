@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { SvgIcon, SvgIconProps } from '@mui/material';
 
 const TemperatureIcon: React.FC<SvgIconProps> = (props) => {

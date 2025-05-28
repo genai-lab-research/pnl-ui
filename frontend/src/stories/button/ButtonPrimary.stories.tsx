@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonPrimary } from '../../shared/components/ui/Button';
 import AddIcon from '@mui/icons-material/Add';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ButtonPrimary } from '../../shared/components/ui/Button';
 
 const meta: Meta<typeof ButtonPrimary> = {
   title: 'Components/Button/ButtonPrimary',

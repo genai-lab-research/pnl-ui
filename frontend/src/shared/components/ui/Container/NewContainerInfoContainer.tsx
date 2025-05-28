@@ -1,22 +1,23 @@
 import React from 'react';
-import { Box, Typography, SxProps, Theme } from '@mui/material';
+
+import { Box, SxProps, Theme, Typography } from '@mui/material';
 
 export interface NewContainerInfoContainerProps {
   /**
    * The title for the information section
    */
   title: string;
-  
+
   /**
    * The form fields or content
    */
   children: React.ReactNode;
-  
+
   /**
    * Optional class name for custom styling
    */
   className?: string;
-  
+
   /**
    * Optional sx props for custom styling
    */
@@ -41,20 +42,20 @@ export const NewContainerInfoContainer: React.FC<NewContainerInfoContainerProps>
         flexDirection: 'column',
         gap: 2,
         mb: 3,
-        ...sx
+        ...sx,
       }}
     >
-      <Typography 
-        variant="h6" 
-        fontWeight="medium" 
-        sx={{ 
+      <Typography
+        variant="h6"
+        fontWeight="medium"
+        sx={{
           fontSize: '1.125rem',
           color: 'text.primary',
         }}
       >
         {title}
       </Typography>
-      
+
       <Box
         sx={{
           display: 'flex',

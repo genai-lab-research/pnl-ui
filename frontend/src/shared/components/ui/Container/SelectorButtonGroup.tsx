@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
+
+import { Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 export interface SelectorOption {
   /**
@@ -21,23 +22,23 @@ export interface SelectorButtonGroupProps {
    * Options to display in the selector
    */
   options: SelectorOption[];
-  
+
   /**
    * Currently selected option id
    */
   selectedId: string;
-  
+
   /**
    * Handler for selection changes
    */
   onChange: (value: string) => void;
-  
+
   /**
    * Size of the button group
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
-  
+
   /**
    * Custom class name
    */
@@ -83,7 +84,7 @@ export const SelectorButtonGroup: React.FC<SelectorButtonGroupProps> = ({
               color: 'primary.contrastText',
               '&:hover': {
                 backgroundColor: 'primary.dark',
-              }
+              },
             },
             '&:not(:first-of-type)': {
               borderLeft: '1px solid',
@@ -97,7 +98,7 @@ export const SelectorButtonGroup: React.FC<SelectorButtonGroupProps> = ({
               borderTopRightRadius: 4,
               borderBottomRightRadius: 4,
             },
-          }
+          },
         }}
       >
         {options.map((option) => (

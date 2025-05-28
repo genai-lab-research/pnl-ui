@@ -1,5 +1,6 @@
 import React from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
+
+import { Box, Tab, Tabs } from '@mui/material';
 import clsx from 'clsx';
 
 export interface TabItem {
@@ -42,15 +43,12 @@ export const TabGroup: React.FC<TabGroupProps> = ({
         scrollButtons={variant === 'scrollable' ? 'auto' : undefined}
         aria-label={ariaLabel}
         centered={centered}
-        className={clsx(
-          'min-h-0',
-          size === 'small' ? 'h-9' : 'h-12'
-        )}
+        className={clsx('min-h-0', size === 'small' ? 'h-9' : 'h-12')}
         TabIndicatorProps={{
           style: {
             backgroundColor: '#1976d2',
             height: 2,
-          }
+          },
         }}
       >
         {tabs.map((tab) => (
@@ -60,10 +58,10 @@ export const TabGroup: React.FC<TabGroupProps> = ({
             value={tab.value}
             disabled={tab.disabled}
             className={clsx(
-              'min-h-0 text-gray-600 font-medium',
+              'min-h-0 font-medium text-gray-600',
               'hover:text-gray-800',
-              size === 'small' ? 'text-xs py-2 px-3' : 'text-sm py-3 px-4',
-              'capitalize'
+              size === 'small' ? 'px-3 py-2 text-xs' : 'px-4 py-3 text-sm',
+              'capitalize',
             )}
             disableRipple
           />

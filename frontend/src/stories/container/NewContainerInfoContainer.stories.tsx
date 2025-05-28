@@ -1,6 +1,7 @@
+import { Box, MenuItem, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { NewContainerInfoContainer } from '../../shared/components/ui/Container/NewContainerInfoContainer';
-import { Box, TextField, MenuItem, ToggleButtonGroup, ToggleButton } from '@mui/material';
 
 const meta = {
   title: 'Container/NewContainerInfoContainer',
@@ -33,14 +34,7 @@ export const Default: Story = {
           variant="outlined"
           size="small"
         />
-        <TextField
-          select
-          fullWidth
-          label="Tenant"
-          defaultValue=""
-          variant="outlined"
-          size="small"
-        >
+        <TextField select fullWidth label="Tenant" defaultValue="" variant="outlined" size="small">
           <MenuItem value="tenant-001">tenant-001</MenuItem>
           <MenuItem value="tenant-002">tenant-002</MenuItem>
         </TextField>
@@ -58,19 +52,15 @@ export const WithToggleButtons: Story = {
         exclusive
         fullWidth
         size="small"
-        sx={{ 
+        sx={{
           '& .MuiToggleButton-root': {
             textTransform: 'none',
             py: 0.75,
-          }
+          },
         }}
       >
-        <ToggleButton value="physical">
-          Physical
-        </ToggleButton>
-        <ToggleButton value="virtual">
-          Virtual
-        </ToggleButton>
+        <ToggleButton value="physical">Physical</ToggleButton>
+        <ToggleButton value="virtual">Virtual</ToggleButton>
       </ToggleButtonGroup>
     ),
   },
@@ -108,19 +98,15 @@ export const WithMultipleFields: Story = {
             exclusive
             fullWidth
             size="small"
-            sx={{ 
+            sx={{
               '& .MuiToggleButton-root': {
                 textTransform: 'none',
                 py: 0.75,
-              }
+              },
             }}
           >
-            <ToggleButton value="physical">
-              Physical
-            </ToggleButton>
-            <ToggleButton value="virtual">
-              Virtual
-            </ToggleButton>
+            <ToggleButton value="physical">Physical</ToggleButton>
+            <ToggleButton value="virtual">Virtual</ToggleButton>
           </ToggleButtonGroup>
         </Box>
       </>

@@ -1,28 +1,29 @@
 import React from 'react';
-import { Box, Typography, Paper, SxProps, Theme } from '@mui/material';
+
+import { Box, Paper, SxProps, Theme, Typography } from '@mui/material';
 
 export interface InformationGroupContainerProps {
   /**
    * The title for the information group
    */
   title: string;
-  
+
   /**
    * Information fields or content
    */
   children: React.ReactNode;
-  
+
   /**
    * Optional class name for custom styling
    */
   className?: string;
-  
+
   /**
    * Whether to apply elevation to the container
    * @default false
    */
   elevated?: boolean;
-  
+
   /**
    * Optional sx props for custom styling
    */
@@ -40,19 +41,19 @@ export const InformationGroupContainer: React.FC<InformationGroupContainerProps>
   sx,
 }) => {
   const ContainerComponent = elevated ? Paper : Box;
-  
+
   return (
     <Box
       className={className}
       sx={{
         width: '100%',
         mb: 3,
-        ...sx
+        ...sx,
       }}
     >
-      <Typography 
-        variant="subtitle1" 
-        fontWeight="medium" 
+      <Typography
+        variant="subtitle1"
+        fontWeight="medium"
         gutterBottom
         sx={{
           fontSize: '0.9375rem',
@@ -61,7 +62,7 @@ export const InformationGroupContainer: React.FC<InformationGroupContainerProps>
       >
         {title}
       </Typography>
-      
+
       <ContainerComponent
         sx={{
           display: 'flex',

@@ -1,6 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import SearchIcon from '@mui/icons-material/Search';
+import clsx from 'clsx';
 
 export interface SearchIconCustomProps {
   className?: string;
@@ -20,14 +21,14 @@ export const SearchIconCustom: React.FC<SearchIconCustomProps> = ({
     medium: 'w-5 h-5',
     large: 'w-6 h-6',
   };
-  
+
   return (
-    <span 
+    <span
       className={clsx(
         'inline-flex items-center justify-center',
         sizeClasses[size],
         className,
-        onClick && 'cursor-pointer'
+        onClick && 'cursor-pointer',
       )}
       onClick={onClick}
       role={onClick ? 'button' : undefined}

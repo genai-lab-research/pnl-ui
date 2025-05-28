@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { PaginatorContainer } from '../../shared/components/ui/Container';
 
 const meta = {

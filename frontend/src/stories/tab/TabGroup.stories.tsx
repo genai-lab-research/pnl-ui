@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { Meta, StoryObj } from '@storybook/react';
+
 import { TabGroup, TabGroupProps } from '../../shared/components/ui/Tab/TabGroup';
 
 const meta: Meta<typeof TabGroup> = {
@@ -17,11 +19,11 @@ type Story = StoryObj<typeof TabGroup>;
 // Wrapper component for handling state
 const TabGroupWithState = (args: TabGroupProps) => {
   const [value, setValue] = useState(args.value);
-  
+
   const handleChange = (newValue: string | number) => {
     setValue(newValue);
   };
-  
+
   return (
     <div className="w-[500px]">
       <TabGroup {...args} value={value} onChange={handleChange} />

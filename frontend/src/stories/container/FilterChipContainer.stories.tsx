@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { FilterChipContainer } from '../../shared/components/ui/Container';
 
 const meta = {
@@ -42,7 +44,7 @@ export const Disabled: Story = {
 // Interactive example with state
 export const Interactive = () => {
   const [selected, setSelected] = useState('all');
-  
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
       <FilterChipContainer
@@ -52,7 +54,7 @@ export const Interactive = () => {
         onChange={setSelected}
         width="140px"
       />
-      
+
       <div style={{ marginTop: '10px', fontSize: '14px' }}>
         Selected: <strong>{selected}</strong>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import clsx from 'clsx';
 
 export interface ChipIconSmallProps {
   className?: string;
@@ -14,11 +15,11 @@ export const ChipIconSmall: React.FC<ChipIconSmallProps> = ({
   onClick,
 }) => {
   return (
-    <span 
+    <span
       className={clsx(
-        'inline-flex items-center justify-center w-[18px] h-[18px]',
+        'inline-flex h-[18px] w-[18px] items-center justify-center',
         className,
-        onClick && 'cursor-pointer'
+        onClick && 'cursor-pointer',
       )}
       onClick={onClick}
       role={onClick ? 'button' : undefined}

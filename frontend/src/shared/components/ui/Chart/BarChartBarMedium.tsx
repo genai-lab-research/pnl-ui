@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Box } from '@mui/material';
+
 import { StatData } from '../../../types/metrics';
 import { DayIndicator } from './DayIndicator';
 
@@ -16,12 +18,12 @@ const BarChartBarMedium: React.FC<BarChartBarMediumProps> = ({
   maxValue,
   fullLabels,
 }) => {
-  const calculatedMaxValue = maxValue || Math.max(...data.map(item => item.value)) * 1.2;
-  
+  const calculatedMaxValue = maxValue || Math.max(...data.map((item) => item.value)) * 1.2;
+
   // Determine what data to display based on data length
   let displayData = data;
   let skipInterval = 0;
-  
+
   // For monthly data (typically 30 days), show every 3rd day
   if (data.length > 12 && data.length <= 31) {
     skipInterval = 2; // Show every 3rd bar (indexes 0, 3, 6, etc.)
@@ -38,38 +40,42 @@ const BarChartBarMedium: React.FC<BarChartBarMediumProps> = ({
       }
     }
   }
-  
+
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      alignItems: 'flex-end', 
-      height: '100%',
-      gap: data.length > 7 ? 0.25 : 0.5, // Reduce gap for many bars
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        height: '100%',
+        gap: data.length > 7 ? 0.25 : 0.5, // Reduce gap for many bars
+      }}
+    >
       {displayData.map((item, index) => {
         const height = (item.value / calculatedMaxValue) * 100;
         const fullLabel = fullLabels ? fullLabels[index] : undefined;
-        
+
         return (
-          <Box key={index} sx={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center',
-            flexGrow: 1,
-            height: '100%',
-          }}>
-            <Box sx={{ 
-              width: '100%', 
-              height: `${height}%`, 
-              backgroundColor: barColor,
-              borderRadius: '2px 2px 0 0',
-              minHeight: 4,
-              transition: 'height 0.3s ease',
-            }} />
-            <DayIndicator 
-              day={item.day} 
-              fullText={fullLabel} 
+          <Box
+            key={index}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              flexGrow: 1,
+              height: '100%',
+            }}
+          >
+            <Box
+              sx={{
+                width: '100%',
+                height: `${height}%`,
+                backgroundColor: barColor,
+                borderRadius: '2px 2px 0 0',
+                minHeight: 4,
+                transition: 'height 0.3s ease',
+              }}
             />
+            <DayIndicator day={item.day} fullText={fullLabel} />
           </Box>
         );
       })}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Tooltip } from '@mui/material';
+
+import { Tooltip, Typography } from '@mui/material';
 
 interface DayIndicatorProps {
   day: string;
@@ -9,12 +10,12 @@ interface DayIndicatorProps {
 export const DayIndicator: React.FC<DayIndicatorProps> = ({ day, fullText }) => {
   // If the day is a number or very short, we don't need a tooltip
   const needsTooltip = fullText && fullText !== day;
-  
+
   const label = (
-    <Typography 
+    <Typography
       variant="caption"
       color="text.secondary"
-      sx={{ 
+      sx={{
         fontSize: '0.75rem',
         marginTop: '4px',
         textAlign: 'center',

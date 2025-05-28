@@ -1,18 +1,19 @@
 import React from 'react';
-import Button from '@mui/material/Button';
+
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import Button from '@mui/material/Button';
 
 export interface NextButtonProps {
   /**
    * Optional click handler
    */
   onClick?: () => void;
-  
+
   /**
    * Optional custom class name
    */
   className?: string;
-  
+
   /**
    * Whether the button is disabled
    * @default false
@@ -23,11 +24,7 @@ export interface NextButtonProps {
 /**
  * NextButton component for navigation
  */
-export const NextButton: React.FC<NextButtonProps> = ({
-  onClick,
-  className,
-  disabled = false,
-}) => {
+export const NextButton: React.FC<NextButtonProps> = ({ onClick, className, disabled = false }) => {
   return (
     <Button
       variant="outlined"

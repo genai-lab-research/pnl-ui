@@ -1,27 +1,28 @@
 import React from 'react';
-import { Box, Typography, FormGroup, SxProps, Theme } from '@mui/material';
+
+import { Box, FormGroup, SxProps, Theme, Typography } from '@mui/material';
 
 export interface SystemIntegrationGroupContainerProps {
   /**
    * The title for the system integration section
    */
   title: string;
-  
+
   /**
    * The integration options (typically checkboxes)
    */
   children: React.ReactNode;
-  
+
   /**
    * Optional description for the integration group
    */
   description?: string;
-  
+
   /**
    * Optional class name for custom styling
    */
   className?: string;
-  
+
   /**
    * Optional sx props for custom styling
    */
@@ -45,12 +46,12 @@ export const SystemIntegrationGroupContainer: React.FC<SystemIntegrationGroupCon
         width: '100%',
         mt: 3,
         mb: 3,
-        ...sx
+        ...sx,
       }}
     >
-      <Typography 
-        variant="h6" 
-        fontWeight={500} 
+      <Typography
+        variant="h6"
+        fontWeight={500}
         sx={{
           fontSize: '1rem',
           mb: description ? 0.5 : 1.5,
@@ -58,20 +59,14 @@ export const SystemIntegrationGroupContainer: React.FC<SystemIntegrationGroupCon
       >
         {title}
       </Typography>
-      
+
       {description && (
-        <Typography 
-          variant="body2" 
-          color="text.secondary"
-          sx={{ mb: 1.5 }}
-        >
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
           {description}
         </Typography>
       )}
-      
-      <FormGroup sx={{ ml: -1 }}>
-        {children}
-      </FormGroup>
+
+      <FormGroup sx={{ ml: -1 }}>{children}</FormGroup>
     </Box>
   );
 };

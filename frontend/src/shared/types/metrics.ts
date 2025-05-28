@@ -4,7 +4,7 @@ export enum MetricTimeRange {
   WEEK = 'week',
   MONTH = 'month',
   QUARTER = 'quarter',
-  YEAR = 'year'
+  YEAR = 'year',
 }
 
 export interface StatData {

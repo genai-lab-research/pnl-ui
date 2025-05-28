@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Box } from '@mui/material';
-import { PaginatorButton } from '../Button';
 import Typography from '@mui/material/Typography';
+
+import { PaginatorButton } from '../Button';
 
 interface PaginatorContainerProps {
   /**
@@ -68,7 +70,7 @@ export const PaginatorContainer: React.FC<PaginatorContainerProps> = ({
       >
         Previous
       </PaginatorButton>
-      
+
       <Typography
         variant="body2"
         sx={{
@@ -78,7 +80,7 @@ export const PaginatorContainer: React.FC<PaginatorContainerProps> = ({
       >
         Showing page {currentPage} of {totalPages}
       </Typography>
-      
+
       <PaginatorButton
         variant="outlined"
         color="secondary"

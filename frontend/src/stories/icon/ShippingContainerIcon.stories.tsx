@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import ShippingContainerIcon from '../../shared/components/ui/Icon/ShippingContainerIcon';
 
 const meta: Meta<typeof ShippingContainerIcon> = {

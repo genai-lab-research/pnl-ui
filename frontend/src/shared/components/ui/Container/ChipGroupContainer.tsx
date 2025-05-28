@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Box } from '@mui/material';
+
 import { FilterChipContainer, FilterOption } from './FilterChipContainer';
 
 export interface FilterGroup {
@@ -30,23 +32,23 @@ export interface ChipGroupContainerProps {
    * Array of filter groups to display
    */
   filterGroups: FilterGroup[];
-  
+
   /**
    * Handler for filter selection changes
    */
   onFilterChange?: (groupId: string, value: string) => void;
-  
+
   /**
    * Horizontal gap between filter chips
    * @default 2 (16px)
    */
   gap?: number;
-  
+
   /**
    * Custom class name
    */
   className?: string;
-  
+
   /**
    * Width of each filter chip
    * @default '120px'
@@ -69,7 +71,7 @@ export const ChipGroupContainer: React.FC<ChipGroupContainerProps> = ({
       onFilterChange(groupId, value);
     }
   };
-  
+
   return (
     <Box
       className={className}
@@ -80,7 +82,7 @@ export const ChipGroupContainer: React.FC<ChipGroupContainerProps> = ({
       }}
     >
       {filterGroups.map((group) => (
-        <FilterChipContainer 
+        <FilterChipContainer
           key={group.id}
           label={group.label}
           options={group.options}

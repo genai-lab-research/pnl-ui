@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { StatusChipSmall } from '../../shared/components/ui/StatusChip';
 import { Stack } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { StatusChipSmall } from '../../shared/components/ui/StatusChip';
 
 const meta: Meta<typeof StatusChipSmall> = {
   title: 'UI/StatusChip/StatusChipSmall',

@@ -1,11 +1,18 @@
 import React from 'react';
-import clsx from 'clsx';
-import Button from '@mui/material/Button';
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Button from '@mui/material/Button';
+import clsx from 'clsx';
 
 export type PaginatorButtonVariant = 'contained' | 'outlined' | 'text';
-export type PaginatorButtonColor = 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+export type PaginatorButtonColor =
+  | 'primary'
+  | 'secondary'
+  | 'error'
+  | 'info'
+  | 'success'
+  | 'warning';
 export type PaginatorButtonIcon = 'previous' | 'next' | 'none';
 
 export interface PaginatorButtonProps {
@@ -14,7 +21,7 @@ export interface PaginatorButtonProps {
    * @default outlined
    */
   variant?: PaginatorButtonVariant;
-  
+
   /**
    * Button color
    * @default primary
@@ -26,23 +33,23 @@ export interface PaginatorButtonProps {
    * @default none
    */
   icon?: PaginatorButtonIcon;
-  
+
   /**
    * CSS class name
    */
   className?: string;
-  
+
   /**
    * Whether the button is disabled
    * @default false
    */
   disabled?: boolean;
-  
+
   /**
    * Button children (text content)
    */
   children?: React.ReactNode;
-  
+
   /**
    * Click handler
    */
@@ -66,20 +73,16 @@ export const PaginatorButton: React.FC<PaginatorButtonProps> = ({
       variant={variant}
       color={color}
       disabled={disabled}
-      className={clsx(
-        'rounded-md py-[7px] px-3',
-        'text-sm font-medium tracking-wider',
-        className
-      )}
+      className={clsx('rounded-md px-3 py-[7px]', 'text-sm font-medium tracking-wider', className)}
       onClick={onClick}
       startIcon={icon === 'previous' ? <ArrowBackIcon /> : undefined}
       endIcon={icon === 'next' ? <ArrowForwardIcon /> : undefined}
       aria-label={
-        icon === 'previous' 
-          ? 'Go to previous page' 
+        icon === 'previous'
+          ? 'Go to previous page'
           : icon === 'next'
-            ? 'Go to next page'
-            : undefined
+          ? 'Go to next page'
+          : undefined
       }
       sx={{
         textTransform: 'none',

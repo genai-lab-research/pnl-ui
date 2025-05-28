@@ -3,25 +3,25 @@
 @layer components {
   /* Button variants */
   .btn-primary {
-    @apply bg-primary text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+    @apply rounded-lg bg-primary px-4 py-2 font-medium text-white shadow hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
   }
 
   .btn-secondary {
-    @apply bg-white text-primary border border-primary font-medium py-2 px-4 rounded-lg shadow-sm hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+    @apply rounded-lg border border-primary bg-white px-4 py-2 font-medium text-primary shadow-sm hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
   }
 
   .btn-destructive {
-    @apply bg-error text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-error-dark focus:outline-none focus:ring-2 focus:ring-error focus:ring-opacity-50;
+    @apply rounded-lg bg-error px-4 py-2 font-medium text-white shadow hover:bg-error-dark focus:outline-none focus:ring-2 focus:ring-error focus:ring-opacity-50;
   }
 
   /* Input fields */
   .input-standard {
-    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary;
+    @apply rounded-md border border-gray-300 px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary;
   }
 
   /* Card styles */
   .card {
-    @apply bg-white rounded-lg shadow p-4 border border-gray-100;
+    @apply rounded-lg border border-gray-100 bg-white p-4 shadow;
   }
 
   /* Typography */
@@ -51,7 +51,7 @@
 
   /* Drawer styles */
   .drawer {
-    @apply fixed inset-y-0 right-0 bg-white shadow-lg transition-transform duration-300 ease-in-out transform;
+    @apply fixed inset-y-0 right-0 transform bg-white shadow-lg transition-transform duration-300 ease-in-out;
   }
 
   .drawer-open {
@@ -68,12 +68,12 @@
   }
 
   .form-label {
-    @apply block text-sm font-medium text-text-secondary mb-1;
+    @apply mb-1 block text-sm font-medium text-text-secondary;
   }
 
   /* Switch */
   .switch-track {
-    @apply bg-gray-300 relative inline-block h-6 w-11 rounded-full transition-colors ease-in-out duration-200;
+    @apply relative inline-block h-6 w-11 rounded-full bg-gray-300 transition-colors duration-200 ease-in-out;
   }
 
   .switch-track-checked {
@@ -81,7 +81,7 @@
   }
 
   .switch-thumb {
-    @apply absolute top-0.5 left-0.5 bg-white h-5 w-5 rounded-full shadow transform transition-transform duration-200 ease-in-out;
+    @apply absolute left-0.5 top-0.5 h-5 w-5 transform rounded-full bg-white shadow transition-transform duration-200 ease-in-out;
   }
 
   .switch-thumb-checked {
@@ -90,7 +90,7 @@
 
   /* Chip styles */
   .chip {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
   }
 
   .chip-primary {

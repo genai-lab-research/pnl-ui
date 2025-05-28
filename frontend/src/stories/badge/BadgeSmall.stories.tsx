@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { BadgeSmall } from '../../shared/components/ui/Badge';
 
 const meta = {

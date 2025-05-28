@@ -1,9 +1,18 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import { Chip, ChipProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import clsx from 'clsx';
 
-export type ChipSmallVariant = 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'connected';
+export type ChipSmallVariant =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'info'
+  | 'connected';
 
 export interface ChipSmallProps extends Omit<ChipProps, 'color' | 'size' | 'label'> {
   label: string;
@@ -50,7 +59,7 @@ export const ChipSmall: React.FC<ChipSmallProps> = ({
   const color = variantToColorMap[variant];
 
   return (
-    <StyledChip 
+    <StyledChip
       label={label}
       size="small"
       color={color}

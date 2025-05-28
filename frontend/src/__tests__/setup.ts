@@ -1,7 +1,7 @@
 /**
  * Test setup file
  */
-import { expect, beforeAll } from 'vitest';
+import { beforeAll, expect } from 'vitest';
 
 // Global test setup
 beforeAll(() => {

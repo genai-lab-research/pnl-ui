@@ -2,7 +2,13 @@ import { apiRequest } from './api';
 
 // Types that match backend schemas
 export type AlertSeverity = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-export type AlertRelatedObjectType = 'DEVICE' | 'CROP' | 'TRAY' | 'PANEL' | 'CONTAINER' | 'ENVIRONMENT';
+export type AlertRelatedObjectType =
+  | 'DEVICE'
+  | 'CROP'
+  | 'TRAY'
+  | 'PANEL'
+  | 'CONTAINER'
+  | 'ENVIRONMENT';
 
 export interface Alert {
   id: string;
@@ -42,9 +48,9 @@ const alertService = {
 
   // Get alerts for a specific container
   getContainerAlerts: async (
-    containerId: string, 
+    containerId: string,
     active?: boolean,
-    limit: number = 100
+    limit: number = 100,
   ): Promise<AlertList> => {
     return apiRequest<AlertList>({
       method: 'GET',

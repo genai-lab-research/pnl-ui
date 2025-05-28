@@ -1,7 +1,17 @@
 import React from 'react';
-import { Box, FormControl, Select, MenuItem, SelectChangeEvent, Switch, Typography } from '@mui/material';
-import SearchInput from '../../shared/components/ui/SearchInput/SearchInput';
+
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Switch,
+  Typography,
+} from '@mui/material';
+
 import { ClearFiltersButton } from '../../shared/components/ui/Button';
+import SearchInput from '../../shared/components/ui/SearchInput/SearchInput';
 
 export interface FilterSectionProps {
   /**
@@ -38,11 +48,11 @@ export interface FilterSectionProps {
    * Handler for tenant filter changes
    */
   onTenantChange: (value: string) => void;
-  
+
   /**
    * Available tenant options
    */
-  tenantOptions?: {id: string, name: string}[];
+  tenantOptions?: { id: string; name: string }[];
 
   /**
    * Selected purpose filter
@@ -106,7 +116,6 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
   onClearFilters,
   className,
 }) => {
-
   const handleTypeChange = (event: SelectChangeEvent) => {
     onContainerTypeChange(event.target.value);
   };
@@ -142,16 +151,19 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
       paddingBottom: '8px',
       fontWeight: 500,
       color: '#424242',
-    }
+    },
   };
 
   return (
-    <Box className={className} sx={{ 
-      display: 'flex', 
-      flexWrap: 'wrap', 
-      gap: 2, 
-      alignItems: 'center'
-    }}>
+    <Box
+      className={className}
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 2,
+        alignItems: 'center',
+      }}
+    >
       {/* Search */}
       <Box sx={{ flex: '1 1 400px' }}>
         <SearchInput
@@ -190,8 +202,10 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
             inputProps={{ 'aria-label': 'Tenant filter' }}
           >
             <MenuItem value="all">All tenants</MenuItem>
-            {tenantOptions?.map(tenant => (
-              <MenuItem key={tenant.id} value={tenant.id}>{tenant.name}</MenuItem>
+            {tenantOptions?.map((tenant) => (
+              <MenuItem key={tenant.id} value={tenant.id}>
+                {tenant.name}
+              </MenuItem>
             ))}
             {/* Fallback items if no tenants are provided */}
             {(!tenantOptions || tenantOptions.length === 0) && (
@@ -243,18 +257,20 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
       </Box>
 
       {/* Alerts Toggle */}
-      <Box sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'space-between',
-        flexGrow: 0
-      }}>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexGrow: 0,
+        }}
+      >
         <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
           <Typography variant="body2" sx={{ mr: 1, fontSize: '0.875rem', color: '#616161' }}>
             Has Alerts
           </Typography>
-          <Switch 
-            checked={hasAlerts} 
+          <Switch
+            checked={hasAlerts}
             onChange={handleAlertsChange}
             color="primary"
             size="medium"
@@ -268,7 +284,7 @@ export const FilterSection: React.FC<FilterSectionProps> = ({
             }}
           />
         </Box>
-        
+
         {/* Clear Filters Button */}
         <ClearFiltersButton onClick={onClearFilters} />
       </Box>

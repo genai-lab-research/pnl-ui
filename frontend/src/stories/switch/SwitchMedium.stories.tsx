@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SwitchMedium } from '../../shared/components/ui/Switch';
 
 const meta: Meta<typeof SwitchMedium> = {
@@ -34,18 +36,12 @@ type Story = StoryObj<typeof SwitchMedium>;
 // Control the checked state in Storybook
 const SwitchWithState = (args: any) => {
   const [checked, setChecked] = useState(args.checked || false);
-  
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
 
-  return (
-    <SwitchMedium
-      {...args}
-      checked={checked}
-      onChange={handleChange}
-    />
-  );
+  return <SwitchMedium {...args} checked={checked} onChange={handleChange} />;
 };
 
 export const Default: Story = {

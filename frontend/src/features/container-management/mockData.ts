@@ -1,5 +1,15 @@
-import { ContainerSummary, ContainerType, ContainerStatus, ContainerPurpose } from '../../services/containerService';
-import { ContainerType as UIContainerType, ContainerStatus as UIContainerStatus, ContainerPurpose as UIContainerPurpose, RowData } from '../../shared/types/containers';
+import {
+  ContainerPurpose,
+  ContainerStatus,
+  ContainerSummary,
+  ContainerType,
+} from '../../services/containerService';
+import {
+  RowData,
+  ContainerPurpose as UIContainerPurpose,
+  ContainerStatus as UIContainerStatus,
+  ContainerType as UIContainerType,
+} from '../../shared/types/containers';
 
 // Mock data for chart display in the performance cards
 export const mockChartData = {
@@ -15,7 +25,7 @@ export const mockChartData = {
       { day: 'Thu', value: 22 },
       { day: 'Fri', value: 24 },
       { day: 'Sat', value: 21 },
-      { day: 'Sun', value: 23 }
+      { day: 'Sun', value: 23 },
     ],
     utilization: [
       { day: 'Mon', value: 80 },
@@ -24,8 +34,8 @@ export const mockChartData = {
       { day: 'Thu', value: 75 },
       { day: 'Fri', value: 78 },
       { day: 'Sat', value: 70 },
-      { day: 'Sun', value: 76 }
-    ]
+      { day: 'Sun', value: 76 },
+    ],
   },
   virtual: {
     count: 8,
@@ -39,7 +49,7 @@ export const mockChartData = {
       { day: 'Thu', value: 21 },
       { day: 'Fri', value: 23 },
       { day: 'Sat', value: 22 },
-      { day: 'Sun', value: 23 }
+      { day: 'Sun', value: 23 },
     ],
     utilization: [
       { day: 'Mon', value: 65 },
@@ -48,9 +58,9 @@ export const mockChartData = {
       { day: 'Thu', value: 64 },
       { day: 'Fri', value: 67 },
       { day: 'Sat', value: 65 },
-      { day: 'Sun', value: 66 }
-    ]
-  }
+      { day: 'Sun', value: 66 },
+    ],
+  },
 };
 
 // Mock data for container list that matches the ContainerSummary type
@@ -66,7 +76,7 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'ACTIVE' as ContainerStatus,
     created_at: '2025-01-30',
     updated_at: '2025-01-30',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '2',
@@ -79,7 +89,7 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'MAINTENANCE' as ContainerStatus,
     created_at: '2025-01-30',
     updated_at: '2025-01-30',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '3',
@@ -92,7 +102,7 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'CREATED' as ContainerStatus,
     created_at: '2025-01-25',
     updated_at: '2025-01-26',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '4',
@@ -105,7 +115,7 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'ACTIVE' as ContainerStatus,
     created_at: '2025-01-25',
     updated_at: '2025-01-26',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '5',
@@ -118,7 +128,7 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'INACTIVE' as ContainerStatus,
     created_at: '2025-01-13',
     updated_at: '2025-01-15',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '6',
@@ -131,25 +141,30 @@ export const mockContainerList: ContainerSummary[] = [
     status: 'ACTIVE' as ContainerStatus,
     created_at: '2025-01-12',
     updated_at: '2025-01-18',
-    has_alerts: true
-  }
+    has_alerts: true,
+  },
 ];
 
 // Additional mock data for the data table display
-export const formattedContainerList: RowData[] = mockContainerList.map(container => ({
+export const formattedContainerList: RowData[] = mockContainerList.map((container) => ({
   id: container.id,
   type: container.type as any, // Cast as any first to avoid type errors
   name: container.name,
   tenant: container.tenant_name,
   purpose: container.purpose as unknown as UIContainerPurpose,
-  location: container.location_city && container.location_country 
-    ? `${container.location_city}, ${container.location_country}` 
-    : 'N/A',
-  status: container.status === 'ACTIVE' ? UIContainerStatus.ACTIVE :
-         container.status === 'MAINTENANCE' ? UIContainerStatus.MAINTENANCE :
-         container.status === 'INACTIVE' ? UIContainerStatus.INACTIVE :
-         UIContainerStatus.CREATED,
+  location:
+    container.location_city && container.location_country
+      ? `${container.location_city}, ${container.location_country}`
+      : 'N/A',
+  status:
+    container.status === 'ACTIVE'
+      ? UIContainerStatus.ACTIVE
+      : container.status === 'MAINTENANCE'
+      ? UIContainerStatus.MAINTENANCE
+      : container.status === 'INACTIVE'
+      ? UIContainerStatus.INACTIVE
+      : UIContainerStatus.CREATED,
   created: new Date(container.created_at).toLocaleDateString(),
   modified: new Date(container.updated_at).toLocaleDateString(),
-  alerts: container.has_alerts ? 1 : 0
+  alerts: container.has_alerts ? 1 : 0,
 }));

@@ -1,50 +1,51 @@
 import React from 'react';
-import { Box, Switch, SwitchProps, FormControlLabel, Typography } from '@mui/material';
+
+import { Box, FormControlLabel, Switch, SwitchProps, Typography } from '@mui/material';
 
 export interface SwitchContainerProps {
   /**
    * Label for the switch
    */
   label?: React.ReactNode;
-  
+
   /**
    * Current checked state
    */
   checked: boolean;
-  
+
   /**
    * Handler for switch state changes
    */
   onChange: (checked: boolean) => void;
-  
+
   /**
    * Size of the switch
    * @default 'medium'
    */
   size?: 'small' | 'medium';
-  
+
   /**
    * Position of the label relative to the switch
    * @default 'end'
    */
   labelPlacement?: 'start' | 'end' | 'top' | 'bottom';
-  
+
   /**
    * Additional text description to display
    */
   description?: string;
-  
+
   /**
    * Whether the switch is disabled
    * @default false
    */
   disabled?: boolean;
-  
+
   /**
    * Custom class name
    */
   className?: string;
-  
+
   /**
    * MUI SwitchProps to pass to the Switch component
    */
@@ -70,7 +71,7 @@ export const SwitchContainer: React.FC<SwitchContainerProps> = ({
   };
 
   return (
-    <Box 
+    <Box
       className={className}
       sx={{
         display: 'flex',
@@ -88,9 +89,9 @@ export const SwitchContainer: React.FC<SwitchContainerProps> = ({
           />
         }
         label={
-          <Typography 
+          <Typography
             variant="body2"
-            sx={{ 
+            sx={{
               fontWeight: 500,
               color: disabled ? 'text.disabled' : 'text.primary',
             }}
@@ -104,14 +105,14 @@ export const SwitchContainer: React.FC<SwitchContainerProps> = ({
           alignItems: 'center',
         }}
       />
-      
+
       {description && (
         <Typography
           variant="caption"
           sx={{
             mt: 0.5,
-            ml: labelPlacement === 'start' ? 0 : (size === 'small' ? 4.5 : 5),
-            mr: labelPlacement === 'end' ? 0 : (size === 'small' ? 4.5 : 5),
+            ml: labelPlacement === 'start' ? 0 : size === 'small' ? 4.5 : 5,
+            mr: labelPlacement === 'end' ? 0 : size === 'small' ? 4.5 : 5,
             color: disabled ? 'text.disabled' : 'text.secondary',
           }}
         >

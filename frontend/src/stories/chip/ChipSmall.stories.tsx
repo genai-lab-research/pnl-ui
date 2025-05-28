@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ChipSmall } from '../../shared/components/ui/Chip/ChipSmall';
 import CheckIcon from '@mui/icons-material/Check';
 import EditIcon from '@mui/icons-material/Edit';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ChipSmall } from '../../shared/components/ui/Chip/ChipSmall';
 
 const meta = {
   title: 'UI/Chip/ChipSmall',
@@ -13,14 +14,14 @@ const meta = {
   argTypes: {
     variant: {
       options: [
-        'default', 
-        'primary', 
+        'default',
+        'primary',
         'secondary',
-        'success', 
-        'warning', 
-        'error', 
-        'info', 
-        'connected'
+        'success',
+        'warning',
+        'error',
+        'info',
+        'connected',
       ],
       control: { type: 'select' },
     },

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+
 import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+
 import CreateContainerModal from '../../../../features/containers/CreateContainerModal';
 
 export interface CreateContainerButtonProps {
@@ -8,12 +10,12 @@ export interface CreateContainerButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
-  
+
   /**
    * Optional custom class name
    */
   className?: string;
-  
+
   /**
    * Whether the button is disabled
    * @default false
@@ -73,11 +75,7 @@ export const CreateContainerButton: React.FC<CreateContainerButtonProps> = ({
       >
         Create Container
       </Button>
-      <CreateContainerModal
-        open={modalOpen}
-        onClose={handleClose}
-        onSuccess={handleSuccess}
-      />
+      <CreateContainerModal open={modalOpen} onClose={handleClose} onSuccess={handleSuccess} />
     </>
   );
 };

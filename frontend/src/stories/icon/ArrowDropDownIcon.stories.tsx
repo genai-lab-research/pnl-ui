@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ArrowDropDownIcon } from '../../shared/components/ui/Icon/ArrowDropDownIcon';
 
 const meta: Meta<typeof ArrowDropDownIcon> = {
@@ -53,9 +54,9 @@ export const Colored: Story = {
 
 export const CustomStyles: Story = {
   args: {
-    sx: { 
+    sx: {
       color: '#FF5722',
-      fontSize: 40
+      fontSize: 40,
     },
   },
 };

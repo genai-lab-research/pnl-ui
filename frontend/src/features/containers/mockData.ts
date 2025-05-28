@@ -1,5 +1,4 @@
 // Mock data for containers matching the reference image exactly
-
 import { ContainerStatus, ContainerType, RowData } from '../../shared/types/containers';
 
 // Mock container data matching the reference UI
@@ -15,7 +14,7 @@ export const mockContainers = [
     status: 'ACTIVE',
     created_at: '2025-01-30',
     updated_at: '2025-01-30',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '2',
@@ -28,7 +27,7 @@ export const mockContainers = [
     status: 'MAINTENANCE',
     created_at: '2025-01-30',
     updated_at: '2025-01-30',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '3',
@@ -41,7 +40,7 @@ export const mockContainers = [
     status: 'CREATED',
     created_at: '2025-01-25',
     updated_at: '2025-01-26',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '4',
@@ -54,7 +53,7 @@ export const mockContainers = [
     status: 'ACTIVE',
     created_at: '2025-01-25',
     updated_at: '2025-01-26',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '5',
@@ -67,7 +66,7 @@ export const mockContainers = [
     status: 'INACTIVE',
     created_at: '2025-01-13',
     updated_at: '2025-01-15',
-    has_alerts: true
+    has_alerts: true,
   },
   {
     id: '6',
@@ -80,8 +79,8 @@ export const mockContainers = [
     status: 'ACTIVE',
     created_at: '2025-01-12',
     updated_at: '2025-01-18',
-    has_alerts: true
-  }
+    has_alerts: true,
+  },
 ];
 
 // Formatted data for the data table that matches the TableRow component expectations
@@ -96,7 +95,7 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.ACTIVE,
     created: '30/01/2025',
     modified: '30/01/2025',
-    alerts: 1
+    alerts: 1,
   },
   {
     id: '2',
@@ -108,7 +107,7 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.MAINTENANCE,
     created: '30/01/2025',
     modified: '30/01/2025',
-    alerts: 1
+    alerts: 1,
   },
   {
     id: '3',
@@ -120,7 +119,7 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.CREATED,
     created: '25/01/2025',
     modified: '26/01/2025',
-    alerts: 1
+    alerts: 1,
   },
   {
     id: '4',
@@ -132,7 +131,7 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.ACTIVE,
     created: '25/01/2025',
     modified: '26/01/2025',
-    alerts: 1
+    alerts: 1,
   },
   {
     id: '5',
@@ -144,7 +143,7 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.INACTIVE,
     created: '13/01/2025',
     modified: '15/01/2025',
-    alerts: 1
+    alerts: 1,
   },
   {
     id: '6',
@@ -156,8 +155,8 @@ export const formattedContainerList: RowData[] = [
     status: ContainerStatus.ACTIVE,
     created: '12/01/2025',
     modified: '18/01/2025',
-    alerts: 1
-  }
+    alerts: 1,
+  },
 ];
 
 // Mock data structure for the API response
@@ -173,7 +172,7 @@ export const mockMetrics = {
       { date: 'Thu', value: 18 },
       { date: 'Fri', value: 23 },
       { date: 'Sat', value: 19 },
-      { date: 'Sun', value: 22 }
+      { date: 'Sun', value: 22 },
     ],
     space_utilization_data: [
       { date: 'Mon', value: 80 },
@@ -182,11 +181,11 @@ export const mockMetrics = {
       { date: 'Thu', value: 76 },
       { date: 'Fri', value: 82 },
       { date: 'Sat', value: 70 },
-      { date: 'Sun', value: 75 }
+      { date: 'Sun', value: 75 },
     ],
     average_yield: 63,
     total_yield: 81,
-    average_space_utilization: 80
+    average_space_utilization: 80,
   },
   virtual: {
     yield_data: [
@@ -196,7 +195,7 @@ export const mockMetrics = {
       { date: 'Thu', value: 18 },
       { date: 'Fri', value: 21 },
       { date: 'Sat', value: 17 },
-      { date: 'Sun', value: 20 }
+      { date: 'Sun', value: 20 },
     ],
     space_utilization_data: [
       { date: 'Mon', value: 65 },
@@ -205,10 +204,10 @@ export const mockMetrics = {
       { date: 'Thu', value: 62 },
       { date: 'Fri', value: 66 },
       { date: 'Sat', value: 59 },
-      { date: 'Sun', value: 64 }
+      { date: 'Sun', value: 64 },
     ],
     average_yield: 63,
     total_yield: 81,
-    average_space_utilization: 80
-  }
+    average_space_utilization: 80,
+  },
 };

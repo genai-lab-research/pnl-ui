@@ -1,6 +1,7 @@
+import { Box, Chip, MenuItem, Stack, TextField } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { InformationGroupContainer } from '../../shared/components/ui/Container/InformationGroupContainer';
-import { Box, TextField, MenuItem, Chip, Stack } from '@mui/material';
 
 const meta = {
   title: 'Container/InformationGroupContainer',
@@ -51,17 +52,17 @@ export const WithChips: Story = {
     children: (
       <>
         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-          <Chip 
-            label="Someroots" 
-            onDelete={() => {}} 
-            color="primary" 
+          <Chip
+            label="Someroots"
+            onDelete={() => {}}
+            color="primary"
             variant="outlined"
             size="small"
           />
-          <Chip 
-            label="Sunflower" 
-            onDelete={() => {}} 
-            color="primary" 
+          <Chip
+            label="Sunflower"
+            onDelete={() => {}}
+            color="primary"
             variant="outlined"
             size="small"
           />
@@ -91,11 +92,15 @@ export const Elevated: Story = {
       <>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="body2">System ID:</Typography>
-          <Typography variant="body2" fontWeight="medium">SYS-2023-45A</Typography>
+          <Typography variant="body2" fontWeight="medium">
+            SYS-2023-45A
+          </Typography>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="body2">Last Updated:</Typography>
-          <Typography variant="body2" fontWeight="medium">2023-05-15 14:30</Typography>
+          <Typography variant="body2" fontWeight="medium">
+            2023-05-15 14:30
+          </Typography>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="body2">Status:</Typography>

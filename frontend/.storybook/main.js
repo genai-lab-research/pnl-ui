@@ -5,7 +5,11 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../src/**/*.stories.mdx',
+    '../src/**/*.stories.@(js|jsx|ts|tsx)',
+    '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -41,7 +45,12 @@ const config = {
       ...config,
       optimizeDeps: {
         ...config.optimizeDeps,
-        include: [...(config.optimizeDeps?.include ?? []), 'react', '@emotion/react', '@mui/material'],
+        include: [
+          ...(config.optimizeDeps?.include ?? []),
+          'react',
+          '@emotion/react',
+          '@mui/material',
+        ],
         exclude: ['@storybook/addon-docs'],
       },
       resolve: {

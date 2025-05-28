@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Chip, ChipProps } from '@mui/material';
 
 interface InactiveChipSmallProps extends Omit<ChipProps, 'variant'> {

@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ChipMedium } from '../../shared/components/ui/Chip/ChipMedium';
 import BuildIcon from '@mui/icons-material/Build';
 import EditIcon from '@mui/icons-material/Edit';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ChipMedium } from '../../shared/components/ui/Chip/ChipMedium';
 
 const meta = {
   title: 'UI/Chip/ChipMedium',
@@ -13,14 +14,14 @@ const meta = {
   argTypes: {
     variant: {
       options: [
-        'default', 
-        'primary', 
+        'default',
+        'primary',
         'secondary',
-        'success', 
-        'warning', 
-        'error', 
-        'info', 
-        'maintenance'
+        'success',
+        'warning',
+        'error',
+        'info',
+        'maintenance',
       ],
       control: { type: 'select' },
     },

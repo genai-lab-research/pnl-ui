@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { PaginatorButton } from '../../shared/components/ui/Button';
 
 const meta = {

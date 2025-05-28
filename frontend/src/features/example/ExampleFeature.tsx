@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography, Paper, Container, Grid, Button } from '@mui/material';
+
+import { Box, Button, Container, Grid, Paper, Typography } from '@mui/material';
 
 const ExampleFeature: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ const ExampleFeature: React.FC = () => {
         <Typography variant="body1" paragraph>
           This is an example feature component showing how to structure the application.
         </Typography>
-        
+
         <Grid container spacing={3} sx={{ mt: 2 }}>
           <Grid item xs={12} md={6}>
             <Box sx={{ p: 3, bgcolor: '#f5f5f5', borderRadius: 2 }}>
