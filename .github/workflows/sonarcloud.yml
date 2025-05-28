@@ -2,8 +2,8 @@ name: SonarCloud Scan
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'run_sonnar-*'  # Triggers only for tags like run_sonnar-v1, run_sonnar-prod, etc.
 
 jobs:
   sonarcloud:
