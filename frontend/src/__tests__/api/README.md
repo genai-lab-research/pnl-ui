@@ -25,11 +25,13 @@ These tests are automatically run during the build process. If any of these test
 Current API tests cover:
 
 - Container creation
+
   - Creating containers with valid data
   - Validating that container creation fails with invalid data
   - Checking for duplicate container name errors
 
 - Container retrieval
+
   - Getting container lists
   - Filtering containers by type
 

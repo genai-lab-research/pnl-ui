@@ -1,45 +1,42 @@
 import React from 'react';
-import { 
-  TableRow as MuiTableRow, 
-  TableCell, 
-  IconButton,
-  Typography
-} from '@mui/material';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
+import CloudIcon from '@mui/icons-material/Cloud';
 import ErrorIcon from '@mui/icons-material/ErrorOutline';
 import InfoIcon from '@mui/icons-material/Info';
-import CloudIcon from '@mui/icons-material/Cloud';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { IconButton, TableRow as MuiTableRow, TableCell, Typography } from '@mui/material';
+
+import { Column, ContainerStatus, ContainerType, RowData } from '../../../types/containers';
 import { ShippingContainerIcon } from '../Icon';
-import { Column, RowData, ContainerType, ContainerStatus } from '../../../types/containers';
 
 interface TableRowProps {
   /**
    * Row data
    */
   row: RowData;
-  
+
   /**
    * Column configurations
    */
   columns: Column[];
-  
+
   /**
    * Handler for clicking on a row
    */
   onClick?: () => void;
-  
+
   /**
    * Handler for clicking on action button
    */
   onActionClick?: () => void;
-  
+
   /**
    * Props for status chip component
    */
   statusChipProps: {
     variant: 'connected' | 'maintenance' | 'created' | 'inactive';
   };
-  
+
   /**
    * Custom class name
    */
@@ -62,69 +59,77 @@ const TableRow: React.FC<TableRowProps> = ({
     switch (row.status) {
       case ContainerStatus.ACTIVE:
         return (
-          <div style={{ 
-            padding: '4px 12px',
-            fontSize: '12px',
-            fontWeight: 500,
-            borderRadius: '16px',
-            backgroundColor: '#E8F5E9',
-            color: '#2E7D32',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '24px'
-          }}>
+          <div
+            style={{
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontWeight: 500,
+              borderRadius: '16px',
+              backgroundColor: '#E8F5E9',
+              color: '#2E7D32',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '24px',
+            }}
+          >
             Connected
           </div>
         );
       case ContainerStatus.MAINTENANCE:
         return (
-          <div style={{ 
-            padding: '4px 12px',
-            fontSize: '12px',
-            fontWeight: 500,
-            borderRadius: '16px',
-            backgroundColor: '#FFF3E0',
-            color: '#E65100',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '24px'
-          }}>
+          <div
+            style={{
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontWeight: 500,
+              borderRadius: '16px',
+              backgroundColor: '#FFF3E0',
+              color: '#E65100',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '24px',
+            }}
+          >
             Maintenance
           </div>
         );
       case ContainerStatus.INACTIVE:
         return (
-          <div style={{ 
-            padding: '4px 12px',
-            fontSize: '12px',
-            fontWeight: 500,
-            borderRadius: '16px',
-            backgroundColor: '#757575', // Updated to match reference (lighter grey)
-            color: '#FFFFFF',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '24px'
-          }}>
+          <div
+            style={{
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontWeight: 500,
+              borderRadius: '16px',
+              backgroundColor: '#757575', // Updated to match reference (lighter grey)
+              color: '#FFFFFF',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '24px',
+            }}
+          >
             Inactive
           </div>
         );
       case ContainerStatus.CREATED:
         return (
-          <div style={{ 
-            padding: '4px 12px',
-            fontSize: '12px',
-            fontWeight: 500,
-            borderRadius: '16px',
-            backgroundColor: '#F5F5F5', // Updated to match reference
-            color: '#616161', // Updated to match reference
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '24px'
-          }}>
+          <div
+            style={{
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontWeight: 500,
+              borderRadius: '16px',
+              backgroundColor: '#F5F5F5', // Updated to match reference
+              color: '#616161', // Updated to match reference
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '24px',
+            }}
+          >
             Created
           </div>
         );
@@ -137,19 +142,23 @@ const TableRow: React.FC<TableRowProps> = ({
   const renderTypeIcon = () => {
     if (row.type === ContainerType.VIRTUAL) {
       return (
-        <CloudIcon sx={{ 
-          fontSize: 24, 
-          color: '#9E9E9E', // Lighter color to match reference
-          opacity: 0.8 // Added opacity for subtlety
-        }} />
+        <CloudIcon
+          sx={{
+            fontSize: 24,
+            color: '#9E9E9E', // Lighter color to match reference
+            opacity: 0.8, // Added opacity for subtlety
+          }}
+        />
       );
     } else if (row.type === ContainerType.PHYSICAL) {
       return (
-        <ShippingContainerIcon sx={{ 
-          fontSize: 24, 
-          color: '#9E9E9E', // Lighter color to match reference
-          opacity: 0.8 // Added opacity for subtlety
-        }} />
+        <ShippingContainerIcon
+          sx={{
+            fontSize: 24,
+            color: '#9E9E9E', // Lighter color to match reference
+            opacity: 0.8, // Added opacity for subtlety
+          }}
+        />
       );
     }
     return null;
@@ -160,21 +169,25 @@ const TableRow: React.FC<TableRowProps> = ({
     if (Number(row.alerts) > 0) {
       return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <ErrorIcon sx={{ 
-            color: '#F44336', // Brighter red to match reference
-            fontSize: 20,
-            opacity: 0.9 // Slightly more visible
-          }} />
+          <ErrorIcon
+            sx={{
+              color: '#F44336', // Brighter red to match reference
+              fontSize: 20,
+              opacity: 0.9, // Slightly more visible
+            }}
+          />
         </div>
       );
     }
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <InfoIcon sx={{ 
-          color: '#BDBDBD', // Lighter grey to match reference
-          fontSize: 20,
-          opacity: 0.7 // More subtle for info icons
-        }} />
+        <InfoIcon
+          sx={{
+            color: '#BDBDBD', // Lighter grey to match reference
+            fontSize: 20,
+            opacity: 0.7, // More subtle for info icons
+          }}
+        />
       </div>
     );
   };
@@ -212,7 +225,7 @@ const TableRow: React.FC<TableRowProps> = ({
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               display: 'block',
-              color: '#212121'
+              color: '#212121',
             }}
           >
             {row[columnId as keyof RowData]}

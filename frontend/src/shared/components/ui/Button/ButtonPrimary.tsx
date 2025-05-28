@@ -1,8 +1,9 @@
-import React from "react";
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import React from 'react';
 
-export interface ButtonPrimaryProps extends Omit<MuiButtonProps, "color"> {
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+export interface ButtonPrimaryProps extends Omit<MuiButtonProps, 'color'> {
   fullWidth?: boolean;
   rounded?: boolean;
 }
@@ -12,32 +13,32 @@ const StyledButton = styled(MuiButton, {
 })<{ rounded?: boolean }>(({ theme, rounded }) => ({
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.common.white,
-  textTransform: "none",
+  textTransform: 'none',
   padding: theme.spacing(1.25, 1.5),
   borderRadius: rounded ? 20 : 6,
   fontWeight: 500,
-  fontSize: "14px",
-  lineHeight: "20px",
-  boxShadow: "none",
-  "&:hover": {
+  fontSize: '14px',
+  lineHeight: '20px',
+  boxShadow: 'none',
+  '&:hover': {
     backgroundColor: theme.palette.primary.dark,
-    boxShadow: "none",
+    boxShadow: 'none',
   },
-  "&:active": {
-    boxShadow: "none",
+  '&:active': {
+    boxShadow: 'none',
     backgroundColor: theme.palette.primary.dark,
   },
-  "& .MuiButton-startIcon": {
+  '& .MuiButton-startIcon': {
     marginRight: theme.spacing(1),
   },
-  "& .MuiButton-endIcon": {
+  '& .MuiButton-endIcon': {
     marginLeft: theme.spacing(1),
   },
 }));
 
 export const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
-  variant = "contained",
-  size = "medium",
+  variant = 'contained',
+  size = 'medium',
   disabled = false,
   fullWidth = false,
   rounded = false,

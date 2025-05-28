@@ -1,6 +1,7 @@
+import { Box, Checkbox, FormControlLabel, FormGroup, Switch, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SettingsGroupContainer } from '../../shared/components/ui/Container/SettingsGroupContainer';
-import { Box, FormControlLabel, Switch, FormGroup, Checkbox, Typography } from '@mui/material';
 
 const meta = {
   title: 'Container/SettingsGroupContainer',
@@ -26,10 +27,7 @@ export const Default: Story = {
     title: 'Settings',
     children: (
       <FormGroup>
-        <FormControlLabel 
-          control={<Switch color="primary" />} 
-          label="Enable Shadow Service" 
-        />
+        <FormControlLabel control={<Switch color="primary" />} label="Enable Shadow Service" />
       </FormGroup>
     ),
   },
@@ -41,10 +39,7 @@ export const WithoutDivider: Story = {
     withDivider: false,
     children: (
       <FormGroup>
-        <FormControlLabel 
-          control={<Switch color="primary" />} 
-          label="Enable Shadow Service" 
-        />
+        <FormControlLabel control={<Switch color="primary" />} label="Enable Shadow Service" />
       </FormGroup>
     ),
   },
@@ -55,18 +50,9 @@ export const WithMultipleOptions: Story = {
     title: 'System Settings',
     children: (
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-        <FormControlLabel 
-          control={<Switch color="primary" />} 
-          label="Enable Shadow Service" 
-        />
-        <FormControlLabel 
-          control={<Switch color="primary" />} 
-          label="Auto-sync with cloud" 
-        />
-        <FormControlLabel 
-          control={<Switch color="primary" />} 
-          label="Daily performance reports" 
-        />
+        <FormControlLabel control={<Switch color="primary" />} label="Enable Shadow Service" />
+        <FormControlLabel control={<Switch color="primary" />} label="Auto-sync with cloud" />
+        <FormControlLabel control={<Switch color="primary" />} label="Daily performance reports" />
       </Box>
     ),
   },
@@ -77,13 +63,13 @@ export const WithCheckboxes: Story = {
     title: 'System Integration',
     children: (
       <Box>
-        <FormControlLabel 
-          control={<Checkbox color="primary" />} 
+        <FormControlLabel
+          control={<Checkbox color="primary" />}
           label={
             <Box>
               <Typography variant="body2">Connect to other systems after creation</Typography>
             </Box>
-          } 
+          }
         />
       </Box>
     ),

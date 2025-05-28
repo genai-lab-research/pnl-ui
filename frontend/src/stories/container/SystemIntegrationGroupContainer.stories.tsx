@@ -1,6 +1,7 @@
+import { Box, Checkbox, FormControlLabel, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SystemIntegrationGroupContainer } from '../../shared/components/ui/Container/SystemIntegrationGroupContainer';
-import { Box, FormControlLabel, Checkbox, Typography } from '@mui/material';
 
 const meta = {
   title: 'Container/SystemIntegrationGroupContainer',
@@ -56,10 +57,7 @@ export const WithMultipleOptions: Story = {
           control={<Checkbox color="primary" />}
           label="Connect to other systems after creation"
         />
-        <FormControlLabel
-          control={<Checkbox color="primary" />}
-          label="Enable API access"
-        />
+        <FormControlLabel control={<Checkbox color="primary" />} label="Enable API access" />
         <FormControlLabel
           control={<Checkbox color="primary" defaultChecked />}
           label="Include in monitoring dashboard"

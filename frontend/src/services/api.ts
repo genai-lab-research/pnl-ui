@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 // Base API configuration
 const apiClient = axios.create({
@@ -15,7 +15,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // Response interceptor for API calls
@@ -31,7 +31,7 @@ apiClient.interceptors.response.use(
       message: error.message,
     };
     return Promise.reject(errorResponse);
-  }
+  },
 );
 
 // Generic API request function

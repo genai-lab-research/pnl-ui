@@ -1,4 +1,5 @@
 import React from 'react';
+
 import clsx from 'clsx';
 
 export interface FilterChipTextProps {
@@ -15,9 +16,9 @@ export const FilterChipText: React.FC<FilterChipTextProps> = ({
   return (
     <span
       className={clsx(
-        "text-xs font-medium",
-        active ? "text-primary-600" : "text-gray-600",
-        className
+        'text-xs font-medium',
+        active ? 'text-primary-600' : 'text-gray-600',
+        className,
       )}
     >
       {children}

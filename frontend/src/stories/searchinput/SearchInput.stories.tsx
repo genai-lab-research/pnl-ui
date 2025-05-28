@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SearchInput } from '../../shared/components/ui/SearchInput';
 
 const meta = {
@@ -33,11 +35,11 @@ export const Disabled: Story = {
 export const Interactive = () => {
   const [value, setValue] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  
+
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
-  
+
   return (
     <div style={{ width: '300px' }}>
       <SearchInput

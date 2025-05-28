@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { FilterChipText } from '../../shared/components/ui/Typography';
 
 const meta = {

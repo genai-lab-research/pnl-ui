@@ -46,7 +46,7 @@ const metricsService = {
   getContainerMetrics: async (
     containerId: string,
     timeRange: MetricTimeRange = 'WEEK',
-    startDate?: string
+    startDate?: string,
   ): Promise<MetricResponse> => {
     return apiRequest<MetricResponse>({
       method: 'GET',
@@ -63,7 +63,7 @@ const metricsService = {
     containerId: string,
     startDate?: string,
     endDate?: string,
-    limit: number = 100
+    limit: number = 100,
   ): Promise<MetricSnapshot[]> => {
     return apiRequest<MetricSnapshot[]>({
       method: 'GET',

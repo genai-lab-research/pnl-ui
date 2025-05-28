@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import CloseIcon from '@mui/icons-material/Close';
 import {
-  Typography,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Divider,
-  IconButton,
-  ToggleButtonGroup,
-  ToggleButton,
   Autocomplete,
+  Box,
   Chip,
   CircularProgress,
-  Box
+  Divider,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import { SwitchMedium } from '../../shared/components/ui/Switch/SwitchMedium';
-import { CheckboxStandard } from '../../shared/components/ui/Checkbox/CheckboxStandard';
-import { ButtonPrimary } from '../../shared/components/ui/Button/ButtonPrimary';
-import { DrawerContainer } from '../../shared/components/ui/Container/DrawerContainer';
+
 import containerService, { ContainerFormData } from '../../services/containerService';
-import tenantService, { Tenant } from '../../services/tenantService';
 import seedTypeService, { SeedType } from '../../services/seedTypeService';
+import tenantService, { Tenant } from '../../services/tenantService';
+import { ButtonPrimary } from '../../shared/components/ui/Button/ButtonPrimary';
+import { CheckboxStandard } from '../../shared/components/ui/Checkbox/CheckboxStandard';
+import { DrawerContainer } from '../../shared/components/ui/Container/DrawerContainer';
+import { SwitchMedium } from '../../shared/components/ui/Switch/SwitchMedium';
 
 // Interface for component props
 interface CreateContainerModalProps {
@@ -37,7 +39,7 @@ const PURPOSE_OPTIONS = ['Development', 'Research', 'Production'];
 const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
   open,
   onClose,
-  onSuccess
+  onSuccess,
 }) => {
   // Form state
   const [formData, setFormData] = useState<ContainerFormData>({
@@ -49,7 +51,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
     location: '',
     notes: '',
     shadow_service_enabled: false,
-    connect_to_other_systems: false
+    connect_to_other_systems: false,
   });
 
   // Loading, success and error states
@@ -100,10 +102,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
   };
 
   // Handle changes to form fields
-  const handleChange = (
-    field: keyof ContainerFormData,
-    value: string | boolean | string[]
-  ) => {
+  const handleChange = (field: keyof ContainerFormData, value: string | boolean | string[]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -112,7 +111,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
     setSelectedSeedTypes(values);
     setFormData((prev) => ({
       ...prev,
-      seed_types: values.map((seedType) => seedType.id)
+      seed_types: values.map((seedType) => seedType.id),
     }));
   };
 
@@ -134,7 +133,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
       }
 
       const response = await containerService.createContainer(formData);
-      
+
       if (response) {
         if (onSuccess) onSuccess();
         onClose();
@@ -161,14 +160,14 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
         <Divider />
 
         {/* Form */}
-        <Box 
-          component="form" 
+        <Box
+          component="form"
           onSubmit={handleSubmit}
-          sx={{ 
-            display: 'flex', 
+          sx={{
+            display: 'flex',
             flexDirection: 'column',
             p: 3,
-            gap: 3
+            gap: 3,
           }}
         >
           {/* Container Information Section */}
@@ -176,7 +175,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
             <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
               Container Information
             </Typography>
-            
+
             <TextField
               fullWidth
               label="Container Name *"
@@ -190,22 +189,26 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                   color: 'rgba(0, 0, 0, 0.6)',
                 },
                 '& .MuiInputLabel-asterisk': {
-                  color: '#d32f2f', 
+                  color: '#d32f2f',
                 },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 1,
-                }
+                },
               }}
               required
             />
 
             <FormControl fullWidth margin="normal">
-              <InputLabel sx={{ 
-                color: 'rgba(0, 0, 0, 0.6)',
-                '& .MuiInputLabel-asterisk': {
-                  color: '#d32f2f',
-                }
-              }}>Tenant</InputLabel>
+              <InputLabel
+                sx={{
+                  color: 'rgba(0, 0, 0, 0.6)',
+                  '& .MuiInputLabel-asterisk': {
+                    color: '#d32f2f',
+                  },
+                }}
+              >
+                Tenant
+              </InputLabel>
               <Select
                 value={formData.tenant}
                 onChange={(e) => handleChange('tenant', e.target.value)}
@@ -218,11 +221,11 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                   '& .MuiOutlinedInput-notchedOutline': {
                     borderColor: 'rgba(0, 0, 0, 0.23)',
                   },
-                  '& .MuiSelect-select': { 
+                  '& .MuiSelect-select': {
                     display: 'flex',
                     alignItems: 'center',
-                    color: formData.tenant ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)'
-                  }
+                    color: formData.tenant ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)',
+                  },
                 }}
               >
                 {tenantsLoading ? (
@@ -265,21 +268,27 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                   },
                 }}
               >
-                <ToggleButton 
-                  value="physical" 
-                  sx={{ 
+                <ToggleButton
+                  value="physical"
+                  sx={{
                     textTransform: 'none',
-                    color: formData.type === 'physical' ? 'var(--tw-color-primary)' : 'rgba(0, 0, 0, 0.6)',
+                    color:
+                      formData.type === 'physical'
+                        ? 'var(--tw-color-primary)'
+                        : 'rgba(0, 0, 0, 0.6)',
                     fontWeight: formData.type === 'physical' ? 500 : 400,
                   }}
                 >
                   Physical
                 </ToggleButton>
-                <ToggleButton 
-                  value="virtual" 
-                  sx={{ 
+                <ToggleButton
+                  value="virtual"
+                  sx={{
                     textTransform: 'none',
-                    color: formData.type === 'virtual' ? 'var(--tw-color-primary)' : 'rgba(0, 0, 0, 0.6)',
+                    color:
+                      formData.type === 'virtual'
+                        ? 'var(--tw-color-primary)'
+                        : 'rgba(0, 0, 0, 0.6)',
                     fontWeight: formData.type === 'virtual' ? 500 : 400,
                   }}
                 >
@@ -289,12 +298,16 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
             </Box>
 
             <FormControl fullWidth margin="normal">
-              <InputLabel sx={{ 
-                color: 'rgba(0, 0, 0, 0.6)',
-                '& .MuiInputLabel-asterisk': {
-                  color: '#d32f2f',
-                }
-              }}>Purpose</InputLabel>
+              <InputLabel
+                sx={{
+                  color: 'rgba(0, 0, 0, 0.6)',
+                  '& .MuiInputLabel-asterisk': {
+                    color: '#d32f2f',
+                  },
+                }}
+              >
+                Purpose
+              </InputLabel>
               <Select
                 value={formData.purpose}
                 onChange={(e) => handleChange('purpose', e.target.value)}
@@ -306,11 +319,11 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                   '& .MuiOutlinedInput-notchedOutline': {
                     borderColor: 'rgba(0, 0, 0, 0.23)',
                   },
-                  '& .MuiSelect-select': { 
+                  '& .MuiSelect-select': {
                     display: 'flex',
                     alignItems: 'center',
-                    color: formData.purpose ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)'
-                  }
+                    color: formData.purpose ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)',
+                  },
                 }}
               >
                 {PURPOSE_OPTIONS.map((option) => (
@@ -347,8 +360,11 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                         borderColor: 'rgba(0, 0, 0, 0.23)',
                       },
                       '& .MuiInputBase-input': {
-                        color: selectedSeedTypes.length > 0 ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)',
-                      }
+                        color:
+                          selectedSeedTypes.length > 0
+                            ? 'rgba(0, 0, 0, 0.87)'
+                            : 'rgba(0, 0, 0, 0.38)',
+                      },
                     }}
                   />
                 )}
@@ -366,9 +382,9 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                         '& .MuiChip-deleteIcon': {
                           color: 'var(--tw-color-primary)',
                           '&:hover': {
-                            color: '#2563EB'
-                          }
-                        }
+                            color: '#2563EB',
+                          },
+                        },
                       }}
                     />
                   ))
@@ -384,11 +400,18 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
               placeholder="City, Country"
               margin="normal"
               required={formData.type === 'physical'}
-              helperText={formData.type === 'physical' && !formData.location ? 'Location is required for physical containers' : ''}
+              helperText={
+                formData.type === 'physical' && !formData.location
+                  ? 'Location is required for physical containers'
+                  : ''
+              }
               error={formData.type === 'physical' && !formData.location}
               sx={{
                 '& .MuiInputLabel-root': {
-                  color: formData.type === 'physical' && !formData.location ? '#d32f2f' : 'rgba(0, 0, 0, 0.6)',
+                  color:
+                    formData.type === 'physical' && !formData.location
+                      ? '#d32f2f'
+                      : 'rgba(0, 0, 0, 0.6)',
                 },
                 '& .MuiInputLabel-asterisk': {
                   color: '#d32f2f',
@@ -396,27 +419,31 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 1,
                   '& fieldset': {
-                    borderColor: formData.type === 'physical' && !formData.location ? '#d32f2f' : 'rgba(0, 0, 0, 0.23)',
-                  }
+                    borderColor:
+                      formData.type === 'physical' && !formData.location
+                        ? '#d32f2f'
+                        : 'rgba(0, 0, 0, 0.23)',
+                  },
                 },
                 '& .MuiFormHelperText-root': {
                   color: '#d32f2f',
                   marginLeft: 0,
-                  marginTop: '4px'
+                  marginTop: '4px',
                 },
-                ...(formData.type === 'physical' && !formData.location && {
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      border: '1px solid #d32f2f',
+                ...(formData.type === 'physical' &&
+                  !formData.location && {
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        border: '1px solid #d32f2f',
+                      },
+                      '&:hover fieldset': {
+                        border: '1px solid #d32f2f',
+                      },
+                      '&.Mui-focused fieldset': {
+                        border: '1px solid #d32f2f',
+                      },
                     },
-                    '&:hover fieldset': {
-                      border: '1px solid #d32f2f',
-                    },
-                    '&.Mui-focused fieldset': {
-                      border: '1px solid #d32f2f',
-                    },
-                  }
-                })
+                  }),
               }}
             />
 
@@ -442,11 +469,11 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                   },
                   '&.Mui-focused fieldset': {
                     borderColor: 'var(--tw-color-primary)',
-                  }
+                  },
                 },
                 '& .MuiInputBase-input': {
                   color: formData.notes ? 'rgba(0, 0, 0, 0.87)' : 'rgba(0, 0, 0, 0.38)',
-                }
+                },
               }}
               placeholder="Add any additional notes here..."
             />
@@ -457,7 +484,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
             <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
               Settings
             </Typography>
-            
+
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <SwitchMedium
                 checked={formData.shadow_service_enabled}
@@ -484,7 +511,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
             <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 2 }}>
               System Integration
             </Typography>
-            
+
             <CheckboxStandard
               checked={formData.connect_to_other_systems}
               onChange={(e) => handleChange('connect_to_other_systems', e.target.checked)}
@@ -503,7 +530,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
                 },
                 '& .MuiSvgIcon-root': {
                   fontSize: '20px',
-                }
+                },
               }}
             />
           </Box>
@@ -538,7 +565,7 @@ const CreateContainerModal: React.FC<CreateContainerModalProps> = ({
               '&.Mui-disabled': {
                 backgroundColor: 'rgba(59, 130, 246, 0.5)',
                 color: '#FFFFFF',
-              }
+              },
             }}
           >
             {isLoading ? <CircularProgress size={24} /> : 'Create Container'}

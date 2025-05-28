@@ -1,5 +1,7 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
+
 import { Box, Menu, MenuItem } from '@mui/material';
+
 import { FilterChip } from '../Chip';
 
 export interface FilterOption {
@@ -18,33 +20,33 @@ export interface FilterChipContainerProps {
    * Label for the filter
    */
   label?: string;
-  
+
   /**
    * Available filter options
    */
   options?: FilterOption[];
-  
+
   /**
    * Currently selected option value
    */
   selectedValue?: string;
-  
+
   /**
    * Handler for filter selection changes
    */
   onChange?: (value: string) => void;
-  
+
   /**
    * Custom class name
    */
   className?: string;
-  
+
   /**
    * Whether the filter chip is disabled
    * @default false
    */
   disabled?: boolean;
-  
+
   /**
    * Width of the filter chip
    */
@@ -71,32 +73,32 @@ export const FilterChipContainer: React.FC<FilterChipContainerProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  
+
   // Check if we're in dropdown mode (with options) or container mode (with children)
   const isDropdownMode = options && options.length > 0;
-  
+
   // Find the selected option or use the first one as default (only in dropdown mode)
-  const selectedOption = isDropdownMode ? 
-    options!.find(opt => opt.value === selectedValue) || options![0] : 
-    undefined;
-  
+  const selectedOption = isDropdownMode
+    ? options!.find((opt) => opt.value === selectedValue) || options![0]
+    : undefined;
+
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!disabled) {
       setAnchorEl(event.currentTarget);
     }
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   const handleOptionSelect = (value: string) => {
     if (onChange) {
       onChange(value);
     }
     handleClose();
   };
-  
+
   // Render different UI based on the mode
   if (isDropdownMode) {
     // Dropdown mode (original implementation)
@@ -135,7 +137,7 @@ export const FilterChipContainer: React.FC<FilterChipContainerProps> = ({
               mt: 1,
               minWidth: anchorEl?.clientWidth || 120,
               maxHeight: '300px',
-            }
+            },
           }}
         >
           {options.map((option) => (
@@ -157,14 +159,14 @@ export const FilterChipContainer: React.FC<FilterChipContainerProps> = ({
   } else {
     // Container mode - just render children in a flex container
     return (
-      <Box 
-        className={className} 
-        sx={{ 
+      <Box
+        className={className}
+        sx={{
           display: 'flex',
-          alignItems: 'center', 
+          alignItems: 'center',
           flexWrap: 'wrap',
           gap: 1,
-          width
+          width,
         }}
       >
         {children}

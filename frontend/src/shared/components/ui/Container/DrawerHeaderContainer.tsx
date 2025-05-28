@@ -1,29 +1,30 @@
 import React from 'react';
-import { Box, Typography, Divider, IconButton, SxProps, Theme } from '@mui/material';
+
 import CloseIcon from '@mui/icons-material/Close';
+import { Box, Divider, IconButton, SxProps, Theme, Typography } from '@mui/material';
 
 export interface DrawerHeaderContainerProps {
   /**
    * The drawer title
    */
   title: string;
-  
+
   /**
    * Function called when the close button is clicked
    */
   onClose: () => void;
-  
+
   /**
    * Optional class name for custom styling
    */
   className?: string;
-  
+
   /**
    * Whether to show the bottom divider
    * @default true
    */
   withDivider?: boolean;
-  
+
   /**
    * Optional sx props for custom styling
    */
@@ -45,7 +46,7 @@ export const DrawerHeaderContainer: React.FC<DrawerHeaderContainerProps> = ({
       className={className}
       sx={{
         width: '100%',
-        ...sx
+        ...sx,
       }}
     >
       <Box
@@ -67,19 +68,13 @@ export const DrawerHeaderContainer: React.FC<DrawerHeaderContainerProps> = ({
         >
           {title}
         </Typography>
-        
-        <IconButton
-          aria-label="Close drawer"
-          onClick={onClose}
-          size="small"
-        >
+
+        <IconButton aria-label="Close drawer" onClick={onClose} size="small">
           <CloseIcon />
         </IconButton>
       </Box>
-      
-      {withDivider && (
-        <Divider sx={{ borderColor: 'divider' }} />
-      )}
+
+      {withDivider && <Divider sx={{ borderColor: 'divider' }} />}
     </Box>
   );
 };

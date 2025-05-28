@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Box, Paper } from '@mui/material';
 import clsx from 'clsx';
 
@@ -10,7 +11,7 @@ export interface ContainerLargeProps {
   actions?: React.ReactNode;
 }
 
-export const ContainerLarge: React.FC<ContainerLargeProps> = ({ 
+export const ContainerLarge: React.FC<ContainerLargeProps> = ({
   children,
   className,
   noPadding = false,
@@ -19,10 +20,7 @@ export const ContainerLarge: React.FC<ContainerLargeProps> = ({
 }) => {
   return (
     <Paper
-      className={clsx(
-        'bg-white border border-gray-200 rounded-lg shadow-sm w-full',
-        className
-      )}
+      className={clsx('w-full rounded-lg border border-gray-200 bg-white shadow-sm', className)}
       elevation={0}
     >
       {(title || actions) && (
@@ -31,9 +29,7 @@ export const ContainerLarge: React.FC<ContainerLargeProps> = ({
           {actions && <Box>{actions}</Box>}
         </Box>
       )}
-      <Box className={clsx(!noPadding && 'p-6', 'w-full')}>
-        {children}
-      </Box>
+      <Box className={clsx(!noPadding && 'p-6', 'w-full')}>{children}</Box>
     </Paper>
   );
 };

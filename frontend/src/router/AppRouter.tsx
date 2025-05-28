@@ -1,16 +1,16 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import { Box } from '@mui/material';
 
-// Components
-import { NavigationBar } from '../shared/components/layout';
-
+import { ContainerDetailsPage } from '../features/container-details';
+import { ContainerManagementDashboard } from '../features/container-management';
 // Pages
 import { ContainerListPage } from '../features/containers';
-import { ContainerMetricsPage } from '../features/metrics';
 import { ExampleFeature } from '../features/example';
-import { ContainerManagementDashboard } from '../features/container-management';
-import { ContainerDetailsPage } from '../features/container-details';
+import { ContainerMetricsPage } from '../features/metrics';
+// Components
+import { NavigationBar } from '../shared/components/layout';
 
 const AppRouter: React.FC = () => {
   return (

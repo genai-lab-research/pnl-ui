@@ -1,8 +1,9 @@
-import React from "react";
-import { Button as MuiButton, ButtonProps as MuiButtonProps } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import React from 'react';
 
-export interface ButtonDestructiveProps extends Omit<MuiButtonProps, "color"> {
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+export interface ButtonDestructiveProps extends Omit<MuiButtonProps, 'color'> {
   fullWidth?: boolean;
   rounded?: boolean;
   startIcon?: React.ReactNode;
@@ -10,29 +11,29 @@ export interface ButtonDestructiveProps extends Omit<MuiButtonProps, "color"> {
 }
 
 const StyledButton = styled(MuiButton, {
-  shouldForwardProp: (prop) => prop !== "rounded",
+  shouldForwardProp: (prop) => prop !== 'rounded',
 })<{ rounded?: boolean }>(({ theme, rounded }) => ({
-  textTransform: "none",
+  textTransform: 'none',
   fontWeight: 500,
   backgroundColor: theme.palette.error.main,
   color: theme.palette.common.white,
-  boxShadow: "none",
+  boxShadow: 'none',
   ...(rounded && {
     borderRadius: 24,
   }),
-  "&:hover": {
+  '&:hover': {
     backgroundColor: theme.palette.error.dark,
-    boxShadow: "none",
+    boxShadow: 'none',
   },
-  "&:disabled": {
+  '&:disabled': {
     backgroundColor: theme.palette.action.disabledBackground,
     color: theme.palette.action.disabled,
   },
 }));
 
 export const ButtonDestructive: React.FC<ButtonDestructiveProps> = ({
-  variant = "contained",
-  size = "medium",
+  variant = 'contained',
+  size = 'medium',
   disabled = false,
   fullWidth = false,
   rounded = false,

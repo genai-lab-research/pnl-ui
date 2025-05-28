@@ -1,24 +1,22 @@
-import React from "react";
-import { IconButton, IconButtonProps } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { styled } from "@mui/material/styles";
+import React from 'react';
 
-export interface CloseButtonProps extends Omit<IconButtonProps, "children"> {
-  size?: "small" | "medium" | "large";
+import CloseIcon from '@mui/icons-material/Close';
+import { IconButton, IconButtonProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+export interface CloseButtonProps extends Omit<IconButtonProps, 'children'> {
+  size?: 'small' | 'medium' | 'large';
 }
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   padding: theme.spacing(0.5),
   color: theme.palette.text.primary,
-  "&:hover": {
+  '&:hover': {
     backgroundColor: theme.palette.action.hover,
   },
 }));
 
-export const CloseButton: React.FC<CloseButtonProps> = ({
-  size = "medium",
-  ...props
-}) => {
+export const CloseButton: React.FC<CloseButtonProps> = ({ size = 'medium', ...props }) => {
   const iconSize = {
     small: 16,
     medium: 24,

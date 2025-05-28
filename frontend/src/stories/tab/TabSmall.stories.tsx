@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { TabSmall } from '../../shared/components/ui/Tab';
+
 import { Stack } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { TabSmall } from '../../shared/components/ui/Tab';
 
 const meta: Meta<typeof TabSmall> = {
   title: 'Components/Tab/TabSmall',
@@ -65,13 +67,13 @@ export const Disabled: Story = {
 // Tab Group Example
 const TabGroupExample = () => {
   const [activeTab, setActiveTab] = useState(0);
-  
+
   const tabs = [
     { name: 'Overview', badge: null },
     { name: 'Activity', badge: '3' },
     { name: 'Settings', badge: null },
   ];
-  
+
   return (
     <Stack direction="row" spacing={0}>
       {tabs.map((tab, index) => (

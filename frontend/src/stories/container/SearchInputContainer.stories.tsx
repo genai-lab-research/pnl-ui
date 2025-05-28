@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { SearchInputContainer } from '../../shared/components/ui/Container';
-import { Button, IconButton } from '@mui/material';
+
 import FilterListIcon from '@mui/icons-material/FilterList';
+import { Button, IconButton } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { SearchInputContainer } from '../../shared/components/ui/Container';
 
 const meta = {
   title: 'Container/SearchInputContainer',
@@ -53,16 +55,16 @@ export const WithMultipleActions: Story = {
 export const Interactive = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isFiltering, setIsFiltering] = useState(false);
-  
+
   const handleToggleFilter = () => {
     setIsFiltering(!isFiltering);
   };
-  
+
   const handleClear = () => {
     setSearchValue('');
     setIsFiltering(false);
   };
-  
+
   return (
     <SearchInputContainer
       placeholder="Search containers..."
@@ -70,15 +72,15 @@ export const Interactive = () => {
       onChange={setSearchValue}
       children={
         <>
-          <IconButton 
-            color={isFiltering ? "secondary" : "primary"} 
+          <IconButton
+            color={isFiltering ? 'secondary' : 'primary'}
             aria-label="filter"
             onClick={handleToggleFilter}
           >
             <FilterListIcon />
           </IconButton>
-          <Button 
-            variant="outlined" 
+          <Button
+            variant="outlined"
             size="small"
             onClick={handleClear}
             disabled={!searchValue && !isFiltering}

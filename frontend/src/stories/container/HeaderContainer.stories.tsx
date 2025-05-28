@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { HeaderContainer } from '../../shared/components/ui/Container';
-import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { Button } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { HeaderContainer } from '../../shared/components/ui/Container';
 
 const meta = {
   title: 'Container/HeaderContainer',
@@ -33,12 +34,7 @@ export const WithActions: Story = {
   args: {
     title: 'Control Panel',
     children: (
-      <Button
-        variant="contained"
-        color="primary"
-        startIcon={<AddIcon />}
-        size="small"
-      >
+      <Button variant="contained" color="primary" startIcon={<AddIcon />} size="small">
         Add Container
       </Button>
     ),
@@ -51,12 +47,7 @@ export const Complete: Story = {
     avatarUrl: 'https://i.pravatar.cc/300',
     userName: 'Jane Doe',
     children: (
-      <Button
-        variant="contained"
-        color="primary"
-        startIcon={<AddIcon />}
-        size="small"
-      >
+      <Button variant="contained" color="primary" startIcon={<AddIcon />} size="small">
         Add Container
       </Button>
     ),

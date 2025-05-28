@@ -1,18 +1,13 @@
 import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  Card,
-  CardContent,
-  Chip,
-  IconButton,
-} from '@mui/material';
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Box, Card, CardContent, Chip, IconButton, Typography } from '@mui/material';
+
 import { ContainerCrop } from '../../services/containerService';
-import { DataTable } from '../../shared/components/ui/Table';
-import { PaginatorContainer } from '../../shared/components/ui/Container';
 import { PaginatorButton } from '../../shared/components/ui/Button';
+import { PaginatorContainer } from '../../shared/components/ui/Container';
+import { DataTable } from '../../shared/components/ui/Table';
 
 export interface CropsSectionProps {
   crops: ContainerCrop[];
@@ -29,10 +24,10 @@ const CropsSection: React.FC<CropsSectionProps> = ({
   page,
   pageSize,
   onPageChange,
-  className
+  className,
 }) => {
   const [expanded, setExpanded] = React.useState<boolean>(true);
-  
+
   // Toggle expanded state
   const handleExpandToggle = () => {
     setExpanded(!expanded);
@@ -52,7 +47,7 @@ const CropsSection: React.FC<CropsSectionProps> = ({
 
   // Format crops data for the table
   const formatCropsForTable = (crops: ContainerCrop[]) => {
-    return crops.map(crop => {
+    return crops.map((crop) => {
       return {
         id: crop.id,
         seed_type: crop.seed_type,
@@ -63,12 +58,10 @@ const CropsSection: React.FC<CropsSectionProps> = ({
         last_hd: crop.last_hd || '—',
         avg_age: crop.avg_age || '—',
         overdue: crop.overdue ? (
-          <Chip 
-            label={`${crop.overdue} days`} 
-            color="error" 
-            size="small"
-          />
-        ) : '—',
+          <Chip label={`${crop.overdue} days`} color="error" size="small" />
+        ) : (
+          '—'
+        ),
       };
     });
   };
@@ -91,7 +84,7 @@ const CropsSection: React.FC<CropsSectionProps> = ({
   };
 
   return (
-    <Card 
+    <Card
       className={className}
       elevation={0}
       sx={{
@@ -103,10 +96,10 @@ const CropsSection: React.FC<CropsSectionProps> = ({
       }}
     >
       <CardContent sx={{ p: 0 }}>
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'space-between',
             p: 2,
             borderBottom: expanded ? '1px solid' : 'none',
@@ -125,11 +118,8 @@ const CropsSection: React.FC<CropsSectionProps> = ({
           <>
             {crops.length > 0 ? (
               <>
-                <DataTable
-                  columns={columns}
-                  rows={formatCropsForTable(crops)}
-                />
-                
+                <DataTable columns={columns} rows={formatCropsForTable(crops)} />
+
                 <Box sx={{ p: 2 }}>
                   <PaginatorContainer
                     currentPage={page + 1}

@@ -1,5 +1,5 @@
-import { apiRequest } from './api';
 import { MetricTimeRange } from '../shared/types/metrics';
+import { apiRequest } from './api';
 
 export interface PerformanceMetricData {
   labels: string[];
@@ -32,7 +32,9 @@ export interface PerformanceResponse {
 // Service to get aggregated performance metrics for both physical and virtual containers
 const performanceService = {
   // Get performance metrics grouped by container type
-  getPerformanceOverview: async (timeRange: MetricTimeRange = MetricTimeRange.WEEK): Promise<PerformanceResponse> => {
+  getPerformanceOverview: async (
+    timeRange: MetricTimeRange = MetricTimeRange.WEEK,
+  ): Promise<PerformanceResponse> => {
     return apiRequest<PerformanceResponse>({
       method: 'GET',
       url: '/performance',

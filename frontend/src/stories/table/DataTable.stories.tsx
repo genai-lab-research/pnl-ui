@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { DataTable } from '../../shared/components/ui/Table';
 
 const meta = {

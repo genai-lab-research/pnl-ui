@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SelectorButtonGroup } from '../../shared/components/ui/Container';
 
 const meta = {
@@ -25,14 +27,8 @@ const timeOptions = [
 // Interactive story with state management
 export const Interactive = () => {
   const [selected, setSelected] = useState('week');
-  
-  return (
-    <SelectorButtonGroup
-      options={timeOptions}
-      selectedId={selected}
-      onChange={setSelected}
-    />
-  );
+
+  return <SelectorButtonGroup options={timeOptions} selectedId={selected} onChange={setSelected} />;
 };
 
 // Basic static example

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SwitchSmall } from '../../shared/components/ui/Switch';
 
 const meta = {

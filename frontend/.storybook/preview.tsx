@@ -1,7 +1,9 @@
-import '../src/styles/tailwind.css';
 import React from 'react';
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import type { Preview } from '@storybook/react';
+
+import '../src/styles/tailwind.css';
 
 // Create a basic theme for Material UI components
 const theme = createTheme({
@@ -32,7 +34,7 @@ const withThemeProvider = (Story: React.ComponentType) => {
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

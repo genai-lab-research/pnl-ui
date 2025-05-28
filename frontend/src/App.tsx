@@ -1,9 +1,11 @@
 // React import is required by JSX transpilation
 import { BrowserRouter } from 'react-router-dom';
+
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { AppRouter } from './router';
-import './index.css';
+
 import './App.css';
+import './index.css';
+import { AppRouter } from './router';
 
 // Create a Material UI theme
 const theme = createTheme({

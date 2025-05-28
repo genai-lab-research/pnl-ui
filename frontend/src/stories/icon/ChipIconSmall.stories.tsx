@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ChipIconSmall } from '../../shared/components/ui/Icon';
 
 const meta = {

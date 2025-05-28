@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ToggleOptionContainer } from '../../shared/components/ui/Container/ToggleOptionContainer';
 import { Box } from '@mui/material';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { ToggleOptionContainer } from '../../shared/components/ui/Container/ToggleOptionContainer';
 
 const meta = {
   title: 'Container/ToggleOptionContainer',
@@ -40,7 +41,8 @@ export const Checked: Story = {
 export const WithDescription: Story = {
   args: {
     label: 'Auto-sync with cloud',
-    description: 'Automatically synchronize container data with cloud services for backup and remote monitoring',
+    description:
+      'Automatically synchronize container data with cloud services for backup and remote monitoring',
     checked: true,
     onChange: (checked) => console.log('Toggle changed:', checked),
   },

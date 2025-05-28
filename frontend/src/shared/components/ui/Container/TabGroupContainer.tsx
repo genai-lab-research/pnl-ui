@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Box } from '@mui/material';
 import clsx from 'clsx';
+
 import { TabGroup, TabItem } from '../Tab/TabGroup';
 
 export interface TabGroupContainerProps {
@@ -25,7 +27,7 @@ export const TabGroupContainer: React.FC<TabGroupContainerProps> = ({
   ariaLabel,
 }) => {
   return (
-    <Box className={clsx('bg-white border-b border-gray-200', className)}>
+    <Box className={clsx('border-b border-gray-200 bg-white', className)}>
       <Box className="px-4">
         <TabGroup
           tabs={tabs}

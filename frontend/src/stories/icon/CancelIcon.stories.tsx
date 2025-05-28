@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { CancelIcon } from '../../shared/components/ui/Icon/CancelIcon';
 
 const meta: Meta<typeof CancelIcon> = {
@@ -53,9 +54,9 @@ export const Colored: Story = {
 
 export const CustomStyles: Story = {
   args: {
-    sx: { 
+    sx: {
       color: '#F44336',
-      fontSize: 40
+      fontSize: 40,
     },
   },
 };

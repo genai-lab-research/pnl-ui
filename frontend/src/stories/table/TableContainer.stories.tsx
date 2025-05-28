@@ -1,7 +1,9 @@
 import React from 'react';
-import { StoryObj, Meta } from '@storybook/react';
-import { TableContainer } from '../../shared/components/ui/Table/TableContainer';
+
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Meta, StoryObj } from '@storybook/react';
+
+import { TableContainer } from '../../shared/components/ui/Table/TableContainer';
 
 const meta: Meta<typeof TableContainer> = {
   title: 'Table/TableContainer',

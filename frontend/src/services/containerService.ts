@@ -198,7 +198,7 @@ const containerService = {
   // Get container metrics
   getContainerMetrics: async (
     containerId: string,
-    timeRange: TimeRangeOption = 'WEEK'
+    timeRange: TimeRangeOption = 'WEEK',
   ): Promise<ContainerMetrics> => {
     return apiRequest<ContainerMetrics>({
       method: 'GET',
@@ -212,7 +212,7 @@ const containerService = {
     containerId: string,
     page: number = 0,
     pageSize: number = 10,
-    seedType?: string
+    seedType?: string,
   ): Promise<CropsList> => {
     return apiRequest<CropsList>({
       method: 'GET',
@@ -228,7 +228,7 @@ const containerService = {
   // Get container activities
   getContainerActivities: async (
     containerId: string,
-    limit: number = 5
+    limit: number = 5,
   ): Promise<ActivityLogList> => {
     return apiRequest<ActivityLogList>({
       method: 'GET',

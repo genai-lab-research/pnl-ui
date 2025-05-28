@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ButtonDestructive } from '../../shared/components/ui/Button';
 
 const meta: Meta<typeof ButtonDestructive> = {

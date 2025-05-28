@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SwitchContainer } from '../../shared/components/ui/Container';
 
 const meta = {
@@ -58,7 +60,7 @@ export const Interactive = () => {
   const [enableNotifications, setEnableNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const [autoSave, setAutoSave] = useState(true);
-  
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', minWidth: '250px' }}>
       <SwitchContainer
@@ -67,13 +69,9 @@ export const Interactive = () => {
         checked={enableNotifications}
         onChange={setEnableNotifications}
       />
-      
-      <SwitchContainer
-        label="Dark Mode"
-        checked={darkMode}
-        onChange={setDarkMode}
-      />
-      
+
+      <SwitchContainer label="Dark Mode" checked={darkMode} onChange={setDarkMode} />
+
       <SwitchContainer
         label="Auto Save"
         description="Save changes automatically every 5 minutes"

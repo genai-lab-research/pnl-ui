@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Box, Button, FormControlLabel, Switch } from '@mui/material';
+
 import { SearchInput } from '../SearchInput';
 import { ChipGroupContainer, FilterGroup } from './ChipGroupContainer';
 
@@ -9,32 +11,32 @@ export interface SearchFilterSectionContainerProps {
    * @default 'Search...'
    */
   searchPlaceholder?: string;
-  
+
   /**
    * Current search value
    */
   searchValue?: string;
-  
+
   /**
    * Handler for search value changes
    */
   onSearchChange?: (value: string) => void;
-  
+
   /**
    * Handler for search submission
    */
   onSearch?: (value: string) => void;
-  
+
   /**
    * Array of filter groups to display
    */
   filterGroups: FilterGroup[];
-  
+
   /**
    * Handler for filter selection changes
    */
   onFilterChange?: (groupId: string, value: string) => void;
-  
+
   /**
    * Boolean toggle flags
    */
@@ -44,18 +46,18 @@ export interface SearchFilterSectionContainerProps {
     checked: boolean;
     onChange: (checked: boolean) => void;
   }>;
-  
+
   /**
    * Click handler for the "Clear Filters" button
    */
   onClearFilters?: () => void;
-  
+
   /**
    * Whether the search and filters are disabled
    * @default false
    */
   disabled?: boolean;
-  
+
   /**
    * Custom class name
    */
@@ -103,27 +105,29 @@ export const SearchFilterSectionContainer: React.FC<SearchFilterSectionContainer
           disabled={disabled}
         />
       </Box>
-      
+
       {/* Filter chips */}
       {filterGroups.length > 0 && (
         <ChipGroupContainer
-          filterGroups={filterGroups.map(group => ({
+          filterGroups={filterGroups.map((group) => ({
             ...group,
-            disabled: disabled || group.disabled
+            disabled: disabled || group.disabled,
           }))}
           onFilterChange={onFilterChange}
           chipWidth="140px"
         />
       )}
-      
+
       {/* Toggle switches */}
       {toggleFilters.length > 0 && (
-        <Box sx={{ 
-          display: 'flex', 
-          gap: 2,
-          flexWrap: 'nowrap',
-          alignItems: 'center',
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 2,
+            flexWrap: 'nowrap',
+            alignItems: 'center',
+          }}
+        >
           {toggleFilters.map((filter) => (
             <FormControlLabel
               key={filter.id}
@@ -146,7 +150,7 @@ export const SearchFilterSectionContainer: React.FC<SearchFilterSectionContainer
           ))}
         </Box>
       )}
-      
+
       {/* Clear filters button */}
       {onClearFilters && (
         <Button

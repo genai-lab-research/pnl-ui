@@ -2,21 +2,21 @@
 
 export enum ContainerType {
   PHYSICAL = 'Physical',
-  VIRTUAL = 'Virtual'
+  VIRTUAL = 'Virtual',
 }
 
 export enum ContainerPurpose {
   DEVELOPMENT = 'Development',
   RESEARCH = 'Research',
   PRODUCTION = 'Production',
-  TRAINING = 'Training'
+  TRAINING = 'Training',
 }
 
 export enum ContainerStatus {
   CREATED = 'Created',
   ACTIVE = 'Active',
   MAINTENANCE = 'Maintenance',
-  INACTIVE = 'Inactive'
+  INACTIVE = 'Inactive',
 }
 
 // For DataTable component

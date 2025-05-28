@@ -4,7 +4,7 @@ This is the frontend application for the Vertical Farming Control Panel. It's bu
 
 ## Features
 
-- Container management dashboard 
+- Container management dashboard
 - Performance metrics visualization
 - Interactive data tables and charts
 - Responsive design for desktop and tablet
@@ -27,6 +27,7 @@ This is the frontend application for the Vertical Farming Control Panel. It's bu
 ## Installation
 
 1. Clone the repository (if not already done)
+
    ```bash
    git clone https://github.com/your-repo/pnl-artifacts-1page.git
    cd pnl-artifacts-1page/demo/frontend
@@ -40,6 +41,7 @@ This is the frontend application for the Vertical Farming Control Panel. It's bu
 ## Running the Application
 
 1. Start the development server
+
    ```bash
    npm run dev
    ```
@@ -49,6 +51,7 @@ This is the frontend application for the Vertical Farming Control Panel. It's bu
 ## Building for Production
 
 To create a production build:
+
 ```bash
 npm run build
 ```
@@ -60,6 +63,7 @@ The build artifacts will be stored in the `dist/` directory.
 This project uses Storybook for component development and documentation.
 
 1. Start Storybook
+
    ```bash
    npm run storybook
    ```

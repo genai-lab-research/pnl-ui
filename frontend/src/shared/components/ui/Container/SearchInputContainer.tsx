@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Box } from '@mui/material';
+
 import { SearchInput } from '../SearchInput';
 
 export interface SearchInputContainerProps {
@@ -8,33 +10,33 @@ export interface SearchInputContainerProps {
    * @default 'Search...'
    */
   placeholder?: string;
-  
+
   /**
    * Current search value
    */
   value?: string;
-  
+
   /**
    * Handler for search value changes
    */
   onChange?: (value: string) => void;
-  
+
   /**
    * Handler for search submissions (when Enter is pressed)
    */
   onSearch?: (value: string) => void;
-  
+
   /**
    * Whether the input is disabled
    * @default false
    */
   disabled?: boolean;
-  
+
   /**
    * Custom class name
    */
   className?: string;
-  
+
   /**
    * Optional children to render alongside the search input
    */
@@ -54,7 +56,7 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
   children,
 }) => {
   return (
-    <Box 
+    <Box
       className={className}
       sx={{
         display: 'flex',
@@ -71,11 +73,7 @@ export const SearchInputContainer: React.FC<SearchInputContainerProps> = ({
           disabled={disabled}
         />
       </Box>
-      {children && (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          {children}
-        </Box>
-      )}
+      {children && <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>{children}</Box>}
     </Box>
   );
 };

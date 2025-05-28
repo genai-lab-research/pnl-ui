@@ -1,6 +1,5 @@
 // API utilities and services for the application
-
-import { ContainerType, ContainerPurpose, ContainerStatus } from '../types/containers';
+import { ContainerPurpose, ContainerStatus, ContainerType } from '../types/containers';
 import { MetricTimeRange } from '../types/metrics';
 
 // Base API URL - in a real app, would be configured based on environment
@@ -56,20 +55,22 @@ export interface MetricResponse {
 // Container API Service
 export const containerApi = {
   // Get container list with optional filters
-  async getContainers(params: {
-    skip?: number;
-    limit?: number;
-    name?: string;
-    tenant_id?: string;
-    type?: ContainerType;
-    purpose?: ContainerPurpose;
-    status?: ContainerStatus;
-    has_alerts?: boolean;
-    location?: string;
-  } = {}): Promise<ContainerListResponse> {
+  async getContainers(
+    params: {
+      skip?: number;
+      limit?: number;
+      name?: string;
+      tenant_id?: string;
+      type?: ContainerType;
+      purpose?: ContainerPurpose;
+      status?: ContainerStatus;
+      has_alerts?: boolean;
+      location?: string;
+    } = {},
+  ): Promise<ContainerListResponse> {
     // Build query string from params
     const queryParams = new URLSearchParams();
-    
+
     if (params.skip !== undefined) queryParams.append('skip', params.skip.toString());
     if (params.limit !== undefined) queryParams.append('limit', params.limit.toString());
     if (params.name) queryParams.append('name', params.name);
@@ -77,41 +78,42 @@ export const containerApi = {
     if (params.type) queryParams.append('type', params.type);
     if (params.purpose) queryParams.append('purpose', params.purpose);
     if (params.status) queryParams.append('status', params.status);
-    if (params.has_alerts !== undefined) queryParams.append('has_alerts', params.has_alerts.toString());
+    if (params.has_alerts !== undefined)
+      queryParams.append('has_alerts', params.has_alerts.toString());
     if (params.location) queryParams.append('location', params.location);
-    
+
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
-    
+
     const response = await fetch(`${API_BASE_URL}/containers/${queryString}`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch containers');
     }
-    
+
     return await response.json();
   },
-  
+
   // Get container statistics
   async getContainerStats(): Promise<ContainerStats> {
     const response = await fetch(`${API_BASE_URL}/containers/stats`);
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch container stats');
     }
-    
+
     return await response.json();
   },
-  
+
   // Get a single container by ID
   async getContainer(id: string) {
     const response = await fetch(`${API_BASE_URL}/containers/${id}`);
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch container with ID ${id}`);
     }
-    
+
     return await response.json();
-  }
+  },
 };
 
 // Metrics API Service
@@ -120,22 +122,24 @@ export const metricsApi = {
   async getContainerMetrics(
     containerId: string,
     timeRange: MetricTimeRange = MetricTimeRange.WEEK,
-    startDate?: string
+    startDate?: string,
   ): Promise<MetricResponse> {
     // Build query string
     const queryParams = new URLSearchParams();
     queryParams.append('time_range', timeRange);
     if (startDate) queryParams.append('start_date', startDate);
-    
-    const response = await fetch(`${API_BASE_URL}/metrics/container/${containerId}/?${queryParams.toString()}`);
-    
+
+    const response = await fetch(
+      `${API_BASE_URL}/metrics/container/${containerId}/?${queryParams.toString()}`,
+    );
+
     if (!response.ok) {
       throw new Error(`Failed to fetch metrics for container ${containerId}`);
     }
-    
+
     return await response.json();
   },
-  
+
   // Get metric snapshots for a container
   async getMetricSnapshots(
     containerId: string,
@@ -143,22 +147,22 @@ export const metricsApi = {
       start_date?: string;
       end_date?: string;
       limit?: number;
-    } = {}
+    } = {},
   ) {
     // Build query string
     const queryParams = new URLSearchParams();
     if (params.start_date) queryParams.append('start_date', params.start_date);
     if (params.end_date) queryParams.append('end_date', params.end_date);
     if (params.limit !== undefined) queryParams.append('limit', params.limit.toString());
-    
+
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
-    
+
     const response = await fetch(`${API_BASE_URL}/metrics/snapshots/${containerId}/${queryString}`);
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch metric snapshots for container ${containerId}`);
     }
-    
+
     return await response.json();
-  }
+  },
 };

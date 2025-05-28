@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { CustomIconButton } from '../../shared/components/ui/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { CustomIconButton } from '../../shared/components/ui/Button';
 
 const meta: Meta<typeof CustomIconButton> = {
   title: 'UI/Button/IconButton',

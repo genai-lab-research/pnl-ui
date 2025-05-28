@@ -1,28 +1,29 @@
 import React from 'react';
-import { Chip as MuiChip, ChipProps as MuiChipProps, Box } from '@mui/material';
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Box, Chip as MuiChip, ChipProps as MuiChipProps } from '@mui/material';
 
 export interface FilterChipProps extends Omit<MuiChipProps, 'onClick'> {
   /**
    * Label displayed on the chip
    */
   label: string;
-  
+
   /**
    * Whether the dropdown is open
    */
   isOpen?: boolean;
-  
+
   /**
    * Click handler
    */
   onClick?: () => void;
-  
+
   /**
    * Whether the chip is currently selected/active
    */
   selected?: boolean;
-  
+
   /**
    * Custom class name
    */
@@ -43,15 +44,17 @@ export const FilterChip: React.FC<FilterChipProps> = ({
   return (
     <MuiChip
       label={
-        <Box sx={{ 
-          display: 'flex', 
-          alignItems: 'center',
-          gap: 0.5,
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0.5,
+          }}
+        >
           <span>{label}</span>
-          <KeyboardArrowDownIcon 
+          <KeyboardArrowDownIcon
             fontSize="small"
-            sx={{ 
+            sx={{
               transition: 'transform 0.2s',
               transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
               marginLeft: '2px',

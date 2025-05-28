@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { AvatarIcon } from '../../shared/components/ui/Icon/AvatarIcon';
 
 const meta: Meta<typeof AvatarIcon> = {

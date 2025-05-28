@@ -1,6 +1,7 @@
+import { Box, Chip, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { InformationGroupElementsContainer } from '../../shared/components/ui/Container/InformationGroupElementsContainer';
-import { Box, TextField, MenuItem, Chip, Stack, Typography } from '@mui/material';
 
 const meta = {
   title: 'Container/InformationGroupElementsContainer',
@@ -32,25 +33,11 @@ export const Default: Story = {
           variant="outlined"
           size="small"
         />
-        <TextField
-          select
-          fullWidth
-          label="Tenant"
-          defaultValue=""
-          variant="outlined"
-          size="small"
-        >
+        <TextField select fullWidth label="Tenant" defaultValue="" variant="outlined" size="small">
           <MenuItem value="tenant-001">tenant-001</MenuItem>
           <MenuItem value="tenant-002">tenant-002</MenuItem>
         </TextField>
-        <TextField
-          select
-          fullWidth
-          label="Purpose"
-          defaultValue=""
-          variant="outlined"
-          size="small"
-        >
+        <TextField select fullWidth label="Purpose" defaultValue="" variant="outlined" size="small">
           <MenuItem value="production">Production</MenuItem>
           <MenuItem value="testing">Testing</MenuItem>
           <MenuItem value="research">Research</MenuItem>
@@ -65,26 +52,9 @@ export const SmallSpacing: Story = {
     spacing: 'small',
     children: (
       <>
-        <TextField
-          fullWidth
-          label="Container Name"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          fullWidth
-          label="Location"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          fullWidth
-          label="Notes"
-          multiline
-          rows={3}
-          variant="outlined"
-          size="small"
-        />
+        <TextField fullWidth label="Container Name" variant="outlined" size="small" />
+        <TextField fullWidth label="Location" variant="outlined" size="small" />
+        <TextField fullWidth label="Notes" multiline rows={3} variant="outlined" size="small" />
       </>
     ),
   },
@@ -96,7 +66,9 @@ export const LargeSpacing: Story = {
     children: (
       <>
         <Box>
-          <Typography variant="subtitle2" gutterBottom>Container Details</Typography>
+          <Typography variant="subtitle2" gutterBottom>
+            Container Details
+          </Typography>
           <TextField
             fullWidth
             label="Container ID"
@@ -105,9 +77,11 @@ export const LargeSpacing: Story = {
             size="small"
           />
         </Box>
-        
+
         <Box>
-          <Typography variant="subtitle2" gutterBottom>Seed Information</Typography>
+          <Typography variant="subtitle2" gutterBottom>
+            Seed Information
+          </Typography>
           <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
             <Chip label="Someroots" size="small" color="primary" variant="outlined" />
             <Chip label="Sunflower" size="small" color="primary" variant="outlined" />
@@ -124,9 +98,11 @@ export const LargeSpacing: Story = {
             <MenuItem value="lettuce">Lettuce</MenuItem>
           </TextField>
         </Box>
-        
+
         <Box>
-          <Typography variant="subtitle2" gutterBottom>Notes</Typography>
+          <Typography variant="subtitle2" gutterBottom>
+            Notes
+          </Typography>
           <TextField
             fullWidth
             multiline

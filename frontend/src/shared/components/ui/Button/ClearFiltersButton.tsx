@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Button from '@mui/material/Button';
 
 export interface ClearFiltersButtonProps {
@@ -6,12 +7,12 @@ export interface ClearFiltersButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
-  
+
   /**
    * Optional custom class name
    */
   className?: string;
-  
+
   /**
    * Whether the button is disabled
    * @default false

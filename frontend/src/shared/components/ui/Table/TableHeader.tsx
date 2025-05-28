@@ -1,10 +1,7 @@
 import React from 'react';
-import { 
-  TableHead, 
-  TableRow as MuiTableRow, 
-  TableCell, 
-  Box
-} from '@mui/material';
+
+import { Box, TableRow as MuiTableRow, TableCell, TableHead } from '@mui/material';
+
 import { Column } from '../../../types/containers';
 
 interface TableHeaderProps {
@@ -12,7 +9,7 @@ interface TableHeaderProps {
    * Columns configuration for the header
    */
   columns: Column[];
-  
+
   /**
    * Custom class name
    */
@@ -47,9 +44,9 @@ const TableHeader: React.FC<TableHeaderProps> = ({ columns, className }) => {
               },
             }}
           >
-            <Box 
-              component="span" 
-              sx={{ 
+            <Box
+              component="span"
+              sx={{
                 textTransform: 'uppercase', // Ensuring uppercase as per QA report
                 fontSize: '0.75rem',
                 letterSpacing: '0.5px',

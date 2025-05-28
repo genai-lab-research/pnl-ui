@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { SearchIconCustom } from '../../shared/components/ui/Icon';
 
 const meta = {

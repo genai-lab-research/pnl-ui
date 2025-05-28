@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { CheckboxStandard } from '../../shared/components/ui/Checkbox';
 
 const meta: Meta<typeof CheckboxStandard> = {
@@ -34,18 +36,12 @@ type Story = StoryObj<typeof CheckboxStandard>;
 // Control the checked state in Storybook
 const CheckboxWithState = (args: any) => {
   const [checked, setChecked] = useState(args.checked || false);
-  
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
 
-  return (
-    <CheckboxStandard
-      {...args}
-      checked={checked}
-      onChange={handleChange}
-    />
-  );
+  return <CheckboxStandard {...args} checked={checked} onChange={handleChange} />;
 };
 
 export const Default: Story = {
