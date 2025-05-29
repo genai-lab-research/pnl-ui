@@ -1,0 +1,160 @@
+/* Global CSS variables and responsive settings */
+
+:root {
+  /* Base font size for responsive typography */
+  font-size: 16px;
+  
+  /* Responsive spacing variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Responsive font size variables */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  
+  /* MetricCard specific variables */
+  --metric-card-padding: 16px;
+  --metric-card-title-size: 14px;
+  --metric-card-value-size: 24px;
+  --metric-card-target-size: 0.7em;
+  --metric-card-icon-size: 20px;
+  --metric-card-gap: 10px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 599px) {
+  :root {
+    /* Adjust base font size for small screens */
+    font-size: 14px;
+    
+    /* Adjust spacing variables */
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 1.5rem;
+    
+    /* MetricCard specific variables */
+    --metric-card-padding: 12px;
+    --metric-card-title-size: 12px;
+    --metric-card-value-size: 18px;
+    --metric-card-icon-size: 16px;
+    --metric-card-gap: 6px;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 350px) {
+  :root {
+    /* Further adjust base font size for very small screens */
+    font-size: 13px;
+    
+    /* Adjust spacing variables */
+    --spacing-md: 0.5rem;
+    --spacing-lg: 1rem;
+    --spacing-xl: 1.25rem;
+    
+    /* MetricCard specific variables */
+    --metric-card-padding: 8px 10px;
+    --metric-card-title-size: 11px;
+    --metric-card-value-size: 16px;
+    --metric-card-icon-size: 14px;
+    --metric-card-gap: 4px;
+  }
+}
+
+/* Improve accessibility for focus states */
+:focus {
+  outline: 2px solid rgba(63, 81, 181, 0.5);
+  outline-offset: 2px;
+}
+
+/* Ensure consistent box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 599px) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shifts by forcing scrollbar display */
+html {
+  overflow-y: scroll;
+}
+
+/* Basic layout container */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing-md);
+  padding-left: var(--spacing-md);
+}
+
+/* Responsive containers */
+@media (min-width: 600px) {
+  .container {
+    max-width: 600px;
+    padding-right: var(--spacing-lg);
+    padding-left: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* Responsive grid system */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 599px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--spacing-md);
+  }
+}
