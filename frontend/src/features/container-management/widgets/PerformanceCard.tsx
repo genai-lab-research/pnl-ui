@@ -12,7 +12,7 @@ import {
   YAxis,
 } from 'recharts';
 
-import { TimeRangeOption } from './TimeRangeSelector';
+import { TimeRangeOption } from '../sections/TimeRangeSelector';
 
 interface MetricData {
   day: string;

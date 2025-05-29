@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 import { Box, Button, Container, Paper, TextField, Typography } from '@mui/material';
 
-import { CreateContainerButton } from '../../shared/components/ui/Button';
-import { Chip } from '../../shared/components/ui/Chip';
-import { FilterChipContainer } from '../../shared/components/ui/Container/FilterChipContainer';
-import { SearchInput } from '../../shared/components/ui/SearchInput';
-import { DataTable } from '../../shared/components/ui/Table/DataTable';
+import { CreateContainerButton } from '../../../shared/components/ui/Button';
+import { Chip } from '../../../shared/components/ui/Chip';
+import { FilterChipContainer } from '../../../shared/components/ui/Container/FilterChipContainer';
+import { SearchInput } from '../../../shared/components/ui/SearchInput';
+import { DataTable } from '../../../shared/components/ui/Table/DataTable';
 import {
   Column,
   ContainerPurpose,
   ContainerStatus,
   ContainerType,
-} from '../../shared/types/containers';
+} from '../../../shared/types/containers';
 
 const columns: Column[] = [
   { id: 'type', label: 'Type', width: '10%' },

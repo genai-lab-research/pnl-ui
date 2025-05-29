@@ -18,13 +18,13 @@ import {
   Typography,
 } from '@mui/material';
 
-import containerService, { ContainerFormData } from '../../services/containerService';
-import seedTypeService, { SeedType } from '../../services/seedTypeService';
-import tenantService, { Tenant } from '../../services/tenantService';
-import { ButtonPrimary } from '../../shared/components/ui/Button/ButtonPrimary';
-import { CheckboxStandard } from '../../shared/components/ui/Checkbox/CheckboxStandard';
-import { DrawerContainer } from '../../shared/components/ui/Container/DrawerContainer';
-import { SwitchMedium } from '../../shared/components/ui/Switch/SwitchMedium';
+import containerService, { ContainerFormData } from '../../../services/containerService';
+import seedTypeService, { SeedType } from '../../../services/seedTypeService';
+import tenantService, { Tenant } from '../../../services/tenantService';
+import { ButtonPrimary } from '../../../shared/components/ui/Button/ButtonPrimary';
+import { CheckboxStandard } from '../../../shared/components/ui/Checkbox/CheckboxStandard';
+import { DrawerContainer } from '../../../shared/components/ui/Container/DrawerContainer';
+import { SwitchMedium } from '../../../shared/components/ui/Switch/SwitchMedium';
 
 // Interface for component props
 interface CreateContainerModalProps {

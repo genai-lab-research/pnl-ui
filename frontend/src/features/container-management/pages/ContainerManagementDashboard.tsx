@@ -8,21 +8,21 @@ import containerService, {
   ContainerFilterParams,
   ContainerList,
   ContainerStats,
-} from '../../services/containerService';
-import metricsService, { MetricResponse } from '../../services/metricsService';
-import performanceService, { PerformanceResponse } from '../../services/performanceService';
-import tenantService, { TenantList } from '../../services/tenantService';
-import { CreateContainerButton } from '../../shared/components/ui/Button';
-import HeaderContainer from '../../shared/components/ui/Container/HeaderContainer';
-import { DataTable } from '../../shared/components/ui/Table/DataTable';
-import { RowData } from '../../shared/types/containers';
+} from '../../../services/containerService';
+import metricsService, { MetricResponse } from '../../../services/metricsService';
+import performanceService, { PerformanceResponse } from '../../../services/performanceService';
+import tenantService, { TenantList } from '../../../services/tenantService';
+import { CreateContainerButton } from '../../../shared/components/ui/Button';
+import HeaderContainer from '../../../shared/components/ui/Container/HeaderContainer';
+import { DataTable } from '../../../shared/components/ui/Table/DataTable';
+import { RowData } from '../../../shared/types/containers';
 // Import types
-import { MetricTimeRange } from '../../shared/types/metrics';
+import { MetricTimeRange } from '../../../shared/types/metrics';
 // Import mock data as fallback
-import { formattedContainerList } from '../containers/mockData';
-import FilterSection from './FilterSection';
-import PerformanceCard from './PerformanceCard';
-import TimeRangeSelector, { TimeRangeOption } from './TimeRangeSelector';
+import { formattedContainerList } from '../constants/mockData';
+import FilterSection from '../sections/FilterSection';
+import PerformanceCard from '../widgets/PerformanceCard';
+import TimeRangeSelector, { TimeRangeOption } from '../sections/TimeRangeSelector';
 
 // Mock user data - would typically come from auth context
 const mockUser = {

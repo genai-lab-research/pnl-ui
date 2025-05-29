@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 
-import { ClearFiltersButton } from '../../shared/components/ui/Button';
-import SearchInput from '../../shared/components/ui/SearchInput/SearchInput';
+import { ClearFiltersButton } from '../../../shared/components/ui/Button';
+import SearchInput from '../../../shared/components/ui/SearchInput/SearchInput';
 
 export interface FilterSectionProps {
   /**

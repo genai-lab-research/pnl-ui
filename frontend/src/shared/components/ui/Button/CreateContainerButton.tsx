@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 
-import CreateContainerModal from '../../../../features/containers/CreateContainerModal';
+import CreateContainerModal from '../../../../features/container-management/modals/CreateContainerModal';
 
 export interface CreateContainerButtonProps {
   /**
