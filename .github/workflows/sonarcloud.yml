@@ -1,14 +1,16 @@
 name: SonarCloud Scan
 
 on:
-  push:
+  push:  # Triggers on push to any branch
     branches:
-      - main
+      - '**'
 
 jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    if: |
+      contains(github.event.head_commit.message, '- run sonnar')
 
     steps:
       - name: Checkout code
@@ -33,7 +35,6 @@ jobs:
         env:
           JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
           PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
-
 
       - name: Run SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
