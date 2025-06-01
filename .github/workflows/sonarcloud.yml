@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Set up Java 17 for SonarCloud
+      - name: Set up Java 17
         id: setup-java
         uses: actions/setup-java@v3
         with:
@@ -30,18 +30,21 @@ jobs:
 
       - name: Check Java version
         run: java -version
-        env:
-          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
-          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
 
-
-      - name: Run SonarCloud scan
+      - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           projectBaseDir: frontend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: genai-lab-research_pnl-ui
-          SONAR_ORGANIZATION: genai-lab-research
-          JAVA_HOME: ${{ steps.setup-java.outputs.java-home }}
-          PATH: ${{ steps.setup-java.outputs.java-home }}/bin:${{ env.PATH }}
+
+      # OPTIONAL: Fetch and save analysis summary from SonarCloud API
+      - name: Download and save SonarCloud metrics (optional)
+        run: |
+          curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+            "https://sonarcloud.io/api/measures/component?component=genai-lab-research_pnl-ui&metricKeys=coverage,duplicated_lines_density,complexity,reliability_rating,security_rating" \
+            -o sonarcloud-summary.json
+
+          echo "Metrics fetched:"
+          cat sonarcloud-summary.json
+        if: always()  # Always run, even if scan fails
