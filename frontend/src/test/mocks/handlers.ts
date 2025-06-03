@@ -531,6 +531,43 @@ export const handlers = [
     ]);
   }),
 
+  // Get metrics performance overview (missing endpoint)
+  http.get(`${baseUrl}/metrics/performance`, ({ request }) => {
+    const url = new URL(request.url);
+    const timeRange = url.searchParams.get('time_range') || 'WEEK';
+    
+    return HttpResponse.json({
+      physical: {
+        count: 12,
+        yield: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: [25, 20, 24, 18, 23, 19, 22],
+          avgYield: 63,
+          totalYield: 81
+        },
+        spaceUtilization: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: [80, 75, 83, 76, 82, 70, 75],
+          avgUtilization: 80
+        }
+      },
+      virtual: {
+        count: 8,
+        yield: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: [22, 19, 23, 18, 21, 17, 20],
+          avgYield: 63,
+          totalYield: 81
+        },
+        spaceUtilization: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: [65, 60, 68, 62, 66, 59, 64],
+          avgUtilization: 80
+        }
+      }
+    });
+  }),
+
   // Create container (page 2 format) - override the existing one for form data
   http.post(`${baseUrl}/containers`, async ({ request }) => {
     const containerData = await request.json() as any;

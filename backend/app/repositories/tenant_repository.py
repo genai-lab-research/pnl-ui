@@ -1,5 +1,3 @@
-from typing import Optional
-
 from app.models import Tenant
 
 
@@ -17,7 +15,7 @@ class TenantRepository:
             Tenant(id="tenant-004", name="Sustainable Growth"),
             Tenant(id="tenant-005", name="Future Farms"),
         ]
-        
+
         for tenant in tenants:
             self._tenants[tenant.id] = tenant
 

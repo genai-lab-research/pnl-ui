@@ -49,6 +49,15 @@ export const config = {
     metricsContainer: (id: string) => `/metrics/container/${id}`,
     tenants: '/tenants',
     performance: '/metrics/performance',
+    seedTypes: '/seed-types',
+    // Inventory endpoints
+    inventoryNursery: (containerId: string) => `/containers/${containerId}/inventory/nursery`,
+    inventoryCultivation: (containerId: string) => `/containers/${containerId}/inventory/cultivation`,
+    inventoryTrays: (containerId: string) => `/containers/${containerId}/inventory/trays`,
+    inventoryPanels: (containerId: string) => `/containers/${containerId}/inventory/panels`,
+    inventoryTrayProvision: (containerId: string) => `/containers/${containerId}/inventory/trays/provision`,
+    inventoryPanelProvision: (containerId: string) => `/containers/${containerId}/inventory/panels/provision`,
+    cropHistory: (containerId: string, cropId: string) => `/containers/${containerId}/crops/${cropId}/history`,
   },
 };
 

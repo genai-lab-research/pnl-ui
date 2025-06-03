@@ -1,5 +1,5 @@
-from typing import Any, Optional
 from datetime import datetime
+from typing import Any
 
 from fastapi import APIRouter, Query
 
@@ -14,21 +14,19 @@ metrics_service = MetricsService()
 def get_container_metrics(
     container_id: str,
     time_range: TimeRange = Query(default=TimeRange.WEEK),
-    start_date: Optional[datetime] = Query(default=None),
+    start_date: datetime | None = Query(default=None),
 ) -> Any:
     """
     Get metrics for a specific container over a time range.
     """
     return metrics_service.get_container_metrics(
-        container_id=container_id,
-        time_range=time_range,
-        start_date=start_date
+        container_id=container_id, time_range=time_range, start_date=start_date
     )
 
 
 @router.get("/performance")
 def get_performance_overview(
-    time_range: Optional[TimeRange] = Query(default=TimeRange.WEEK),
+    time_range: TimeRange | None = Query(default=TimeRange.WEEK),
 ) -> Any:
     """
     Get performance overview for physical and virtual containers.

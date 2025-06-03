@@ -1,0 +1,756 @@
+Bugs:
+
+
+
+Maintainability Issues:
+
+Issue Key: 81a3ef85-c512-4617-99ae-6c99146ab6a1
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'fireEvent'.
+Component: ui-demo-pnl:src/pages/ContainerDetailsPage.test.tsx
+Line: 2
+Type: CODE_SMELL
+
+Issue Key: 3bb84a0a-0cf9-416f-9ef4-201408642580
+Severity: CRITICAL
+Rule: typescript:S2004
+Message: Refactor this code to not nest functions more than 4 levels deep.
+Component: ui-demo-pnl:src/pages/ContainerDetailsPage.test.tsx
+Line: 313
+Type: CODE_SMELL
+
+Issue Key: 8a082116-2658-494d-a9d8-c0f4108cfaec
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/pages/ContainerDetailsPage.tsx
+Line: 314
+Type: CODE_SMELL
+
+Issue Key: fb204529-69fd-43db-89a9-633995c9b11c
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/pages/ContainerDetailsPage.tsx
+Line: 408
+Type: CODE_SMELL
+
+Issue Key: 4426a07f-bef0-4fee-8160-5f216f42c5de
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/pages/ContainerDetailsPage.tsx
+Line: 409
+Type: CODE_SMELL
+
+Issue Key: f83b9273-e206-432c-8077-effc8da14c9a
+Severity: MINOR
+Rule: typescript:S2486
+Message: Handle this exception or don't catch it at all.
+Component: ui-demo-pnl:src/services/backendHealth.test.ts
+Line: 84
+Type: CODE_SMELL
+
+Issue Key: 074c4dc0-cbca-4823-a018-a2babddd7558
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 14
+Type: CODE_SMELL
+
+Issue Key: 1d56e11f-8ab1-4304-b02d-feeb26fb0dbd
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 14
+Type: CODE_SMELL
+
+Issue Key: b0eae75b-a5cd-4930-b4d1-679e1b0e1875
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 15
+Type: CODE_SMELL
+
+Issue Key: 00a1e9dd-b4c2-46be-a8e6-d428e193e4ea
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 17
+Type: CODE_SMELL
+
+Issue Key: c6abb50d-6776-41a5-aa62-38745d145037
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 17
+Type: CODE_SMELL
+
+Issue Key: 4105b07a-f6b2-45c6-b4be-e127cda8a178
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/services/config.ts
+Line: 26
+Type: CODE_SMELL
+
+Issue Key: e3dd35a4-c0ff-485c-b46f-e62c9a174f42
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'isBackendAvailable'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 6
+Type: CODE_SMELL
+
+Issue Key: c56b6202-ac77-4874-aa4c-aceabb729c52
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'skipIfBackendUnavailable'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 7
+Type: CODE_SMELL
+
+Issue Key: 95bdf444-ca27-44fb-9250-4ddfc0f22cfa
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'generateTestContainer'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 8
+Type: CODE_SMELL
+
+Issue Key: 3192eb21-8cd5-42fc-b406-7bf688d0491c
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'validateContainerStructure'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 9
+Type: CODE_SMELL
+
+Issue Key: f0da907e-c49d-40b6-a5b9-5c7ddc6b8982
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'validateMetricsStructure'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 10
+Type: CODE_SMELL
+
+Issue Key: a0d91c7c-6886-4c77-a11e-e62112296616
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'validateCropStructure'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 11
+Type: CODE_SMELL
+
+Issue Key: 13d2c477-b454-4b4c-bbf6-3ceef28a21b3
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'validateActivityStructure'.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 12
+Type: CODE_SMELL
+
+Issue Key: 545a2f65-c1f0-4f9e-be68-aeae7dd6d503
+Severity: MINOR
+Rule: typescript:S2486
+Message: Handle this exception or don't catch it at all.
+Component: ui-demo-pnl:src/services/containerService.integration.test.ts
+Line: 40
+Type: CODE_SMELL
+
+Issue Key: 22ead30e-ed23-4174-bf3e-a7c408cb91d9
+Severity: CRITICAL
+Rule: typescript:S2004
+Message: Refactor this code to not nest functions more than 4 levels deep.
+Component: ui-demo-pnl:src/services/containerService.test.ts
+Line: 361
+Type: CODE_SMELL
+
+Issue Key: 60abec21-485d-469a-ae22-b93faed4faa8
+Severity: MAJOR
+Rule: typescript:S4623
+Message: Remove this redundant "undefined".
+Component: ui-demo-pnl:src/services/containerService.test.ts
+Line: 378
+Type: CODE_SMELL
+
+Issue Key: 0431a7a0-4bd6-4717-935c-9769ec07bfed
+Severity: MAJOR
+Rule: typescript:S4624
+Message: Refactor this code to not use nested template literals.
+Component: ui-demo-pnl:src/services/containerService.ts
+Line: 46
+Type: CODE_SMELL
+
+Issue Key: 238768b6-19e7-4af3-b313-652f03fb935b
+Severity: CRITICAL
+Rule: typescript:S2004
+Message: Refactor this code to not nest functions more than 4 levels deep.
+Component: ui-demo-pnl:src/services/dataModels.test.ts
+Line: 369
+Type: CODE_SMELL
+
+Issue Key: 1cd064ef-484a-40b8-a2db-c660627d382f
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'Theme'.
+Component: ui-demo-pnl:src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 2
+Type: CODE_SMELL
+
+Issue Key: c1a57623-3340-44f7-a763-e5dc74f578b3
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'useMediaQuery'.
+Component: ui-demo-pnl:src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 2
+Type: CODE_SMELL
+
+Issue Key: 14f55df8-22f7-4c8b-80b7-168bd615b457
+Severity: MAJOR
+Rule: typescript:S6479
+Message: Do not use Array index in keys
+Component: ui-demo-pnl:src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 144
+Type: CODE_SMELL
+
+Issue Key: 192595ee-1cbf-4836-812d-fdd1c8a707f6
+Severity: MAJOR
+Rule: typescript:S125
+Message: Remove this commented out code.
+Component: ui-demo-pnl:src/shared/components/ui/index.ts
+Line: 23
+Type: CODE_SMELL
+
+Issue Key: c1dd8570-a213-47a0-b70a-4da4b2640e04
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 30
+Type: CODE_SMELL
+
+Issue Key: dc5939b9-b508-42ab-8b6c-9bb82a98d956
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 48
+Type: CODE_SMELL
+
+Issue Key: 75c4ff56-a5c3-4aaa-83dd-805fe09b7000
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 49
+Type: CODE_SMELL
+
+Issue Key: 665329c4-980d-42a5-a28f-7c296770d850
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 75
+Type: CODE_SMELL
+
+Issue Key: e91ff37c-3f8c-4a02-b43e-519fb45fd738
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 87
+Type: CODE_SMELL
+
+Issue Key: dcbf22f1-d0c0-42b4-a122-b341a58867e3
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/test/mocks/handlers.ts
+Line: 88
+Type: CODE_SMELL
+
+Issue Key: 2ec5a799-3d40-4665-bd01-d13c1ff2f9e3
+Severity: MINOR
+Rule: typescript:S6647
+Message: Useless constructor.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 20
+Type: CODE_SMELL
+
+Issue Key: 26203072-5e79-4f76-9c82-ae996bebcb54
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'disconnect'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 21
+Type: CODE_SMELL
+
+Issue Key: e984743c-8cea-4fb4-999a-6d85ff0489f7
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'observe'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 22
+Type: CODE_SMELL
+
+Issue Key: 988bae55-234e-45c5-92ae-674ce41e1847
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'unobserve'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 23
+Type: CODE_SMELL
+
+Issue Key: 0d67d26f-003a-4d16-8567-1c39748d1117
+Severity: MINOR
+Rule: typescript:S6647
+Message: Useless constructor.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 29
+Type: CODE_SMELL
+
+Issue Key: 5b2210da-b689-4633-aad2-a602da25a9fa
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'disconnect'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 30
+Type: CODE_SMELL
+
+Issue Key: 4881f917-b939-4623-b3ad-f4b775f3a351
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'observe'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 31
+Type: CODE_SMELL
+
+Issue Key: 89f41223-50c1-459d-b046-70c128f29bf7
+Severity: CRITICAL
+Rule: typescript:S1186
+Message: Unexpected empty method 'unobserve'.
+Component: ui-demo-pnl:src/test/setup.ts
+Line: 32
+Type: CODE_SMELL
+
+Issue Key: 1656026c-455b-40bd-8617-eeb1fad39fd4
+Severity: MINOR
+Rule: typescript:S6551
+Message: 'value' will use Object's default stringification format ('[object Object]') when stringified.
+Component: ui-demo-pnl:src/services/containerService.ts
+Line: 41
+Type: CODE_SMELL
+
+Issue Key: 4226ae67-867b-499f-9578-81c2f02a11e4
+Severity: MINOR
+Rule: typescript:S1128
+Message: Remove this unused import of 'StorageIcon'.
+Component: ui-demo-pnl:src/examples/InfoCardExample.tsx
+Line: 4
+Type: CODE_SMELL
+
+Issue Key: 0b557eaa-0cb5-4885-bdd8-9ff3a1407603
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/examples/ViewToggleTabsExample.tsx
+Line: 106
+Type: CODE_SMELL
+
+Issue Key: fb5ea633-3f68-408b-ae67-dedb4ffb0490
+Severity: MINOR
+Rule: typescript:S3863
+Message: '/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/node_modules/@mui/material/styles/index.js' imported multiple times.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 6
+Type: CODE_SMELL
+
+Issue Key: 1f76d838-bc3c-4a7d-a869-8e936d9b2d83
+Severity: MINOR
+Rule: typescript:S4323
+Message: Replace this union type with a type alias.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 73
+Type: CODE_SMELL
+
+Issue Key: 4f65b2ec-11a3-4170-b777-a2f7cfdf2fea
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 217
+Type: CODE_SMELL
+
+Issue Key: a3627a4d-942b-4ecb-914c-6d61d5bc2ab9
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 367
+Type: CODE_SMELL
+
+Issue Key: ab35a7d3-519d-42fa-af2b-d62d6dc1ab5e
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 367
+Type: CODE_SMELL
+
+Issue Key: a38b6f6b-00d9-4fb6-93bf-1893d8eca126
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/Header/Header.tsx
+Line: 296
+Type: CODE_SMELL
+
+Issue Key: 82eeb045-f26b-4421-b894-1b76fe680e21
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/InfoCard/InfoCard.tsx
+Line: 269
+Type: CODE_SMELL
+
+Issue Key: 0b0e0a9c-8781-476c-be7c-591501c2ca71
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/InfoCard/InfoCard.tsx
+Line: 270
+Type: CODE_SMELL
+
+Issue Key: 02fd69a7-f127-4384-ab86-7a3893017575
+Severity: MAJOR
+Rule: typescript:S6479
+Message: Do not use Array index in keys
+Component: ui-demo-pnl:src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 118
+Type: CODE_SMELL
+
+Issue Key: 2116f5aa-3331-4b0e-ba2a-a5e42ced34f0
+Severity: MAJOR
+Rule: typescript:S6479
+Message: Do not use Array index in keys
+Component: ui-demo-pnl:src/shared/components/ui/SystemInfoCard/SystemInfoCard.tsx
+Line: 277
+Type: CODE_SMELL
+
+Issue Key: c3cbe7e7-4670-4938-84f1-3bde65c1ac47
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/SystemInfoCard/SystemInfoCard.tsx
+Line: 295
+Type: CODE_SMELL
+
+Issue Key: ca4b96ab-3b7a-4058-b4ab-ad53af68ec23
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/SystemInfoCard/SystemInfoCard.tsx
+Line: 298
+Type: CODE_SMELL
+
+Issue Key: b720c701-c726-4e2b-b053-a4b770543dd1
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 155
+Type: CODE_SMELL
+
+Issue Key: ef4919df-4d8d-4fd2-bb85-1667d6e7a296
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 158
+Type: CODE_SMELL
+
+Issue Key: 0eb8e32e-a737-4adb-8ae7-01a6fab4d575
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 190
+Type: CODE_SMELL
+
+Issue Key: 5a894540-dbe6-46d1-8478-d472123b184d
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 205
+Type: CODE_SMELL
+
+Issue Key: c55f42d9-9dee-4295-9d1d-aa443cdee9f3
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 208
+Type: CODE_SMELL
+
+Issue Key: 880efd4b-3bf4-48fc-a204-0f225527205b
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 372
+Type: CODE_SMELL
+
+Issue Key: c3e64d95-6029-4489-984e-9bb05c77aecf
+Severity: MAJOR
+Rule: typescript:S6479
+Message: Do not use Array index in keys
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 383
+Type: CODE_SMELL
+
+Issue Key: 77fc4ba0-34c4-43c5-88f0-1e33fc3805c1
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 385
+Type: CODE_SMELL
+
+Issue Key: dc0d5113-ff02-40f4-b3cc-0ae6c19bb552
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 389
+Type: CODE_SMELL
+
+Issue Key: 7e72c99d-9255-4700-95b6-1b9c5490ead2
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/Table/Table.tsx
+Line: 392
+Type: CODE_SMELL
+
+Issue Key: f735abb4-dafd-4660-b837-a6fa0d356878
+Severity: MINOR
+Rule: typescript:S3863
+Message: '/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/node_modules/@mui/material/styles/index.js' imported multiple times.
+Component: ui-demo-pnl:src/stories/avatar/Avatar.stories.tsx
+Line: 5
+Type: CODE_SMELL
+
+Issue Key: 7e47e8bd-c4f9-4e3b-9b32-324cdb872577
+Severity: MINOR
+Rule: typescript:S3863
+Message: '/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/node_modules/@mui/material/styles/index.js' imported multiple times.
+Component: ui-demo-pnl:src/stories/avatar/Avatar.stories.tsx
+Line: 6
+Type: CODE_SMELL
+
+Issue Key: 5e926760-0c7f-46b4-9bfd-0d4671bdd433
+Severity: MAJOR
+Rule: typescript:S6479
+Message: Do not use Array index in keys
+Component: ui-demo-pnl:src/stories/table/Table.stories.tsx
+Line: 76
+Type: CODE_SMELL
+
+Issue Key: 0797629c-6669-41fb-b874-5f94631046cf
+Severity: MINOR
+Rule: typescript:S4325
+Message: This assertion is unnecessary since it does not change the type of the expression.
+Component: ui-demo-pnl:src/examples/ChipExample.tsx
+Line: 25
+Type: CODE_SMELL
+
+Issue Key: c82c36d1-89e4-4d0b-b086-86c3a96ed696
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/examples/ChipExample.tsx
+Line: 102
+Type: CODE_SMELL
+
+Issue Key: b01a61ee-a4b3-4f6a-a0ee-48b0b8c6281c
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/examples/ChipExample.tsx
+Line: 103
+Type: CODE_SMELL
+
+Issue Key: b72818a2-1835-4745-90e4-a59d4dffa8b1
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/examples/ChipExample.tsx
+Line: 104
+Type: CODE_SMELL
+
+Issue Key: de658972-3bd3-48f9-aeeb-9bebacef5fad
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/examples/ChipExample.tsx
+Line: 215
+Type: CODE_SMELL
+
+Issue Key: 2132203b-13c3-4773-9b7a-9d3065055842
+Severity: MINOR
+Rule: typescript:S3863
+Message: '/Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/node_modules/@mui/material/styles/index.js' imported multiple times.
+Component: ui-demo-pnl:src/shared/components/ui/Avatar/Avatar.tsx
+Line: 3
+Type: CODE_SMELL
+
+Issue Key: 21808e0e-7cdc-412e-ba37-b11cec9a5c71
+Severity: CRITICAL
+Rule: typescript:S3776
+Message: Refactor this function to reduce its Cognitive Complexity from 37 to the 15 allowed.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 27
+Type: CODE_SMELL
+
+Issue Key: 6dd95b3d-bf6c-40b7-9884-3e0415c8442b
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 38
+Type: CODE_SMELL
+
+Issue Key: 886fd3cc-6141-4d02-8c40-2866bafd3046
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 43
+Type: CODE_SMELL
+
+Issue Key: adb39c35-89b4-4ad6-898b-066864ca17b9
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 44
+Type: CODE_SMELL
+
+Issue Key: 764767f9-dbfb-4578-a2f5-bf99eed26a69
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 48
+Type: CODE_SMELL
+
+Issue Key: a9636399-75fe-4ff8-bdc1-b7f14c8eb346
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 49
+Type: CODE_SMELL
+
+Issue Key: 750c7b30-c328-40fa-a758-1a64113d548d
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 50
+Type: CODE_SMELL
+
+Issue Key: 7065ac63-56dd-4678-832a-af381c59da4b
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 54
+Type: CODE_SMELL
+
+Issue Key: d1ea29b5-9ff6-4084-a211-75ddb7afcef8
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 55
+Type: CODE_SMELL
+
+Issue Key: 7a15bad4-6a42-47ce-864e-3375d4c855ea
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 56
+Type: CODE_SMELL
+
+Issue Key: 45f6d7e6-a48c-4ea8-9027-af56833aecb1
+Severity: MAJOR
+Rule: typescript:S3358
+Message: Extract this nested ternary operation into an independent statement.
+Component: ui-demo-pnl:src/shared/components/ui/ResponsiveContainer/ResponsiveContainer.tsx
+Line: 57
+Type: CODE_SMELL
+
+Issue Key: ba320466-817e-4aa2-8d4d-c91a4aba46dc
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Tab/Tab.tsx
+Line: 79
+Type: CODE_SMELL
+
+Issue Key: 94695cec-8e69-4401-a7b9-0cde9d349c3c
+Severity: MINOR
+Rule: typescript:S6606
+Message: Prefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.
+Component: ui-demo-pnl:src/shared/components/ui/Tab/Tabs.tsx
+Line: 81
+Type: CODE_SMELL
+
+Issue Key: 712cfe64-bd0e-4979-8e2d-9f994d045f51
+Severity: MAJOR
+Rule: typescript:S6819
+Message: Use <input type="button">, <input type="image">, <input type="reset">, <input type="submit">, or <button> instead of the "button" role to ensure accessibility across all devices.
+Component: ui-demo-pnl:src/stories/tooltip/Tooltip.stories.tsx
+Line: 147
+Type: CODE_SMELL
+
+Issue Key: feddbd81-0544-446e-b3ce-08a1df2deb86
+Severity: MAJOR
+Rule: css:S4666
+Message: Unexpected duplicate selector "html", first used at line 96
+Component: ui-demo-pnl:src/styles/global.css
+Line: 101
+Type: CODE_SMELL
+
+Reliability Issues:
+
+
+
+Security Hotspots:
+
+
+
+
+
+SUMMARY:
+
+| Metric                 | Value |
+|------------------------|-------|
+| Duplicated Lines       | 3.9% |
+| Test Coverage          | 0.0% |
+| Cognitive Complexity   | 1107 |
+| Violations             | 91 |
+| Reliability Rating     | 1.0 |
+| Security Rating        | 1.0 |
+| Quality Gate Status    | OK |
+

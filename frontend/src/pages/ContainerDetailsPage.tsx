@@ -161,7 +161,12 @@ const ContainerDetailsPage: React.FC = () => {
   ];
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
-    setActiveTab(newValue);
+    if (newValue === 2) {
+      // Navigate to inventory page
+      navigate(`/containers/${containerId}/inventory`);
+    } else {
+      setActiveTab(newValue);
+    }
   };
 
   const handleTimeRangeChange = (newTimeRange: TimePeriod) => {

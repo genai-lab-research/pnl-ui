@@ -1,0 +1,243 @@
+ESLint Issues Report
+
+=======================
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/examples/InfoCardExample.tsx
+Line: 4
+Severity: 2
+Message: 'StorageIcon' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/pages/ContainerDetailsPage.test.tsx
+Line: 2
+Severity: 2
+Message: 'fireEvent' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/pages/ContainerDetailsPage.test.tsx
+Line: 79
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/pages/ContainerDetailsPage.tsx
+Line: 124
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/backendHealth.test.ts
+Line: 84
+Severity: 2
+Message: 'error' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 6
+Severity: 2
+Message: 'isBackendAvailable' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 7
+Severity: 2
+Message: 'skipIfBackendUnavailable' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 8
+Severity: 2
+Message: 'generateTestContainer' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 9
+Severity: 2
+Message: 'validateContainerStructure' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 10
+Severity: 2
+Message: 'validateMetricsStructure' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 11
+Severity: 2
+Message: 'validateCropStructure' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 12
+Severity: 2
+Message: 'validateActivityStructure' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 40
+Severity: 2
+Message: 'error' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 255
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 416
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/services/containerService.integration.test.ts
+Line: 465
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Avatar/Avatar.tsx
+Line: 94
+Severity: 2
+Message: 'getSizeConfig' is assigned a value but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Avatar/Avatar.tsx
+Line: 369
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Avatar/Avatar.tsx
+Line: 372
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Avatar/Avatar.tsx
+Line: 373
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 2
+Severity: 2
+Message: 'Theme' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/MetricCardsContainer/MetricCardsContainer.tsx
+Line: 2
+Severity: 2
+Message: 'useMediaQuery' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Pagination/Pagination.tsx
+Line: 45
+Severity: 2
+Message: 'fullWidth' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Tab/Tab.tsx
+Line: 60
+Severity: 2
+Message: 'isFirst' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/Tab/Tab.tsx
+Line: 60
+Severity: 2
+Message: 'isLast' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/TimePeriodSelector/TimePeriodSelector.tsx
+Line: 42
+Severity: 2
+Message: 'isFirst' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/shared/components/ui/TimePeriodSelector/TimePeriodSelector.tsx
+Line: 42
+Severity: 2
+Message: 'isLast' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/stories/tooltip/Tooltip.stories.tsx
+Line: 66
+Severity: 2
+Message: 'Story' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/stories/tooltip/Tooltip.stories.tsx
+Line: 134
+Severity: 2
+Message: 'Story' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/stories/tooltip/Tooltip.stories.tsx
+Line: 174
+Severity: 2
+Message: 'Story' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/mocks/handlers.ts
+Line: 28
+Severity: 2
+Message: 'params' is defined but never used.
+Rule: @typescript-eslint/no-unused-vars
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/mocks/handlers.ts
+Line: 107
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/mocks/handlers.ts
+Line: 121
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/testEnv.ts
+Line: 54
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/testEnv.ts
+Line: 79
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/testEnv.ts
+Line: 105
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/testEnv.ts
+Line: 120
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/testEnv.ts
+Line: 136
+Severity: 2
+Message: Unexpected any. Specify a different type.
+Rule: @typescript-eslint/no-explicit-any
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/utils.tsx
+Line: 17
+Severity: 1
+Message: Fast refresh only works when a file only exports components. Move your component(s) to a separate file.
+Rule: react-refresh/only-export-components
+
+File: /Users/ihusar/Documents/Projects/pnl-artifacts-1page/demo/frontend/src/test/utils.tsx
+Line: 34
+Severity: 1
+Message: This rule can't verify that `export *` only exports components.
+Rule: react-refresh/only-export-components

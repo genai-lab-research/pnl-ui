@@ -43,15 +43,13 @@ const StyledCheckbox = styled(MuiCheckbox, {
   padding: theme.spacing(0.5),
   '& .MuiSvgIcon-root': {
     fontSize: '1.25rem',
+    color: 'rgba(76, 78, 100, 0.6)', // This matches the color from the JSON
   },
   '&.MuiCheckbox-colorPrimary.Mui-checked': {
     color: customColor || theme.palette.primary.main,
   },
   '&.MuiCheckbox-colorSecondary.Mui-checked': {
     color: customColor || theme.palette.secondary.main,
-  },
-  '& .MuiSvgIcon-root': {
-    color: 'rgba(76, 78, 100, 0.6)', // This matches the color from the JSON
   },
   '&.Mui-checked .MuiSvgIcon-root': {
     color: customColor || theme.palette.primary.main,

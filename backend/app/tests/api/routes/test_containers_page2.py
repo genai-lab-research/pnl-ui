@@ -1,6 +1,5 @@
-import pytest
-from fastapi.testclient import TestClient
 from fastapi import status
+from fastapi.testclient import TestClient
 
 from app.main import app
 
@@ -18,12 +17,12 @@ def test_create_container_from_form_physical():
         "location": "Kyiv, Ukraine",
         "notes": "Test container for development purposes",
         "shadow_service_enabled": True,
-        "connect_to_other_systems": True
+        "connect_to_other_systems": True,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     data = response.json()
     assert data["name"] == form_data["name"]
     assert data["type"] == form_data["type"]
@@ -51,12 +50,12 @@ def test_create_container_from_form_virtual():
         "location": "Remote",
         "notes": "Virtual container for research",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     data = response.json()
     assert data["name"] == form_data["name"]
     assert data["type"] == form_data["type"]
@@ -76,16 +75,16 @@ def test_create_container_from_form_production():
         "location": "Warsaw, Poland",
         "notes": "Production environment container",
         "shadow_service_enabled": True,
-        "connect_to_other_systems": True
+        "connect_to_other_systems": True,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     data = response.json()
     assert data["purpose"] == "Production"
     assert data["ecosystem_connected"] == True
-    
+
     # For production purposes, system integrations should use production environments
     # This is tested through the service logic
 
@@ -100,12 +99,12 @@ def test_create_container_from_form_minimal():
         "seed_types": ["Spinach"],
         "location": "Berlin, Germany",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     data = response.json()
     assert data["name"] == form_data["name"]
     assert data["notes"] == ""  # Should default to empty string
@@ -123,10 +122,10 @@ def test_create_container_from_form_validation_errors():
         "seed_types": ["Someroots"],
         "location": "Test Location",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
         # Missing required 'name' field
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=invalid_form_data)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
@@ -141,9 +140,9 @@ def test_create_container_from_form_invalid_type():
         "seed_types": ["Someroots"],
         "location": "Test Location",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
@@ -158,9 +157,9 @@ def test_create_container_from_form_invalid_purpose():
         "seed_types": ["Someroots"],
         "location": "Test Location",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
@@ -175,12 +174,12 @@ def test_create_container_from_form_empty_seed_types():
         "seed_types": [],  # Empty list should be allowed
         "location": "Test Location",
         "shadow_service_enabled": False,
-        "connect_to_other_systems": False
+        "connect_to_other_systems": False,
     }
-    
+
     response = client.post("/api/containers/create-from-form", json=form_data)
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     data = response.json()
     assert data["name"] == form_data["name"]
 
@@ -191,9 +190,9 @@ def test_location_parsing():
         ("New York, USA", "New York", "USA"),
         ("London, UK", "London", "UK"),
         ("Single Location", "Single Location", ""),
-        ("", "", "")
+        ("", "", ""),
     ]
-    
+
     for location, expected_city, expected_country in test_cases:
         form_data = {
             "name": f"test-container-{location.replace(' ', '-').replace(',', '')}",
@@ -203,12 +202,12 @@ def test_location_parsing():
             "seed_types": ["Someroots"],
             "location": location,
             "shadow_service_enabled": False,
-            "connect_to_other_systems": False
+            "connect_to_other_systems": False,
         }
-        
+
         response = client.post("/api/containers/create-from-form", json=form_data)
         assert response.status_code == status.HTTP_201_CREATED
-        
+
         data = response.json()
         assert data["location_city"] == expected_city
         assert data["location_country"] == expected_country

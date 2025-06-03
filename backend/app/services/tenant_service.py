@@ -11,7 +11,4 @@ class TenantService:
     def get_tenants(self) -> list[TenantResponse]:
         """Get all tenants."""
         tenants = self.repository.get_tenants()
-        return [
-            TenantResponse(id=tenant.id, name=tenant.name)
-            for tenant in tenants
-        ]
+        return [TenantResponse(id=tenant.id, name=tenant.name) for tenant in tenants]

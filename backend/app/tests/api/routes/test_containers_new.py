@@ -1,8 +1,7 @@
-import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
-from app.models import ContainerType, ContainerStatus, ContainerPurpose
+from app.models import ContainerPurpose, ContainerStatus, ContainerType
 
 client = TestClient(app)
 
@@ -52,7 +51,9 @@ class TestContainerListAPI:
 
     def test_get_containers_filter_by_purpose(self):
         """Test filtering containers by purpose."""
-        response = client.get(f"/api/v1/containers/?purpose={ContainerPurpose.DEVELOPMENT}")
+        response = client.get(
+            f"/api/v1/containers/?purpose={ContainerPurpose.DEVELOPMENT}"
+        )
         assert response.status_code == 200
         data = response.json()
         for container in data["results"]:
@@ -65,8 +66,8 @@ class TestContainerListAPI:
         data = response.json()
         for container in data["results"]:
             location_match = (
-                container.get("location_country", "").lower() == "usa" or
-                "usa" in container.get("location_city", "").lower()
+                container.get("location_country", "").lower() == "usa"
+                or "usa" in container.get("location_city", "").lower()
             )
             assert location_match
 
@@ -102,16 +103,23 @@ class TestContainerListAPI:
         response = client.get("/api/v1/containers/")
         assert response.status_code == 200
         data = response.json()
-        
+
         # Check required fields in response
         assert "total" in data
         assert "results" in data
-        
+
         if data["results"]:
             container = data["results"][0]
             required_fields = [
-                "id", "name", "type", "tenant_name", "purpose", 
-                "status", "created_at", "updated_at", "has_alerts"
+                "id",
+                "name",
+                "type",
+                "tenant_name",
+                "purpose",
+                "status",
+                "created_at",
+                "updated_at",
+                "has_alerts",
             ]
             for field in required_fields:
                 assert field in container
@@ -125,11 +133,11 @@ class TestContainerStatsAPI:
         response = client.get("/api/v1/containers/stats")
         assert response.status_code == 200
         data = response.json()
-        
+
         # Check required fields
         assert "physical_count" in data
         assert "virtual_count" in data
-        
+
         # Check that counts are non-negative integers
         assert isinstance(data["physical_count"], int)
         assert isinstance(data["virtual_count"], int)
@@ -146,10 +154,10 @@ class TestContainerCRUDAPI:
         response = client.get("/api/v1/containers/")
         assert response.status_code == 200
         containers = response.json()["results"]
-        
+
         if containers:
             container_id = containers[0]["id"]
-            
+
             # Get specific container
             response = client.get(f"/api/v1/containers/{container_id}")
             assert response.status_code == 200
@@ -171,7 +179,7 @@ class TestContainerCRUDAPI:
             "location": {
                 "city": "Test City",
                 "country": "Test Country",
-                "address": "123 Test St"
+                "address": "123 Test St",
             },
             "status": ContainerStatus.CREATED,
             "creator": "Test User",
@@ -182,10 +190,10 @@ class TestContainerCRUDAPI:
             "system_integrations": {
                 "fa_integration": {"name": "Test", "enabled": False},
                 "aws_environment": {"name": "Test", "enabled": False},
-                "mbai_environment": {"name": "Test", "enabled": False}
-            }
+                "mbai_environment": {"name": "Test", "enabled": False},
+            },
         }
-        
+
         response = client.post("/api/v1/containers/", json=container_data)
         assert response.status_code == 200
         data = response.json()
@@ -203,7 +211,7 @@ class TestContainerCRUDAPI:
             "location": {
                 "city": "Test City",
                 "country": "Test Country",
-                "address": "123 Test St"
+                "address": "123 Test St",
             },
             "status": ContainerStatus.CREATED,
             "creator": "Test User",
@@ -214,20 +222,20 @@ class TestContainerCRUDAPI:
             "system_integrations": {
                 "fa_integration": {"name": "Test", "enabled": False},
                 "aws_environment": {"name": "Test", "enabled": False},
-                "mbai_environment": {"name": "Test", "enabled": False}
-            }
+                "mbai_environment": {"name": "Test", "enabled": False},
+            },
         }
-        
+
         create_response = client.post("/api/v1/containers/", json=container_data)
         assert create_response.status_code == 200
         container_id = create_response.json()["id"]
-        
+
         # Update the container
         update_data = {
             "name": "updated-test-container",
-            "status": ContainerStatus.ACTIVE
+            "status": ContainerStatus.ACTIVE,
         }
-        
+
         response = client.put(f"/api/v1/containers/{container_id}", json=update_data)
         assert response.status_code == 200
         data = response.json()
@@ -240,10 +248,10 @@ class TestContainerCRUDAPI:
         response = client.get("/api/v1/containers/")
         assert response.status_code == 200
         containers = response.json()["results"]
-        
+
         if containers:
             container_id = containers[0]["id"]
-            
+
             # Shutdown the container
             response = client.post(f"/api/v1/containers/{container_id}/shutdown")
             assert response.status_code == 200
@@ -261,7 +269,7 @@ class TestContainerCRUDAPI:
             "location": {
                 "city": "Test City",
                 "country": "Test Country",
-                "address": "123 Test St"
+                "address": "123 Test St",
             },
             "status": ContainerStatus.CREATED,
             "creator": "Test User",
@@ -272,20 +280,20 @@ class TestContainerCRUDAPI:
             "system_integrations": {
                 "fa_integration": {"name": "Test", "enabled": False},
                 "aws_environment": {"name": "Test", "enabled": False},
-                "mbai_environment": {"name": "Test", "enabled": False}
-            }
+                "mbai_environment": {"name": "Test", "enabled": False},
+            },
         }
-        
+
         create_response = client.post("/api/v1/containers/", json=container_data)
         assert create_response.status_code == 200
         container_id = create_response.json()["id"]
-        
+
         # Delete the container
         response = client.delete(f"/api/v1/containers/{container_id}")
         assert response.status_code == 200
         data = response.json()
         assert "message" in data
-        
+
         # Verify container is deleted
         get_response = client.get(f"/api/v1/containers/{container_id}")
         assert get_response.status_code == 404

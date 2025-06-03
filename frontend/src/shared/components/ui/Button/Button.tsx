@@ -57,14 +57,24 @@ const StyledButton = styled(MuiButton)(() => ({
   fontFamily: 'Inter, sans-serif',
   fontWeight: 500,
   fontSize: '14px',
+  letterSpacing: '0px',
   lineHeight: '20px',
   padding: '10px 16px',
   borderRadius: '6px',
+  textAlign: 'center',
   '&.MuiButton-containedPrimary': {
     backgroundColor: '#3545EE',
-    color: '#FFFFFF',
+    color: '#FAFAFA',
     '&:hover': {
       backgroundColor: '#2B39C7',
+    },
+  },
+  '&.MuiButton-outlinedPrimary': {
+    borderColor: '#3545EE',
+    color: '#3545EE',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: 'rgba(53, 69, 238, 0.04)',
     },
   },
   '& .MuiButton-startIcon': {

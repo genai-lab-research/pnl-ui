@@ -13,8 +13,7 @@ class SeedTypeService:
         seed_type = self.repository.get_seed_type_by_id(seed_type_id)
         if not seed_type:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Seed type not found"
+                status_code=status.HTTP_404_NOT_FOUND, detail="Seed type not found"
             )
         return SeedTypePublic.model_validate(seed_type)
 
@@ -31,16 +30,17 @@ class SeedTypeService:
         except Exception as e:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Error creating seed type: {str(e)}"
+                detail=f"Error creating seed type: {str(e)}",
             )
 
-    def update_seed_type(self, seed_type_id: str, seed_type_data: SeedTypeCreate) -> SeedTypePublic:
+    def update_seed_type(
+        self, seed_type_id: str, seed_type_data: SeedTypeCreate
+    ) -> SeedTypePublic:
         """Update an existing seed type."""
         seed_type = self.repository.update_seed_type(seed_type_id, seed_type_data)
         if not seed_type:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Seed type not found"
+                status_code=status.HTTP_404_NOT_FOUND, detail="Seed type not found"
             )
         return SeedTypePublic.model_validate(seed_type)
 
@@ -48,7 +48,6 @@ class SeedTypeService:
         """Delete a seed type."""
         if not self.repository.delete_seed_type(seed_type_id):
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Seed type not found"
+                status_code=status.HTTP_404_NOT_FOUND, detail="Seed type not found"
             )
         return True

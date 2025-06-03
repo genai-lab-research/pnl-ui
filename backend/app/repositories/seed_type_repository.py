@@ -1,4 +1,3 @@
-
 from app.models import (
     SeedType,
     SeedTypeCreate,
@@ -13,14 +12,54 @@ class SeedTypeRepository:
     def _initialize_mock_data(self):
         """Initialize repository with mock seed types from the page2 specification."""
         mock_seed_types = [
-            {"id": "seed-001", "name": "Someroots", "variety": "Standard", "supplier": "BioCrop"},
-            {"id": "seed-002", "name": "Sunflower", "variety": "Giant", "supplier": "SeedPro"},
-            {"id": "seed-003", "name": "Basil", "variety": "Sweet", "supplier": "HerbGarden"},
-            {"id": "seed-004", "name": "Lettuce", "variety": "Romaine", "supplier": "GreenLeaf"},
-            {"id": "seed-005", "name": "Kale", "variety": "Curly", "supplier": "Nutrifoods"},
-            {"id": "seed-006", "name": "Spinach", "variety": "Baby", "supplier": "GreenLeaf"},
-            {"id": "seed-007", "name": "Arugula", "variety": "Wild", "supplier": "HerbGarden"},
-            {"id": "seed-008", "name": "Microgreens", "variety": "Mixed", "supplier": "SproutLife"}
+            {
+                "id": "seed-001",
+                "name": "Someroots",
+                "variety": "Standard",
+                "supplier": "BioCrop",
+            },
+            {
+                "id": "seed-002",
+                "name": "Sunflower",
+                "variety": "Giant",
+                "supplier": "SeedPro",
+            },
+            {
+                "id": "seed-003",
+                "name": "Basil",
+                "variety": "Sweet",
+                "supplier": "HerbGarden",
+            },
+            {
+                "id": "seed-004",
+                "name": "Lettuce",
+                "variety": "Romaine",
+                "supplier": "GreenLeaf",
+            },
+            {
+                "id": "seed-005",
+                "name": "Kale",
+                "variety": "Curly",
+                "supplier": "Nutrifoods",
+            },
+            {
+                "id": "seed-006",
+                "name": "Spinach",
+                "variety": "Baby",
+                "supplier": "GreenLeaf",
+            },
+            {
+                "id": "seed-007",
+                "name": "Arugula",
+                "variety": "Wild",
+                "supplier": "HerbGarden",
+            },
+            {
+                "id": "seed-008",
+                "name": "Microgreens",
+                "variety": "Mixed",
+                "supplier": "SproutLife",
+            },
         ]
 
         for seed_data in mock_seed_types:
@@ -38,14 +77,13 @@ class SeedTypeRepository:
     def create_seed_type(self, seed_type_data: SeedTypeCreate) -> SeedType:
         """Create a new seed type."""
         seed_type_id = f"seed-{len(self._seed_types) + 1:03d}"
-        seed_type = SeedType(
-            id=seed_type_id,
-            **seed_type_data.model_dump()
-        )
+        seed_type = SeedType(id=seed_type_id, **seed_type_data.model_dump())
         self._seed_types[seed_type_id] = seed_type
         return seed_type
 
-    def update_seed_type(self, seed_type_id: str, seed_type_data: SeedTypeCreate) -> SeedType | None:
+    def update_seed_type(
+        self, seed_type_id: str, seed_type_data: SeedTypeCreate
+    ) -> SeedType | None:
         """Update an existing seed type."""
         if seed_type_id not in self._seed_types:
             return None

@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -14,10 +13,10 @@ class TestTenantAPI:
         response = client.get("/api/v1/tenants/")
         assert response.status_code == 200
         data = response.json()
-        
+
         # Should return a list of tenants
         assert isinstance(data, list)
-        
+
         # Check that each tenant has required fields
         if data:
             tenant = data[0]
@@ -31,11 +30,17 @@ class TestTenantAPI:
         response = client.get("/api/v1/tenants/")
         assert response.status_code == 200
         data = response.json()
-        
+
         # Should have expected tenant data
         tenant_names = [tenant["name"] for tenant in data]
-        expected_tenants = ["AeroFarms", "Green Valley Co", "Urban Harvest", "Sustainable Growth", "Future Farms"]
-        
+        expected_tenants = [
+            "AeroFarms",
+            "Green Valley Co",
+            "Urban Harvest",
+            "Sustainable Growth",
+            "Future Farms",
+        ]
+
         for expected_tenant in expected_tenants:
             assert expected_tenant in tenant_names
 
@@ -44,6 +49,6 @@ class TestTenantAPI:
         response = client.get("/api/v1/tenants/")
         assert response.status_code == 200
         data = response.json()
-        
+
         # Should have at least one tenant
         assert len(data) > 0

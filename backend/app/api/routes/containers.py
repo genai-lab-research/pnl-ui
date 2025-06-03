@@ -1,25 +1,21 @@
-from typing import Any, Optional
+from typing import Any
 
-from fastapi import APIRouter, HTTPException, Query, status
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, Query, status
 
 from app.models import (
-    ContainerPublic,
-    ContainersPublic,
-    ContainerList,
-    ContainerStats,
-    ContainerSummary,
+    ContainerActivitiesPublic,
     ContainerCreate,
     ContainerCreateFromForm,
-    ContainerResponse,
-    ContainerUpdate,
-    ContainerMetricsPublic,
     ContainerCropsPublic,
-    ContainerActivitiesPublic,
-    ContainerType,
+    ContainerList,
+    ContainerPublic,
+    ContainerResponse,
+    ContainerStats,
     ContainerStatus,
+    ContainerType,
+    ContainerUpdate,
+    Message,
     TimeRange,
-    Message
 )
 from app.services.container_service import ContainerService
 
@@ -31,13 +27,19 @@ container_service = ContainerService()
 def get_containers(
     skip: int = 0,
     limit: int = Query(default=100, le=100),
-    name: Optional[str] = Query(default=None, description="Filter by container name"),
-    tenant_id: Optional[str] = Query(default=None, description="Filter by tenant ID"),
-    type: Optional[ContainerType] = Query(default=None, description="Filter by container type"),
-    purpose: Optional[str] = Query(default=None, description="Filter by purpose"),
-    status: Optional[ContainerStatus] = Query(default=None, description="Filter by status"),
-    has_alerts: Optional[bool] = Query(default=None, description="Filter containers with alerts"),
-    location: Optional[str] = Query(default=None, description="Filter by location"),
+    name: str | None = Query(default=None, description="Filter by container name"),
+    tenant_id: str | None = Query(default=None, description="Filter by tenant ID"),
+    type: ContainerType | None = Query(
+        default=None, description="Filter by container type"
+    ),
+    purpose: str | None = Query(default=None, description="Filter by purpose"),
+    status: ContainerStatus | None = Query(
+        default=None, description="Filter by status"
+    ),
+    has_alerts: bool | None = Query(
+        default=None, description="Filter containers with alerts"
+    ),
+    location: str | None = Query(default=None, description="Filter by location"),
 ) -> Any:
     """
     List containers with optional filtering and pagination.
@@ -51,7 +53,10 @@ def get_containers(
         "has_alerts": has_alerts,
         "location": location,
     }
-    return container_service.get_containers_filtered(skip=skip, limit=limit, filters=filters)
+    return container_service.get_containers_filtered(
+        skip=skip, limit=limit, filters=filters
+    )
+
 
 @router.get("/stats", response_model=ContainerStats)
 def get_container_stats() -> Any:
@@ -72,7 +77,11 @@ def create_container(
     return container_service.create_container(container_in)
 
 
-@router.post("/create-from-form", response_model=ContainerResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/create-from-form",
+    response_model=ContainerResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 def create_container_from_form(
     *,
     form_data: ContainerCreateFromForm,
@@ -115,6 +124,7 @@ def delete_container(
     container_service.delete_container(container_id)
     return Message(message="Container deleted successfully")
 
+
 @router.post("/{container_id}/shutdown", response_model=ContainerPublic)
 def shutdown_container(
     container_id: str,
@@ -128,7 +138,7 @@ def shutdown_container(
 @router.get("/{container_id}/metrics")
 def get_container_metrics(
     container_id: str,
-    time_range: Optional[TimeRange] = Query(default=TimeRange.WEEK),
+    time_range: TimeRange | None = Query(default=TimeRange.WEEK),
 ) -> Any:
     """
     Get metrics for a specific container.
@@ -150,16 +160,13 @@ def get_container_crops(
     container_id: str,
     page: int = Query(default=0, ge=0),
     page_size: int = Query(default=10, ge=1, le=100),
-    seed_type: Optional[str] = Query(default=None),
+    seed_type: str | None = Query(default=None),
 ) -> Any:
     """
     Get crops for a specific container with pagination and optional filtering.
     """
     return container_service.get_container_crops(
-        container_id=container_id,
-        page=page,
-        page_size=page_size,
-        seed_type=seed_type
+        container_id=container_id, page=page, page_size=page_size, seed_type=seed_type
     )
 
 

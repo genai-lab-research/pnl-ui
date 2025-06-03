@@ -1,10 +1,9 @@
 import uuid
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Optional
 
 from pydantic import EmailStr
-from sqlmodel import Field, Relationship, SQLModel, JSON, Column
+from sqlmodel import JSON, Column, Field, Relationship, SQLModel
 
 
 # Shared properties
@@ -99,16 +98,20 @@ class ItemsPublic(SQLModel):
 class Message(SQLModel):
     message: str
 
+
 # Tenant Model
 class TenantBase(SQLModel):
     name: str = Field(max_length=255)
 
+
 class TenantCreate(TenantBase):
     pass
 
+
 class Tenant(TenantBase, table=True):
     id: str = Field(primary_key=True, max_length=50)
-    
+
+
 class TenantResponse(TenantBase):
     id: str
 
@@ -130,6 +133,7 @@ class NewPassword(SQLModel):
 
 
 # Container Domain Models
+
 
 class ContainerType(str, Enum):
     PHYSICAL = "PHYSICAL"
@@ -207,7 +211,7 @@ class ContainerFormData(SQLModel):
     purpose: ContainerPurpose
     seed_types: list[str] = Field(default_factory=list)
     location: str = Field(max_length=255)
-    notes: Optional[str] = Field(default="", max_length=1000)
+    notes: str | None = Field(default="", max_length=1000)
     shadow_service_enabled: bool = Field(default=False)
     connect_to_other_systems: bool = Field(default=False)
 
@@ -224,18 +228,18 @@ class ContainerCreateFromForm(ContainerFormData):
 
 # Container Update Model
 class ContainerUpdate(SQLModel):
-    name: Optional[str] = Field(default=None, max_length=255)
-    type: Optional[ContainerType] = None
-    tenant: Optional[str] = Field(default=None, max_length=255)
-    purpose: Optional[ContainerPurpose] = None
-    location: Optional[ContainerLocation] = None
-    status: Optional[ContainerStatus] = None
-    creator: Optional[str] = Field(default=None, max_length=255)
-    seed_types: Optional[list[str]] = None
-    notes: Optional[str] = Field(default=None, max_length=1000)
-    shadow_service_enabled: Optional[bool] = None
-    ecosystem_connected: Optional[bool] = None
-    system_integrations: Optional[SystemIntegrations] = None
+    name: str | None = Field(default=None, max_length=255)
+    type: ContainerType | None = None
+    tenant: str | None = Field(default=None, max_length=255)
+    purpose: ContainerPurpose | None = None
+    location: ContainerLocation | None = None
+    status: ContainerStatus | None = None
+    creator: str | None = Field(default=None, max_length=255)
+    seed_types: list[str] | None = None
+    notes: str | None = Field(default=None, max_length=1000)
+    shadow_service_enabled: bool | None = None
+    ecosystem_connected: bool | None = None
+    system_integrations: SystemIntegrations | None = None
 
 
 # Container Database Model
@@ -255,11 +259,17 @@ class Container(SQLModel, table=True):
     system_integrations: dict = Field(sa_column=Column(JSON))
     created: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     modified: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    
+
     # Relationships
-    metrics: list["ContainerMetrics"] = Relationship(back_populates="container", cascade_delete=True)
-    crops: list["ContainerCrop"] = Relationship(back_populates="container", cascade_delete=True)
-    activities: list["ContainerActivity"] = Relationship(back_populates="container", cascade_delete=True)
+    metrics: list["ContainerMetrics"] = Relationship(
+        back_populates="container", cascade_delete=True
+    )
+    crops: list["ContainerCrop"] = Relationship(
+        back_populates="container", cascade_delete=True
+    )
+    activities: list["ContainerActivity"] = Relationship(
+        back_populates="container", cascade_delete=True
+    )
 
 
 # Container Public Model
@@ -276,8 +286,8 @@ class ContainerResponse(SQLModel):
     type: ContainerType
     tenant_name: str
     purpose: ContainerPurpose
-    location_city: Optional[str] = None
-    location_country: Optional[str] = None
+    location_city: str | None = None
+    location_country: str | None = None
     status: ContainerStatus
     created_at: datetime
     updated_at: datetime
@@ -293,22 +303,25 @@ class ContainerSummary(SQLModel):
     type: ContainerType
     tenant_name: str
     purpose: ContainerPurpose
-    location_city: Optional[str] = None
-    location_country: Optional[str] = None
+    location_city: str | None = None
+    location_country: str | None = None
     status: ContainerStatus
     created_at: datetime
     updated_at: datetime
     has_alerts: bool = False
+
 
 # Container List Model
 class ContainerList(SQLModel):
     total: int
     results: list[ContainerSummary]
 
+
 # Container Stats Model
 class ContainerStats(SQLModel):
     physical_count: int
     virtual_count: int
+
 
 # Container List Model (backward compatibility)
 class ContainersPublic(SQLModel):
@@ -318,12 +331,15 @@ class ContainersPublic(SQLModel):
 
 # Metrics Models
 
+
 class MetricValue(SQLModel):
     current: float
     unit: str
-    target: Optional[float] = None
-    trend: Optional[float] = None
-    target_display: Optional[str] = None  # For formatted display like "+1.5Kg" or "800-900ppm"
+    target: float | None = None
+    trend: float | None = None
+    target_display: str | None = (
+        None  # For formatted display like "+1.5Kg" or "800-900ppm"
+    )
 
 
 class ContainerMetricsBase(SQLModel):
@@ -352,14 +368,14 @@ class ContainerMetrics(SQLModel, table=True):
     nursery_utilization: dict = Field(sa_column=Column(JSON))
     cultivation_utilization: dict = Field(sa_column=Column(JSON))
     created: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    
+
     # Relationships
     container: Container = Relationship(back_populates="metrics")
 
 
 class ContainerMetricsPublic(SQLModel):
     model_config = {"populate_by_name": True}
-    
+
     temperature: MetricValue
     humidity: MetricValue
     co2: MetricValue
@@ -370,14 +386,15 @@ class ContainerMetricsPublic(SQLModel):
 
 # Crops Models
 
+
 class ContainerCropBase(SQLModel):
     container_id: str = Field(foreign_key="container.id", max_length=50)
     seed_type: str = Field(max_length=255)
     cultivation_area: float
     nursery_table: float
-    last_sd: Optional[str] = None  # Last seeding date
-    last_td: Optional[str] = None  # Last transplanting date
-    last_hd: Optional[str] = None  # Last harvest date
+    last_sd: str | None = None  # Last seeding date
+    last_td: str | None = None  # Last transplanting date
+    last_hd: str | None = None  # Last harvest date
     avg_age: float
     overdue: int
 
@@ -388,7 +405,7 @@ class ContainerCropCreate(ContainerCropBase):
 
 class ContainerCrop(ContainerCropBase, table=True):
     id: str = Field(primary_key=True, max_length=50)
-    
+
     # Relationships
     container: Container = Relationship(back_populates="crops")
 
@@ -403,6 +420,7 @@ class ContainerCropsPublic(SQLModel):
 
 
 # Seed Type Models
+
 
 class SeedTypeBase(SQLModel):
     name: str = Field(max_length=255)
@@ -429,6 +447,7 @@ class SeedTypesPublic(SQLModel):
 
 # Activity Models
 
+
 class ActivityUser(SQLModel):
     name: str
     role: str
@@ -454,7 +473,7 @@ class ContainerActivity(SQLModel, table=True):
     user: dict = Field(sa_column=Column(JSON))
     details: dict = Field(sa_column=Column(JSON), default_factory=dict)
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    
+
     # Relationships
     container: Container = Relationship(back_populates="activities")
 
@@ -466,3 +485,246 @@ class ContainerActivityPublic(ContainerActivityBase):
 
 class ContainerActivitiesPublic(SQLModel):
     activities: list[ContainerActivityPublic]
+
+
+# Inventory Models for Page 4
+
+class HealthStatus(str, Enum):
+    HEALTHY = "healthy"
+    MODERATE = "moderate"
+    CRITICAL = "critical"
+    TREATMENT_REQUIRED = "treatment_required"
+
+
+class CropSize(str, Enum):
+    SMALL = "small"
+    MEDIUM = "medium"
+    LARGE = "large"
+
+
+class UtilizationLevel(str, Enum):
+    LOW = "low"
+    MODERATE = "moderate"
+    MEDIUM = "medium"
+    HIGH = "high"
+
+
+class ShelfType(str, Enum):
+    TOP = "top"
+    BOTTOM = "bottom"
+    UPPER = "upper"
+    LOWER = "lower"
+
+
+class WallType(str, Enum):
+    LEFT = "left"
+    RIGHT = "right"
+    WALL_1 = "wall_1"
+    WALL_2 = "wall_2"
+
+
+class SlotData(SQLModel):
+    slot_number: int
+    occupied: bool
+    tray: "TrayDataPublic | None" = None
+
+
+class ShelfData(SQLModel):
+    slots: list[SlotData]
+
+
+class TrayData(SQLModel):
+    id: str
+    container_id: str
+    utilization_percentage: int
+    crop_count: int
+    utilization_level: UtilizationLevel
+    rfid_tag: str
+    shelf: ShelfType | None
+    slot_number: int | None
+    is_on_shelf: bool
+    created: datetime
+
+
+class CropData(SQLModel):
+    id: str
+    container_id: str
+    tray_id: str | None
+    panel_id: str | None
+    seed_type: str
+    row: int | None = None
+    column: int | None = None
+    channel: int | None = None
+    position: int | None = None
+    age_days: int
+    seeded_date: str
+    planned_transplanting_date: str | None = None
+    transplanted_date: str | None = None
+    planned_harvesting_date: str | None = None
+    overdue_days: int | None = None
+    health_status: HealthStatus
+    size: CropSize
+    created: datetime
+
+
+class CropDataPublic(SQLModel):
+    id: str
+    container_id: str
+    tray_id: str | None
+    panel_id: str | None
+    seed_type: str
+    row: int | None = None
+    column: int | None = None
+    channel: int | None = None
+    position: int | None = None
+    age_days: int
+    seeded_date: str
+    planned_transplanting_date: str | None = None
+    transplanted_date: str | None = None
+    planned_harvesting_date: str | None = None
+    overdue_days: int | None = None
+    health_status: HealthStatus
+    size: CropSize
+    created: datetime
+
+
+class TrayDataCreate(SQLModel):
+    shelf_id: str
+    position: str
+    label: str
+
+
+class TrayDataPublic(SQLModel):
+    id: str
+    utilization_percentage: int
+    crop_count: int
+    utilization_level: UtilizationLevel
+    rfid_tag: str
+    shelf: ShelfType | None
+    slot_number: int | None
+    is_on_shelf: bool
+    crops: list[CropDataPublic]
+
+
+class TrayResponse(SQLModel):
+    tray: TrayDataPublic
+    message: str
+
+
+class ChannelData(SQLModel):
+    id: str
+    panel_id: str
+    crop_id: str | None
+    position: int
+
+
+class PanelChannelData(SQLModel):
+    channel_number: int
+    crops: list[CropDataPublic]
+
+
+class WallData(SQLModel):
+    id: str
+    type: WallType
+    channels: list[ChannelData]
+
+
+class PanelData(SQLModel):
+    id: str
+    container_id: str
+    utilization_percentage: int
+    crop_count: int
+    utilization_level: UtilizationLevel
+    rfid_tag: str
+    wall: WallType | None
+    slot_number: int | None
+    is_on_wall: bool
+    created: datetime
+
+
+class PanelDataCreate(SQLModel):
+    position: str
+    label: str
+
+
+class PanelDataPublic(SQLModel):
+    id: str
+    utilization_percentage: int
+    crop_count: int
+    utilization_level: UtilizationLevel
+    rfid_tag: str
+    wall: WallType | None
+    slot_number: int | None
+    is_on_wall: bool
+    channels: list[PanelChannelData]
+
+
+class PanelResponse(SQLModel):
+    panel: PanelDataPublic
+    message: str
+
+
+class NurseryStationData(SQLModel):
+    utilization_percentage: int
+    upper_shelf: ShelfData
+    lower_shelf: ShelfData
+    off_shelf_trays: list["TrayDataPublic"]
+
+
+class CultivationAreaData(SQLModel):
+    container_id: str
+    panels: list[PanelDataPublic]
+    date: datetime | None
+
+
+class CropHistoryEvent(SQLModel):
+    date: str
+    event: str
+    location: dict
+    health_status: HealthStatus
+    size: CropSize
+    notes: str
+
+
+class CropHistory(SQLModel):
+    crop_id: str
+    container_id: str
+    events: list[CropHistoryEvent]
+    start_date: datetime | None
+    end_date: datetime | None
+
+
+# Tray/Panel Provisioning Models
+
+class TrayProvisionRequest(SQLModel):
+    rfid_tag: str = Field(min_length=6, max_length=50)
+    notes: str | None = Field(default="", max_length=500)
+
+
+class PanelProvisionRequest(SQLModel):
+    rfid_tag: str = Field(min_length=6, max_length=50)
+    notes: str | None = Field(default="", max_length=500)
+
+
+class TrayProvisionResponse(SQLModel):
+    id: str
+    rfid_tag: str
+    container_id: str
+    shelf: ShelfType | None
+    slot_number: int | None
+    location_display: str
+    notes: str | None
+    created: datetime
+    message: str
+
+
+class PanelProvisionResponse(SQLModel):
+    id: str
+    rfid_tag: str
+    container_id: str
+    wall: WallType | None
+    slot_number: int | None
+    location_display: str
+    notes: str | None
+    created: datetime
+    message: str
