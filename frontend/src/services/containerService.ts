@@ -1,10 +1,11 @@
 import { apiRequest } from './api';
 
-// Types that match backend schemas
-export type ContainerType = 'PHYSICAL' | 'VIRTUAL';
-export type ContainerStatus = 'CREATED' | 'ACTIVE' | 'MAINTENANCE' | 'INACTIVE';
-export type ContainerPurpose = 'Development' | 'Research' | 'Production';
-export type TimeRangeOption = 'WEEK' | 'MONTH' | 'QUARTER' | 'YEAR';
+import {
+  ContainerType,
+  ContainerStatus,
+  ContainerPurpose,
+  TimeRangeOption
+} from '../shared/types/containers';
 
 export interface ContainerFormData {
   name: string;
