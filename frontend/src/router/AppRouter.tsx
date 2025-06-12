@@ -3,10 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Box } from '@mui/material';
 
-import ContainerDetailsPage from '../features/container-management/pages/ContainerDetailsPage';
+import ContainerDetailsPage from '../features/container-management/ContainerDetailsPage';
 import { ContainerManagementDashboard } from '../features/container-management';
 // Pages
-import  ContainerListPage  from '../features/container-management/pages/ContainerListPage';
+import  ContainerListPage  from '../features/container-management/ContainerListPage';
 import { ExampleFeature } from '../features/example';
 import { ContainerMetricsPage } from '../features/metrics';
 // Components

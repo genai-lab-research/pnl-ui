@@ -2,24 +2,24 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Container, Paper, Typography } from '@mui/material';
 
-import containerService, { ContainerFilterParams, ContainerStats } from '../../../services/containerService';
-import performanceService from '../../../services/performanceService';
-import tenantService from '../../../services/tenantService';
+import containerService, { ContainerFilterParams, ContainerStats } from '../../services/containerService';
+import performanceService from '../../services/performanceService';
+import tenantService from '../../services/tenantService';
 
-import { CreateContainerButton } from '../../../shared/components/ui/Button';
-import HeaderContainer from '../../../shared/components/ui/Container/HeaderContainer';
-import { DataTable } from '../../../shared/components/ui/Table/DataTable';
-import { RowData } from '../../../shared/types/containers';
-import { MetricTimeRange } from '../../../shared/types/metrics';
-import { ContainerType, ContainerStatus } from '../../../shared/types/containers';
+import { CreateContainerButton } from '../../shared/components/ui/Button';
+import HeaderContainer from '../../shared/components/ui/Container/HeaderContainer';
+import { DataTable } from '../../shared/components/ui/Table/DataTable';
+import { RowData } from '../../shared/types/containers';
+import { MetricTimeRange } from '../../shared/types/metrics';
+import { ContainerType, ContainerStatus } from '../../shared/types/containers';
 
-import { formattedContainerList } from '../constants/mockData';
-import FilterSection from '../sections/FilterSection';
-import PerformanceCard from '../widgets/PerformanceCard';
-import TimeRangeSelector, { TimeRangeOption } from '../sections/TimeRangeSelector';
+import { formattedContainerList } from './constants/mockData';
+import FilterSection from './sections/FilterSection';
+import PerformanceCard from './components/PerformanceCard';
+import TimeRangeSelector, { TimeRangeOption } from './sections/TimeRangeSelector';
 
 
-import { mapChartDataByRange } from '../../../shared/utils/metrics';
+import { mapChartDataByRange } from '../../shared/utils/metrics';
 
 const mockUser = {
   avatarUrl: null,

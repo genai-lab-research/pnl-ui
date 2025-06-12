@@ -20,15 +20,15 @@ import containerService, {
   ContainerDetail,
   ContainerMetrics,
   TimeRangeOption,
-} from '../../../services/containerService';
-import { ContainerOverviewInfo } from '../../../shared/components/ui/Container';
-import { StatusChipActive } from '../../../shared/components/ui/StatusChip';
+} from '../../services/containerService';
+import { ContainerOverviewInfo } from '../../shared/components/ui/Container';
+import { StatusChipActive } from '../../shared/components/ui/StatusChip';
 // Import components
-import { TabGroup } from '../../../shared/components/ui/Tab';
-import ContainerInfoSection from '../sections/ContainerInfoSection';
-import CropsSection from '../../container-management/sections/CropsSection';
+import { TabGroup } from '../../shared/components/ui/Tab';
+import ContainerInfoSection from './sections/ContainerInfoSection';
+import CropsSection from './sections/CropsSection';
 // Import feature components
-import MetricsPanel from '../widgets/MetricsPanel';
+import MetricsPanel from './components/MetricsPanel';
 
 // Define tab options
 type TabOption = 'overview' | 'environment' | 'inventory' | 'devices';
