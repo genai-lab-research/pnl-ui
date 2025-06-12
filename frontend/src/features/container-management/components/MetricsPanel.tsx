@@ -2,16 +2,16 @@ import React from 'react';
 
 import { Box, Grid, Typography } from '@mui/material';
 
-import { ContainerMetrics, TimeRangeOption } from '../../services/containerService';
-import { StatContainer } from '../../shared/components/ui/Container';
+import { ContainerMetrics, TimeRangeOption } from '../../../services/containerService';
+import { StatContainer } from '../../../shared/components/ui/Container';
 import {
   CO2Icon,
   HumidityIcon,
   TemperatureIcon,
   UtilizationIcon,
   YieldIcon,
-} from '../../shared/components/ui/Icon';
-import { TimeRangeSelector } from '../container-management/TimeRangeSelector';
+} from '../../../shared/components/ui/Icon';
+import { TimeRangeSelector } from '../sections/TimeRangeSelector';
 
 export interface MetricsPanelProps {
   metrics: ContainerMetrics;

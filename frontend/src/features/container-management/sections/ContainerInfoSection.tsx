@@ -27,9 +27,9 @@ import {
 } from '@mui/material';
 import { format, parseISO } from 'date-fns';
 
-import { ContainerActivity, ContainerDetail } from '../../services/containerService';
-import { InformationGroupContainer } from '../../shared/components/ui/Container';
-import { AvatarIcon, ShippingContainerIcon } from '../../shared/components/ui/Icon';
+import { ContainerActivity, ContainerDetail } from '../../../services/containerService';
+import { InformationGroupContainer } from '../../../shared/components/ui/Container';
+import { AvatarIcon, ShippingContainerIcon } from '../../../shared/components/ui/Icon';
 
 export interface ContainerInfoSectionProps {
   container: ContainerDetail;

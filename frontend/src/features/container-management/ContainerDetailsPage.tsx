@@ -25,10 +25,10 @@ import { ContainerOverviewInfo } from '../../shared/components/ui/Container';
 import { StatusChipActive } from '../../shared/components/ui/StatusChip';
 // Import components
 import { TabGroup } from '../../shared/components/ui/Tab';
-import ContainerInfoSection from './ContainerInfoSection';
-import CropsSection from './CropsSection';
+import ContainerInfoSection from './sections/ContainerInfoSection';
+import CropsSection from './sections/CropsSection';
 // Import feature components
-import MetricsPanel from './MetricsPanel';
+import MetricsPanel from './components/MetricsPanel';
 
 // Define tab options
 type TabOption = 'overview' | 'environment' | 'inventory' | 'devices';

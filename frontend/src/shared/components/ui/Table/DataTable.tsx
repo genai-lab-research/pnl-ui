@@ -14,7 +14,7 @@ import {
 import {
   formattedContainerList,
   mockContainerList,
-} from '../../../../features/containers/mockData';
+} from '../../../../features/container-management/constants/mockData';
 import {
   Column,
   ContainerPurpose,

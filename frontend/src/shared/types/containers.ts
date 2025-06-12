@@ -19,6 +19,8 @@ export enum ContainerStatus {
   INACTIVE = 'Inactive',
 }
 
+export type TimeRangeOption = 'WEEK' | 'MONTH' | 'QUARTER' | 'YEAR';
+
 // For DataTable component
 export interface RowData {
   id: string;
@@ -39,3 +41,7 @@ export interface Column {
   width?: string | number;
   align?: 'left' | 'center' | 'right';
 }
+
+
+
+
