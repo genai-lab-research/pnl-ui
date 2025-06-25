@@ -12,13 +12,11 @@ import {
   HeaderContainer,
   CropImageContainer,
   TimelineControls,
-  MetricsContainer,
   AccordionSection,
   CloseButtonContainer,
 } from './CropDetailModal.styles';
 import { CropDetailModalProps } from './CropDetailModal.types';
 import { VerticalFarmingGenerationTimelineBlock } from '../VerticalFarmingGenerationTimelineBlock';
-import { VerticalFarmingGenerationBlock } from '../../../components/VerticalFarmingGenerationBlock';
 import MediaControlButtonSet from '../MediaControlButtonSet';
 import { VerticalFarmingGeneralInfoBlock } from '../VerticalFarmingGeneralInfoBlock';
 import { inventoryService } from '../../../../api';
@@ -82,110 +80,7 @@ const CropDetailModal: React.FC<CropDetailModalProps> = ({ open, onClose, crop, 
     (activeCrop?.metrics && activeCrop.metrics.length > 0 ? activeCrop.metrics[0] : null);
 
   // Create comprehensive metrics data from crop metrics for display
-  const metricsData = mostRecentMetrics ? [
-    // Growth Metrics
-    {
-      name: 'Height',
-      unit: 'cm',
-      currentValue: mostRecentMetrics.height_cm || 0,
-      minValue: 0,
-      maxValue: Math.max(activeCrop.statistics?.max_recorded_height || 20, 20),
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.height_cm || 0
-      })) || []
-    },
-    {
-      name: 'Health Score',
-      unit: '%',
-      currentValue: mostRecentMetrics.health_score || 0,
-      minValue: 0,
-      maxValue: 100,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.health_score || 0
-      })) || []
-    },
-    {
-      name: 'Leaf Count',
-      unit: '',
-      currentValue: mostRecentMetrics.leaf_count || 0,
-      minValue: 0,
-      maxValue: Math.max(...(activeCrop.metrics?.map(m => m.leaf_count || 0) || [30]), 30),
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.leaf_count || 0
-      })) || []
-    },
-    {
-      name: 'Biomass',
-      unit: 'g',
-      currentValue: mostRecentMetrics.biomass_g || 0,
-      minValue: 0,
-      maxValue: Math.max(...(activeCrop.metrics?.map(m => m.biomass_g || 0) || [100]), 100),
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.biomass_g || 0
-      })) || []
-    },
-    // Environmental Metrics
-    {
-      name: 'Temperature',
-      unit: '°C',
-      currentValue: mostRecentMetrics.temperature_c || 0,
-      minValue: 15,
-      maxValue: 30,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.temperature_c || 0
-      })) || []
-    },
-    {
-      name: 'Humidity',
-      unit: '%',
-      currentValue: mostRecentMetrics.humidity_percent || 0,
-      minValue: 40,
-      maxValue: 90,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.humidity_percent || 0
-      })) || []
-    },
-    {
-      name: 'Light Intensity',
-      unit: 'μmol/m²/s',
-      currentValue: mostRecentMetrics.light_intensity_umol || 0,
-      minValue: 0,
-      maxValue: 400,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.light_intensity_umol || 0
-      })) || []
-    },
-    {
-      name: 'pH Level',
-      unit: '',
-      currentValue: mostRecentMetrics.ph_level || 0,
-      minValue: 5.5,
-      maxValue: 7.5,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.ph_level || 0
-      })) || []
-    },
-    // Stress & Health Metrics
-    {
-      name: 'Stress Level',
-      unit: '%',
-      currentValue: mostRecentMetrics.stress_level || 0,
-      minValue: 0,
-      maxValue: 100,
-      data: activeCrop.metrics?.map((metric) => ({
-        date: new Date(metric.recorded_at).toLocaleDateString(),
-        value: metric.stress_level || 0
-      })) || []
-    }
-  ] : [];
+
 
   // When used in a Drawer, we don't need the Dialog wrapper
   const content = (
@@ -261,29 +156,6 @@ const CropDetailModal: React.FC<CropDetailModalProps> = ({ open, onClose, crop, 
             </Typography>
           )}
         </Box>
-
-        <MetricsContainer>
-          {metricsData.length > 0 ? (
-            metricsData.map((metric) => (
-              <Box key={metric.name} sx={{ mb: 2, width: '100%' }}>
-                <VerticalFarmingGenerationBlock
-                  areaLabel={metric.name}
-                  areaUnit={metric.unit}
-                  leftValue={metric.minValue.toString()}
-                  rightValue={metric.currentValue.toString()}
-                  alertValue={metric.currentValue > metric.maxValue * 0.9 ? metric.currentValue.toString() : undefined}
-                  graphData={metric.data.map(d => d.value)}
-                />
-              </Box>
-            ))
-          ) : (
-            <Box sx={{ padding: 3, textAlign: 'center' }}>
-              <Typography color="textSecondary">
-                {loading ? 'Loading metrics...' : 'No metrics data available for this crop.'}
-              </Typography>
-            </Box>
-          )}
-        </MetricsContainer>
 
         <AccordionSection>
           <VerticalFarmingGeneralInfoBlock
