@@ -1,6 +1,7 @@
 import React from 'react';
 import { Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { colors as themeColors } from '@/shared/constants/colors';
 
 export type StatusType = 'Connected' | 'Maintenance' | 'Created' | 'Inactive';
 
@@ -8,48 +9,42 @@ const getStatusColors = (status: StatusType) => {
   switch (status) {
     case 'Connected':
       return {
-        backgroundColor: '#D4EDDA',
-        color: '#155724',
-        borderColor: '#C3E6CB',
+        backgroundColor: themeColors.success,
+        color: 'white',
       };
     case 'Maintenance':
       return {
-        backgroundColor: '#FFF3CD',
-        color: '#856404',
-        borderColor: '#FFEAA7',
+        backgroundColor: themeColors.warning,
+        color: 'white',
       };
     case 'Created':
       return {
-        backgroundColor: '#F8F9FA',
-        color: '#495057',
-        borderColor: '#DEE2E6',
+        backgroundColor: themeColors.gray[100],
+        color: 'black',
       };
     case 'Inactive':
       return {
-        backgroundColor: '#F8D7DA',
-        color: '#721C24',
-        borderColor: '#F5C6CB',
+        backgroundColor: themeColors.gray[900],
+        color: 'white',
       };
     default:
       return {
-        backgroundColor: '#F8F9FA',
-        color: '#495057',
-        borderColor: '#DEE2E6',
+        backgroundColor: themeColors.gray[100],
+        color: 'black',
       };
   }
 };
 
 const StyledChip = styled(Chip)<{ statustype: StatusType }>(({ statustype }) => {
-  const colors = getStatusColors(statustype);
+  const statusColors = getStatusColors(statustype);
   return {
-    backgroundColor: colors.backgroundColor,
-    color: colors.color,
-    border: `1px solid ${colors.borderColor}`,
+    backgroundColor: statusColors.backgroundColor,
+    color: statusColors.color,
     borderRadius: '16px',
     height: '24px',
     fontSize: '12px',
     fontWeight: 500,
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: 'body',
     textTransform: 'capitalize',
     '& .MuiChip-label': {
       paddingLeft: '8px',
@@ -72,7 +67,6 @@ export const StatusChip: React.FC<StatusChipProps> = ({
       label={status}
       size={size}
       statustype={status}
-      variant="outlined"
     />
   );
 };
