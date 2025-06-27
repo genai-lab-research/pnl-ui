@@ -2,6 +2,8 @@ import React from 'react';
 import { Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { colors as themeColors } from '@/shared/constants/colors';
+import { fonts } from '@/shared/constants/fonts';
+
 
 export type StatusType = 'Connected' | 'Maintenance' | 'Created' | 'Inactive';
 
@@ -44,7 +46,7 @@ const StyledChip = styled(Chip)<{ statustype: StatusType }>(({ statustype }) => 
     height: '24px',
     fontSize: '12px',
     fontWeight: 500,
-    fontFamily: 'body',
+    fontFamily: fonts.body,
     textTransform: 'capitalize',
     '& .MuiChip-label': {
       paddingLeft: '8px',
