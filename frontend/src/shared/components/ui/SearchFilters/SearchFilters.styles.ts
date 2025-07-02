@@ -1,12 +1,18 @@
-import styled from '@emotion/styled';
-import { Box, TextField, Button, Switch } from '@mui/material';
-import { fonts } from '@/shared/constants/fonts'
+import styled from "@emotion/styled";
+import { Box, TextField, Button, Switch } from "@mui/material";
+import { fonts } from "@/shared/constants/fonts";
 
 export const SearchFiltersContainer = styled(Box)`
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
   background-color: white;
+`;
+
+export const FiltersBlock = styled(Box)`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 export const SearchField = styled(TextField)`
@@ -21,22 +27,21 @@ export const FilterSelect = styled(TextField)`
 `;
 
 export const ClearFiltersButton = styled(Button)({
-  backgroundColor: '#EFF0F3',    
-  color: 'black',              
-  borderRadius: '6px',
-  padding: '8px 16px',
+  backgroundColor: "#EFF0F3",
+  color: "black",
+  borderRadius: "6px",
+  padding: "8px 16px",
   fontFamily: fonts.heading,
-  fontSize: '14px',
+  fontSize: "14px",
   fontWeight: 500,
-  lineHeight: '20px',
-  textTransform: 'none',
-  whiteSpace: 'nowrap',
+  lineHeight: "20px",
+  textTransform: "none",
+  whiteSpace: "nowrap",
 
-  '&:hover': {
-    backgroundColor: '#E9EBEE',
+  "&:hover": {
+    backgroundColor: "#E9EBEE",
   },
 });
-
 
 export const AlertsContainer = styled(Box)`
   display: flex;

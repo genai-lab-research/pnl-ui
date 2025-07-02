@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CloudIcon from '@mui/icons-material/Cloud';
-import StorageIcon from '@mui/icons-material/Storage';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import ShippingContainerIcon from './icons/shipping-container.svg';
 import { Container } from '../../../types/containers';
 import { StatusChip, StatusType } from '../StatusChip';
 
@@ -159,9 +159,9 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
               <StyledTableCell>
                 <TypeIcon>
                   {container.type === 'virtual' ? (
-                    <CloudIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <CloudQueueIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
                   ) : (
-                    <StorageIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <img src={ShippingContainerIcon} alt="Container icon" width={16} height={16} />
                   )}
                 </TypeIcon>
               </StyledTableCell>

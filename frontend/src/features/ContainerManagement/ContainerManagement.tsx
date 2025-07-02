@@ -112,7 +112,7 @@ const PaginatorSection = styled(Box)({
 const PaginatorText = styled(Typography)({
   fontFamily: fonts.body,
   fontSize: "14px",
-  color: colors.gray[100],
+  color: colors.gray[300],
 });
 
 export const ContainerManagement: React.FC = () => {

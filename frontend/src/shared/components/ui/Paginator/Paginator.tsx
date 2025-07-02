@@ -10,6 +10,7 @@ import {
 } from './Paginator.styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { colors } from "@/shared/constants/colors";
 
 export const Paginator: React.FC<PaginatorProps> = ({
   currentPage,
@@ -42,7 +43,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
           <ArrowBackIcon 
             sx={{ 
               fontSize: '20px',
-              color: 'rgba(76, 78, 100, 0.26)',
+              color: colors.gray[200],
             }} 
           />
           <PreviousText>Previous</PreviousText>
@@ -60,7 +61,7 @@ export const Paginator: React.FC<PaginatorProps> = ({
           <ArrowForwardIcon 
             sx={{ 
               fontSize: '20px',
-              color: '#6C778D',
+              color: colors.gray[300],
             }} 
           />
         </ButtonContent>
