@@ -17,6 +17,8 @@ import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import ShippingContainerIcon from './icons/shipping-container.svg';
 import { Container } from '../../../types/containers';
 import { StatusChip, StatusType } from '../StatusChip';
+import { colors } from "@/shared/constants/colors";
+import { fonts } from "@/shared/constants/fonts";
 
 const StyledTableContainer = styled(TableContainer)(() => ({
   borderRadius: '6px',
@@ -26,14 +28,14 @@ const StyledTableContainer = styled(TableContainer)(() => ({
 }));
 
 const StyledTableHead = styled(TableHead)({
-  backgroundColor: '#F8F9FA',
+  backgroundColor: colors.gray[100],
 });
 
 const StyledHeaderCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: fonts.body,
   fontSize: '14px',
-  fontWeight: 600,
-  color: '#4C4E64',
+  fontWeight: 500,
+  color: colors.gray[800],
   textTransform: 'uppercase',
   letterSpacing: '0.5px',
   padding: '12px 16px',
@@ -44,7 +46,7 @@ const StyledTableRow = styled(TableRow)({
   height: '52px',
   cursor: 'pointer',
   '&:hover': {
-    backgroundColor: '#F8F9FA',
+    backgroundColor: colors.gray[100],
   },
   '&:not(:last-child)': {
     borderBottom: '1px solid #E9EDF4',
@@ -52,10 +54,10 @@ const StyledTableRow = styled(TableRow)({
 });
 
 const StyledTableCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: fonts.body,
   fontSize: '14px',
   fontWeight: 400,
-  color: '#000000',
+  color: 'black',
   padding: '12px 16px',
   borderBottom: 'none',
 });
@@ -70,7 +72,7 @@ const AlertIndicator = styled(Box)<{ hasAlert: boolean }>(({ hasAlert }) => ({
   width: '16px',
   height: '16px',
   borderRadius: '50%',
-  backgroundColor: hasAlert ? '#DC3545' : '#6C757D',
+  backgroundColor: hasAlert ? 'red' : 'black',
   border: `2px solid ${hasAlert ? '#FFFFFF' : 'transparent'}`,
   position: 'relative',
   '&::after': hasAlert ? {
