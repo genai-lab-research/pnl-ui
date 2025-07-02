@@ -11,6 +11,7 @@ import {
   Box,
   Tooltip,
 } from '@mui/material';
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
@@ -68,25 +69,18 @@ const TypeIcon = styled(Box)({
   gap: '8px',
 });
 
-const AlertIndicator = styled(Box)<{ hasAlert: boolean }>(({ hasAlert }) => ({
-  width: '16px',
-  height: '16px',
-  borderRadius: '50%',
-  backgroundColor: hasAlert ? 'red' : 'black',
-  border: `2px solid ${hasAlert ? '#FFFFFF' : 'transparent'}`,
-  position: 'relative',
-  '&::after': hasAlert ? {
-    content: '""',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '6px',
-    height: '6px',
-    backgroundColor: '#FFFFFF',
-    borderRadius: '50%',
-  } : {},
-}));
+interface AlertIndicatorProps {
+  hasAlert: boolean;
+}
+
+export const AlertIndicator: React.FC<AlertIndicatorProps> = ({ hasAlert }) => (
+  <ErrorOutlineOutlinedIcon
+    sx={{
+      fontSize: '24px',
+      color: hasAlert ? '#FF0000' : '#DADADA',
+    }}
+  />
+);
 
 interface ContainerTableProps {
   containers: Container[];
