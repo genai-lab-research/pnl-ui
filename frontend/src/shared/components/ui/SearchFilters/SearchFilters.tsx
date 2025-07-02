@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import { MenuItem } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { SearchFiltersProps } from './types';
+import React, { useState, useCallback } from "react";
+import { MenuItem } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { SearchFiltersProps } from "./types";
 import {
   SearchFiltersContainer,
   SearchField,
@@ -9,7 +9,8 @@ import {
   ClearFiltersButton,
   AlertsContainer,
   AlertsSwitch,
-} from './SearchFilters.styles';
+  FiltersBlock,
+} from "./SearchFilters.styles";
 
 /**
  * SearchFilters component provides a search bar and various filter controls
@@ -23,15 +24,15 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
   onStatusChange,
   onAlertsChange,
   onClearFilters,
-  searchValue = '',
+  searchValue = "",
   types = [],
-  selectedType = 'All types',
+  selectedType = "All types",
   tenants = [],
-  selectedTenant = 'All tenants',
+  selectedTenant = "All tenants",
   purposes = [],
-  selectedPurpose = 'All purposes',
+  selectedPurpose = "All purposes",
   statuses = [],
-  selectedStatus = 'All statuses',
+  selectedStatus = "All statuses",
   hasAlerts = false,
 }) => {
   const [search, setSearch] = useState<string>(searchValue);
@@ -96,11 +97,11 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
   );
 
   const handleClearFilters = useCallback(() => {
-    setSearch('');
-    setType('All types');
-    setTenant('All tenants');
-    setPurpose('All purposes');
-    setStatus('All statuses');
+    setSearch("");
+    setType("All types");
+    setTenant("All tenants");
+    setPurpose("All purposes");
+    setStatus("All statuses");
     setAlerts(false);
     onClearFilters?.();
   }, [onClearFilters]);
@@ -116,91 +117,93 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
         }}
         size="small"
       />
-      
-      <FilterSelect
-        select
-        value={type}
-        onChange={handleTypeChange}
-        size="small"
-        InputProps={{
-          style: { minWidth: '120px' }
-        }}
-      >
-        <MenuItem value="All types">All types</MenuItem>
-        {types.map((type) => (
-          <MenuItem key={type} value={type}>
-            {type}
-          </MenuItem>
-        ))}
-      </FilterSelect>
 
-      <FilterSelect
-        select
-        value={tenant}
-        onChange={handleTenantChange}
-        size="small"
-        InputProps={{
-          style: { minWidth: '120px' }
-        }}
-      >
-        <MenuItem value="All tenants">All tenants</MenuItem>
-        {tenants.map((tenant) => (
-          <MenuItem key={tenant} value={tenant}>
-            {tenant}
-          </MenuItem>
-        ))}
-      </FilterSelect>
+      <FiltersBlock>
+        <FilterSelect
+          select
+          value={type}
+          onChange={handleTypeChange}
+          size="small"
+          InputProps={{
+            style: { minWidth: "120px" },
+          }}
+        >
+          <MenuItem value="All types">All types</MenuItem>
+          {types.map((type) => (
+            <MenuItem key={type} value={type}>
+              {type}
+            </MenuItem>
+          ))}
+        </FilterSelect>
 
-      <FilterSelect
-        select
-        value={purpose}
-        onChange={handlePurposeChange}
-        size="small"
-        InputProps={{
-          style: { minWidth: '120px' }
-        }}
-      >
-        <MenuItem value="All purposes">All purposes</MenuItem>
-        {purposes.map((purpose) => (
-          <MenuItem key={purpose} value={purpose}>
-            {purpose}
-          </MenuItem>
-        ))}
-      </FilterSelect>
+        <FilterSelect
+          select
+          value={tenant}
+          onChange={handleTenantChange}
+          size="small"
+          InputProps={{
+            style: { minWidth: "120px" },
+          }}
+        >
+          <MenuItem value="All tenants">All tenants</MenuItem>
+          {tenants.map((tenant) => (
+            <MenuItem key={tenant} value={tenant}>
+              {tenant}
+            </MenuItem>
+          ))}
+        </FilterSelect>
 
-      <FilterSelect
-        select
-        value={status}
-        onChange={handleStatusChange}
-        size="small"
-        InputProps={{
-          style: { minWidth: '120px' }
-        }}
-      >
-        <MenuItem value="All statuses">All statuses</MenuItem>
-        {statuses.map((status) => (
-          <MenuItem key={status} value={status}>
-            {status}
-          </MenuItem>
-        ))}
-      </FilterSelect>
+        <FilterSelect
+          select
+          value={purpose}
+          onChange={handlePurposeChange}
+          size="small"
+          InputProps={{
+            style: { minWidth: "120px" },
+          }}
+        >
+          <MenuItem value="All purposes">All purposes</MenuItem>
+          {purposes.map((purpose) => (
+            <MenuItem key={purpose} value={purpose}>
+              {purpose}
+            </MenuItem>
+          ))}
+        </FilterSelect>
 
-      <AlertsContainer>
-        Has Alerts
-        <AlertsSwitch
-          checked={alerts}
-          onChange={handleAlertsChange}
-          inputProps={{ 'aria-label': 'has alerts toggle' }}
-        />
-      </AlertsContainer>
+        <FilterSelect
+          select
+          value={status}
+          onChange={handleStatusChange}
+          size="small"
+          InputProps={{
+            style: { minWidth: "120px" },
+          }}
+        >
+          <MenuItem value="All statuses">All statuses</MenuItem>
+          {statuses.map((status) => (
+            <MenuItem key={status} value={status}>
+              {status}
+            </MenuItem>
+          ))}
+        </FilterSelect>
 
-      <ClearFiltersButton
-        variant="text"
-        color="primary"
-        onClick={handleClearFilters}
-      >
-        Clear Filters
-      </ClearFiltersButton>
+        <AlertsContainer>
+          Has Alerts
+          <AlertsSwitch
+            checked={alerts}
+            onChange={handleAlertsChange}
+            inputProps={{ "aria-label": "has alerts toggle" }}
+          />
+        </AlertsContainer>
+
+        <ClearFiltersButton
+          variant="text"
+          color="primary"
+          onClick={handleClearFilters}
+        >
+          Clear Filters
+        </ClearFiltersButton>
+      </FiltersBlock>
     </SearchFiltersContainer>
   );
 };

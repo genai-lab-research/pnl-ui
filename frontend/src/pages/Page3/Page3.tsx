@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { ContainerGenerationBlock } from '../../shared/components/ContainerGenerationBlock';
 
 /**
  * Page 3 Component
@@ -32,15 +31,6 @@ export const Page3: React.FC = () => {
       >
         Main Lettuce Container
       </Typography>
-
-      {/* Right-aligned ContainerGenerationBlock */}
-      <ContainerGenerationBlock
-        label="Physical container | Tenant-123 | Development"
-        status={{
-          label: "Active",
-          type: "active"
-        }}
-      />
     </Box>
   );
 };

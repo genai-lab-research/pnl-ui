@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { PaginationBlockProps } from './types';
+import * as React from "react";
+import { PaginationBlockProps } from "./types";
 import {
   Container,
   InnerContainer,
@@ -9,16 +9,16 @@ import {
   Button,
   ButtonContent,
   PreviousText,
-  NextText
-} from './PaginationBlock.styles';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+  NextText,
+} from "./PaginationBlock.styles";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export const PaginationBlock: React.FC<PaginationBlockProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-  className
+  className,
 }) => {
   const isPreviousDisabled = currentPage <= 1;
   const isNextDisabled = currentPage >= totalPages;
@@ -41,37 +41,21 @@ export const PaginationBlock: React.FC<PaginationBlockProps> = ({
     <Container className={className}>
       <InnerContainer>
         <LeftLabel>{pageStatus}</LeftLabel>
-        
+
         <ButtonGroup>
-          <Button 
-            disabled={isPreviousDisabled}
-            onClick={handlePreviousClick}
-          >
+          <Button disabled={isPreviousDisabled} onClick={handlePreviousClick}>
             <ButtonContent>
-              <ArrowBackIcon 
-                sx={{ 
-                  fontSize: '20px',
-                  color: 'rgba(76, 78, 100, 0.26)',
-                }} 
-              />
+              <ArrowBackIcon />
               <PreviousText>Previous</PreviousText>
             </ButtonContent>
           </Button>
-          
+
           <CenterLabel>{pageStatus}</CenterLabel>
-          
-          <Button 
-            disabled={isNextDisabled}
-            onClick={handleNextClick}
-          >
+
+          <Button disabled={isNextDisabled} onClick={handleNextClick}>
             <ButtonContent>
               <NextText>Next</NextText>
-              <ArrowForwardIcon 
-                sx={{ 
-                  fontSize: '20px',
-                  color: '#6C778D',
-                }} 
-              />
+              <ArrowForwardIcon />
             </ButtonContent>
           </Button>
         </ButtonGroup>

@@ -11,12 +11,15 @@ import {
   Box,
   Tooltip,
 } from '@mui/material';
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import CloudIcon from '@mui/icons-material/Cloud';
-import StorageIcon from '@mui/icons-material/Storage';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import ShippingContainerIcon from './icons/shipping-container.svg';
 import { Container } from '../../../types/containers';
 import { StatusChip, StatusType } from '../StatusChip';
+import { colors } from "@/shared/constants/colors";
+import { fonts } from "@/shared/constants/fonts";
 
 const StyledTableContainer = styled(TableContainer)(() => ({
   borderRadius: '6px',
@@ -26,14 +29,14 @@ const StyledTableContainer = styled(TableContainer)(() => ({
 }));
 
 const StyledTableHead = styled(TableHead)({
-  backgroundColor: '#F8F9FA',
+  backgroundColor: colors.gray[100],
 });
 
 const StyledHeaderCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: fonts.body,
   fontSize: '14px',
-  fontWeight: 600,
-  color: '#4C4E64',
+  fontWeight: 500,
+  color: colors.gray[800],
   textTransform: 'uppercase',
   letterSpacing: '0.5px',
   padding: '12px 16px',
@@ -44,7 +47,7 @@ const StyledTableRow = styled(TableRow)({
   height: '52px',
   cursor: 'pointer',
   '&:hover': {
-    backgroundColor: '#F8F9FA',
+    backgroundColor: colors.gray[100],
   },
   '&:not(:last-child)': {
     borderBottom: '1px solid #E9EDF4',
@@ -52,10 +55,10 @@ const StyledTableRow = styled(TableRow)({
 });
 
 const StyledTableCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: fonts.body,
   fontSize: '14px',
   fontWeight: 400,
-  color: '#000000',
+  color: 'black',
   padding: '12px 16px',
   borderBottom: 'none',
 });
@@ -66,25 +69,18 @@ const TypeIcon = styled(Box)({
   gap: '8px',
 });
 
-const AlertIndicator = styled(Box)<{ hasAlert: boolean }>(({ hasAlert }) => ({
-  width: '16px',
-  height: '16px',
-  borderRadius: '50%',
-  backgroundColor: hasAlert ? '#DC3545' : '#6C757D',
-  border: `2px solid ${hasAlert ? '#FFFFFF' : 'transparent'}`,
-  position: 'relative',
-  '&::after': hasAlert ? {
-    content: '""',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '6px',
-    height: '6px',
-    backgroundColor: '#FFFFFF',
-    borderRadius: '50%',
-  } : {},
-}));
+interface AlertIndicatorProps {
+  hasAlert: boolean;
+}
+
+export const AlertIndicator: React.FC<AlertIndicatorProps> = ({ hasAlert }) => (
+  <ErrorOutlineOutlinedIcon
+    sx={{
+      fontSize: '24px',
+      color: hasAlert ? '#FF0000' : '#DADADA',
+    }}
+  />
+);
 
 interface ContainerTableProps {
   containers: Container[];
@@ -159,9 +155,9 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
               <StyledTableCell>
                 <TypeIcon>
                   {container.type === 'virtual' ? (
-                    <CloudIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <CloudQueueIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
                   ) : (
-                    <StorageIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <img src={ShippingContainerIcon} alt="Container icon" width={16} height={16} />
                   )}
                 </TypeIcon>
               </StyledTableCell>

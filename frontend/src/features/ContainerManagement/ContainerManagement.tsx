@@ -1,113 +1,118 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, Container } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Button, Container } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
-import { Header } from '../../shared/components/ui/Header';
-import { SearchFilters } from '../../shared/components/ui/SearchFilters';
-import ContainerStatistics from '../../shared/components/ui/ContainerStatistics';
-import { TimeRangeSelector } from '../../shared/components/ui/TimeRangeSelector';
-import { ContainerTable } from '../../shared/components/ui/ContainerTable';
-import { Paginator } from '../../shared/components/ui/Paginator';
-import { ContainerCreationDrawer } from '../ContainerCreation';
+import { Header } from "../../shared/components/ui/Header";
+import { SearchFilters } from "../../shared/components/ui/SearchFilters";
+import ContainerStatistics from "../../shared/components/ui/ContainerStatistics";
+import { TimeRangeSelector } from "../../shared/components/ui/TimeRangeSelector";
+import { ContainerTable } from "../../shared/components/ui/ContainerTable";
+import { Paginator } from "../../shared/components/ui/Paginator";
+import { ContainerCreationDrawer } from "../ContainerCreation";
+import { colors } from "@/shared/constants/colors";
+import { fonts } from "@/shared/constants/fonts";
 
-import { Container as ContainerType, ContainerFilterCriteria } from '../../shared/types/containers';
-import { containerService } from '../../api/containerService';
+import {
+  Container as ContainerType,
+  ContainerFilterCriteria,
+} from "../../shared/types/containers";
+import { containerService } from "../../api/containerService";
+import { AddCircleOutline } from "@mui/icons-material";
 
 const PageBackground = styled(Box)({
-  backgroundColor: '#F7F9FD',
-  minHeight: '100vh',
+  backgroundColor: colors.background,
+  minHeight: "100vh",
 });
 
 const PageContent = styled(Container)({
-  paddingTop: '16px',
-  paddingBottom: '24px',
-  maxWidth: '1392px !important',
+  paddingTop: "16px",
+  paddingBottom: "24px",
+  maxWidth: "1392px !important",
 });
 
 const PageTitleBar = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '16px',
-  padding: '0 24px',
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "16px",
+  padding: "0 24px",
 });
 
 const PageTitle = styled(Typography)({
-  fontFamily: 'Roboto, sans-serif',
-  fontSize: '24px',
+  fontFamily: fonts.heading,
+  fontSize: "24px",
   fontWeight: 400,
-  color: '#000000',
+  color: "black",
 });
 
 const SectionCard = styled(Box)({
-  backgroundColor: '#FFFFFF',
-  borderRadius: '8px',
-  padding: '24px',
-  marginBottom: '16px',
-  boxShadow: '0 0 2px rgba(65, 64, 69, 0.2)',
+  backgroundColor: "white",
+  borderRadius: "8px",
+  padding: "24px",
+  marginBottom: "16px",
+  boxShadow: "0 0 2px rgba(65, 64, 69, 0.2)",
 });
 
 const StatisticsSection = styled(Box)({
-  backgroundColor: '#FFFFFF',
-  borderRadius: '8px',
-  padding: '24px 24px 14px 24px',
-  marginBottom: '16px',
-  boxShadow: '0 0 2px rgba(65, 64, 69, 0.2)',
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '16px',
-  alignItems: 'flex-start',
+  backgroundColor: "white",
+  borderRadius: "8px",
+  padding: "24px 24px 14px 24px",
+  marginBottom: "16px",
+  boxShadow: "0 0 2px rgba(65, 64, 69, 0.2)",
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "16px",
+  alignItems: "flex-start",
 });
 
 const ContainerListSection = styled(Box)({
-  backgroundColor: '#FFFFFF',
-  borderRadius: '8px',
-  padding: '16px 24px',
-  boxShadow: '0 0 2px rgba(65, 64, 69, 0.2)',
+  backgroundColor: "white",
+  borderRadius: "8px",
+  padding: "16px 24px",
+  boxShadow: "0 0 2px rgba(65, 64, 69, 0.2)",
 });
 
 const SectionHeader = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '16px',
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "16px",
 });
 
 const SectionTitle = styled(Typography)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '16px',
+  fontFamily: fonts.body,
+  fontSize: "16px",
   fontWeight: 600,
-  color: '#000000',
+  color: "#000000",
 });
 
 const CreateButton = styled(Button)({
-  backgroundColor: '#4F46E5',
-  color: '#FFFFFF',
-  textTransform: 'none',
-  borderRadius: '6px',
-  padding: '8px 16px',
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '14px',
+  backgroundColor: "#3545EE",
+  color: "white",
+  textTransform: "none",
+  borderRadius: "6px",
+  padding: "8px 16px",
+  fontFamily: fonts.body,
+  fontSize: "14px",
   fontWeight: 500,
-  '&:hover': {
-    backgroundColor: '#4338CA',
+  "&:hover": {
+    backgroundColor: "#4858FF",
   },
 });
 
 const PaginatorSection = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginTop: '16px',
-  padding: '0 4px',
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: "16px",
+  padding: "0 4px",
 });
 
 const PaginatorText = styled(Typography)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '14px',
-  color: '#4C4E64',
+  fontFamily: fonts.body,
+  fontSize: "14px",
+  color: colors.gray[300],
 });
 
 export const ContainerManagement: React.FC = () => {
@@ -116,7 +121,9 @@ export const ContainerManagement: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<ContainerFilterCriteria>({});
-  const [timeRange, setTimeRange] = useState<'Week' | 'Month' | 'Quarter' | 'Year'>('Week');
+  const [timeRange, setTimeRange] = useState<
+    "Week" | "Month" | "Quarter" | "Year"
+  >("Week");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalContainers, setTotalContainers] = useState(0);
@@ -137,7 +144,7 @@ export const ContainerManagement: React.FC = () => {
           setError(response.error.detail);
         }
       } catch {
-        setError('Failed to load containers');
+        setError("Failed to load containers");
       } finally {
         setLoading(false);
       }
@@ -151,7 +158,9 @@ export const ContainerManagement: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handleTimeRangeChange = (range: 'Week' | 'Month' | 'Quarter' | 'Year') => {
+  const handleTimeRangeChange = (
+    range: "Week" | "Month" | "Quarter" | "Year"
+  ) => {
     setTimeRange(range);
   };
 
@@ -175,25 +184,24 @@ export const ContainerManagement: React.FC = () => {
           setTotalPages(Math.ceil(response.data.length / 10));
         }
       } catch {
-        setError('Failed to load containers');
+        setError("Failed to load containers");
       } finally {
         setLoading(false);
       }
     };
-    
+
     loadContainers();
     setDrawerOpen(false);
   };
 
   const handleTableAction = (container: ContainerType, action: string) => {
     // TODO: Implement table actions (edit, delete, etc.)
-    console.log('Table action:', action, container);
+    console.log("Table action:", action, container);
   };
 
   const handleContainerRowClick = (container: ContainerType) => {
     navigate(`/containers/${container.id}`);
   };
-
 
   // Get paginated containers
   const startIndex = (currentPage - 1) * 10;
@@ -231,12 +239,38 @@ export const ContainerManagement: React.FC = () => {
 
         <SectionCard>
           <SearchFilters
-            onSearchChange={(value) => handleFiltersChange({ ...filters, search: value })}
-            onTypeChange={(value) => handleFiltersChange({ ...filters, type: value as 'physical' | 'virtual' })}
-            onTenantChange={(value) => handleFiltersChange({ ...filters, tenant: value })}
-            onPurposeChange={(value) => handleFiltersChange({ ...filters, purpose: value as 'development' | 'research' | 'production' })}
-            onStatusChange={(value) => handleFiltersChange({ ...filters, status: value as 'created' | 'active' | 'connected' | 'maintenance' | 'inactive' })}
-            onAlertsChange={(hasAlerts) => handleFiltersChange({ ...filters, has_alerts: hasAlerts })}
+            onSearchChange={(value) =>
+              handleFiltersChange({ ...filters, search: value })
+            }
+            onTypeChange={(value) =>
+              handleFiltersChange({
+                ...filters,
+                type: value as "physical" | "virtual",
+              })
+            }
+            onTenantChange={(value) =>
+              handleFiltersChange({ ...filters, tenant: value })
+            }
+            onPurposeChange={(value) =>
+              handleFiltersChange({
+                ...filters,
+                purpose: value as "development" | "research" | "production",
+              })
+            }
+            onStatusChange={(value) =>
+              handleFiltersChange({
+                ...filters,
+                status: value as
+                  | "created"
+                  | "active"
+                  | "connected"
+                  | "maintenance"
+                  | "inactive",
+              })
+            }
+            onAlertsChange={(hasAlerts) =>
+              handleFiltersChange({ ...filters, has_alerts: hasAlerts })
+            }
             onClearFilters={() => handleFiltersChange({})}
             searchValue={filters.search}
             selectedType={filters.type}
@@ -256,34 +290,42 @@ export const ContainerManagement: React.FC = () => {
           </Box>
           <Box sx={{ flex: 1 }}>
             <ContainerStatistics
-              title={`${containers.filter(c => c.type === 'physical').length > 0 ? 'Physical' : 'Virtual'} Containers`}
+              title={`${
+                containers.filter((c) => c.type === "physical").length > 0
+                  ? "Physical"
+                  : "Virtual"
+              } Containers`}
               containerCount={containers.length}
               yieldData={{
                 average: 63,
                 total: 81,
-                dailyData: [82, 70, 84, 77, 92, 63, 70]
+                dailyData: [82, 70, 84, 77, 92, 63, 70],
               }}
               spaceUtilization={{
                 average: 80,
-                dailyData: [85, 72, 88, 79, 91, 85, 76]
+                dailyData: [85, 72, 88, 79, 91, 85, 76],
               }}
-              dayLabels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+              dayLabels={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
             />
           </Box>
           <Box sx={{ flex: 1 }}>
             <ContainerStatistics
-              title={`${containers.filter(c => c.type === 'virtual').length > 0 ? 'Physical' : 'Virtual'} Containers`}
+              title={`${
+                containers.filter((c) => c.type === "virtual").length > 0
+                  ? "Physical"
+                  : "Virtual"
+              } Containers`}
               containerCount={containers.length}
               yieldData={{
                 average: 63,
                 total: 81,
-                dailyData: [82, 70, 84, 77, 92, 63, 70]
+                dailyData: [82, 70, 84, 77, 92, 63, 70],
               }}
               spaceUtilization={{
                 average: 80,
-                dailyData: [85, 72, 88, 79, 91, 85, 76]
+                dailyData: [85, 72, 88, 79, 91, 85, 76],
               }}
-              dayLabels={['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']}
+              dayLabels={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
             />
           </Box>
         </StatisticsSection>
@@ -291,11 +333,17 @@ export const ContainerManagement: React.FC = () => {
         <ContainerListSection>
           <SectionHeader>
             <SectionTitle>Containers List</SectionTitle>
-            <CreateButton
-              startIcon={<AddIcon />}
-              onClick={handleCreateContainer}
-            >
-              Create Container
+            <CreateButton onClick={handleCreateContainer}>
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <AddCircleOutline />
+                Create Container
+              </span>
             </CreateButton>
           </SectionHeader>
 
@@ -307,7 +355,8 @@ export const ContainerManagement: React.FC = () => {
 
           <PaginatorSection>
             <PaginatorText>
-              Showing page {currentPage} of {totalPages} ({totalContainers} total containers)
+              Showing page {currentPage} of {totalPages} ({totalContainers}{" "}
+              total containers)
             </PaginatorText>
             <Paginator
               currentPage={currentPage}

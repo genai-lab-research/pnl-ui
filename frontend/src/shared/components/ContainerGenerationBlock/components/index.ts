@@ -1,1 +1,0 @@
-export { ContainerIcon } from './ContainerIcon';
