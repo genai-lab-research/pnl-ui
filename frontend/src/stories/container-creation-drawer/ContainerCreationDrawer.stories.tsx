@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ContainerManagement } from '../../features/ContainerManagement';
+import { ContainerDashboardPage } from '../../features/ContainerDashboard';
 import { ContainerCreateRequest } from '../../types/verticalFarm';
 
 // Create a mock component for the drawer since it doesn't exist yet

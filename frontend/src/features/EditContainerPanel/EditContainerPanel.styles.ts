@@ -61,7 +61,7 @@ export const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  
+
   &:hover {
     background: #F0F0F0;
   }
@@ -106,7 +106,7 @@ export const HorizontalGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
   ${FieldLabel} {
     margin-bottom: 0;
   }
@@ -154,7 +154,7 @@ export const EnvironmentRow = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -182,23 +182,23 @@ export const EnvironmentButton = styled.button<{ active?: boolean }>`
   color: ${(props: { active?: boolean }) => props.active ? '#FFFFFF' : '#4C4E64'};
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   &:first-child {
     border-radius: 6px 0 0 6px;
   }
-  
+
   &:last-child {
     border-radius: 0 6px 6px 0;
   }
-  
+
   &:not(:first-child) {
     border-left: none;
   }
-  
+
   &:hover:not(:disabled) {
     background: ${(props: { active?: boolean }) => props.active ? '#556080' : '#F0F0F0'};
   }
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -218,7 +218,7 @@ export const Footer = styled.div`
   gap: 12px;
 `;
 
-export const SaveButton = styled.button<{ loading?: boolean }>`
+export const SaveButton = styled.button<{ $loading?: boolean }>`
   width: 100%;
   padding: 12px 24px;
   background: #656CFF;
@@ -228,17 +228,18 @@ export const SaveButton = styled.button<{ loading?: boolean }>`
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: ${props => props.$loading ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.$loading ? 0.7 : 1};
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   transition: background 0.2s ease;
-  
+
   &:hover:not(:disabled) {
     background: #5A61E6;
   }
-  
+
   &:disabled {
     background: #B0B0B0;
     cursor: not-allowed;
@@ -257,7 +258,7 @@ export const CancelButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background: #F8F9FA;
     border-color: #333;
@@ -284,7 +285,7 @@ export const LoadingSpinner = styled.div`
   border-top: 2px solid currentColor;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

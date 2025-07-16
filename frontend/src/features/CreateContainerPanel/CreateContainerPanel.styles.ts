@@ -50,7 +50,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
   padding: 0;
   line-height: 1;
-  
+
   &:hover {
     color: #333;
   }
@@ -66,7 +66,7 @@ export const FormContainer = styled.div`
 
 export const FormSection = styled.div`
   margin-bottom: 32px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -81,7 +81,7 @@ export const SectionTitle = styled.h3`
 
 export const FormField = styled.div`
   margin-bottom: 20px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -144,7 +144,7 @@ export const EnvironmentRow = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -171,7 +171,7 @@ export const EnvironmentButton = styled.button<{ active: boolean; disabled?: boo
   border-radius: 4px;
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   opacity: ${props => props.disabled ? 0.5 : 1};
-  
+
   &:hover:not(:disabled) {
     background: ${props => props.active ? '#1565c0' : '#f5f5f5'};
   }
@@ -184,7 +184,7 @@ export const Footer = styled.div`
   margin-top: auto;
 `;
 
-export const CreateButton = styled.button<{ loading?: boolean }>`
+export const CreateButton = styled.button<{ $loading?: boolean }>`
   width: 100%;
   height: 40px;
   background: #1976d2;
@@ -193,17 +193,17 @@ export const CreateButton = styled.button<{ loading?: boolean }>`
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
-  cursor: ${props => props.loading ? 'not-allowed' : 'pointer'};
-  opacity: ${props => props.loading ? 0.7 : 1};
+  cursor: ${props => props.$loading ? 'not-allowed' : 'pointer'};
+  opacity: ${props => props.$loading ? 0.7 : 1};
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  
+
   &:hover:not(:disabled) {
     background: #1565c0;
   }
-  
+
   &:disabled {
     background: #ccc;
     cursor: not-allowed;
@@ -223,7 +223,7 @@ export const LoadingSpinner = styled.div`
   border-top: 2px solid currentColor;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

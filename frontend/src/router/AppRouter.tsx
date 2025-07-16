@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ContainerManagement } from '../features/ContainerManagement';
+import { ContainerDashboardPage } from '../features/ContainerDashboard';
 import { AuthDemo } from '../components/AuthDemo';
 import { useAuth } from '../context/AuthContext.tsx';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
-  
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -14,7 +14,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
       </div>
     );
   }
-  
+
   return <>{children}</>;
 };
 
@@ -24,7 +24,7 @@ export const AppRouter: React.FC = () => {
       <Routes>
         <Route path="/containers" element={
           <ProtectedRoute>
-            <ContainerManagement />
+            <ContainerDashboardPage />
           </ProtectedRoute>
         } />
         <Route path="*" element={<Navigate to="/containers" replace />} />

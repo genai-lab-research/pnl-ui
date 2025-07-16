@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  TextInput, 
-  Select, 
+import {
+  TextInput,
+  Select,
   SelectOption,
-  Switch, 
-  Checkbox, 
-  SegmentedButton 
+  Switch,
+  Checkbox,
+  SegmentedButton
 } from '../../shared/components/ui';
-import { 
-  containerService, 
-  tenantService, 
-  seedTypeService 
+import {
+  containerService,
+  tenantService,
+  seedTypeService
 } from '../../api';
-import { 
-  EditContainerPanelProps, 
-  EditContainerFormData, 
+import {
+  EditContainerPanelProps,
+  EditContainerFormData,
   FormErrors,
   EnvironmentToggleState,
   purposeOptions,
@@ -55,7 +55,7 @@ import {
 
 /**
  * EditContainerPanel - A slide-in panel for editing existing containers
- * 
+ *
  * Features:
  * - Pre-populated form fields with container's current data
  * - Container name is read-only (immutable after creation)
@@ -111,7 +111,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
         seedTypeService.getSeedTypes(),
         containerService.listContainers()
       ]);
-      
+
       setTenants(tenantsData);
       setSeedTypes(seedTypesData);
       if (containersResponse.data) {
@@ -135,7 +135,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
   const populateFormData = (containerData: Container) => {
     // Find tenant ID from name
     const tenant = tenants.find(t => t.name === containerData.tenant);
-    
+
     setFormData({
       name: containerData.name,
       tenant_id: tenant?.id?.toString() || '',
@@ -200,7 +200,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
       ...prev,
       [field]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[field as keyof FormErrors]) {
       setErrors(prev => ({
@@ -212,7 +212,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
 
   const handlePurposeChange = (purpose: string) => {
     handleFormChange('purpose', purpose);
-    
+
     // Auto-select environments based on purpose
     if (purpose === 'development') {
       setEnvironmentState({
@@ -264,7 +264,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!container) return;
 
     const formErrors = validateForm();
@@ -274,7 +274,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
     }
 
     setLoading(true);
-    
+
     try {
       // Find the tenant name for the request
       const selectedTenant = tenants.find(t => t.id === Number(formData.tenant_id));
@@ -286,7 +286,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
         type: formData.type.toLowerCase() as 'physical' | 'virtual',
         tenant: selectedTenant.name,
         purpose: formData.purpose as 'development' | 'research' | 'production',
-        location: formData.type === 'Physical' ? { 
+        location: formData.type === 'Physical' ? {
           address: formData.location,
           city: '', // These would need to be parsed or collected separately
           country: ''
@@ -298,7 +298,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
       };
 
       const response = await containerService.updateContainer(container.id, updateRequest);
-      
+
       if (response.error) {
         throw new Error(response.error.detail);
       }
@@ -306,7 +306,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
       if (onSuccess && response.data) {
         onSuccess(response.data);
       }
-      
+
       onClose();
     } catch (error) {
       console.error('Error updating container:', error);
@@ -337,7 +337,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
             {/* Container Information Section */}
             <FormSection>
               <SectionTitle>Container Information</SectionTitle>
-              
+
               <FormField>
                 <FieldLabel>Container Name</FieldLabel>
                 <ReadOnlyField>{formData.name}</ReadOnlyField>
@@ -421,7 +421,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
             {/* Settings Section */}
             <FormSection>
               <SectionTitle>Settings</SectionTitle>
-              
+
               <SwitchRow>
                 <SwitchLabel>Enable Shadow Service</SwitchLabel>
                 <Switch
@@ -456,7 +456,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
             {/* System Integration Section */}
             <FormSection>
               <SectionTitle>System Integration</SectionTitle>
-              
+
               <CheckboxRow>
                 <Checkbox
                   checked={formData.ecosystem_connected}
@@ -558,7 +558,7 @@ export const EditContainerPanel: React.FC<EditContainerPanelProps> = ({
               <CancelButton type="button" onClick={handleCancel}>
                 Cancel
               </CancelButton>
-              <SaveButton type="submit" loading={loading} disabled={loading}>
+              <SaveButton type="submit" $loading={loading} disabled={loading}>
                 {loading && <LoadingSpinner />}
                 Save
               </SaveButton>

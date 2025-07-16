@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  TextInput, 
-  Select, 
+import {
+  TextInput,
+  Select,
   SelectOption,
-  Switch, 
-  Checkbox, 
-  SegmentedButton 
+  Switch,
+  Checkbox,
+  SegmentedButton
 } from '../../shared/components/ui';
-import { 
-  containerService, 
-  tenantService, 
-  seedTypeService 
+import {
+  containerService,
+  tenantService,
+  seedTypeService
 } from '../../api';
-import { 
-  CreateContainerPanelProps, 
-  CreateContainerFormData, 
+import {
+  CreateContainerPanelProps,
+  CreateContainerFormData,
   FormErrors,
   EnvironmentToggleState,
   purposeOptions,
@@ -53,7 +53,7 @@ import {
 
 /**
  * CreateContainerPanel - A slide-in panel for creating new containers
- * 
+ *
  * Features:
  * - Dynamic form fields based on container type (Physical/Virtual)
  * - Integration with backend APIs for tenants, seed types
@@ -92,7 +92,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
         seedTypeService.getSeedTypes(),
         containerService.listContainers()
       ]);
-      
+
       setTenants(tenantsData);
       setSeedTypes(seedTypesData);
       if (containersResponse.data) {
@@ -130,7 +130,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
       ...prev,
       [field]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[field as keyof FormErrors]) {
       setErrors(prev => ({
@@ -142,7 +142,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
 
   const handlePurposeChange = (purpose: string) => {
     handleFormChange('purpose', purpose);
-    
+
     // Auto-select environments based on purpose
     if (purpose === 'development') {
       setEnvironmentState({
@@ -198,7 +198,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -206,7 +206,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
     }
 
     setLoading(true);
-    
+
     try {
       // Find the tenant name for the request
       const selectedTenant = tenants.find(t => t.id === Number(formData.tenant_id));
@@ -227,7 +227,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
       };
 
       const response = await containerService.createContainer(createRequest);
-      
+
       if (response.error) {
         throw new Error(response.error.detail);
       }
@@ -235,7 +235,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
       if (onSuccess && response.data) {
         onSuccess(response.data);
       }
-      
+
       onClose();
     } catch (error) {
       console.error('Error creating container:', error);
@@ -262,7 +262,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
               {/* Container Information Section */}
             <FormSection>
               <SectionTitle>Container Information</SectionTitle>
-              
+
               <FormField>
                 <FieldLabel>
                   Container Name<Required>*</Required>
@@ -353,7 +353,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
             {/* Settings Section */}
             <FormSection>
               <SectionTitle>Settings</SectionTitle>
-              
+
               <SwitchRow>
                 <SwitchLabel>Enable Shadow Service</SwitchLabel>
                 <Switch
@@ -388,7 +388,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
             {/* System Integration Section */}
             <FormSection>
               <SectionTitle>System Integration</SectionTitle>
-              
+
               <CheckboxRow>
                 <Checkbox
                   checked={formData.ecosystem_connected}
@@ -485,7 +485,7 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
 
             <Footer>
               {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
-              <CreateButton type="submit" loading={loading} disabled={loading}>
+              <CreateButton type="submit" $loading={loading} disabled={loading}>
                 {loading && <LoadingSpinner />}
                 {formData.ecosystem_connected ? 'Create and Connect' : 'Create Container'}
               </CreateButton>

@@ -11,11 +11,11 @@ import { CreateContainerButton } from '../../shared/components/ui/CreateContaine
 import { CreateContainerPanel } from '../CreateContainerPanel';
 import { containerApiService } from '../../api/containerApiService';
 import { Container } from '../../shared/types/containers';
-import { 
-  ContainerListResponse, 
-  ContainerFilterCriteria, 
+import {
+  ContainerListResponse,
+  ContainerFilterCriteria,
   FilterOptions,
-  PerformanceMetrics 
+  PerformanceMetrics
 } from '../../types/container';
 import { TimeRange } from '../../shared/components/ui/TimeRangeSelector/types';
 
@@ -71,7 +71,7 @@ const ContainerListTitle = styled(Typography)({
   color: '#000000',
 });
 
-export const ContainerManagement: React.FC = () => {
+const ContainerDashboardPage: React.FC = () => {
   const [containers, setContainers] = useState<Container[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -88,7 +88,7 @@ export const ContainerManagement: React.FC = () => {
   } | null>(null);
   const [filterOptions, setFilterOptions] = useState<FilterOptions | null>(null);
   const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, total_pages: 0 });
-  
+
   // Filter states
   const [searchValue, setSearchValue] = useState('');
   const [selectedType, setSelectedType] = useState('All types');
@@ -139,7 +139,7 @@ export const ContainerManagement: React.FC = () => {
     try {
       setLoading(true);
       const criteria = buildFilterCriteria();
-      
+
       const [listResponse, filterOptionsResponse, metricsResponse] = await Promise.all([
         containerApiService.listContainers(criteria),
         filterOptions ? Promise.resolve(filterOptions) : containerApiService.getFilterOptions(),
@@ -168,9 +168,9 @@ export const ContainerManagement: React.FC = () => {
       setContainers(transformedContainers);
       setPagination(listResponse.pagination);
       if (!filterOptions) setFilterOptions(filterOptionsResponse);
-      
+
       // Transform metrics for ContainerStatistics component
-      const transformMetrics = (metrics: { 
+      const transformMetrics = (metrics: {
         container_count: number;
         yield: { average: number; total: number; chart_data: Array<{ value: number }> };
         space_utilization: { average: number; chart_data: Array<{ value: number }> };
@@ -284,15 +284,15 @@ export const ContainerManagement: React.FC = () => {
       const backendContainer = await containerApiService.getContainer(parseInt(containerId));
       if (backendContainer) {
         const localContainer = containers.find(c => c.id === containerId);
-        
+
         if (localContainer) {
           // Compare critical fields to ensure synchronization
-          const isOutOfSync = 
+          const isOutOfSync =
             localContainer.status !== backendContainer.status ||
             localContainer.name !== backendContainer.name ||
             localContainer.purpose !== backendContainer.purpose ||
             JSON.stringify(localContainer.location) !== JSON.stringify(backendContainer.location);
-          
+
           if (isOutOfSync) {
             console.warn('Container state out of sync, refreshing...', {
               local: localContainer,
@@ -322,31 +322,31 @@ export const ContainerManagement: React.FC = () => {
       };
 
       // Update the container in the local state
-      setContainers(prev => 
-        prev.map(container => 
+      setContainers(prev =>
+        prev.map(container =>
           container.id === transformedContainer.id ? transformedContainer : container
         )
       );
-      
+
       console.log('Container updated successfully:', transformedContainer);
-      
+
       // Track the last updated container for UI feedback
       setLastUpdatedContainer(transformedContainer.id);
       setTimeout(() => setLastUpdatedContainer(null), 3000); // Clear after 3 seconds
-      
+
       // Refresh metrics if container type or status changed significantly
       // This ensures statistics are up to date
       const originalContainer = containers.find(c => c.id === updatedContainer.id);
-      if (originalContainer && 
-          (originalContainer.status !== updatedContainer.status || 
+      if (originalContainer &&
+          (originalContainer.status !== updatedContainer.status ||
            originalContainer.type !== updatedContainer.type)) {
         // Only reload if there are significant changes that affect metrics
         setTimeout(() => loadData(), 1000); // Small delay to allow backend to process
       }
-      
+
       // Validate backend synchronization after a brief delay
       setTimeout(() => validateContainerState(updatedContainer.id), 2000);
-      
+
     } catch (error) {
       console.error('Error updating container in local state:', error);
       // Fallback: reload data to ensure consistency
@@ -388,7 +388,7 @@ export const ContainerManagement: React.FC = () => {
       <Header logoText="Control Panel" />
       <ContentContainer>
         <PageTitle>Container Management</PageTitle>
-        
+
         <SearchFilters
           onSearchChange={handleSearch}
           onTypeChange={handleTypeChange}
@@ -442,7 +442,7 @@ export const ContainerManagement: React.FC = () => {
             <ContainerListTitle>Container List</ContainerListTitle>
             <CreateContainerButton onClick={handleCreateContainer} />
           </ContainerListHeader>
-          
+
           <ContainerTable
             containers={containers}
             onRowAction={handleRowAction}
@@ -450,7 +450,7 @@ export const ContainerManagement: React.FC = () => {
             sortConfig={sortConfig}
             onSort={handleSort}
           />
-          
+
           {lastUpdatedContainer && (
             <Box
               sx={{
@@ -471,7 +471,7 @@ export const ContainerManagement: React.FC = () => {
               Container updated successfully!
             </Box>
           )}
-          
+
           <Paginator
             currentPage={pagination.page}
             totalPages={pagination.total_pages}
@@ -479,7 +479,7 @@ export const ContainerManagement: React.FC = () => {
           />
         </ContainerListSection>
       </ContentContainer>
-      
+
       <CreateContainerPanel
         open={createPanelOpen}
         onClose={handleCreatePanelClose}
@@ -488,3 +488,5 @@ export const ContainerManagement: React.FC = () => {
     </DashboardContainer>
   );
 };
+
+export default ContainerDashboardPage;
