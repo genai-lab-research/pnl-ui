@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 /**
  * Main container for the TextInput component
@@ -20,7 +21,7 @@ export const DefaultContainer = styled.div`
   position: relative;
   width: 372px;
   height: 80px;
-  border: 1px solid rgba(76, 78, 100, 0.22);
+  border: 1px solid ${colors.opacity.secondary22};
   border-radius: 6px;
   padding-left: 12px;
   padding-right: 12px;
@@ -53,21 +54,21 @@ export const StyledInput = styled.input`
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.15px;
-  color: rgba(76, 78, 100, 0.6);
+  color: ${colors.opacity.secondary60};
   background: transparent;
   border: none;
   outline: none;
   width: 100%;
   height: 100%;
-  
+
   &::placeholder {
-    color: rgba(76, 78, 100, 0.6);
+    color: ${colors.opacity.secondary60};
   }
-  
+
   &:focus {
     outline: none;
   }
-  
+
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;

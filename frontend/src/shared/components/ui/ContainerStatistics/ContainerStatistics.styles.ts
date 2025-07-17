@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { background, border, text, secondary } from '../../../styles/colors';
 
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #E4E4E7;
+  border: 1px solid ${border.primary};
   border-radius: 6px;
-  background-color: #FFFFFF;
+  background-color: ${background.primary};
   padding: 20px;
   box-sizing: border-box;
   width: 100%;
@@ -31,7 +32,7 @@ export const StyledCountBadge = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F7F7F7;
+  background-color: ${background.disabled};
   border-radius: 20px;
   width: 32px;
   height: 32px;
@@ -41,7 +42,7 @@ export const StyledCount = styled.span`
   font-family: 'Roboto', sans-serif;
   font-size: 23.625px;
   font-weight: 500;
-  color: #0F1729;
+  color: ${text.caption};
 `;
 
 export const StyledChartsContainer = styled.div`
@@ -115,7 +116,7 @@ export const StyledDayLabel = styled.span`
   font-family: 'Roboto', sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #4C4E64;
+  color: ${secondary.main};
   opacity: 0.6;
   letter-spacing: 0.4px;
   line-height: 14px;

@@ -6,10 +6,11 @@ import {
 } from '@mui/material';
 import { ContainerInfoPanelProps } from './types';
 import { StyledInfoPanel, StyledInfoRow } from './ContainerInfoPanel.styles';
+import { colors } from '../../../styles';
 
 /**
  * ContainerInfoPanel component for displaying container information
- * 
+ *
  * @param props - ContainerInfoPanel props
  * @returns JSX element
  */
@@ -47,7 +48,7 @@ export const ContainerInfoPanel: React.FC<ContainerInfoPanelProps> = ({
       <Typography variant="h6" gutterBottom fontWeight={700}>
         {title}
       </Typography>
-      
+
       <Box display="flex" flexDirection="column" gap={1.5}>
         <StyledInfoRow>
           <Typography variant="body2" fontWeight={500}>Name</Typography>
@@ -61,7 +62,7 @@ export const ContainerInfoPanel: React.FC<ContainerInfoPanelProps> = ({
               sx={{
                 width: 16,
                 height: 16,
-                backgroundColor: '#666',
+                backgroundColor: colors.component.avatarPlaceholder,
                 borderRadius: '2px',
               }}
             />
@@ -96,8 +97,8 @@ export const ContainerInfoPanel: React.FC<ContainerInfoPanelProps> = ({
             label={container.status === 'active' ? 'Active' : 'Inactive'}
             size="small"
             sx={{
-              backgroundColor: container.status === 'active' ? '#479F67' : '#E4E4E7',
-              color: container.status === 'active' ? '#FAFAFA' : '#09090B',
+              backgroundColor: container.status === 'active' ? colors.status.successDark : colors.border.primary,
+              color: container.status === 'active' ? colors.component.switchThumb : colors.text.secondary,
               fontWeight: 600,
             }}
           />

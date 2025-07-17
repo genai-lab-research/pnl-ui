@@ -6,6 +6,7 @@ import {
   Box,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { colors } from '../../../styles';
 import {
   StyledDialog,
   StyledDialogContent,
@@ -203,10 +204,10 @@ const CropDetailModal: React.FC<CropDetailModalProps> = ({ open, onClose, crop, 
           />
         </TimelineControls>
 
-        <Box sx={{ 
-          padding: '16px 24px', 
-          backgroundColor: '#FFFFFF', 
-          borderBottom: '1px solid #E0E0E0',
+        <Box sx={{
+          padding: '16px 24px',
+          backgroundColor: colors.background.primary,
+          borderBottom: `1px solid ${colors.border.primary}`,
           '& > div': {
             width: '100%'
           }
@@ -290,13 +291,13 @@ const CropDetailModal: React.FC<CropDetailModalProps> = ({ open, onClose, crop, 
             onClick={onClose}
             sx={{
               textTransform: 'none',
-              borderColor: '#2196F3',
-              color: '#2196F3',
+              borderColor: colors.status.info,
+              color: colors.status.info,
               width: '100%',
               maxWidth: '480px',
               '&:hover': {
-                borderColor: '#1976D2',
-                backgroundColor: 'rgba(33, 150, 243, 0.04)',
+                borderColor: colors.primary.dark,
+                backgroundColor: colors.opacity.primary04,
               },
             }}
           >

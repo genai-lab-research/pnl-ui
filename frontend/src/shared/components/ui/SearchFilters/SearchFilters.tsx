@@ -116,7 +116,7 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
         }}
         size="small"
       />
-      
+
       <FilterSelect
         select
         value={type}

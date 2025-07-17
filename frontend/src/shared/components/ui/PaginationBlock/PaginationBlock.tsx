@@ -13,6 +13,7 @@ import {
 } from './PaginationBlock.styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { colors } from '../../../styles';
 
 export const PaginationBlock: React.FC<PaginationBlockProps> = ({
   currentPage,
@@ -41,36 +42,36 @@ export const PaginationBlock: React.FC<PaginationBlockProps> = ({
     <Container className={className}>
       <InnerContainer>
         <LeftLabel>{pageStatus}</LeftLabel>
-        
+
         <ButtonGroup>
-          <Button 
+          <Button
             disabled={isPreviousDisabled}
             onClick={handlePreviousClick}
           >
             <ButtonContent>
-              <ArrowBackIcon 
-                sx={{ 
+              <ArrowBackIcon
+                sx={{
                   fontSize: '20px',
-                  color: 'rgba(76, 78, 100, 0.26)',
-                }} 
+                  color: colors.opacity.secondary26,
+                }}
               />
               <PreviousText>Previous</PreviousText>
             </ButtonContent>
           </Button>
-          
+
           <CenterLabel>{pageStatus}</CenterLabel>
-          
-          <Button 
+
+          <Button
             disabled={isNextDisabled}
             onClick={handleNextClick}
           >
             <ButtonContent>
               <NextText>Next</NextText>
-              <ArrowForwardIcon 
-                sx={{ 
+              <ArrowForwardIcon
+                sx={{
                   fontSize: '20px',
                   color: '#6C778D',
-                }} 
+                }}
               />
             </ButtonContent>
           </Button>

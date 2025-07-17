@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { component, opacity } from '../../../styles/colors';
 
 export const SwitchContainer = styled.div`
   position: relative;
@@ -28,7 +29,7 @@ export const SlideFrame = styled.div<{ checked: boolean }>`
 export const SlideTrack = styled.div<{ checked: boolean }>`
   width: 100%;
   height: 14px;
-  background-color: ${props => props.checked ? '#1976d2' : '#000000'};
+  background-color: ${props => props.checked ? component.switchTrack : 'black'};
   border-radius: 7px;
   transition: background-color 300ms;
 `;
@@ -48,12 +49,12 @@ export const KnobFrame = styled.div<{ checked: boolean }>`
 export const Knob = styled.div`
   width: 20px;
   height: 20px;
-  background-color: #FAFAFA;
+  background-color: ${component.switchThumb};
   border-radius: 50%;
-  box-shadow: 
-    0px 1px 3px 0px rgba(76, 78, 100, 1),
-    0px 1px 1px 0px rgba(76, 78, 100, 1),
-    0px 2px 1px -1px rgba(76, 78, 100, 1);
+  box-shadow:
+    0px 1px 3px 0px ${opacity.secondary12},
+    0px 1px 1px 0px ${opacity.secondary12},
+    0px 2px 1px -1px ${opacity.secondary12};
 `;
 
 export const HiddenInput = styled.input`

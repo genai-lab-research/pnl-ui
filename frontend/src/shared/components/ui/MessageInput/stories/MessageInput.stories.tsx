@@ -70,15 +70,12 @@ export const WithHandlers: Story = {
   args: {
     placeholder: 'Type your message',
     onSend: (message) => {
-      console.log('Message sent:', message);
       alert(`Message sent: ${message}`);
     },
     onAttachmentClick: () => {
-      console.log('Attachment clicked');
       alert('Attachment button clicked');
     },
     onVoiceClick: () => {
-      console.log('Voice clicked');
       alert('Voice button clicked');
     },
   },
@@ -114,8 +111,8 @@ export const Interactive: Story = {
           value={value}
           onChange={setValue}
           onSend={handleSend}
-          onAttachmentClick={() => console.log('Attachment clicked')}
-          onVoiceClick={() => console.log('Voice clicked')}
+          onAttachmentClick={() => {}}
+          onVoiceClick={() => {}}
         />
       </div>
     );

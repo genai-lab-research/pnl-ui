@@ -1,11 +1,11 @@
 import { apiConfig } from './config';
-import { 
-  LoginRequest, 
-  RegisterRequest, 
-  AuthResponse, 
-  User, 
-  TokenData, 
-  AuthError 
+import {
+  LoginRequest,
+  RegisterRequest,
+  AuthResponse,
+  User,
+  TokenData,
+  AuthError
 } from '../types/auth';
 import { TokenStorage } from '../utils/tokenStorage';
 import { env } from '../utils/env';
@@ -49,7 +49,7 @@ class AuthService {
     });
 
     const authResponse = await this.handleResponse<AuthResponse>(response);
-    
+
     // Store token and user data
     const tokenData: TokenData = {
       access_token: authResponse.access_token,
@@ -73,7 +73,7 @@ class AuthService {
     });
 
     const authResponse = await this.handleResponse<AuthResponse>(response);
-    
+
     // Auto-login after registration
     const tokenData: TokenData = {
       access_token: authResponse.access_token,
@@ -102,7 +102,7 @@ class AuthService {
     });
 
     const authResponse = await this.handleResponse<AuthResponse>(response);
-    
+
     // Update stored token
     const tokenData: TokenData = {
       access_token: authResponse.access_token,
@@ -156,8 +156,7 @@ class AuthService {
         password: env.DEFAULT_PASSWORD
       });
       return response;
-    } catch (error) {
-      console.warn('Auto-login failed:', error);
+    } catch {
       return null;
     }
   }

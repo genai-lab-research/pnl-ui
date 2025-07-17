@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const SelectContainer = styled.div<{ width?: number | string }>`
   width: ${({ width }) => (typeof width === 'number' ? `${width}px` : width || '372px')};
@@ -12,7 +13,7 @@ export const SelectInput = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(76, 78, 100, 0.22);
+  border: 1px solid ${colors.opacity.secondary22};
   border-radius: 6px;
 `;
 
@@ -35,7 +36,7 @@ export const Label = styled.span`
   line-height: 24px;
   letter-spacing: 0.15px;
   text-align: left;
-  color: rgba(76, 78, 100, 0.6);
+  color: ${colors.opacity.secondary60};
   flex-grow: 1;
   padding: 0 12px;
 `;
@@ -45,5 +46,5 @@ export const ArrowContainer = styled.div`
   width: 24px;
   height: 24px;
   margin-right: 12px;
-  color: rgba(76, 78, 100, 0.54);
+  color: ${colors.opacity.secondary50};
 `;

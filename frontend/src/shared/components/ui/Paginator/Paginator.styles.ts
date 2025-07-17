@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { secondary, text } from '../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const Button = styled.button<{ disabled?: boolean }>`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 1px solid ${({ disabled }) => 
+  border: 1px solid ${({ disabled }) =>
     disabled ? 'rgba(76, 78, 100, 0.12)' : 'rgba(109, 120, 141, 0.5)'};
   background: transparent;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
@@ -50,7 +51,7 @@ export const NextText = styled.span`
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.4px;
-  color: #6C778D;
+  color: ${secondary.light};
   text-align: left;
 `;
 
@@ -61,6 +62,6 @@ export const PageStatus = styled.span`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0px;
-  color: #71717A;
+  color: ${text.disabled};
   text-align: left;
 `;

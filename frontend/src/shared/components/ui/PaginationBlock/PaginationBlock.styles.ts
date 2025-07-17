@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const Container = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ export const LeftLabel = styled.span`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0px;
-  color: #71717A;
+  color: ${colors.text.disabled};
   text-align: left;
 `;
 
@@ -43,7 +44,7 @@ export const CenterLabel = styled.span`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0px;
-  color: #71717A;
+  color: ${colors.text.disabled};
   text-align: left;
 `;
 
@@ -53,8 +54,8 @@ export const Button = styled.button<{ disabled?: boolean }>`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 1px solid ${({ disabled }) => 
-    disabled ? 'rgba(76, 78, 100, 0.12)' : 'rgba(109, 120, 141, 0.5)'};
+  border: 1px solid ${({ disabled }) =>
+    disabled ? colors.opacity.secondary12 : colors.opacity.inputDisabled50};
   background: transparent;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   padding: 0;
@@ -80,7 +81,7 @@ export const PreviousText = styled.span`
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.4px;
-  color: rgba(76, 78, 100, 0.26);
+  color: ${colors.opacity.secondary26};
   text-align: left;
 `;
 
@@ -91,6 +92,6 @@ export const NextText = styled.span`
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.4px;
-  color: #6C778D;
+  color: ${colors.secondary.light};
   text-align: left;
 `;

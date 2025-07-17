@@ -1,49 +1,14 @@
 import React from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { AddPanelBlockProps } from './types';
+import { StyledAddPanelBlock, AddButton } from './AddPanelBlock.styles';
 
-const StyledAddPanelBlock = styled(Box)(() => ({
-  backgroundColor: '#F9FAFB',
-  border: '2px dashed #E5E7EB',
-  borderRadius: '8px',
-  padding: '16px',
-  width: '100%',
-  minHeight: '200px',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  cursor: 'pointer',
-  transition: 'all 0.2s ease',
-  '&:hover': {
-    borderColor: '#9CA3AF',
-    backgroundColor: '#F3F4F6',
-    '& .MuiIconButton-root': {
-      backgroundColor: '#E5E7EB',
-    },
-  },
-}));
 
-const AddButton = styled(IconButton)(() => ({
-  backgroundColor: '#F3F4F6',
-  width: '64px',
-  height: '64px',
-  marginBottom: '16px',
-  transition: 'background-color 0.2s ease',
-  '&:hover': {
-    backgroundColor: '#E5E7EB',
-  },
-  '& .MuiSvgIcon-root': {
-    fontSize: '32px',
-    color: '#6B7280',
-  },
-}));
 
 /**
  * AddPanelBlock Component
- * 
+ *
  * Displays an empty panel slot with an add button for adding new panels
  * to the cultivation area.
  */

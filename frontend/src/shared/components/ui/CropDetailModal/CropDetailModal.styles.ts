@@ -1,9 +1,10 @@
 import { styled } from '@mui/material/styles';
-import { Dialog, DialogContent, Box, IconButton } from '@mui/material';
+import { Dialog, DialogContent, Box } from '@mui/material';
+import { background, border, text } from '../../../styles/colors';
 
 export const StyledDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialog-paper': {
-    backgroundColor: '#F7F9FD',
+    backgroundColor: background.panel,
     borderRadius: theme.spacing(1),
     maxWidth: '532px',
     width: '100%',
@@ -14,7 +15,7 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
 
 export const StyledDialogContent = styled(DialogContent)(() => ({
   padding: 0,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: background.primary,
   height: '100%',
   overflow: 'auto',
   '&:first-of-type': {
@@ -27,8 +28,8 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: theme.spacing(2, 3),
-  backgroundColor: '#FFFFFF',
-  borderBottom: '1px solid #E0E0E0',
+  backgroundColor: background.primary,
+  borderBottom: `1px solid ${border.input}`,
   position: 'sticky',
   top: 0,
   zIndex: 1,
@@ -37,7 +38,7 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
 export const CropImageContainer = styled(Box)(() => ({
   width: '100%',
   height: '320px',
-  backgroundColor: '#000000',
+  backgroundColor: text.primary,
   position: 'relative',
   overflow: 'hidden',
   '& img': {
@@ -53,18 +54,18 @@ export const TimelineControls = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: theme.spacing(1),
   padding: theme.spacing(1),
-  backgroundColor: '#FFFFFF',
+  backgroundColor: background.primary,
 }));
 
 
 export const MetricsContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
-  backgroundColor: '#FFFFFF',
+  backgroundColor: background.primary,
 }));
 
 
 export const AccordionSection = styled(Box)(({ theme }) => ({
-  borderTop: '1px solid #E0E0E0',
+  borderTop: `1px solid ${border.input}`,
   '& .MuiAccordion-root': {
     boxShadow: 'none',
     '&:before': {
@@ -88,8 +89,8 @@ export const AccordionSection = styled(Box)(({ theme }) => ({
 
 export const CloseButtonContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3),
-  backgroundColor: '#FFFFFF',
-  borderTop: '1px solid #E0E0E0',
+  backgroundColor: background.primary,
+  borderTop: `1px solid ${border.input}`,
   display: 'flex',
   justifyContent: 'center',
 }));

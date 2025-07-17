@@ -21,17 +21,17 @@ const defaultItems: MenuItem[] = [
   {
     id: 'edit-settings',
     label: 'Edit & Settings',
-    action: () => console.log('Edit & Settings clicked'),
+    action: () => {},
   },
   {
     id: 'view',
     label: 'View',
-    action: () => console.log('View clicked'),
+    action: () => {},
   },
   {
     id: 'shutdown',
     label: 'Shutdown',
-    action: () => console.log('Shutdown clicked'),
+    action: () => {},
   },
 ];
 

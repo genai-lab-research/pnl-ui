@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { primary } from '../../../styles/colors';
 
 export const Button = styled.button<{ disabled?: boolean }>`
   display: flex;
@@ -10,7 +11,7 @@ export const Button = styled.button<{ disabled?: boolean }>`
   padding: 10px 12px;
   border-radius: 6px;
   border: none;
-  background-color: #3545EE;
+  background-color: ${primary.main};
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   font-family: 'Inter', sans-serif;
@@ -20,7 +21,7 @@ export const Button = styled.button<{ disabled?: boolean }>`
   line-height: 20px;
   letter-spacing: 0px;
   text-align: center;
-  color: #FAFAFA;
+  color: ${primary.contrast};
 
   &:focus {
     outline: none;
@@ -34,7 +35,7 @@ export const Button = styled.button<{ disabled?: boolean }>`
 export const Container = styled.div`
   width: fit-content;
   height: 40px;
-  border: 1px solid #9747FF;
+  border: 1px solid ${primary.light};
   border-radius: 5px;
   display: flex;
   flex-direction: column;

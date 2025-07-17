@@ -37,9 +37,7 @@ const EditContainerExample: React.FC = () => {
     setEditPanelOpen(true);
   };
 
-  const handleContainerUpdated = (updatedContainer: Container) => {
-    console.log('Container updated:', updatedContainer);
-    // Here you would typically update your container list
+  const handleContainerUpdated = (/* updatedContainer: Container */) => {
     setEditPanelOpen(false);
     setSelectedContainer(null);
   };
@@ -53,10 +51,10 @@ const EditContainerExample: React.FC = () => {
     <div style={{ padding: '2rem' }}>
       <h1>Edit Container Panel Example</h1>
       <p>This page demonstrates how to use the EditContainerPanel component.</p>
-      
-      <div style={{ 
-        padding: '1rem', 
-        border: '1px solid #ddd', 
+
+      <div style={{
+        padding: '1rem',
+        border: '1px solid #ddd',
         borderRadius: '8px',
         marginBottom: '2rem'
       }}>
@@ -64,7 +62,7 @@ const EditContainerExample: React.FC = () => {
         <p>Type: {mockContainer.type}</p>
         <p>Purpose: {mockContainer.purpose}</p>
         <p>Tenant: {mockContainer.tenant}</p>
-        <button 
+        <button
           onClick={handleEditContainer}
           style={{
             padding: '8px 16px',

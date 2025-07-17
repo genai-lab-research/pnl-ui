@@ -3,19 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import {
   Table,
   TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
   TableRow,
   IconButton,
   Typography,
-  Box,
   Tooltip,
   Popper,
   ClickAwayListener,
   TableSortLabel,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloudIcon from '@mui/icons-material/Cloud';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -23,101 +18,20 @@ import { Container } from '../../../types/containers';
 import { StatusChip, StatusType } from '../StatusChip';
 import Menu from '../Menu/Menu';
 import { MenuItem } from '../Menu/types';
+import { colors } from '../../../styles';
 import { EditContainerPanel } from '../../../../features/EditContainerPanel';
+import {
+  StyledTableContainer,
+  StyledTableHead,
+  StyledHeaderCell,
+  StyledSortableHeaderCell,
+  StyledTableRow,
+  StyledTableCell,
+  TypeIcon,
+  AlertIndicator
+} from './ContainerTable.styles';
 
-const StyledTableContainer = styled(TableContainer)(() => ({
-  borderRadius: '6px',
-  border: '1px solid #E9EDF4',
-  boxShadow: 'none',
-  overflow: 'hidden',
-}));
 
-const StyledTableHead = styled(TableHead)({
-  backgroundColor: '#F8F9FA',
-});
-
-const StyledHeaderCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '14px',
-  fontWeight: 600,
-  color: '#4C4E64',
-  textTransform: 'uppercase',
-  letterSpacing: '0.5px',
-  padding: '12px 16px',
-  borderBottom: '1px solid #E9EDF4',
-});
-
-const StyledSortableHeaderCell = styled(StyledHeaderCell)({
-  cursor: 'pointer',
-  '&:hover': {
-    backgroundColor: '#F0F4F8',
-  },
-  '& .MuiTableSortLabel-root': {
-    fontFamily: 'Inter, sans-serif',
-    fontSize: '14px',
-    fontWeight: 600,
-    color: '#4C4E64',
-    textTransform: 'uppercase',
-    letterSpacing: '0.5px',
-    '&:hover': {
-      color: '#2C5282',
-    },
-    '&.Mui-active': {
-      color: '#2C5282',
-      '& .MuiTableSortLabel-icon': {
-        color: '#2C5282 !important',
-      },
-    },
-  },
-});
-
-const StyledTableRow = styled(TableRow)({
-  height: '52px',
-  cursor: 'pointer',
-  '&:hover': {
-    backgroundColor: '#F8F9FA',
-  },
-  '&:not(:last-child)': {
-    borderBottom: '1px solid #E9EDF4',
-  },
-});
-
-const StyledTableCell = styled(TableCell)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '14px',
-  fontWeight: 400,
-  color: '#000000',
-  padding: '12px 16px',
-  borderBottom: 'none',
-});
-
-const TypeIcon = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '8px',
-});
-
-const AlertIndicator = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'hasAlert',
-})<{ hasAlert: boolean }>(({ hasAlert }) => ({
-  width: '16px',
-  height: '16px',
-  borderRadius: '50%',
-  backgroundColor: hasAlert ? '#DC3545' : '#6C757D',
-  border: `2px solid ${hasAlert ? '#FFFFFF' : 'transparent'}`,
-  position: 'relative',
-  '&::after': hasAlert ? {
-    content: '""',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '6px',
-    height: '6px',
-    backgroundColor: '#FFFFFF',
-    borderRadius: '50%',
-  } : {},
-}));
 
 export type SortField = 'type' | 'name' | 'tenant' | 'purpose' | 'location' | 'status' | 'created' | 'modified';
 export type SortOrder = 'asc' | 'desc';
@@ -330,16 +244,16 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
         </StyledTableHead>
         <TableBody>
           {containers.map((container) => (
-            <StyledTableRow 
+            <StyledTableRow
               key={container.id}
               onClick={() => handleRowClick(container.id)}
             >
               <StyledTableCell>
                 <TypeIcon>
                   {container.type === 'virtual' ? (
-                    <CloudIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <CloudIcon sx={{ fontSize: '16px', color: colors.secondary.main }} />
                   ) : (
-                    <StorageIcon sx={{ fontSize: '16px', color: '#4C4E64' }} />
+                    <StorageIcon sx={{ fontSize: '16px', color: colors.secondary.main }} />
                   )}
                 </TypeIcon>
               </StyledTableCell>
@@ -349,7 +263,7 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
                 </Typography>
               </StyledTableCell>
               <StyledTableCell>
-                <Typography variant="body2" color="#4C4E64">
+                <Typography variant="body2" color={colors.secondary.main}>
                   {container.tenant}
                 </Typography>
               </StyledTableCell>
@@ -359,7 +273,7 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
                 </Typography>
               </StyledTableCell>
               <StyledTableCell>
-                <Typography variant="body2" color="#4C4E64">
+                <Typography variant="body2" color={colors.secondary.main}>
                   {formatLocation(container.location)}
                 </Typography>
               </StyledTableCell>
@@ -367,12 +281,12 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
                 <StatusChip status={mapStatusToChipStatus(container.status)} />
               </StyledTableCell>
               <StyledTableCell>
-                <Typography variant="body2" color="#4C4E64">
+                <Typography variant="body2" color={colors.secondary.main}>
                   {formatDate(container.created)}
                 </Typography>
               </StyledTableCell>
               <StyledTableCell>
-                <Typography variant="body2" color="#4C4E64">
+                <Typography variant="body2" color={colors.secondary.main}>
                   {formatDate(container.modified)}
                 </Typography>
               </StyledTableCell>
@@ -385,7 +299,7 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
                 <IconButton
                   size="small"
                   onClick={(e) => handleActionClick(e, container)}
-                  sx={{ color: '#4C4E64' }}
+                  sx={{ color: colors.secondary.main }}
                 >
                   <MoreVertIcon fontSize="small" />
                 </IconButton>
@@ -394,7 +308,7 @@ export const ContainerTable: React.FC<ContainerTableProps> = ({
           ))}
         </TableBody>
       </Table>
-      
+
       <Popper
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}

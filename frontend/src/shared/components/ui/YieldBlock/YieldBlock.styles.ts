@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const YieldBlockContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
-  border: 1px solid #E4E4E7;
+  border: 1px solid ${colors.border.primary};
   border-radius: 6px;
   gap: 16px;
   width: 100%;
@@ -17,7 +18,7 @@ export const YieldLabel = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: rgba(9, 9, 11, 0.5);
+  color: ${colors.opacity.textMuted50};
 `;
 
 export const ValueContainer = styled.div`
@@ -39,5 +40,5 @@ export const ValueText = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 32px;
-  color: #000000;
+  color: ${colors.text.primary};
 `;

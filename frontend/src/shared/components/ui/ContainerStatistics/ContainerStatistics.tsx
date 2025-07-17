@@ -10,6 +10,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { ContainerStatisticsProps } from './types';
+import { colors } from '../../../styles';
 import {
   StyledContainer,
   StyledHeader,
@@ -60,7 +61,7 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
       y: {
         beginAtZero: true,
         grid: {
-          color: '#DEDEDE',
+          color: colors.border.medium,
           drawBorder: false,
         },
         ticks: {
@@ -89,7 +90,7 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
     datasets: [
       {
         data: yieldData.dailyData,
-        backgroundColor: '#3EAE4E',
+        backgroundColor: colors.status.success,
         borderRadius: 4,
         barThickness: 16,
         maxBarThickness: 16,
@@ -102,7 +103,7 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
     datasets: [
       {
         data: spaceUtilization.dailyData,
-        backgroundColor: '#65A9E7',
+        backgroundColor: colors.status.info,
         borderRadius: 4,
         barThickness: 16,
         maxBarThickness: 16,
@@ -118,7 +119,7 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
           <StyledCount>{containerCount}</StyledCount>
         </StyledCountBadge>
       </StyledHeader>
-      
+
       <StyledChartsContainer>
         {/* Yield Chart */}
         <StyledChartWrapper>
@@ -135,18 +136,18 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
               </StyledValueGroup>
             </StyledValueContainer>
           </StyledChartHeader>
-          
+
           <StyledChartContainer>
             <Bar options={chartOptions} data={yieldChartData} />
           </StyledChartContainer>
-          
+
           <StyledDayLabels>
             {dayLabels.map((day, index) => (
               <StyledDayLabel key={index}>{day}</StyledDayLabel>
             ))}
           </StyledDayLabels>
         </StyledChartWrapper>
-        
+
         {/* Space Utilization Chart */}
         <StyledChartWrapper>
           <StyledChartHeader>
@@ -158,11 +159,11 @@ const ContainerStatistics: React.FC<ContainerStatisticsProps> = ({
               </StyledValueGroup>
             </StyledValueContainer>
           </StyledChartHeader>
-          
+
           <StyledChartContainer>
             <Bar options={chartOptions} data={spaceUtilizationChartData} />
           </StyledChartContainer>
-          
+
           <StyledDayLabels>
             {dayLabels.map((day, index) => (
               <StyledDayLabel key={index}>{day}</StyledDayLabel>

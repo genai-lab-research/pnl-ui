@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
+import { background, border, text } from '../../../styles/colors';
 
 export const StyledMetricCard = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -7,8 +8,8 @@ export const StyledMetricCard = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(3),
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E4E4E7',
+  backgroundColor: background.primary,
+  border: `1px solid ${border.primary}`,
   borderRadius: '8px',
   height: '120px',
   flex: 1,
@@ -23,7 +24,7 @@ export const StyledMetricValue = styled(Typography)(() => ({
   fontSize: '24px',
   fontWeight: 700,
   lineHeight: '32px',
-  color: '#09090B',
+  color: text.secondary,
   textAlign: 'center',
 }));
 
@@ -32,6 +33,6 @@ export const StyledMetricLabel = styled(Typography)(() => ({
   fontSize: '14px',
   fontWeight: 500,
   lineHeight: '20px',
-  color: '#49454F',
+  color: text.tertiary,
   textAlign: 'center',
 }));

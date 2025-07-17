@@ -1,83 +1,80 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
-export const NotificationContainer = styled.div`
+export const NotificationRowContainer = styled.div`
   display: flex;
-  position: relative;
-  width: 389.33px;
-  height: 64px;
   align-items: center;
-  padding: 12px 0;
-  border: 1px solid rgba(69, 81, 104, 0.1);
-  gap: 16px;
+  padding: 12px 16px;
+  width: 100%;
+  border: 1px solid ${colors.opacity.borderGray10};
+  border-radius: 8px;
+  gap: 12px;
 `;
 
-export const Avatar = styled.div`
+export const IconContainer = styled.div<{ type: 'error' | 'warning' | 'success' }>`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 30px;
-  background-color: #489F68;
-  color: white;
+  background-color: ${props =>
+    props.type === 'success' ? colors.status.successDark :
+    props.type === 'warning' ? colors.status.warning :
+    colors.status.error
+  };
+  flex-shrink: 0;
 `;
 
-export const ContentContainer = styled.div`
+export const NotificationContent = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 4px;
-  width: 270px;
 `;
 
-export const NotificationMessage = styled.div`
-  font-family: Inter, sans-serif;
+export const NotificationTitle = styled.div`
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 20px;
-  color: #000000;
+  color: ${colors.text.primary};
 `;
 
-export const MetaContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-`;
-
-export const TimestampContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-`;
-
-export const ClockIcon = styled.div`
-  display: flex;
-  align-items: center;
-  color: rgba(69, 81, 104, 0.5);
-`;
-
-export const Timestamp = styled.div`
-  font-family: Inter, sans-serif;
+export const NotificationDescription = styled.div`
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #71717A;
+  color: ${colors.opacity.borderGray50};
 `;
 
-export const AuthorName = styled.div`
-  font-family: Inter, sans-serif;
+export const NotificationTime = styled.div`
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #71717A;
+  color: ${colors.text.disabled};
+  flex-shrink: 0;
 `;
 
-export const ComponentSet = styled.div`
-  position: relative;
+export const NotificationActions = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 389.33px;
-  border: 1px solid #9747FF;
-  border-radius: 5px;
+  gap: 8px;
+  flex-shrink: 0;
+`;
+
+export const ActionButton = styled.button`
+  padding: 4px 8px;
+  border: 1px solid ${colors.primary.light};
+  border-radius: 4px;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.opacity.primary04};
+  }
 `;

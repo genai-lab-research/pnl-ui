@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const RowContainer = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const RowContainer = styled.div`
   height: 52px;
   align-items: flex-start;
   justify-content: flex-start;
-  border: 1px solid #9747FF;
+  border: 1px solid ${colors.primary.light};
   border-radius: 5px;
 `;
 
@@ -21,8 +22,8 @@ export const GenerationBlock = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 1px 0;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(76, 78, 100, 0.1);
+  background-color: ${colors.background.primary};
+  border: 1px solid ${colors.opacity.secondary12};
 `;
 
 export const DataGridCell = styled.div<{ grow?: boolean }>`
@@ -58,7 +59,7 @@ export const Chip = styled.div`
   align-items: center;
   justify-content: center;
   padding: 3px 7px;
-  background-color: #479F67;
+  background-color: ${colors.status.successDark};
   border-radius: 9999px;
 `;
 
@@ -69,7 +70,7 @@ export const CropNameText = styled.span`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0px;
-  color: #000000;
+  color: ${colors.text.primary};
   text-align: left;
 `;
 
@@ -80,7 +81,7 @@ export const StandardText = styled.span`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0px;
-  color: #000000;
+  color: ${colors.text.primary};
   text-align: left;
 `;
 
@@ -91,6 +92,6 @@ export const ChipText = styled.span`
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0px;
-  color: #FAFAFA;
+  color: ${colors.component.switchThumb};
   text-align: left;
 `;

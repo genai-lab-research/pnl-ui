@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import { Box, TextField, Button, Switch } from '@mui/material';
+import { background } from '../../../styles/colors';
 
 export const SearchFiltersContainer = styled(Box)`
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #FFFFFF;
+  background-color: ${background.primary};
   padding: 16px;
   box-shadow: 0px 0px 2px 0px rgba(65, 64, 69, 0.20);
 `;

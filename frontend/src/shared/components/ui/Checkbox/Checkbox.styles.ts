@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { secondary } from '../../../styles/colors';
 
 export const CheckboxContainer = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ export const StyledCheckbox = styled.input`
   cursor: pointer;
   position: relative;
   margin: 0;
-  
+
   &::before {
     content: '';
     display: block;
@@ -26,7 +27,7 @@ export const StyledCheckbox = styled.input`
     height: 20px;
     top: 0;
     left: 0;
-    border: 1px solid #4C4E64;
+    border: 1px solid ${secondary.main};
     border-radius: 2px;
     opacity: 0.6;
     box-sizing: border-box;
@@ -40,7 +41,7 @@ export const StyledCheckbox = styled.input`
     height: 10px;
     top: 5px;
     left: 5px;
-    background-color: #4C4E64;
+    background-color: ${secondary.main};
     opacity: 0.6;
     border-radius: 1px;
   }

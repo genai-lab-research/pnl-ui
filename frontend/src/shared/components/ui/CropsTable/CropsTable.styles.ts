@@ -1,9 +1,10 @@
 import { styled } from '@mui/material/styles';
 import { TableContainer, TableCell } from '@mui/material';
+import { background, border, text } from '../../../styles/colors';
 
 export const StyledTableContainer = styled(TableContainer)(() => ({
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E4E4E7',
+  backgroundColor: background.primary,
+  border: `1px solid ${border.primary}`,
   borderRadius: '8px',
   boxShadow: 'none',
   '& .MuiTable-root': {
@@ -16,9 +17,9 @@ export const StyledHeaderCell = styled(TableCell)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 500,
   lineHeight: '20px',
-  color: '#49454F',
-  backgroundColor: '#F7F9FE',
-  borderBottom: '1px solid #E4E4E7',
+  color: text.tertiary,
+  backgroundColor: background.container,
+  borderBottom: `1px solid ${border.primary}`,
   padding: theme.spacing(2),
 }));
 
@@ -27,7 +28,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 400,
   lineHeight: '20px',
-  color: '#09090B',
-  borderBottom: '1px solid #F1F1F1',
+  color: text.secondary,
+  borderBottom: `1px solid ${border.light}`,
   padding: theme.spacing(2),
 }));

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const Container = styled.div`
   display: flex;
@@ -13,8 +14,8 @@ export const Card = styled.div`
   flex-direction: column;
   padding: 16px;
   border-radius: 6px;
-  border: 1px solid #E4E4E7;
-  background-color: #F7F9FD;
+  border: 1px solid ${colors.border.primary};
+  background-color: ${colors.background.panel};
   gap: 16px;
   height: 100%;
   min-height: 88px;
@@ -25,7 +26,7 @@ export const Title = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: rgba(9, 9, 11, 0.5);
+  color: ${colors.opacity.textMuted50};
 `;
 
 export const ReadingRow = styled.div`
@@ -48,5 +49,5 @@ export const TemperatureText = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 32px;
-  color: #000000;
+  color: ${colors.text.primary};
 `;

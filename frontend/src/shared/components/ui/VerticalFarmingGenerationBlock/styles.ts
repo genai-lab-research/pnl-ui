@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { CropStatus } from './types';
+import { colors } from '../../../styles';
 
 export const Container = styled.div`
   position: relative;
@@ -17,7 +18,7 @@ export const SlotLabel = styled.div`
   background-color: white;
   padding: 1px 6px;
   border-radius: 10px;
-  border: 1px solid #464646;
+  border: 1px solid ${colors.secondary.main};
 `;
 
 export const SlotLabelText = styled.span`
@@ -25,7 +26,7 @@ export const SlotLabelText = styled.span`
   font-size: 8px;
   font-weight: 500;
   line-height: 10px;
-  color: #09090B;
+  color: ${colors.text.secondary};
   text-transform: uppercase;
 `;
 
@@ -34,12 +35,12 @@ export const CardContainer = styled.div`
   flex-direction: column;
   width: 151px;
   height: 280px;
-  background-color: #F7F9FD;
-  border: 1px solid #E6EAF1;
+  background-color: ${colors.background.panel};
+  border: 1px solid ${colors.border.medium};
   border-radius: 6px;
   padding: 2px 8px;
   gap: 8px;
-  box-shadow: 0px 2px 0px #E7EBF2;
+  box-shadow: 0px 2px 0px ${colors.component.cropVisualization};
   margin-top: 21px;
 `;
 
@@ -55,7 +56,7 @@ export const TrayIdText = styled.span`
   font-size: 12px;
   font-weight: 700;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;
 
 export const ProgressText = styled.span`
@@ -63,13 +64,13 @@ export const ProgressText = styled.span`
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;
 
 export const ProgressBarContainer = styled.div`
   width: 100%;
   height: 6px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: ${colors.opacity.black10};
   border-radius: 10px;
   overflow: hidden;
 `;
@@ -77,7 +78,7 @@ export const ProgressBarContainer = styled.div`
 export const ProgressBarFill = styled.div<{ percentage: number }>`
   height: 100%;
   width: ${props => props.percentage}%;
-  background: linear-gradient(90deg, #30CA45 0%, #30CA45 100%);
+  background: ${colors.gradient.successLinear};
   border-radius: 10px;
 `;
 
@@ -104,12 +105,12 @@ export const StatusDot = styled.div<{ status: CropStatus['status'] }>`
   background-color: ${props => {
     switch (props.status) {
       case 'sprout':
-        return '#2FCA44';
+        return colors.status.healthy;
       case 'not-ok':
-        return '#FFA328';
+        return colors.status.warning;
       case 'empty':
       default:
-        return '#EAEDF4';
+        return colors.interactive.disabled;
     }
   }};
 `;
@@ -126,7 +127,7 @@ export const GridSizeText = styled.span`
   font-size: 11px;
   font-weight: 400;
   line-height: 20px;
-  color: rgba(9, 9, 11, 0.5);
+  color: ${colors.opacity.textMuted50};
 `;
 
 export const CropCountText = styled.span`
@@ -134,5 +135,5 @@ export const CropCountText = styled.span`
   font-size: 11px;
   font-weight: 400;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;

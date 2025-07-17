@@ -27,7 +27,7 @@ export * from './ContainerSettingsPanel';
 export * from './ContainerInfoPanel';
 export * from './AddTrayBlock';
 export * from './GridViewTrayCrops';
-// GenerationBlock is located in ../GenerationBlock, not in ui/
+export * from './GenerationBlock';
 export * from './Timelaps';
 export * from './VerticalFarmingGenerationBlock';
 export * from './VerticalFarmingGenerationTimelineBlock';

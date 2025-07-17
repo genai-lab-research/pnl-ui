@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const Container = styled.div`
   display: flex;
@@ -22,13 +23,13 @@ export const SlotBadge = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 0px 8px;
-  background-color: #E7EBF2;
+  background-color: ${colors.component.cropVisualization};
   border-radius: 4px;
   font-family: 'Inter', sans-serif;
   font-size: 8px;
   font-weight: 500;
   line-height: 10px;
-  color: #09090B;
+  color: ${colors.text.secondary};
   text-transform: uppercase;
   height: 18px;
   width: 151px;
@@ -40,10 +41,10 @@ export const CardBody = styled.div`
   flex-direction: column;
   width: 151px;
   height: 273px;
-  border: 1px solid #E6EAF1;
+  border: 1px solid ${colors.border.medium};
   border-radius: 6px;
-  background-color: #F7F9FD;
-  box-shadow: 0px 2px 0px 0px #E7EBF2;
+  background-color: ${colors.background.panel};
+  box-shadow: 0px 2px 0px 0px ${colors.component.cropVisualization};
 `;
 
 export const HeaderRow = styled.div`
@@ -59,7 +60,7 @@ export const TrayId = styled.div`
   font-size: 12px;
   font-weight: 700;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;
 
 export const Percentage = styled.div`
@@ -67,15 +68,15 @@ export const Percentage = styled.div`
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;
 
 export const ProgressBar = styled.div<{ $progress: number }>`
   width: 100%;
   height: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: ${colors.opacity.black10};
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -83,7 +84,7 @@ export const ProgressBar = styled.div<{ $progress: number }>`
     top: 0;
     height: 100%;
     width: ${props => props.$progress || 0}%;
-    background: linear-gradient(to right, #30CA45, #30CA45);
+    background: ${colors.gradient.successLinear};
   }
 `;
 
@@ -109,12 +110,12 @@ export const Cell = styled.div<{ $status: 'healthy' | 'alert' | 'empty' }>`
   background-color: ${({ $status }) => {
     switch ($status) {
       case 'healthy':
-        return '#2FCA44';
+        return colors.status.healthy;
       case 'alert':
-        return '#FFA328';
+        return colors.status.warning;
       case 'empty':
       default:
-        return '#E7EBF2';
+        return colors.component.cropVisualization;
     }
   }};
 `;
@@ -132,7 +133,7 @@ export const GridSize = styled.div`
   font-size: 11px;
   font-weight: 400;
   line-height: 20px;
-  color: rgba(9, 9, 11, 0.5);
+  color: ${colors.opacity.textMuted50};
 `;
 
 export const CropCount = styled.div`
@@ -140,5 +141,5 @@ export const CropCount = styled.div`
   font-size: 11px;
   font-weight: 400;
   line-height: 20px;
-  color: #09090B;
+  color: ${colors.text.secondary};
 `;

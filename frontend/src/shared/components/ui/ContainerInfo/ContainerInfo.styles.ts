@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { background, text, border, status } from '../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #E4E4E7;
+  border: 1px solid ${border.primary};
   border-radius: 8px;
-  background-color: #FFFFFF;
+  background-color: ${background.primary};
   width: 100%;
   box-sizing: border-box;
 `;
@@ -17,7 +18,7 @@ export const Section = styled.div`
 `;
 
 export const SectionWithBorder = styled(Section)`
-  border-bottom: 1px solid #E4E4E7;
+  border-bottom: 1px solid ${border.primary};
 `;
 
 export const SectionTitle = styled.h2`
@@ -26,7 +27,7 @@ export const SectionTitle = styled.h2`
   font-weight: 700;
   line-height: 24px;
   letter-spacing: 0.15px;
-  color: #000000;
+  color: ${text.primary};
   margin: 0 0 24px 0;
 `;
 
@@ -53,7 +54,7 @@ export const Label = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  color: #09090B;
+  color: ${text.secondary};
 `;
 
 export const Value = styled.div`
@@ -61,13 +62,13 @@ export const Value = styled.div`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #09090B;
+  color: ${text.secondary};
 `;
 
 export const StatusBadge = styled.div`
   display: inline-flex;
   padding: 3px 11px;
-  background-color: #479F67;
+  background-color: ${status.successDark};
   border-radius: 9999px;
   align-items: center;
   justify-content: center;
@@ -78,7 +79,7 @@ export const StatusText = styled.span`
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
-  color: #FAFAFA;
+  color: ${background.paper};
 `;
 
 export const TypeContainer = styled.div`
@@ -100,5 +101,5 @@ export const SeedTypes = styled(Value)`
 export const Notes = styled(Value)`
   font-size: 14px;
   line-height: 16.94px;
-  color: #000000;
+  color: ${text.primary};
 `;

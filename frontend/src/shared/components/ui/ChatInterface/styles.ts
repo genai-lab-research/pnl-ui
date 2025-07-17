@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles';
 
 export const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 1440px;
   height: 959px;
-  background-color: #F6F7FA;
+  background-color: ${colors.background.overlay};
   position: relative;
 `;
 
@@ -50,24 +51,24 @@ export const MessageMeta = styled.div`
 export const Timestamp = styled.span`
   font-size: 12px;
   font-weight: 400;
-  color: #5C697C;
+  color: ${colors.text.muted};
   letter-spacing: -0.12px;
   line-height: 10.5px;
 `;
 
 export const MessageBubble = styled.div<{ type: 'user' | 'bot' }>`
-  background-color: ${props => props.type === 'user' ? '#E3E7EB' : '#FFFFFF'};
+  background-color: ${props => props.type === 'user' ? colors.component.chatBubbleUser : colors.background.primary};
   border-radius: 12px;
   padding: 12px 19px;
   ${props => props.type === 'bot' && `
-    box-shadow: 0px 2px 5px rgba(30, 39, 51, 0.08);
+    box-shadow: ${colors.shadow.panel};
   `}
 `;
 
 export const MessageText = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: #191A1C;
+  color: ${colors.text.caption};
   letter-spacing: -0.14px;
   line-height: 20px;
   margin: 0;
@@ -78,7 +79,7 @@ export const UserAvatar = styled.div`
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background-color: #818EA1;
+  background-color: ${colors.component.avatarPlaceholder};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +89,7 @@ export const UserAvatar = styled.div`
 export const AvatarText = styled.span`
   font-size: 21px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: ${colors.text.contrast};
   line-height: 24px;
 `;
 
@@ -96,7 +97,7 @@ export const BotAvatar = styled.div`
   width: 55px;
   height: 55px;
   border-radius: 49px;
-  background-color: #465269;
+  background-color: ${colors.secondary.main};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,17 +115,17 @@ export const TypingDot = styled.div`
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: #5C697C;
+  background-color: ${colors.text.muted};
   animation: typing 1.4s infinite;
-  
+
   &:nth-of-type(2) {
     animation-delay: 0.2s;
   }
-  
+
   &:nth-of-type(3) {
     animation-delay: 0.4s;
   }
-  
+
   @keyframes typing {
     0%, 60%, 100% {
       opacity: 0.3;

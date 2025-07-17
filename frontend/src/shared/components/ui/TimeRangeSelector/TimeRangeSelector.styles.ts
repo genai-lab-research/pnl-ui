@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { primary, text } from '../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ export const Option = styled.div<{ isSelected: boolean }>`
   align-items: center;
   width: 70px;
   height: 32px;
-  border: ${({ isSelected }) => isSelected ? '1px solid #3545EE' : 'none'};
+  border: ${({ isSelected }) => isSelected ? `1px solid ${primary.main}` : 'none'};
   border-radius: 4px;
   cursor: pointer;
 `;
@@ -44,6 +45,6 @@ export const Label = styled.span<{ isSelected: boolean }>`
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0.5px;
-  color: ${({ isSelected }) => isSelected ? '#3545EE' : '#49454F'};
+  color: ${({ isSelected }) => isSelected ? primary.main : text.tertiary};
   text-align: center;
 `;

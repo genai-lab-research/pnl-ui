@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { 
-  AuthContextType, 
-  User, 
-  LoginRequest, 
-  RegisterRequest, 
-  AuthError 
+import {
+  AuthContextType,
+  User,
+  LoginRequest,
+  RegisterRequest
 } from '../types/auth';
 import { authService } from '../api/authService';
 import { TokenStorage } from '../utils/tokenStorage';
@@ -29,21 +28,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const initializeAuth = async () => {
     try {
       setIsLoading(true);
-      
+
       // Check for existing token
       const storedToken = TokenStorage.getAccessToken();
       const storedUser = TokenStorage.getUser();
-      
+
       if (storedToken && storedUser && TokenStorage.isTokenValid()) {
         setToken(storedToken);
         setUser(storedUser);
-        
+
         // Verify token with server
         try {
           const currentUser = await authService.getCurrentUser();
           setUser(currentUser);
-        } catch (error) {
-          console.warn('Token verification failed:', error);
+        } catch {
           await handleLogout();
         }
       } else {

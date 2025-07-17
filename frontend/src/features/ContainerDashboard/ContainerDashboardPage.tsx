@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Box, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import {
+  DashboardContainer,
+  ContentContainer,
+  PageTitle,
+  StatisticsSection,
+  ContainerListSection,
+  ContainerListHeader,
+  ContainerListTitle
+} from './ContainerDashboardPage.styles';
+import { colors } from '../../shared/styles';
 import { Header } from '../../shared/components/ui/Header';
 import { SearchFilters } from '../../shared/components/ui/SearchFilters';
 import { TimeRangeSelector } from '../../shared/components/ui/TimeRangeSelector';
@@ -12,64 +21,12 @@ import { CreateContainerPanel } from '../CreateContainerPanel';
 import { containerApiService } from '../../api/containerApiService';
 import { Container } from '../../shared/types/containers';
 import {
-  ContainerListResponse,
   ContainerFilterCriteria,
-  FilterOptions,
-  PerformanceMetrics
+  FilterOptions
 } from '../../types/container';
 import { TimeRange } from '../../shared/components/ui/TimeRangeSelector/types';
 
-const DashboardContainer = styled(Box)({
-  backgroundColor: '#F7F9FD',
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column',
-});
 
-const ContentContainer = styled(Box)({
-  flex: 1,
-  padding: '24px',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '24px',
-});
-
-const PageTitle = styled(Typography)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '32px',
-  fontWeight: 700,
-  color: '#000000',
-  marginBottom: '16px',
-});
-
-const StatisticsSection = styled(Box)({
-  display: 'flex',
-  gap: '20px',
-  marginBottom: '16px',
-});
-
-const ContainerListSection = styled(Box)({
-  backgroundColor: '#FFFFFF',
-  borderRadius: '8px',
-  boxShadow: '0px 0px 2px rgba(65, 64, 69, 1)',
-  padding: '24px',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '16px',
-});
-
-const ContainerListHeader = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-});
-
-const ContainerListTitle = styled(Typography)({
-  fontFamily: 'Inter, sans-serif',
-  fontSize: '20px',
-  fontWeight: 600,
-  color: '#000000',
-});
 
 const ContainerDashboardPage: React.FC = () => {
   const [containers, setContainers] = useState<Container[]>([]);
@@ -110,15 +67,21 @@ const ContainerDashboardPage: React.FC = () => {
     };
 
     if (searchValue.trim()) criteria.search = searchValue.trim();
-    if (selectedType !== 'All types') criteria.type = selectedType as 'physical' | 'virtual';
+
+    // Use selectedContainerType if set (from clicking stats), otherwise use selectedType from dropdown
+    if (selectedContainerType) {
+      criteria.type = selectedContainerType;
+    } else if (selectedType !== 'All types') {
+      criteria.type = selectedType as 'physical' | 'virtual';
+    }
+
     if (selectedTenant !== 'All tenants') {
       const tenant = filterOptions?.tenants.find(t => t.name === selectedTenant);
       if (tenant) criteria.tenant = tenant.id;
     }
-    if (selectedPurpose !== 'All purposes') criteria.purpose = selectedPurpose as any;
-    if (selectedStatus !== 'All statuses') criteria.status = selectedStatus as any;
+    if (selectedPurpose !== 'All purposes') criteria.purpose = selectedPurpose as 'development' | 'research' | 'production';
+    if (selectedStatus !== 'All statuses') criteria.status = selectedStatus as 'created' | 'active' | 'maintenance' | 'inactive';
     if (hasAlerts) criteria.alerts = true;
-    if (selectedContainerType) criteria.type = selectedContainerType;
 
     return criteria;
   }, [
@@ -135,18 +98,25 @@ const ContainerDashboardPage: React.FC = () => {
     sortConfig
   ]);
 
-  const loadData = useCallback(async () => {
+  const loadData = useCallback(async (timeRange?: TimeRange) => {
     try {
       setLoading(true);
       const criteria = buildFilterCriteria();
 
+      const currentTimeRange = timeRange || selectedTimeRange;
+      const metricsRequest = {
+        timeRange: currentTimeRange.toLowerCase() as 'week' | 'month' | 'quarter' | 'year'
+      };
+
+      console.log('Making API call with timeRange:', currentTimeRange);
+
       const [listResponse, filterOptionsResponse, metricsResponse] = await Promise.all([
         containerApiService.listContainers(criteria),
         filterOptions ? Promise.resolve(filterOptions) : containerApiService.getFilterOptions(),
-        containerApiService.getPerformanceMetrics({
-          timeRange: selectedTimeRange.toLowerCase() as 'week' | 'month' | 'quarter' | 'year'
-        })
+        containerApiService.getPerformanceMetrics(metricsRequest)
       ]);
+
+      console.log('Metrics API response:', metricsResponse);
 
       // Transform API containers to UI container format
       const transformedContainers: Container[] = listResponse.containers.map(apiContainer => ({
@@ -187,8 +157,15 @@ const ContainerDashboardPage: React.FC = () => {
         }
       });
 
-      setPhysicalMetrics(transformMetrics(metricsResponse.physical));
-      setVirtualMetrics(transformMetrics(metricsResponse.virtual));
+
+      const newPhysicalMetrics = transformMetrics(metricsResponse.physical);
+      const newVirtualMetrics = transformMetrics(metricsResponse.virtual);
+
+      console.log('Setting new physical metrics:', newPhysicalMetrics);
+      console.log('Setting new virtual metrics:', newVirtualMetrics);
+
+      setPhysicalMetrics(newPhysicalMetrics);
+      setVirtualMetrics(newVirtualMetrics);
 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load data');
@@ -242,9 +219,98 @@ const ContainerDashboardPage: React.FC = () => {
     setPagination(prev => ({ ...prev, page: 1 }));
   }, []);
 
-  const handleTimeRangeChange = useCallback((range: TimeRange) => {
-    setSelectedTimeRange(range);
-  }, []);
+      const loadDataWithTimeRange = useCallback(async (timeRange: TimeRange) => {
+    try {
+      setLoading(true);
+      const criteria = buildFilterCriteria();
+
+      const metricsRequest = {
+        timeRange: timeRange.toLowerCase() as 'week' | 'month' | 'quarter' | 'year'
+      };
+
+      console.log('Making API call with timeRange:', timeRange);
+
+      const [listResponse, filterOptionsResponse, metricsResponse] = await Promise.all([
+        containerApiService.listContainers(criteria),
+        filterOptions ? Promise.resolve(filterOptions) : containerApiService.getFilterOptions(),
+        containerApiService.getPerformanceMetrics(metricsRequest)
+      ]);
+
+      console.log('Metrics API response:', metricsResponse);
+
+      // Transform API containers to UI container format
+      const transformedContainers: Container[] = listResponse.containers.map(apiContainer => ({
+        id: apiContainer.id.toString(),
+        name: apiContainer.name,
+        type: apiContainer.type,
+        tenant: `tenant-${apiContainer.tenant_id}`,
+        purpose: apiContainer.purpose,
+        location: apiContainer.location,
+        status: apiContainer.status === 'active' ? 'connected' : apiContainer.status,
+        created: apiContainer.created_at,
+        modified: apiContainer.updated_at,
+        has_alert: apiContainer.alerts?.length > 0 || false,
+        notes: apiContainer.notes,
+        shadow_service_enabled: apiContainer.shadow_service_enabled,
+        ecosystem_connected: apiContainer.ecosystem_connected,
+      }));
+
+      setContainers(transformedContainers);
+      setPagination(listResponse.pagination);
+      if (!filterOptions) setFilterOptions(filterOptionsResponse);
+
+      // Transform metrics for ContainerStatistics component
+      const transformMetrics = (metrics: {
+        container_count: number;
+        yield: { average: number; total: number; chart_data: Array<{ value: number }> };
+        space_utilization: { average: number; chart_data: Array<{ value: number }> };
+      }) => ({
+        containerCount: metrics.container_count,
+        yieldData: {
+          average: metrics.yield.average,
+          total: metrics.yield.total,
+          dailyData: metrics.yield.chart_data.map(d => d.value)
+        },
+        spaceUtilization: {
+          average: metrics.space_utilization.average,
+          dailyData: metrics.space_utilization.chart_data.map(d => d.value)
+        }
+      });
+
+      const newPhysicalMetrics = transformMetrics(metricsResponse.physical);
+      const newVirtualMetrics = transformMetrics(metricsResponse.virtual);
+
+      console.log('Setting new physical metrics:', newPhysicalMetrics);
+      console.log('Setting new virtual metrics:', newVirtualMetrics);
+
+      setPhysicalMetrics(newPhysicalMetrics);
+      setVirtualMetrics(newVirtualMetrics);
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load data');
+      throw err; // Re-throw so handleTimeRangeChange can catch it
+    } finally {
+      setLoading(false);
+    }
+  }, [buildFilterCriteria, filterOptions]);
+
+  const handleTimeRangeChange = useCallback(async (range: TimeRange) => {
+    console.log('handleTimeRangeChange called with:', range);
+    console.log('Previous selectedTimeRange was:', selectedTimeRange);
+
+    try {
+      // Try to load data with new time range first
+      console.log('Attempting to load data with new timeRange:', range);
+      await loadDataWithTimeRange(range);
+
+      // Only update state if API call succeeded
+      console.log('API call succeeded, updating selectedTimeRange to:', range);
+      setSelectedTimeRange(range);
+    } catch (error) {
+      console.error('Failed to load data for timeRange:', range, error);
+      // Keep the old selectedTimeRange state, don't update UI
+    }
+  }, [selectedTimeRange, loadDataWithTimeRange]);
 
   const handlePageChange = useCallback((page: number) => {
     setPagination(prev => ({ ...prev, page }));
@@ -259,9 +325,8 @@ const ContainerDashboardPage: React.FC = () => {
     setPagination(prev => ({ ...prev, page: 1 }));
   }, [selectedContainerType]);
 
-  const handleRowAction = useCallback((container: Container, action: string) => {
+  const handleRowAction = useCallback((/* container: Container, action: string */) => {
     // Handle row actions (view, edit, shutdown)
-    console.log('Row action:', action, container);
   }, []);
 
   const handleCreateContainer = useCallback(() => {
@@ -272,10 +337,8 @@ const ContainerDashboardPage: React.FC = () => {
     setCreatePanelOpen(false);
   }, []);
 
-  const handleContainerCreated = useCallback((container: any) => {
-    // Refresh the container list
+  const handleContainerCreated = useCallback((/* container: any */) => {
     loadData();
-    console.log('Container created successfully:', container);
   }, [loadData]);
 
   const validateContainerState = useCallback(async (containerId: string) => {
@@ -414,10 +477,16 @@ const ContainerDashboardPage: React.FC = () => {
           onRangeChange={handleTimeRangeChange}
         />
 
-        <StatisticsSection>
+                <StatisticsSection>
+          <div style={{ margin: '10px 0', padding: '5px', background: '#eee', fontSize: '12px' }}>
+            Debug - Time Range: {selectedTimeRange} |
+            Physical Count: {physicalMetrics?.containerCount || 'N/A'} |
+            Virtual Count: {virtualMetrics?.containerCount || 'N/A'}
+          </div>
           {physicalMetrics && (
             <Box flex={1} onClick={() => handleContainerTypeClick('physical')} sx={{ cursor: 'pointer' }}>
               <ContainerStatistics
+                key={`physical-${selectedTimeRange}-${physicalMetrics.containerCount}`}
                 title="Physical Containers"
                 containerCount={physicalMetrics.containerCount}
                 yieldData={physicalMetrics.yieldData}
@@ -428,6 +497,7 @@ const ContainerDashboardPage: React.FC = () => {
           {virtualMetrics && (
             <Box flex={1} onClick={() => handleContainerTypeClick('virtual')} sx={{ cursor: 'pointer' }}>
               <ContainerStatistics
+                key={`virtual-${selectedTimeRange}-${virtualMetrics.containerCount}`}
                 title="Virtual Containers"
                 containerCount={virtualMetrics.containerCount}
                 yieldData={virtualMetrics.yieldData}
@@ -457,11 +527,11 @@ const ContainerDashboardPage: React.FC = () => {
                 position: 'fixed',
                 bottom: '24px',
                 right: '24px',
-                backgroundColor: '#4CAF50',
-                color: 'white',
+                backgroundColor: colors.status.success,
+                color: colors.background.primary,
                 padding: '12px 24px',
                 borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                boxShadow: colors.shadow.medium,
                 zIndex: 1000,
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',

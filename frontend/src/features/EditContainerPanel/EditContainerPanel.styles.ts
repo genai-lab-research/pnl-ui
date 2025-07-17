@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../shared/styles';
 
 export const Overlay = styled.div<{ open: boolean }>`
   position: fixed;
@@ -6,7 +7,7 @@ export const Overlay = styled.div<{ open: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: ${colors.opacity.black50};
   z-index: 1000;
   opacity: ${(props: { open: boolean }) => props.open ? 1 : 0};
   visibility: ${(props: { open: boolean }) => props.open ? 'visible' : 'hidden'};
@@ -19,8 +20,8 @@ export const PanelContainer = styled.div<{ open: boolean }>`
   right: 0;
   width: 420px;
   height: 100vh;
-  background: #FFFFFF;
-  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  background: ${colors.background.primary};
+  box-shadow: -4px 0 16px ${colors.shadow.light};
   z-index: 1001;
   transform: translateX(${(props: { open: boolean }) => props.open ? '0' : '100%'});
   transition: transform 0.3s ease;
@@ -34,8 +35,8 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid #E0E0E0;
-  background: #FFFFFF;
+  border-bottom: 1px solid ${colors.border.primary};
+  background: ${colors.background.primary};
   position: sticky;
   top: 0;
   z-index: 10;
@@ -45,7 +46,7 @@ export const Title = styled.h2`
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-weight: 600;
-  color: #000000;
+  color: ${colors.text.primary};
   margin: 0;
 `;
 
@@ -53,7 +54,7 @@ export const CloseButton = styled.button`
   background: none;
   border: none;
   font-size: 24px;
-  color: #666;
+  color: ${colors.text.secondary};
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -63,7 +64,7 @@ export const CloseButton = styled.button`
   border-radius: 4px;
 
   &:hover {
-    background: #F0F0F0;
+    background: ${colors.background.secondary};
   }
 `;
 
@@ -81,7 +82,7 @@ export const SectionTitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #000000;
+  color: ${colors.text.primary};
   margin: 0 0 16px 0;
 `;
 
@@ -94,12 +95,12 @@ export const FieldLabel = styled.label`
   font-family: 'Inter', 'Roboto', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #4C4E64;
+  color: ${colors.secondary.main};
   margin-bottom: 8px;
 `;
 
 export const Required = styled.span`
-  color: #FF4444;
+  color: ${colors.status.error};
 `;
 
 export const HorizontalGroup = styled.div`
@@ -123,7 +124,7 @@ export const SwitchLabel = styled.span`
   font-family: 'Inter', 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #000000;
+  color: ${colors.text.primary};
 `;
 
 export const CheckboxRow = styled.div`
@@ -137,7 +138,7 @@ export const CheckboxLabel = styled.label`
   font-family: 'Inter', 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #000000;
+  color: ${colors.text.primary};
   cursor: pointer;
   line-height: 1.4;
 `;
@@ -145,7 +146,7 @@ export const CheckboxLabel = styled.label`
 export const EnvironmentPanel = styled.div`
   margin-top: 16px;
   padding: 16px;
-  background: #F8F9FA;
+  background: ${colors.background.secondary};
   border-radius: 8px;
 `;
 
@@ -164,7 +165,7 @@ export const EnvironmentLabel = styled.span`
   font-family: 'Inter', 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #000000;
+  color: ${colors.text.primary};
 `;
 
 export const EnvironmentButtons = styled.div`
@@ -177,9 +178,9 @@ export const EnvironmentButton = styled.button<{ active?: boolean }>`
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  border: 1px solid #4C4E64;
-  background: ${(props: { active?: boolean }) => props.active ? '#455168' : '#FFFFFF'};
-  color: ${(props: { active?: boolean }) => props.active ? '#FFFFFF' : '#4C4E64'};
+  border: 1px solid ${colors.secondary.main};
+  background: ${(props: { active?: boolean }) => props.active ? colors.secondary.dark : colors.background.primary};
+  color: ${(props: { active?: boolean }) => props.active ? colors.background.primary : colors.secondary.main};
   cursor: pointer;
   transition: all 0.2s ease;
 
@@ -196,22 +197,22 @@ export const EnvironmentButton = styled.button<{ active?: boolean }>`
   }
 
   &:hover:not(:disabled) {
-    background: ${(props: { active?: boolean }) => props.active ? '#556080' : '#F0F0F0'};
+    background: ${(props: { active?: boolean }) => props.active ? colors.secondary.light : colors.background.secondary};
   }
 
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    background: #4C4E64;
-    color: #FFFFFF;
+    background: ${colors.secondary.main};
+    color: ${colors.background.primary};
   }
 `;
 
 export const Footer = styled.div`
   position: sticky;
   bottom: 0;
-  background: #FFFFFF;
-  border-top: 1px solid #E0E0E0;
+  background: ${colors.background.primary};
+  border-top: 1px solid ${colors.border.primary};
   padding: 20px 24px;
   display: flex;
   flex-direction: column;
@@ -221,8 +222,8 @@ export const Footer = styled.div`
 export const SaveButton = styled.button<{ $loading?: boolean }>`
   width: 100%;
   padding: 12px 24px;
-  background: #656CFF;
-  color: #FFFFFF;
+  background: ${colors.primary.main};
+  color: ${colors.background.primary};
   border: none;
   border-radius: 6px;
   font-family: 'Roboto', sans-serif;
@@ -237,11 +238,11 @@ export const SaveButton = styled.button<{ $loading?: boolean }>`
   transition: background 0.2s ease;
 
   &:hover:not(:disabled) {
-    background: #5A61E6;
+    background: ${colors.primary.dark};
   }
 
   &:disabled {
-    background: #B0B0B0;
+    background: ${colors.interactive.disabled};
     cursor: not-allowed;
   }
 `;
@@ -249,9 +250,9 @@ export const SaveButton = styled.button<{ $loading?: boolean }>`
 export const CancelButton = styled.button`
   width: 100%;
   padding: 12px 24px;
-  background: #FFFFFF;
-  color: #4C4E64;
-  border: 1px solid #4C4E64;
+  background: ${colors.background.primary};
+  color: ${colors.secondary.main};
+  border: 1px solid ${colors.secondary.main};
   border-radius: 6px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -260,9 +261,9 @@ export const CancelButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: #F8F9FA;
-    border-color: #333;
-    color: #333;
+    background: ${colors.background.secondary};
+    border-color: ${colors.text.primary};
+    color: ${colors.text.primary};
   }
 `;
 
@@ -272,7 +273,7 @@ export const ButtonRow = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  color: #FF4444;
+  color: ${colors.status.error};
   font-size: 12px;
   margin-top: 4px;
   font-family: 'Inter', 'Roboto', sans-serif;
@@ -294,11 +295,11 @@ export const LoadingSpinner = styled.div`
 
 export const ReadOnlyField = styled.div`
   padding: 12px;
-  background: #F5F5F5;
-  border: 1px solid #E0E0E0;
+  background: ${colors.background.disabled};
+  border: 1px solid ${colors.border.primary};
   border-radius: 6px;
   font-family: 'Inter', 'Roboto', sans-serif;
   font-size: 14px;
-  color: #666;
+  color: ${colors.text.secondary};
   cursor: not-allowed;
 `;

@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { primary, text } from '../../../styles/colors';
 
 export const TabContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 280px;
   height: 32px;
-  border: 1px solid #9747FF;
+  border: 1px solid ${primary.light};
   border-radius: 5px;
 `;
 
@@ -31,8 +32,8 @@ export const TabItem = styled.button<TabItemProps>`
   line-height: 16px;
   letter-spacing: 0.5px;
   text-align: center;
-  color: ${({ isSelected }) => isSelected ? '#3545EE' : '#49454F'};
-  border: ${({ isSelected }) => isSelected ? '1px solid #3545EE' : 'none'};
+  color: ${({ isSelected }) => isSelected ? primary.main : text.tertiary};
+  border: ${({ isSelected }) => isSelected ? `1px solid ${primary.main}` : 'none'};
 
   &:focus {
     outline: none;

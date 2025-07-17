@@ -1,9 +1,10 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import { colors } from '../../../styles';
 
 export const StyledInfoPanel = styled(Box)(({ theme }) => ({
-  backgroundColor: '#FFFFFF',
-  border: '1px solid #E4E4E7',
+  backgroundColor: colors.background.primary,
+  border: `1px solid ${colors.border.primary}`,
   borderRadius: '8px',
   padding: theme.spacing(3),
   height: 'fit-content',
