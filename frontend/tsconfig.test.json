@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "composite": false,
+    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.tsx",
+    "src/setupTests.ts"
+  ]
+}

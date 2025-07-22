@@ -1,0 +1,30 @@
+Metadata-Version: 2.4
+Name: demo-backend
+Version: 0.1.0
+Summary: FastAPI backend demo
+Author-email: Demo <demo@example.com>
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.24.0
+Requires-Dist: pydantic>=2.7.4
+Requires-Dist: pydantic-settings>=2.5.2
+Requires-Dist: sqlalchemy[asyncio]==2.0.23
+Requires-Dist: alembic==1.12.1
+Requires-Dist: asyncpg==0.29.0
+Requires-Dist: psycopg2-binary==2.9.9
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: email-validator==2.1.0
+Requires-Dist: passlib[bcrypt]==1.7.4
+Requires-Dist: tenacity==8.2.3
+Requires-Dist: python-jose[cryptography]==3.3.0
+Requires-Dist: httpx<0.28,>=0.27
+Requires-Dist: anyio<5.0.0,>=4.0.0
+Requires-Dist: pytest==7.4.3
+Requires-Dist: pytest-asyncio==0.21.1
+Requires-Dist: aiosqlite>=0.20.0
+Requires-Dist: pylint>=3.0.0
+Requires-Dist: bandit>=1.7.0
+Provides-Extra: dev
+Requires-Dist: ruff==0.1.6; extra == "dev"
+Requires-Dist: mypy==1.7.1; extra == "dev"
+Requires-Dist: pre-commit==3.6.0; extra == "dev"
+Requires-Dist: coverage==7.3.2; extra == "dev"
