@@ -1,0 +1,60 @@
+# Seeding configuration for agent-based generation
+# This file will be used by the agent to generate appropriate seeding data
+
+seeding:
+  # Default counts for different data sizes
+  counts:
+    small: 50
+    medium: 500
+    large: 5000
+    performance: 50000
+  
+  # Batch size for performance optimization
+  batch_size: 100
+  
+  # Common data patterns for realistic test data
+  patterns:
+    names:
+      prefix_patterns: ["Test", "Demo", "Sample", "Mock"]
+      suffix_patterns: ["Corp", "Inc", "LLC", "Ltd", "Co"]
+    
+    locations:
+      cities: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
+      countries: ["USA", "Canada", "Mexico", "UK", "Germany", "France", "Japan", "Australia", "Brazil", "India"]
+      coordinates:
+        lat_range: [25.0, 50.0]
+        lng_range: [-125.0, -70.0]
+    
+    statuses:
+      common: ["active", "inactive", "pending", "suspended"]
+      specific: {} # Will be populated by agent based on models
+    
+    dates:
+      created_range_days: 365
+      updated_range_days: 30
+    
+    numeric_ranges:
+      capacity: [1000, 50000]
+      load: [0, 100]
+      prices: [10.0, 1000.0]
+
+# Data relationships configuration
+relationships:
+  # This will be populated by agent based on model relationships
+  foreign_keys: {}
+  many_to_many: {}
+  
+# Model-specific configurations
+models:
+  # This section will be populated by agent based on actual models
+  # Example:
+  # User:
+  #   required_fields: ["username", "email", "password"]
+  #   optional_fields: ["first_name", "last_name", "is_active"]
+  #   unique_fields: ["username", "email"]
+  # Container:
+  #   required_fields: ["name", "type", "status"]
+  #   optional_fields: ["capacity", "location"]
+  #   enum_fields:
+  #     type: ["standard", "refrigerated", "tank"]
+  #     status: ["active", "inactive", "maintenance"]
