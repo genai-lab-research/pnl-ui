@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Box, 
   Typography, 
   TextField, 
   Select, 
@@ -12,15 +11,14 @@ import {
 } from '@mui/material';
 import { ContainerFormData, ValidationError } from '../../../models/create-container.model';
 import { SeedType, Tenant, Location } from '../../../../../types/containers';
-import { SectionWrapper, SectionTitle, InputGroup, FieldSpacing, StyledSegmentedButton } from './SectionComponents.styles';
+import { SectionWrapper, SectionTitle, InputGroup, FieldSpacing } from './SectionComponents.styles';
+import { SegmentedButton } from '../../../../../shared/components/ui/SegmentedButton';
 
 interface ContainerInformationSectionProps {
   formData: ContainerFormData;
   availableTenants: Tenant[];
   availableSeedTypes: SeedType[];
   showLocationFields: boolean;
-  selectedSeedTypesDisplay: string;
-  locationDisplay: string;
   onFieldUpdate: <K extends keyof ContainerFormData>(field: K, value: ContainerFormData[K]) => void;
   onLocationUpdate: (location: Partial<Location>) => void;
   onContainerTypeToggle: (type: 'physical' | 'virtual') => void;
@@ -29,7 +27,6 @@ interface ContainerInformationSectionProps {
   getFieldErrors: (field: string) => ValidationError[];
   hasFieldErrors: (field: string) => boolean;
   getSelectedSeedTypes: () => SeedType[];
-  getTenantName: (tenantId: number | null) => string;
 }
 
 export const ContainerInformationSection: React.FC<ContainerInformationSectionProps> = ({
@@ -37,8 +34,6 @@ export const ContainerInformationSection: React.FC<ContainerInformationSectionPr
   availableTenants,
   availableSeedTypes,
   showLocationFields,
-  selectedSeedTypesDisplay,
-  locationDisplay,
   onFieldUpdate,
   onLocationUpdate,
   onContainerTypeToggle,
@@ -46,15 +41,14 @@ export const ContainerInformationSection: React.FC<ContainerInformationSectionPr
   onSeedTypeRemove,
   getFieldErrors,
   hasFieldErrors,
-  getSelectedSeedTypes,
-  getTenantName
+  getSelectedSeedTypes
 }) => {
   const nameErrors = getFieldErrors('name');
   const tenantErrors = getFieldErrors('tenantId');
   const purposeErrors = getFieldErrors('purpose');
   const seedTypeErrors = getFieldErrors('seedTypes');
 
-  const handleSeedTypeChange = (_: any, value: SeedType[]) => {
+  const handleSeedTypeChange = (_: React.SyntheticEvent, value: SeedType[]) => {
     const currentIds = formData.seedTypes;
     const newIds = value.map(st => st.id);
     
@@ -135,35 +129,15 @@ export const ContainerInformationSection: React.FC<ContainerInformationSectionPr
 
         <FieldSpacing />
 
-        <Box>
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              fontSize: '12px', 
-              fontWeight: 400, 
-              color: '#4C4E64',
-              mb: 1 
-            }}
-          >
-            Container Type
-          </Typography>
-          <StyledSegmentedButton>
-            <button
-              type="button"
-              className={`segment ${formData.type === 'physical' ? 'active' : 'inactive'}`}
-              onClick={() => onContainerTypeToggle('physical')}
-            >
-              Physical
-            </button>
-            <button
-              type="button"
-              className={`segment ${formData.type === 'virtual' ? 'active' : 'inactive'}`}
-              onClick={() => onContainerTypeToggle('virtual')}
-            >
-              Virtual
-            </button>
-          </StyledSegmentedButton>
-        </Box>
+        <SegmentedButton
+          label="Container Type"
+          options={[
+            { value: 'physical', label: 'Physical' },
+            { value: 'virtual', label: 'Virtual' }
+          ]}
+          value={formData.type}
+          onChange={(value) => onContainerTypeToggle(value as 'physical' | 'virtual')}
+        />
 
         <FieldSpacing />
 

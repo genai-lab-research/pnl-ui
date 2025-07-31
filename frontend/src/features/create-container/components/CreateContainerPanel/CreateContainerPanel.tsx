@@ -106,8 +106,6 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
             availableTenants={availableTenants}
             availableSeedTypes={availableSeedTypes}
             showLocationFields={showLocationFields}
-            selectedSeedTypesDisplay={selectedSeedTypesDisplay}
-            locationDisplay={locationDisplay}
             onFieldUpdate={onFieldUpdate}
             onLocationUpdate={onLocationUpdate}
             onContainerTypeToggle={onContainerTypeToggle}
@@ -116,7 +114,6 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
             getFieldErrors={getFieldErrors}
             hasFieldErrors={hasFieldErrors}
             getSelectedSeedTypes={getSelectedSeedTypes}
-            getTenantName={getTenantName}
           />
 
           <SectionSpacer />
@@ -138,8 +135,6 @@ export const CreateContainerPanel: React.FC<CreateContainerPanelProps> = ({
             showEcosystemSettings={showEcosystemSettings}
             onEcosystemToggle={onEcosystemToggle}
             onFieldUpdate={onFieldUpdate}
-            getFieldErrors={getFieldErrors}
-            hasFieldErrors={hasFieldErrors}
           />
         </ScrollableContent>
 

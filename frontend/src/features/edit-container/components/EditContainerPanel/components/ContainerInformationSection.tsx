@@ -12,7 +12,8 @@ import {
   FormHelperText
 } from '@mui/material';
 import { UseEditContainerReturn } from '../../../hooks/useEditContainer';
-import { StyledSection, StyledFieldRow, StyledSegmentedButton } from '../EditContainerPanel.styles';
+import { StyledSection, StyledFieldRow } from '../EditContainerPanel.styles';
+import { SegmentedButton } from '../../../../../shared/components/ui/SegmentedButton';
 
 export interface ContainerInformationSectionProps {
   editContainerHook: UseEditContainerReturn;
@@ -113,25 +114,16 @@ export const ContainerInformationSection: React.FC<ContainerInformationSectionPr
 
         {/* Container Type */}
         <StyledFieldRow>
-          <Typography className="field-label">Container Type</Typography>
-          <StyledSegmentedButton>
-            <button
-              type="button"
-              className={`segment ${formData.type === 'physical' ? 'active' : 'inactive'}`}
-              onClick={() => handleContainerTypeChange('physical')}
-              disabled={disabled}
-            >
-              Physical
-            </button>
-            <button
-              type="button"
-              className={`segment ${formData.type === 'virtual' ? 'active' : 'inactive'}`}
-              onClick={() => handleContainerTypeChange('virtual')}
-              disabled={disabled}
-            >
-              Virtual
-            </button>
-          </StyledSegmentedButton>
+          <SegmentedButton
+            label="Container Type"
+            options={[
+              { value: 'physical', label: 'Physical' },
+              { value: 'virtual', label: 'Virtual' }
+            ]}
+            value={formData.type}
+            onChange={(value) => handleContainerTypeChange(value as 'physical' | 'virtual')}
+            disabled={disabled}
+          />
         </StyledFieldRow>
 
         {/* Purpose */}

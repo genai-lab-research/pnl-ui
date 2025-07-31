@@ -7,7 +7,8 @@ import {
   Collapse
 } from '@mui/material';
 import { UseEditContainerReturn } from '../../../hooks/useEditContainer';
-import { StyledSection, StyledFieldRow, StyledSegmentedButton } from '../EditContainerPanel.styles';
+import { StyledSection, StyledFieldRow } from '../EditContainerPanel.styles';
+import { SegmentedButton } from '../../../../../shared/components/ui/SegmentedButton';
 
 export interface SystemIntegrationSectionProps {
   editContainerHook: UseEditContainerReturn;
@@ -83,97 +84,58 @@ export const SystemIntegrationSection: React.FC<SystemIntegrationSectionProps> =
           <Box className="field-stack" sx={{ mt: 2 }}>
             {/* FA Environment */}
             <StyledFieldRow>
-              <Typography className="field-label">FA Environment</Typography>
-              <StyledSegmentedButton>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.fa.environment === 'alpha' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('fa', 'alpha')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Alpha
-                </button>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.fa.environment === 'prod' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('fa', 'prod')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Prod
-                </button>
-              </StyledSegmentedButton>
+              <SegmentedButton
+                label="FA Environment"
+                options={[
+                  { value: 'alpha', label: 'Alpha' },
+                  { value: 'prod', label: 'Prod' }
+                ]}
+                value={formData.ecosystemSettings.fa.environment}
+                onChange={(value) => handleEnvironmentChange('fa', value)}
+                disabled={disabled || isEcosystemReadonly}
+              />
             </StyledFieldRow>
 
             {/* PYA Environment */}
             <StyledFieldRow>
-              <Typography className="field-label">PYA Environment</Typography>
-              <StyledSegmentedButton>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.pya.environment === 'dev' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('pya', 'dev')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Dev
-                </button>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.pya.environment === 'test' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('pya', 'test')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Test
-                </button>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.pya.environment === 'stage' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('pya', 'stage')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Stage
-                </button>
-              </StyledSegmentedButton>
+              <SegmentedButton
+                label="PYA Environment"
+                options={[
+                  { value: 'dev', label: 'Dev' },
+                  { value: 'test', label: 'Test' },
+                  { value: 'stage', label: 'Stage' }
+                ]}
+                value={formData.ecosystemSettings.pya.environment}
+                onChange={(value) => handleEnvironmentChange('pya', value)}
+                disabled={disabled || isEcosystemReadonly}
+              />
             </StyledFieldRow>
 
             {/* AWS Environment */}
             <StyledFieldRow>
-              <Typography className="field-label">AWS Environment</Typography>
-              <StyledSegmentedButton>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.aws.environment === 'dev' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('aws', 'dev')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Dev
-                </button>
-                <button
-                  type="button"
-                  className={`segment ${formData.ecosystemSettings.aws.environment === 'prod' ? 'active' : 'inactive'}`}
-                  onClick={() => handleEnvironmentChange('aws', 'prod')}
-                  disabled={disabled || isEcosystemReadonly}
-                >
-                  Prod
-                </button>
-              </StyledSegmentedButton>
+              <SegmentedButton
+                label="AWS Environment"
+                options={[
+                  { value: 'dev', label: 'Dev' },
+                  { value: 'prod', label: 'Prod' }
+                ]}
+                value={formData.ecosystemSettings.aws.environment}
+                onChange={(value) => handleEnvironmentChange('aws', value)}
+                disabled={disabled || isEcosystemReadonly}
+              />
             </StyledFieldRow>
 
             {/* MBAI Environment (Disabled - Prod only) */}
             <StyledFieldRow>
-              <Typography className="field-label">MBAI Environment</Typography>
-              <StyledSegmentedButton>
-                <button
-                  type="button"
-                  className="segment active"
-                  disabled={true}
-                  style={{ 
-                    backgroundColor: 'rgba(76, 78, 100, 0.12)', 
-                    color: 'rgba(76, 78, 100, 0.4)' 
-                  }}
-                >
-                  Prod
-                </button>
-              </StyledSegmentedButton>
+              <SegmentedButton
+                label="MBAI Environment"
+                options={[
+                  { value: 'prod', label: 'Prod', disabled: true }
+                ]}
+                value={formData.ecosystemSettings.mbai.environment}
+                onChange={() => {}}
+                disabled={true}
+              />
               <Typography 
                 variant="caption" 
                 sx={{ color: '#4C4E64', fontStyle: 'italic', mt: 0.5 }}
