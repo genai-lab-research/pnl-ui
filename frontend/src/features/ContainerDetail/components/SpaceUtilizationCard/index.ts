@@ -1,0 +1,1 @@
+export { SpaceUtilizationCard } from './SpaceUtilizationCard';

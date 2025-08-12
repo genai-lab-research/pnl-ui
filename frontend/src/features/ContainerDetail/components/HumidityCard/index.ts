@@ -1,0 +1,1 @@
+export { HumidityCard } from './HumidityCard';

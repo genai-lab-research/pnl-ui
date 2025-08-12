@@ -1,0 +1,146 @@
+/** @jsxImportSource @emotion/react */
+import React from 'react';
+import clsx from 'clsx';
+import { 
+  listItemStyles, 
+  iconContainerStyles, 
+  labelStyles, 
+  loadingStyles, 
+  errorStyles 
+} from './styles';
+import { StatusPill } from './components';
+import { useInfoListItem } from './hooks';
+import type { InfoListItemProps } from './types';
+
+export const InfoListItem: React.FC<InfoListItemProps> = ({
+  label,
+  status,
+  iconName,
+  iconSlot,
+  iconPath,
+  variant = 'default',
+  size = 'md',
+  loading = false,
+  error,
+  footerSlot,
+  ariaLabel,
+  className,
+  onClick,
+  testId,
+}) => {
+  const { handleClick, handleKeyDown, isClickable } = useInfoListItem({ 
+    onClick, 
+    loading, 
+    error 
+  });
+
+  // Error state
+  if (error) {
+    return (
+      <div 
+        css={errorStyles}
+        className={className}
+        role="alert"
+        aria-label={ariaLabel || `Error: ${error}`}
+        data-testid={testId}
+      >
+        {error}
+      </div>
+    );
+  }
+
+  // Loading state
+  if (loading) {
+    return (
+      <div 
+        css={[listItemStyles, loadingStyles]}
+        className={clsx(
+          `variant-${variant}`,
+          `size-${size}`,
+          className
+        )}
+        aria-label={ariaLabel || 'Loading item'}
+        data-testid={testId}
+      >
+        <div css={iconContainerStyles}>
+          <div className="skeleton skeleton-icon" />
+        </div>
+        <div className="skeleton skeleton-label" />
+        <div className="skeleton skeleton-status" />
+      </div>
+    );
+  }
+
+  // Main render
+  const itemClassName = clsx(
+    `variant-${variant}`,
+    `size-${size}`,
+    { clickable: isClickable },
+    className
+  );
+
+  const renderIcon = () => {
+    if (iconSlot) {
+      return iconSlot;
+    }
+    
+    if (iconPath) {
+      return (
+        <img 
+          src={iconPath} 
+          alt="" 
+          role="presentation"
+          style={{ width: '100%', height: '100%', display: 'block' }}
+        />
+      );
+    }
+    
+    if (iconName) {
+      // For SVG path from the specific icon provided
+      if (iconName === 'shipping-container') {
+        return (
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.2267 2.04331L8.14667 0.0206415C8.07457 -2.23895e-05 7.99892 -0.00524718 7.92467 0.00530824L0.916 1.00664C0.662236 1.04396 0.430265 1.17104 0.262195 1.3648C0.0941255 1.55855 0.00109823 1.80615 0 2.06264V9.67064C0.00109823 9.92713 0.0941255 10.1747 0.262195 10.3685C0.430265 10.5622 0.662236 10.6893 0.916 10.7266L7.92467 11.7266C7.9496 11.7305 7.97477 11.7328 8 11.7333C8.04962 11.7334 8.099 11.7264 8.14667 11.7126L15.2267 9.68997C15.4487 9.62567 15.644 9.49127 15.7834 9.30683C15.9228 9.12239 15.9988 8.89782 16 8.66664V3.06664C15.9988 2.83546 15.9228 2.61089 15.7834 2.42645C15.644 2.24201 15.4487 2.10761 15.2267 2.04331ZM5.86667 5.33331H4.8V1.52931L7.46667 1.14797V10.5853L4.8 10.204V6.39997H5.86667C6.00812 6.39997 6.14377 6.34378 6.24379 6.24376C6.34381 6.14375 6.4 6.00809 6.4 5.86664C6.4 5.72519 6.34381 5.58954 6.24379 5.48952C6.14377 5.3895 6.00812 5.33331 5.86667 5.33331ZM1.06667 2.06264L3.73333 1.68131V5.33331H2.66667C2.52522 5.33331 2.38956 5.3895 2.28954 5.48952C2.18952 5.58954 2.13333 5.72519 2.13333 5.86664C2.13333 6.00809 2.18952 6.14375 2.28954 6.24376C2.38956 6.34378 2.52522 6.39997 2.66667 6.39997H3.73333V10.052L1.06667 9.67064V2.06264ZM8.53333 10.4926V1.24064L14.9333 3.06664V8.66664L8.53333 10.4926Z" fill="black"/>
+          </svg>
+        );
+      }
+    }
+
+    return null;
+  };
+
+  return (
+    <div 
+      css={listItemStyles}
+      className={itemClassName}
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onClick={isClickable ? handleClick : undefined}
+      onKeyDown={isClickable ? handleKeyDown : undefined}
+      aria-label={ariaLabel || label}
+      data-testid={testId}
+    >
+      {/* Icon */}
+      <div css={iconContainerStyles}>
+        {renderIcon()}
+      </div>
+
+      {/* Label */}
+      <span css={labelStyles}>
+        {label}
+      </span>
+
+      {/* Status Pill */}
+      {status && (
+        <StatusPill 
+          label={status.label}
+          variant={status.variant}
+          size={size}
+        />
+      )}
+
+      {/* Footer Slot */}
+      {footerSlot}
+    </div>
+  );
+};

@@ -1,0 +1,1 @@
+export { AirTemperatureCard } from './AirTemperatureCard';
