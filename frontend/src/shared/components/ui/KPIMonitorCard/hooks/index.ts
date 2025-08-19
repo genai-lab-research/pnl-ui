@@ -1,0 +1,1 @@
+export { useKPIMonitorCard } from './useKPIMonitorCard';
