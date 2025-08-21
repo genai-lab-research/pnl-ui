@@ -20,12 +20,49 @@ import {
  */
 export function transformContainerOverview(response: ContainerOverviewResponse): ContainerDetailData {
   return {
-    container: response.container,
+    container: normalizeContainerData(response.container),
     dashboard: response.dashboard_metrics,
     crops: response.crops_summary,
     recentActivity: response.recent_activity,
     lastUpdated: new Date().toISOString(),
   };
+}
+
+/**
+ * Normalize container data to ensure ecosystem_settings are properly formatted
+ */
+function normalizeContainerData(container: any): any {
+  if (!container) return container;
+  
+  // Normalize ecosystem_settings to handle both object and string formats
+  if (container.ecosystem_settings) {
+    const normalizeEcosystemValue = (value: any): string | null => {
+      if (!value) return null;
+      if (typeof value === 'string') return value;
+      if (typeof value === 'object') {
+        // Handle object format from backend seed data
+        if (value.enabled === true) {
+          // Return a default environment string for enabled integrations
+          return 'production';
+        } else if (value.enabled === false) {
+          return null;
+        }
+        // Fallback to environment property if it exists
+        return value.environment || null;
+      }
+      return null;
+    };
+
+    container.ecosystem_settings = {
+      ...container.ecosystem_settings,
+      fa: normalizeEcosystemValue(container.ecosystem_settings.fa),
+      pya: normalizeEcosystemValue(container.ecosystem_settings.pya),
+      aws: normalizeEcosystemValue(container.ecosystem_settings.aws),
+      mbai: normalizeEcosystemValue(container.ecosystem_settings.mbai),
+    };
+  }
+  
+  return container;
 }
 
 /**

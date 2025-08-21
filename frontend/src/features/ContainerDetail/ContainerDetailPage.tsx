@@ -42,7 +42,32 @@ import {
 
 type TabValue = 'overview' | 'environment' | 'inventory' | 'devices';
 
-
+/**
+ * Safely format ecosystem setting values, handling both string and object types
+ */
+const formatEcosystemSettingValue = (value: any, defaultValue: string = 'N/A'): string => {
+  if (!value) return defaultValue;
+  
+  // If it's already a string, format it
+  if (typeof value === 'string') {
+    return value.charAt(0).toUpperCase() + value.slice(1);
+  }
+  
+  // If it's an object (legacy format), try to extract meaningful info
+  if (typeof value === 'object') {
+    if (value.enabled === true) {
+      return 'Enabled';
+    } else if (value.enabled === false) {
+      return 'Disabled';
+    }
+    // Fallback to any environment property
+    if (value.environment && typeof value.environment === 'string') {
+      return value.environment.charAt(0).toUpperCase() + value.environment.slice(1);
+    }
+  }
+  
+  return defaultValue;
+};
 
 /**
  * ContainerDetailPage - Main page component for individual container view
@@ -613,10 +638,10 @@ export const ContainerDetailPage: React.FC = () => {
                   containerInfo={[
                     { label: 'Enable Shadow Service', value: containerInfo?.shadow_service_enabled ? 'Yes' : 'No' },
                     { label: 'Connect to external systems', value: containerInfo?.ecosystem_connected ? 'Yes' : 'No' },
-                    { label: 'FA Integration', value: containerInfo?.ecosystem_settings?.fa ? containerInfo.ecosystem_settings.fa.charAt(0).toUpperCase() + containerInfo.ecosystem_settings.fa.slice(1) : 'N/A' },
-                    { label: 'PYA Integration', value: containerInfo?.ecosystem_settings?.pya ? containerInfo.ecosystem_settings.pya.charAt(0).toUpperCase() + containerInfo.ecosystem_settings.pya.slice(1) : 'N/A' },
-                    { label: 'AWS Environment', value: containerInfo?.ecosystem_settings?.aws ? containerInfo.ecosystem_settings.aws.charAt(0).toUpperCase() + containerInfo.ecosystem_settings.aws.slice(1) : 'N/A' },
-                    { label: 'MBAI Environment', value: containerInfo?.ecosystem_settings?.mbai ? containerInfo.ecosystem_settings.mbai.charAt(0).toUpperCase() + containerInfo.ecosystem_settings.mbai.slice(1) : 'Disabled' },
+                    { label: 'FA Integration', value: formatEcosystemSettingValue(containerInfo?.ecosystem_settings?.fa) },
+                    { label: 'PYA Integration', value: formatEcosystemSettingValue(containerInfo?.ecosystem_settings?.pya) },
+                    { label: 'AWS Environment', value: formatEcosystemSettingValue(containerInfo?.ecosystem_settings?.aws) },
+                    { label: 'MBAI Environment', value: formatEcosystemSettingValue(containerInfo?.ecosystem_settings?.mbai, 'Disabled') },
                   ]}
                   canEdit={false}
                   loading={isLoading.settings}
