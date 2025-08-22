@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.db import get_async_db
 from app.services.container import ContainerService
 from app.services.metrics import MetricsService
+from app.services.event_tracker import EventTracker
 from app.schemas.container import (
     Container,
     ContainerCreate,
@@ -165,7 +166,27 @@ async def shutdown_container(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
+        
+        # Get container info before shutdown
+        container = await service.get_container(container_id)
+        if not container:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Container not found"
+            )
+        
         result = await service.shutdown_container(container_id, shutdown_request)
+        
+        # Track the shutdown event
+        await event_tracker.track_container_shutdown(
+            container_id=container_id,
+            container_name=container.name,
+            reason=shutdown_request.reason,
+            force=shutdown_request.force,
+            user_info={"username": current_user.get("username", "unknown")},
+            request=None
+        )
         
         logger.info(f"Container {container_id} shutdown by user: {current_user['username']}")
         return result
@@ -233,12 +254,21 @@ async def create_container(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
         
         # Validate container data
         await service.validate_container_data(container_data)
         
         # Create container
         container = await service.create_container(container_data)
+        
+        # Track the creation event
+        await event_tracker.track_container_creation(
+            container_id=container.id,
+            container_name=container.name,
+            user_info={"username": current_user.get("username", "unknown")},
+            request=None
+        )
         
         logger.info(f"Created container {container.id} by user: {current_user['username']}")
         return container
@@ -274,12 +304,35 @@ async def update_container(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
+        
+        # Get current container state for comparison
+        current_container = await service.get_container(container_id)
+        if not current_container:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=ErrorMessages.CONTAINER_NOT_FOUND
+            )
+        
         container = await service.update_container(container_id, container_data)
         
         if not container:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=ErrorMessages.CONTAINER_NOT_FOUND
+            )
+        
+        # Track the update event with actual changes only
+        changes = container_data.model_dump(exclude_unset=True)
+        
+        if changes:
+            await event_tracker.track_container_update(
+                container_id=container_id,
+                container_name=container.name,
+                old_container=current_container,
+                new_changes=changes,
+                user_info={"username": current_user.get("username", "unknown")},
+                request=None
             )
         
         logger.info(f"Updated container {container_id} by user: {current_user['username']}")
@@ -314,6 +367,24 @@ async def delete_container(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
+        
+        # Get container info before deletion
+        container = await service.get_container(container_id)
+        if not container:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=ErrorMessages.CONTAINER_NOT_FOUND
+            )
+        
+        # Track the deletion event before actual deletion
+        await event_tracker.track_container_deletion(
+            container_id=container_id,
+            container_name=container.name,
+            user_info={"username": current_user.get("username", "unknown")},
+            request=None
+        )
+        
         deleted = await service.delete_container(container_id)
         
         if not deleted:
@@ -676,7 +747,28 @@ async def update_container_settings(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
+        
+        # Get current container state
+        container = await service.get_container(container_id)
+        if not container:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Container not found"
+            )
+        
         result = await service.update_container_settings(container_id, settings_data)
+        
+        # Track settings changes
+        settings_changes = settings_data.model_dump(exclude_unset=True)
+        if settings_changes:
+            await event_tracker.track_settings_change(
+                container_id=container_id,
+                container_name=container.name,
+                settings_changed=settings_changes,
+                user_info={"username": current_user.get("username", "unknown")},
+                request=None
+            )
         
         logger.info(f"Updated settings for container {container_id} by user: {current_user['username']}")
         return result
@@ -729,7 +821,28 @@ async def update_environment_links(
     """
     try:
         service = ContainerService(db)
+        event_tracker = EventTracker(db)
+        
+        # Get current container state
+        container = await service.get_container(container_id)
+        if not container:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Container not found"
+            )
+        
         result = await service.update_environment_links(container_id, links_data)
+        
+        # Track environment link changes
+        link_changes = links_data.model_dump(exclude_unset=True)
+        if link_changes:
+            await event_tracker.track_environment_link_change(
+                container_id=container_id,
+                container_name=container.name,
+                link_changes=link_changes,
+                user_info={"username": current_user.get("username", "unknown")},
+                request=None
+            )
         
         logger.info(f"Updated environment links for container {container_id} by user: {current_user['username']}")
         return result

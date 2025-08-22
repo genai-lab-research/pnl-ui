@@ -207,29 +207,33 @@ export const StyledStatusBadge = styled.div<StatusBadgeStyledProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 3px 11px;
-  border-radius: 9999px;
+  padding: 4px 12px;
+  border-radius: 16px;
   font-family: ${theme.fonts.primary}; /* Inter */
   font-style: normal;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 16px;
   letter-spacing: 0px;
   text-align: center;
+  width: fit-content;
+  max-width: 120px;
   
   ${props => props.size === 'sm' && `
-    padding: 2px 8px;
+    padding: 3px 10px;
     font-size: 10px;
     line-height: 14px;
+    max-width: 100px;
   `}
   
   ${props => props.size === 'lg' && `
-    padding: 4px 14px;
-    font-size: 14px;
+    padding: 5px 16px;
+    font-size: 12px;
     line-height: 18px;
+    max-width: 140px;
   `}
   
-  /* Status variants */
+  /* Status variants - matching VerticalFarmingTable colors */
   ${props => {
     switch (props.variant) {
       case 'active':
@@ -239,23 +243,28 @@ export const StyledStatusBadge = styled.div<StatusBadgeStyledProps>`
         `;
       case 'success':
         return `
-          background-color: ${theme.colors.success};
+          background-color: #479F67;
           color: #FAFAFA;
         `;
       case 'warning':
         return `
-          background-color: ${theme.colors.warning};
+          background-color: #F97316;
           color: #FAFAFA;
         `;
       case 'error':
         return `
-          background-color: ${theme.colors.danger};
+          background-color: #f44336;
           color: #FAFAFA;
         `;
       case 'inactive':
         return `
-          background-color: ${theme.colors.inactive};
+          background-color: #6B7280;
           color: #FAFAFA;
+        `;
+      case 'created':
+        return `
+          background-color: #E5E7EB;
+          color: #18181B;
         `;
       default:
         return `

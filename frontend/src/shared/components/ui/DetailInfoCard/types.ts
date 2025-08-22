@@ -13,7 +13,7 @@ export interface StatusBadge {
   /** Text to display in the badge */
   text: string;
   /** Status variant for styling */
-  variant: 'active' | 'inactive' | 'warning' | 'error' | 'success';
+  variant: 'active' | 'inactive' | 'warning' | 'error' | 'success' | 'created';
 }
 
 export interface InfoSection {

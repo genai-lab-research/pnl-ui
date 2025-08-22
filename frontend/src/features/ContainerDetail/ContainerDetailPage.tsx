@@ -253,8 +253,26 @@ export const ContainerDetailPage: React.FC = () => {
               containerName={containerInfo?.name || containerId || 'Unknown'}
               containerType={containerInfo?.type === 'physical' ? 'physical' : 'virtual'}
               tenantName={containerInfo?.tenant?.name}
-              status={containerInfo?.status === 'active' ? 'Active' : containerInfo?.status === 'inactive' ? 'Inactive' : 'Active'}
-              statusVariant={containerInfo?.status === 'active' ? 'active' : 'inactive'}
+              status={(() => {
+                if (!containerInfo?.status) return 'Active';
+                switch (containerInfo.status) {
+                  case 'active': return 'Active';
+                  case 'inactive': return 'Inactive';
+                  case 'maintenance': return 'Maintenance';
+                  case 'created': return 'Created';
+                  default: return containerInfo.status.charAt(0).toUpperCase() + containerInfo.status.slice(1);
+                }
+              })()}
+              statusVariant={(() => {
+                if (!containerInfo?.status) return 'active';
+                switch (containerInfo.status) {
+                  case 'active': return 'active';
+                  case 'inactive': return 'inactive';
+                  case 'maintenance': return 'maintenance';
+                  case 'created': return 'created';
+                  default: return 'inactive';
+                }
+              })()}
               loading={isLoading.overview}
             />
           </Box>
@@ -617,7 +635,16 @@ export const ContainerDetailPage: React.FC = () => {
                     { label: 'Tenant', value: containerInfo?.tenant?.name || 'N/A' },
                     { label: 'Purpose', value: containerInfo?.purpose ? containerInfo.purpose.charAt(0).toUpperCase() + containerInfo.purpose.slice(1) : 'N/A' },
                     { label: 'Location', value: containerInfo?.location ? (containerInfo.location.city || containerInfo.location.address || containerInfo.location.name || 'N/A') : 'N/A' },
-                    { label: 'Status', value: containerInfo?.status === 'active' ? 'Active' : containerInfo?.status === 'inactive' ? 'Inactive' : containerInfo?.status || 'Active' },
+                    { label: 'Status', value: (() => {
+                      if (!containerInfo?.status) return 'Active';
+                      switch (containerInfo.status) {
+                        case 'active': return 'Active';
+                        case 'inactive': return 'Inactive';
+                        case 'maintenance': return 'Maintenance';
+                        case 'created': return 'Created';
+                        default: return containerInfo.status.charAt(0).toUpperCase() + containerInfo.status.slice(1);
+                      }
+                    })() },
                     { label: 'Created', value: containerInfo?.created_at ? new Date(containerInfo.created_at).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-') : 'N/A' },
                     { label: 'Last Modified', value: containerInfo?.updated_at ? new Date(containerInfo.updated_at).toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '-') : 'N/A' },
                     { label: 'Creator', value: 'N/A' }, // Not available in API response

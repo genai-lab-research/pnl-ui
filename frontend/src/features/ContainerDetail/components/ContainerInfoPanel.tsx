@@ -76,17 +76,20 @@ export const ContainerInfoPanel: React.FC<ContainerInfoPanelProps> = ({
   onClick,
   className,
 }) => {
-  // Map status to badge variant
+  // Map status to badge variant - matching VerticalFarmingTable statuses
   const getStatusVariant = (status: string): StatusBadge['variant'] => {
     if (!status) return 'inactive';
     
     switch (status.toLowerCase()) {
       case 'active':
+      case 'connected':
         return 'active';
       case 'inactive':
         return 'inactive';
       case 'maintenance':
         return 'warning';
+      case 'created':
+        return 'created';
       case 'error':
         return 'error';
       default:

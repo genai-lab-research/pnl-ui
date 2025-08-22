@@ -51,38 +51,44 @@ export const ContainerStatusHeader: React.FC<ContainerStatusHeaderProps> = ({
   const iconPath = getTypeIconPath(iconType);
   const iconAlt = getTypeIconAlt(iconType);
 
-  // Status color mapping - using theme colors for consistency
+  // Status color mapping - matching VerticalFarmingTable colors
   const getStatusColors = (variant: string) => {
     switch (variant) {
       case 'active':
         return {
-          backgroundColor: '#e8f5e8', // Light green background
-          color: '#479F67', // Theme success color
-          borderColor: '#c3e6c3'
+          backgroundColor: '#479F67', // Solid green background
+          color: '#FAFAFA', // White text
+          borderColor: '#479F67'
         };
       case 'inactive':
         return {
-          backgroundColor: '#f3f4f6', // Light gray background
-          color: '#6B7280', // Theme inactive color
-          borderColor: '#d1d5db'
+          backgroundColor: '#6B7280', // Solid gray background
+          color: '#FAFAFA', // White text
+          borderColor: '#6B7280'
         };
       case 'maintenance':
         return {
-          backgroundColor: '#fef3e2', // Light orange background
-          color: '#F97316', // Theme warning color
-          borderColor: '#fed7aa'
+          backgroundColor: '#F97316', // Solid orange background
+          color: '#FAFAFA', // White text
+          borderColor: '#F97316'
+        };
+      case 'created':
+        return {
+          backgroundColor: '#E5E7EB', // Light gray background
+          color: '#18181B', // Dark text
+          borderColor: '#E5E7EB'
         };
       case 'error':
         return {
-          backgroundColor: '#fee2e2', // Light red background
-          color: '#f44336', // Theme danger color
-          borderColor: '#fecaca'
+          backgroundColor: '#f44336', // Solid red background
+          color: '#FAFAFA', // White text
+          borderColor: '#f44336'
         };
       default:
         return {
-          backgroundColor: '#f3f4f6', // Light gray background
-          color: '#6B7280', // Theme inactive color
-          borderColor: '#d1d5db'
+          backgroundColor: '#6B7280', // Solid gray background
+          color: '#FAFAFA', // White text
+          borderColor: '#6B7280'
         };
     }
   };
