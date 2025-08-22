@@ -16,6 +16,7 @@ export interface SegmentedToggleProps {
   error?: string;
   ariaLabel?: string;
   className?: string;
+  fullWidth?: boolean;
 }
 
 export interface SegmentedToggleStyleProps {
@@ -23,4 +24,5 @@ export interface SegmentedToggleStyleProps {
   $isDisabled: boolean;
   $variant: SegmentedToggleProps['variant'];
   $size: SegmentedToggleProps['size'];
+  $fullWidth?: boolean;
 }

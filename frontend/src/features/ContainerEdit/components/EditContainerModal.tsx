@@ -276,6 +276,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                       value={localFormData.type}
                       onChange={handleContainerTypeChange}
                       size="md"
+                      fullWidth
                     />
                   </Box>
 
@@ -538,24 +539,149 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                   </Typography>
                 )}
 
-                {/* Environment toggles (if connected) */}
+                {/* Environment settings (if connected) */}
                 {localFormData.ecosystem_connected && (
-                  <Box sx={{ ml: 4, mt: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                    <Typography variant="body2" sx={{ fontWeight: 500, mb: 1 }}>
-                      Environment Settings:
+                  <Box sx={{ ml: 4, mt: 3, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 500, mb: 1, fontSize: '14px' }}>
+                      System Integration Settings:
                     </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      FA Environment: {typeof localFormData.ecosystem_settings.fa === 'string' ? localFormData.ecosystem_settings.fa : 'None'}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      PYA Environment: {typeof localFormData.ecosystem_settings.pya === 'string' ? localFormData.ecosystem_settings.pya : 'None'}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      AWS Environment: {typeof localFormData.ecosystem_settings.aws === 'string' ? localFormData.ecosystem_settings.aws : 'None'}
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      MBAI Environment: Prod only (disabled)
-                    </Typography>
+                    
+                    {/* FA Integration */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        FA Integration
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'alpha', value: 'alpha', label: 'Alpha' },
+                          { id: 'prod', value: 'prod', label: 'Prod' }
+                        ]}
+                        value={localFormData.ecosystem_settings.fa || 'alpha'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            fa: value as 'alpha' | 'prod'
+                          }
+                        })}
+                        ariaLabel="Select FA environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* FA Environment */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        FA Environment
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'dev', value: 'dev', label: 'Dev' },
+                          { id: 'test', value: 'test', label: 'Test' },
+                          { id: 'stage', value: 'stage', label: 'Stage' }
+                        ]}
+                        value={localFormData.ecosystem_settings.pya || 'dev'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            pya: value as 'dev' | 'test' | 'stage'
+                          }
+                        })}
+                        ariaLabel="Select FA environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* AWS Environment */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        AWS Environment
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'dev', value: 'dev', label: 'Dev' },
+                          { id: 'prod', value: 'prod', label: 'Prod' }
+                        ]}
+                        value={localFormData.ecosystem_settings.aws || 'dev'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            aws: value as 'dev' | 'prod'
+                          }
+                        })}
+                        ariaLabel="Select AWS environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* MBAI Environment (Read-only) */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        MBAI Environment
+                      </Typography>
+                      <Box 
+                        sx={{ 
+                          display: 'flex',
+                          background: 'transparent',
+                          border: '1px solid rgba(109, 120, 141, 0.5)',
+                          borderRadius: '5px',
+                          overflow: 'hidden',
+                          width: 'fit-content'
+                        }}
+                      >
+                        <Box 
+                          sx={{ 
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '6px 8px',
+                            backgroundColor: '#e0e0e0',
+                            color: '#666',
+                            fontWeight: 500,
+                            fontSize: '12px',
+                            minWidth: '80px',
+                            height: '24px',
+                            fontFamily: 'Roboto, sans-serif'
+                          }}
+                        >
+                          Prod
+                        </Box>
+                      </Box>
+                    </Box>
                   </Box>
                 )}
               </Box>

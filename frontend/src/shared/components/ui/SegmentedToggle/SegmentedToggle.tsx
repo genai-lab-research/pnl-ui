@@ -23,6 +23,7 @@ export const SegmentedToggle: React.FC<SegmentedToggleProps> = ({
   error,
   ariaLabel,
   className,
+  fullWidth = false,
 }) => {
   const handleOptionClick = (optionValue: string) => {
     if (!disabled && !loading) {
@@ -44,6 +45,7 @@ export const SegmentedToggle: React.FC<SegmentedToggleProps> = ({
         className={className}
         role="radiogroup"
         aria-label={ariaLabel || 'Segmented toggle'}
+        $fullWidth={fullWidth}
       >
         {options.map((option) => (
           <StyledSegmentedOption
@@ -57,6 +59,7 @@ export const SegmentedToggle: React.FC<SegmentedToggleProps> = ({
             $isDisabled={disabled || option.disabled || false}
             $variant={variant}
             $size={size}
+            $fullWidth={fullWidth}
             disabled={disabled || option.disabled}
             onClick={() => handleOptionClick(option.value)}
             onKeyDown={(e) => {

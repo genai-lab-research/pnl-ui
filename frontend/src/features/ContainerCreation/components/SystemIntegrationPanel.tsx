@@ -83,101 +83,111 @@ export const SystemIntegrationPanel: React.FC<SystemIntegrationPanelProps> = ({
 
   return (
     <Box>
+      <Typography 
+        variant="subtitle1" 
+        sx={{ 
+          mb: 2.5, 
+          fontWeight: 600,
+          fontSize: '14px',
+          color: '#000000',
+          fontFamily: 'Inter, sans-serif'
+        }}
+      >
+        System Integration
+      </Typography>
+
       <Grid container spacing={3}>
         {/* Ecosystem Connection Toggle */}
         <Grid item xs={12}>
-          <Paper sx={{ p: 3 }}>
+          <Box sx={{ mb: 2 }}>
             <FormControlLabel
               control={
                 <Checkbox
                   checked={formData.ecosystem_connected}
                   onChange={handleEcosystemConnectedChange}
                   color="primary"
+                  size="small"
                 />
               }
-              label={
-                <Box>
-                  <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                    Connect to other systems
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: '#666' }}>
-                    Enable integration with external systems and environments
-                  </Typography>
-                </Box>
-              }
+              label="Connect to other systems after creation"
+              sx={{
+                '& .MuiFormControlLabel-label': {
+                  fontSize: '14px',
+                  fontFamily: 'Inter, sans-serif'
+                }
+              }}
             />
-          </Paper>
+          </Box>
         </Grid>
 
         {/* Environment Configuration Panel */}
         {formData.ecosystem_connected && (
           <Grid item xs={12}>
-            <Paper sx={{ p: 3, backgroundColor: '#f8fafc' }}>
-              <Typography 
-                variant="subtitle1" 
-                sx={{ 
-                  mb: 3, 
-                  fontWeight: 600,
-                  color: '#1976d2'
-                }}
-              >
-                Environment Configuration
-              </Typography>
-
-              <Grid container spacing={3}>
-                {/* FA Environment */}
-                <Grid item xs={12} md={6}>
-                  <Box>
+            <Box sx={{ ml: 2, mt: 1 }}>
+              <Grid container spacing={2}>
+                {/* FA Integration */}
+                <Grid item xs={12}>
+                  <Box sx={{ mb: 1.5 }}>
                     <Typography 
                       variant="body2" 
                       sx={{ 
                         mb: 1,
                         fontWeight: 500,
-                        color: '#333'
+                        color: '#000000',
+                        fontSize: '13px',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     >
-                      FA Environment
+                      FA Integration
                     </Typography>
                     <SegmentedToggle
                       options={faOptions}
                       value={formData.ecosystem_settings.fa || 'alpha'}
                       onChange={(value) => handleEnvironmentChange('fa', value)}
                       ariaLabel="Select FA environment"
+                      size="sm"
+                      fullWidth
                     />
                   </Box>
                 </Grid>
 
-                {/* PYA Environment */}
-                <Grid item xs={12} md={6}>
-                  <Box>
+                {/* FA Environment */}
+                <Grid item xs={12}>
+                  <Box sx={{ mb: 1.5 }}>
                     <Typography 
                       variant="body2" 
                       sx={{ 
                         mb: 1,
                         fontWeight: 500,
-                        color: '#333'
+                        color: '#000000',
+                        fontSize: '13px',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     >
-                      PYA Environment
+                      FA Environment
                     </Typography>
                     <SegmentedToggle
                       options={pyaOptions}
                       value={formData.ecosystem_settings.pya || 'dev'}
                       onChange={(value) => handleEnvironmentChange('pya', value)}
-                      ariaLabel="Select PYA environment"
+                      ariaLabel="Select FA environment"
+                      size="sm"
+                      fullWidth
                     />
                   </Box>
                 </Grid>
 
                 {/* AWS Environment */}
-                <Grid item xs={12} md={6}>
-                  <Box>
+                <Grid item xs={12}>
+                  <Box sx={{ mb: 1.5 }}>
                     <Typography 
                       variant="body2" 
                       sx={{ 
                         mb: 1,
                         fontWeight: 500,
-                        color: '#333'
+                        color: '#000000',
+                        fontSize: '13px',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     >
                       AWS Environment
@@ -187,51 +197,55 @@ export const SystemIntegrationPanel: React.FC<SystemIntegrationPanelProps> = ({
                       value={formData.ecosystem_settings.aws || 'dev'}
                       onChange={(value) => handleEnvironmentChange('aws', value)}
                       ariaLabel="Select AWS environment"
+                      size="sm"
+                      fullWidth
                     />
                   </Box>
                 </Grid>
 
                 {/* MBAI Environment (Read-only) */}
-                <Grid item xs={12} md={6}>
-                  <Box>
+                <Grid item xs={12}>
+                  <Box sx={{ mb: 1.5 }}>
                     <Typography 
                       variant="body2" 
                       sx={{ 
                         mb: 1,
                         fontWeight: 500,
-                        color: '#333'
+                        color: '#000000',
+                        fontSize: '13px',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     >
                       MBAI Environment
                     </Typography>
                     <Box 
                       sx={{ 
-                        p: 1.5,
-                        backgroundColor: '#e0e0e0',
-                        borderRadius: 1,
-                        textAlign: 'center'
+                        display: 'flex',
+                        background: 'transparent',
+                        border: '1px solid rgba(109, 120, 141, 0.5)',
+                        borderRadius: '5px',
+                        overflow: 'hidden',
+                        width: 'fit-content'
                       }}
                     >
-                      <Typography 
-                        variant="body2" 
+                      <Box 
                         sx={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          padding: '6px 8px',
+                          backgroundColor: '#e0e0e0',
                           color: '#666',
-                          fontWeight: 500
+                          fontWeight: 500,
+                          fontSize: '12px',
+                          minWidth: '80px',
+                          height: '24px',
+                          fontFamily: 'Roboto, sans-serif'
                         }}
                       >
-                        Prod (Read-only)
-                      </Typography>
+                        Prod
+                      </Box>
                     </Box>
-                    <Typography 
-                      variant="caption" 
-                      sx={{ 
-                        display: 'block',
-                        mt: 0.5,
-                        color: '#666'
-                      }}
-                    >
-                      MBAI always uses production environment
-                    </Typography>
                   </Box>
                 </Grid>
               </Grid>
@@ -240,21 +254,20 @@ export const SystemIntegrationPanel: React.FC<SystemIntegrationPanelProps> = ({
               {formData.purpose && (
                 <Box 
                   sx={{ 
-                    mt: 3,
-                    p: 2, 
+                    mt: 2,
+                    p: 1.5, 
                     backgroundColor: '#e3f2fd',
                     border: '1px solid #1976d2',
                     borderRadius: 1
                   }}
                 >
-                  <Typography variant="body2" sx={{ color: '#1565c0' }}>
+                  <Typography variant="caption" sx={{ color: '#1565c0', fontSize: '12px' }}>
                     <strong>Auto-selected for {formData.purpose}:</strong> Environments have been 
-                    automatically configured based on your selected purpose. You can modify these 
-                    settings as needed.
+                    automatically configured based on your selected purpose.
                   </Typography>
                 </Box>
               )}
-            </Paper>
+            </Box>
           </Grid>
         )}
 

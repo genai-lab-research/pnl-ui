@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { SegmentedToggleStyleProps } from './types';
 
-export const StyledSegmentedToggle = styled.div`
+export const StyledSegmentedToggle = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
-  width: fit-content;
+  width: ${({ $fullWidth }) => $fullWidth ? '100%' : 'fit-content'};
   position: relative;
 `;
 
@@ -26,9 +26,10 @@ export const StyledSegmentedOption = styled.button<SegmentedToggleStyleProps>`
   letter-spacing: 0.1px;
   border: 1px solid rgba(109, 120, 141, 0.5);
   border-right: none;
-  min-width: 103px;
+  min-width: ${({ $fullWidth }) => $fullWidth ? 'auto' : '103px'};
   height: 30px;
   position: relative;
+  flex: ${({ $fullWidth }) => $fullWidth ? '1' : 'none'};
 
   &:last-child {
     border-right: 1px solid rgba(109, 120, 141, 0.5);
@@ -67,22 +68,22 @@ export const StyledSegmentedOption = styled.button<SegmentedToggleStyleProps>`
           }
         `}
 
-  ${({ $size }) =>
+  ${({ $size, $fullWidth }) =>
     $size === 'sm' &&
     css`
       padding: 6px 8px;
       font-size: 12px;
       height: 24px;
-      min-width: 80px;
+      min-width: ${$fullWidth ? 'auto' : '80px'};
     `}
 
-  ${({ $size }) =>
+  ${({ $size, $fullWidth }) =>
     $size === 'lg' &&
     css`
       padding: 14px 16px;
       font-size: 16px;
       height: 40px;
-      min-width: 120px;
+      min-width: ${$fullWidth ? 'auto' : '120px'};
     `}
 
   ${({ $variant, theme }) =>

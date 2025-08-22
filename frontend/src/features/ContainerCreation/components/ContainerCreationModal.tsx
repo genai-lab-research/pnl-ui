@@ -19,6 +19,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { ContainerFormData, ContainerFormOptions, ContainerFormErrors } from '../types';
 import { SegmentedToggle } from '../../../shared/components/ui/SegmentedToggle';
 import { CreateContainer } from '../../../shared/components/ui/CreateContainer';
+import { SystemIntegrationPanel } from './SystemIntegrationPanel';
 import { useContainerCreation } from '../hooks/useContainerCreation';
 
 interface ContainerCreationModalProps {
@@ -255,6 +256,7 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
                       value={localFormData.type}
                       onChange={handleContainerTypeChange}
                       size="md"
+                      fullWidth
                     />
                   </Box>
 
@@ -378,36 +380,11 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
               <Divider />
 
               {/* System Integration */}
-              <Box>
-                <Typography 
-                  variant="subtitle1" 
-                  sx={{ 
-                    mb: 2.5, 
-                    fontWeight: 600,
-                    fontSize: '14px',
-                    color: '#000000',
-                    fontFamily: 'Inter, sans-serif'
-                  }}
-                >
-                  System Integration
-                </Typography>
-
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={localFormData.ecosystem_connected}
-                      onChange={handleEcosystemConnectedChange}
-                      size="small"
-                    />
-                  }
-                  label="Connect to other systems after creation"
-                  sx={{
-                    '& .MuiFormControlLabel-label': {
-                      fontSize: '14px'
-                    }
-                  }}
-                />
-              </Box>
+              <SystemIntegrationPanel
+                formData={localFormData}
+                errors={formState.errors}
+                onChange={updateLocalFormData}
+              />
 
               {/* Error Display */}
               {formState.errors.general && (
