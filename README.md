@@ -42,11 +42,10 @@ To run the complete application locally, you need to start both the backend and 
 cd backend
 
 # Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+uv sync
 
 # Install dependencies
-pip install -r requirements.txt
+source .venv/bin/activate
 
 # Run the FastAPI server
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
