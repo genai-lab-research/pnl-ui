@@ -41,6 +41,17 @@ To run the complete application locally, you need to start both the backend and 
 # Navigate to the backend directory
 cd backend
 
+# Create .env file with credentials
+cp .env.example .env # paste your credentials into newly created file
+
+```
+#### a) Containerized version
+```bash
+# run using docker/podman/other container runtime handler
+docker compose up --build # or podman compose up --build
+```
+#### b) Manual launch
+```bash
 # Create and activate virtual environment
 uv sync
 
@@ -56,6 +67,9 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```bash
 # Navigate to the frontend directory
 cd frontend
+
+# Copy login credentials
+cp .env.example .env
 
 # Install dependencies
 npm install
