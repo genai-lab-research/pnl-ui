@@ -1,4 +1,5 @@
 import { ContainerFormData, ContainerFormErrors, ValidationResult } from '../types';
+import { validateContainerName } from '../../../api/validationService';
 
 export class FormValidationService {
   private static instance: FormValidationService;
@@ -13,7 +14,7 @@ export class FormValidationService {
   }
 
   /**
-   * Validate the entire form
+   * Validate the entire form (synchronous validation only)
    */
   public validateForm(formData: ContainerFormData): ValidationResult {
     const errors: ContainerFormErrors = {};
@@ -62,12 +63,46 @@ export class FormValidationService {
   }
 
   /**
+   * Validate the entire form including async validations (name uniqueness, etc.)
+   */
+  public async validateFormAsync(formData: ContainerFormData): Promise<ValidationResult> {
+    // First run synchronous validations
+    const syncValidation = this.validateForm(formData);
+    
+    // If sync validation failed, return early
+    if (!syncValidation.isValid) {
+      return syncValidation;
+    }
+
+    const errors: ContainerFormErrors = {};
+
+    // Validate name uniqueness (graceful fallback if endpoint not available)
+    if (formData.name?.trim()) {
+      try {
+        const nameValidation = await validateContainerName({ name: formData.name.trim() });
+        if (!nameValidation.is_valid) {
+          errors.name = nameValidation.reason || 'This container name is already taken';
+        }
+      } catch (error) {
+        console.warn('Name validation endpoint not available, skipping uniqueness check:', error);
+        // Gracefully continue without name uniqueness validation
+        // The backend will still catch duplicate names and return appropriate errors
+      }
+    }
+
+    return {
+      isValid: Object.keys(errors).length === 0,
+      errors: errors as Record<string, string | undefined>
+    };
+  }
+
+  /**
    * Validate a specific field
    */
   public validateField(fieldName: keyof ContainerFormData, value: any, formData: ContainerFormData): string | null {
     switch (fieldName) {
       case 'name':
-        if (!value?.trim()) {
+        if (typeof value !== 'string' || !value.trim()) {
           return 'Container name is required';
         }
         if (value.trim().length < 2) {
@@ -94,20 +129,21 @@ export class FormValidationService {
         break;
 
       case 'seed_type_ids':
-        if (!value || value.length === 0) {
+        if (!value || (Array.isArray(value) && value.length === 0)) {
           return 'Please select at least one seed type';
         }
         break;
 
       case 'location':
-        if (formData.type === 'physical') {
-          if (!value?.city?.trim()) {
+        if (formData.type === 'physical' && typeof value === 'object' && value !== null) {
+          const location = value as { city?: string; country?: string; address?: string };
+          if (!location.city?.trim()) {
             return 'City is required for physical containers';
           }
-          if (!value?.country?.trim()) {
+          if (!location.country?.trim()) {
             return 'Country is required for physical containers';
           }
-          if (!value?.address?.trim()) {
+          if (!location.address?.trim()) {
             return 'Address is required for physical containers';
           }
         }

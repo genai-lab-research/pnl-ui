@@ -103,7 +103,7 @@ export class ContainerCreationService {
         type: formData.type,
         purpose: formData.purpose!,
         location: formData.location,
-        notes: formData.notes.trim(),
+        notes: formData.notes?.trim() || '',
         shadow_service_enabled: formData.shadow_service_enabled,
         copied_environment_from: formData.copied_environment_from || undefined,
         robotics_simulation_enabled: formData.robotics_simulation_enabled,
@@ -112,7 +112,6 @@ export class ContainerCreationService {
         status: 'created',
         seed_type_ids: formData.seed_type_ids
       };
-
       return await createNewContainer(createRequest);
     } catch (error) {
       console.error('Container creation failed:', error);

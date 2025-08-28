@@ -123,11 +123,22 @@ export const useContainerCreation = () => {
     return validation.isValid;
   }, [formState.data]);
 
+  const validateFormAsync = useCallback(async (): Promise<boolean> => {
+    const validation = await formValidationService.validateFormAsync(formState.data);
+    
+    setFormState(prev => ({
+      ...prev,
+      errors: validation.errors
+    }));
+
+    return validation.isValid;
+  }, [formState.data]);
+
   const submitForm = useCallback(async (formData: ContainerFormData): Promise<Container> => {
     try {
       setFormState(prev => ({ ...prev, submitting: true, errors: {} }));
 
-      // Validate form
+      // Validate form (sync validation only - async validation disabled due to backend endpoint issues)
       const validation = formValidationService.validateForm(formData);
       if (!validation.isValid) {
         setFormState(prev => ({
@@ -135,23 +146,41 @@ export const useContainerCreation = () => {
           submitting: false,
           errors: validation.errors
         }));
-        throw new Error('Form validation failed');
+        // Don't throw error - let the validation errors show in the UI
+        return Promise.reject(new Error('Please fix the validation errors above'));
       }
 
       // Sanitize and submit
       const sanitizedData = formValidationService.sanitizeFormData(formData);
+      
       const result = await containerCreationService.createContainer(sanitizedData);
 
       setFormState(prev => ({ ...prev, submitting: false }));
       return result;
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to create container';
+      console.error('Container creation failed:', error);
+      
+      let errorMessage = 'Failed to create container';
+      let fieldErrors: Record<string, string> = {};
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+        
+        // Parse backend validation errors for specific fields
+        if (error.message.includes("Invalid value") && error.message.includes("for field 'name'")) {
+          fieldErrors.name = 'Invalid container name. Please use a meaningful name with letters and numbers.';
+        } else if (error.message.includes('name')) {
+          fieldErrors.name = 'Container name is invalid or already exists. Please choose a different name.';
+        }
+      }
+      
       setFormState(prev => ({
         ...prev,
         submitting: false,
-        errors: { general: errorMessage }
+        errors: Object.keys(fieldErrors).length > 0 ? fieldErrors : { general: errorMessage }
       }));
+      
       throw error;
     }
   }, []);
@@ -170,6 +199,7 @@ export const useContainerCreation = () => {
     updateContainerType,
     updateEcosystemSettings,
     validateForm,
+    validateFormAsync,
     submitForm,
     resetForm,
     loadFormOptions

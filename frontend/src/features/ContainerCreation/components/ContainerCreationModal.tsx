@@ -12,14 +12,12 @@ import {
   MenuItem,
   Chip,
   Autocomplete,
-  Alert,
   CircularProgress
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { ContainerFormData, ContainerFormOptions, ContainerFormErrors } from '../types';
+import { ContainerFormData } from '../types';
 import { SegmentedToggle } from '../../../shared/components/ui/SegmentedToggle';
 import { CreateContainer } from '../../../shared/components/ui/CreateContainer';
-import { SystemIntegrationPanel } from './SystemIntegrationPanel';
 import { useContainerCreation } from '../hooks/useContainerCreation';
 
 interface ContainerCreationModalProps {
@@ -64,6 +62,8 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
       onSuccess();
       resetForm();
     } catch (error) {
+      // Error handling is managed by the submitForm hook
+      // which sets form errors in the UI state
       console.error('Container creation failed:', error);
     }
   }, [localFormData, submitForm, onSuccess, resetForm]);
@@ -80,7 +80,14 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
     setLocalFormData(prev => ({ ...prev, ecosystem_connected: connected }));
   }, [updateEcosystemSettings, localFormData.purpose]);
 
-  const handleSeedTypesChange = useCallback((event: any, newValue: any[]) => {
+  // Auto-update environment settings when purpose changes
+  useEffect(() => {
+    if (localFormData.ecosystem_connected && localFormData.purpose) {
+      updateEcosystemSettings(true, localFormData.purpose);
+    }
+  }, [localFormData.purpose, localFormData.ecosystem_connected, updateEcosystemSettings]);
+
+  const handleSeedTypesChange = useCallback((_event: any, newValue: any[]) => {
     const seedTypeIds = newValue.map(option => option.id);
     updateLocalFormData({ seed_type_ids: seedTypeIds });
   }, [updateLocalFormData]);
@@ -345,7 +352,7 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
 
               <Divider />
 
-              {/* Settings */}
+              {/* Container Settings */}
               <Box>
                 <Typography 
                   variant="subtitle1" 
@@ -360,38 +367,295 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
                   Settings
                 </Typography>
 
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {/* Enable Shadow Service */}
+                  <FormControlLabel
+                    control={
+                      <Switch
+                        checked={localFormData.shadow_service_enabled}
+                        onChange={(e) => updateLocalFormData({ shadow_service_enabled: e.target.checked })}
+                        size="small"
+                      />
+                    }
+                    label="Enable Shadow Service"
+                    sx={{
+                      '& .MuiFormControlLabel-label': {
+                        fontSize: '14px'
+                      }
+                    }}
+                  />
+
+                  {/* Virtual Container Settings */}
+                  {localFormData.type === 'virtual' && (
+                    <>
+                      {/* Copy Environment from Container */}
+                      <TextField
+                        select
+                        label="Copy Environment from Container"
+                        value={localFormData.copied_environment_from || ''}
+                        onChange={(e) => updateLocalFormData({ 
+                          copied_environment_from: e.target.value ? parseInt(e.target.value) : null 
+                        })}
+                        fullWidth
+                        size="small"
+                        helperText="Only for Virtual containers"
+                        sx={{
+                          '& .MuiInputLabel-root': {
+                            fontSize: '14px',
+                            fontFamily: 'Inter, sans-serif'
+                          },
+                          '& .MuiOutlinedInput-root': {
+                            fontSize: '14px',
+                            fontFamily: 'Inter, sans-serif',
+                            borderRadius: '6px'
+                          }
+                        }}
+                      >
+                        <MenuItem value="">None</MenuItem>
+                        {formState.options.virtualContainers.map((container) => (
+                          <MenuItem key={container.id} value={container.id}>
+                            {container.name}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+
+                      {/* Run Robotics Simulation */}
+                      <FormControlLabel
+                        control={
+                          <Switch
+                            checked={localFormData.robotics_simulation_enabled}
+                            onChange={(e) => updateLocalFormData({ robotics_simulation_enabled: e.target.checked })}
+                            size="small"
+                          />
+                        }
+                        label="Run Robotics Simulation"
+                        sx={{
+                          '& .MuiFormControlLabel-label': {
+                            fontSize: '14px'
+                          }
+                        }}
+                      />
+                    </>
+                  )}
+                </Box>
+              </Box>
+
+              <Divider />
+
+              {/* Ecosystem Settings */}
+              <Box>
+                <Typography 
+                  variant="subtitle1" 
+                  sx={{ 
+                    mb: 2.5, 
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    color: '#000000',
+                    fontFamily: 'Inter, sans-serif'
+                  }}
+                >
+                  Ecosystem Settings
+                </Typography>
+
                 <FormControlLabel
                   control={
-                    <Switch
-                      checked={localFormData.shadow_service_enabled}
-                      onChange={(e) => updateLocalFormData({ shadow_service_enabled: e.target.checked })}
+                    <Checkbox
+                      checked={localFormData.ecosystem_connected}
+                      onChange={handleEcosystemConnectedChange}
                       size="small"
                     />
                   }
-                  label="Enable Shadow Service"
+                  label="Connect to other systems after creation"
                   sx={{
                     '& .MuiFormControlLabel-label': {
                       fontSize: '14px'
                     }
                   }}
                 />
+
+                {/* Environment settings (if connected) */}
+                {localFormData.ecosystem_connected && (
+                  <Box sx={{ ml: 4, mt: 3, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 500, mb: 1, fontSize: '14px' }}>
+                      System Integration Settings:
+                    </Typography>
+                    
+                    {/* FA Integration */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        FA Integration
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'alpha', value: 'alpha', label: 'Alpha' },
+                          { id: 'prod', value: 'prod', label: 'Prod' }
+                        ]}
+                        value={localFormData.ecosystem_settings.fa || 'alpha'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            fa: value as 'alpha' | 'prod'
+                          }
+                        })}
+                        ariaLabel="Select FA environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* FA Environment */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        FA Environment
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'dev', value: 'dev', label: 'Dev' },
+                          { id: 'test', value: 'test', label: 'Test' },
+                          { id: 'stage', value: 'stage', label: 'Stage' }
+                        ]}
+                        value={localFormData.ecosystem_settings.pya || 'dev'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            pya: value as 'dev' | 'test' | 'stage'
+                          }
+                        })}
+                        ariaLabel="Select FA environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* AWS Environment */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        AWS Environment
+                      </Typography>
+                      <SegmentedToggle
+                        options={[
+                          { id: 'dev', value: 'dev', label: 'Dev' },
+                          { id: 'prod', value: 'prod', label: 'Prod' }
+                        ]}
+                        value={localFormData.ecosystem_settings.aws || 'dev'}
+                        onChange={(value) => updateLocalFormData({
+                          ecosystem_settings: {
+                            ...localFormData.ecosystem_settings,
+                            aws: value as 'dev' | 'prod'
+                          }
+                        })}
+                        ariaLabel="Select AWS environment"
+                        size="sm"
+                        fullWidth
+                      />
+                    </Box>
+
+                    {/* MBAI Environment (Read-only) */}
+                    <Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          mb: 1,
+                          fontWeight: 500,
+                          color: '#000000',
+                          fontSize: '13px'
+                        }}
+                      >
+                        MBAI Environment
+                      </Typography>
+                      <Box 
+                        sx={{ 
+                          display: 'flex',
+                          background: 'transparent',
+                          border: '1px solid rgba(109, 120, 141, 0.5)',
+                          borderRadius: '5px',
+                          overflow: 'hidden',
+                          width: 'fit-content'
+                        }}
+                      >
+                        <Box 
+                          sx={{ 
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '6px 8px',
+                            backgroundColor: '#e0e0e0',
+                            color: '#666',
+                            fontWeight: 500,
+                            fontSize: '12px',
+                            minWidth: '80px',
+                            height: '24px',
+                            fontFamily: 'Roboto, sans-serif'
+                          }}
+                        >
+                          Prod
+                        </Box>
+                      </Box>
+                    </Box>
+
+                    {/* Environment Auto-Selection Info */}
+                    {localFormData.purpose && (
+                      <Box 
+                        sx={{ 
+                          mt: 2,
+                          p: 1.5, 
+                          backgroundColor: '#e3f2fd',
+                          border: '1px solid #1976d2',
+                          borderRadius: 1
+                        }}
+                      >
+                        <Typography variant="caption" sx={{ color: '#1565c0', fontSize: '12px' }}>
+                          <strong>Auto-selected for {localFormData.purpose}:</strong> Environments have been 
+                          automatically configured based on your selected purpose.
+                        </Typography>
+                      </Box>
+                    )}
+                  </Box>
+                )}
+
+                {/* Information Panel */}
+                <Box 
+                  sx={{ 
+                    mt: 3,
+                    p: 2, 
+                    backgroundColor: '#fff3cd',
+                    border: '1px solid #ffeaa7',
+                    borderRadius: 1
+                  }}
+                >
+                  <Typography variant="body2" sx={{ color: '#856404', fontSize: '12px' }}>
+                    <strong>System Integration:</strong> When enabled, your container will be connected 
+                    to external systems for data synchronization and advanced features. Environment 
+                    settings are automatically configured based on your container's purpose but can 
+                    be customized.
+                  </Typography>
+                </Box>
               </Box>
 
-              <Divider />
-
-              {/* System Integration */}
-              <SystemIntegrationPanel
-                formData={localFormData}
-                errors={formState.errors}
-                onChange={updateLocalFormData}
-              />
-
-              {/* Error Display */}
-              {formState.errors.general && (
-                <Alert severity="error">
-                  {formState.errors.general}
-                </Alert>
-              )}
             </Box>
           )}
         </Box>

@@ -1,6 +1,7 @@
 import { Container } from '../../../types/containers';
 import { containerApiService } from '../../../api/containerApiService';
 import { seedTypeApiService } from '../../../api/seedTypeApiService';
+import { getAllContainers } from '../../../api/containerService';
 import { ContainerEditFormData, ContainerEditFormOptions } from '../types';
 import { tokenStorage } from '../../../utils/tokenStorage';
 
@@ -46,18 +47,18 @@ export class ContainerEditService {
     const normalizeEcosystemSettings = (settings: any) => {
       if (!settings) {
         return {
-          fa: null,
-          pya: null,
-          aws: null,
-          mbai: 'prod'
+          fa: null as 'alpha' | 'prod' | null,
+          pya: null as 'dev' | 'test' | 'stage' | null,
+          aws: null as 'dev' | 'prod' | null,
+          mbai: 'prod' as const
         };
       }
       
       return {
-        fa: typeof settings.fa === 'object' ? settings.fa?.environment || null : settings.fa,
-        pya: typeof settings.pya === 'object' ? settings.pya?.environment || null : settings.pya,
-        aws: typeof settings.aws === 'object' ? settings.aws?.environment || null : settings.aws,
-        mbai: 'prod'
+        fa: (typeof settings.fa === 'object' ? settings.fa?.environment || null : settings.fa) as 'alpha' | 'prod' | null,
+        pya: (typeof settings.pya === 'object' ? settings.pya?.environment || null : settings.pya) as 'dev' | 'test' | 'stage' | null,
+        aws: (typeof settings.aws === 'object' ? settings.aws?.environment || null : settings.aws) as 'dev' | 'prod' | null,
+        mbai: 'prod' as const
       };
     };
 
@@ -100,6 +101,22 @@ export class ContainerEditService {
   }
 
   /**
+   * Get virtual containers for the "Copy Environment" dropdown
+   */
+  private async getVirtualContainers(): Promise<Array<{ id: number; name: string }>> {
+    try {
+      const response = await getAllContainers({ type: 'virtual', limit: 100 });
+      return response.containers.map(container => ({
+        id: container.id,
+        name: container.name
+      }));
+    } catch (error) {
+      console.error('Failed to load virtual containers:', error);
+      return [];
+    }
+  }
+
+  /**
    * Load form options for editing
    */
   async loadFormOptions(): Promise<ContainerEditFormOptions> {
@@ -107,16 +124,17 @@ export class ContainerEditService {
       console.log('🔄 Loading form options...');
       console.log('🔑 Current auth token:', tokenStorage.getAccessToken() ? 'Present' : 'Missing');
       
-      // Fetch filter options and seed types in parallel
-      const [filterOptions, seedTypes] = await Promise.all([
+      // Fetch filter options, seed types, and virtual containers in parallel
+      const [filterOptions, seedTypes, virtualContainers] = await Promise.all([
         containerApiService.getFilterOptions(),
-        this.getCachedSeedTypes()
+        this.getCachedSeedTypes(),
+        this.getVirtualContainers()
       ]);
       
       console.log('📦 Loaded form options:', {
         tenants: filterOptions.tenants?.length || 0,
         seedTypes: seedTypes?.length || 0,
-        virtualContainers: filterOptions.virtualContainers?.length || 0
+        virtualContainers: virtualContainers?.length || 0
       });
       
       // Transform the filter options to match our form options structure
@@ -128,7 +146,7 @@ export class ContainerEditService {
           { value: 'production', label: 'Production' }
         ],
         seedTypes: seedTypes || [],
-        virtualContainers: filterOptions.virtualContainers || []
+        virtualContainers: virtualContainers || []
       };
     } catch (error) {
       console.error('Failed to load form options:', error);
@@ -183,6 +201,7 @@ export class ContainerEditService {
       // Prepare the update payload excluding read-only fields like name
       const updatePayload = {
         tenant_id: formData.tenant_id,
+        type: formData.type,
         purpose: formData.purpose,
         seed_type_ids: formData.seed_type_ids,
         location: formData.type === 'physical' ? formData.location : null,
