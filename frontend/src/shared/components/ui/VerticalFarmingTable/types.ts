@@ -5,7 +5,7 @@ export interface TableRow {
   tenant: string;
   purpose: 'Development' | 'Research';
   location: string;
-  status: 'Connected' | 'Inactive' | 'Created' | 'Maintenance';
+  status: 'Active' | 'Inactive' | 'Created' | 'Maintenance';
   created: string;
   modified: string;
   hasAlert: boolean;
@@ -21,4 +21,4 @@ export interface VerticalFarmingTableProps {
   emptyStateMessage?: string;
 }
 
-export type StatusVariant = 'Connected' | 'Inactive' | 'Created' | 'Maintenance';
+export type StatusVariant = 'Active' | 'Inactive' | 'Created' | 'Maintenance';

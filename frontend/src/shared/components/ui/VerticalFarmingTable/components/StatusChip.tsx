@@ -23,7 +23,7 @@ const ChipContainer = styled.div<{ variant: StatusVariant }>`
   
   background-color: ${props => {
     switch (props.variant) {
-      case 'Connected':
+      case 'Active':
         return theme.colors.success;
       case 'Maintenance':
         return theme.colors.warning;
@@ -38,7 +38,7 @@ const ChipContainer = styled.div<{ variant: StatusVariant }>`
   
   color: ${props => {
     switch (props.variant) {
-      case 'Connected':
+      case 'Active':
       case 'Maintenance':
       case 'Inactive':
         return theme.colors.textOnPrimary;

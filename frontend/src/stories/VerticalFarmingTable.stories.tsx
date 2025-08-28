@@ -10,7 +10,7 @@ const mockData: TableRow[] = [
     tenant: 'tenant-123',
     purpose: 'Development',
     location: 'Agriville, USA',
-    status: 'Connected',
+    status: 'Active',
     created: '25/01/2025',
     modified: '26/01/2025',
     hasAlert: false
@@ -22,7 +22,7 @@ const mockData: TableRow[] = [
     tenant: 'tenant-123',
     purpose: 'Development',
     location: 'Agriville, USA',
-    status: 'Connected',
+    status: 'Active',
     created: '30/01/2025',
     modified: '30/01/2025',
     hasAlert: true
@@ -34,7 +34,7 @@ const mockData: TableRow[] = [
     tenant: 'tenant-5',
     purpose: 'Research',
     location: 'Scienceville, Germany',
-    status: 'Connected',
+    status: 'Active',
     created: '12/01/2025',
     modified: '18/01/2025',
     hasAlert: false
@@ -134,7 +134,7 @@ export const SingleRow: Story = {
 export const WithMixedStatuses: Story = {
   args: {
     data: [
-      { ...mockData[0], status: 'Connected' },
+      { ...mockData[0], status: 'Active' },
       { ...mockData[1], status: 'Inactive' },
       { ...mockData[2], status: 'Created' },
       { ...mockData[3], status: 'Maintenance' },

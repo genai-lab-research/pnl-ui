@@ -88,7 +88,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
         status: (() => {
           switch (container.status) {
             case 'active':
-              return 'Connected';
+              return 'Active';
             case 'inactive':
               return 'Inactive';
             case 'created':
@@ -98,7 +98,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
             default:
               return 'Inactive';
           }
-        })() as 'Connected' | 'Inactive' | 'Created' | 'Maintenance',
+        })() as 'Active' | 'Inactive' | 'Created' | 'Maintenance',
         created: new Date(container.created_at).toLocaleDateString(),
         modified: new Date(container.updated_at).toLocaleDateString(),
         hasAlert: container.alerts && container.alerts.length > 0
@@ -119,7 +119,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
           tenant: 'tenant-123',
           purpose: 'Development',
           location: 'Agriville, USA',
-          status: 'Connected',
+          status: 'Active',
           created: '25/01/2025',
           modified: '26/01/2025',
           hasAlert: false
@@ -131,7 +131,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
           tenant: 'tenant-123',
           purpose: 'Development',
           location: 'Agriville, USA',
-          status: 'Connected',
+          status: 'Active',
           created: '30/01/2025',
           modified: '30/01/2025',
           hasAlert: true
@@ -143,7 +143,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
           tenant: 'tenant-5',
           purpose: 'Research',
           location: 'Scienceville, Germany',
-          status: 'Connected',
+          status: 'Active',
           created: '12/01/2025',
           modified: '18/01/2025',
           hasAlert: false
@@ -213,7 +213,7 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
         const tableStatus = (() => {
           switch (params.status) {
             case 'active':
-              return 'Connected';
+              return 'Active';
             case 'inactive':
               return 'Inactive';
             case 'created':
