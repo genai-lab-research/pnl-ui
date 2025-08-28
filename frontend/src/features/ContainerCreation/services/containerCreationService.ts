@@ -1,6 +1,7 @@
 import { 
   createNewContainer,
-  getAllContainers
+  getAllContainers,
+  getContainerById
 } from '../../../api/containerService';
 import { getAllTenants } from '../../../api/tenantService';
 import { getAllSeedTypes } from '../../../api/seedTypeService';
@@ -146,6 +147,35 @@ export class ContainerCreationService {
         mbai: 'prod'
       }
     };
+  }
+
+  /**
+   * Copy environment settings from an existing container
+   */
+  public async copyEnvironmentFromContainer(containerId: number): Promise<Partial<ContainerFormData>> {
+    try {
+      const sourceContainer = await getContainerById(containerId);
+      
+      return {
+        ecosystem_connected: sourceContainer.ecosystem_connected || false,
+        ecosystem_settings: sourceContainer.ecosystem_settings ? {
+          fa: (sourceContainer.ecosystem_settings as any)?.fa || null,
+          pya: (sourceContainer.ecosystem_settings as any)?.pya || null,
+          aws: (sourceContainer.ecosystem_settings as any)?.aws || null,
+          mbai: 'prod' as const
+        } : {
+          fa: null,
+          pya: null,
+          aws: null,
+          mbai: 'prod' as const
+        },
+        shadow_service_enabled: sourceContainer.shadow_service_enabled || false,
+        robotics_simulation_enabled: sourceContainer.robotics_simulation_enabled || false
+      };
+    } catch (error) {
+      console.error('Failed to copy environment from container:', error);
+      throw new Error('Failed to copy environment settings');
+    }
   }
 
   /**

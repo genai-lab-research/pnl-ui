@@ -15,23 +15,35 @@ interface ContainerSettingsPanelProps {
   errors: ContainerFormErrors;
   options: ContainerFormOptions;
   onChange: (updates: Partial<ContainerFormData>) => void;
+  onCopyEnvironment?: (containerId: number) => void;
 }
 
 export const ContainerSettingsPanel: React.FC<ContainerSettingsPanelProps> = ({
   formData,
   errors,
   options,
-  onChange
+  onChange,
+  onCopyEnvironment
 }) => {
   const handleShadowServiceChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     onChange({ shadow_service_enabled: event.target.checked });
   }, [onChange]);
 
-  const handleCopyEnvironmentChange = useCallback((value: string) => {
+  const handleCopyEnvironmentChange = useCallback(async (value: string) => {
+    const containerId = value ? parseInt(value) : null;
     onChange({ 
-      copied_environment_from: value ? parseInt(value) : null 
+      copied_environment_from: containerId 
     });
-  }, [onChange]);
+    
+    // Copy environment settings if container is selected and callback is provided
+    if (containerId && onCopyEnvironment) {
+      try {
+        await onCopyEnvironment(containerId);
+      } catch (error) {
+        console.error('Failed to copy environment:', error);
+      }
+    }
+  }, [onChange, onCopyEnvironment]);
 
   const handleRoboticsSimulationChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     onChange({ robotics_simulation_enabled: event.target.checked });
@@ -106,7 +118,7 @@ export const ContainerSettingsPanel: React.FC<ContainerSettingsPanelProps> = ({
                         label: container.name
                       }))
                     ]}
-                    helperText="Copy environment configuration from an existing virtual container"
+                    helperText="Select a container to copy its environment settings"
                     ariaLabel="Select container to copy environment from"
                   />
                 </Grid>

@@ -1,7 +1,7 @@
 import { Container } from '../../../types/containers';
 import { containerApiService } from '../../../api/containerApiService';
 import { seedTypeApiService } from '../../../api/seedTypeApiService';
-import { getAllContainers } from '../../../api/containerService';
+import { getAllContainers, getContainerById } from '../../../api/containerService';
 import { ContainerEditFormData, ContainerEditFormOptions } from '../types';
 import { tokenStorage } from '../../../utils/tokenStorage';
 
@@ -161,6 +161,35 @@ export class ContainerEditService {
     this.seedTypesCache = null;
     this.seedTypesCacheTime = 0;
     console.log('🗑️ Seed types cache cleared');
+  }
+
+  /**
+   * Copy environment settings from an existing container
+   */
+  async copyEnvironmentFromContainer(containerId: number): Promise<Partial<ContainerEditFormData>> {
+    try {
+      const sourceContainer = await getContainerById(containerId);
+      
+      return {
+        ecosystem_connected: sourceContainer.ecosystem_connected || false,
+        ecosystem_settings: sourceContainer.ecosystem_settings ? {
+          fa: (sourceContainer.ecosystem_settings as any)?.fa || null,
+          pya: (sourceContainer.ecosystem_settings as any)?.pya || null,
+          aws: (sourceContainer.ecosystem_settings as any)?.aws || null,
+          mbai: 'prod' as const
+        } : {
+          fa: null,
+          pya: null,
+          aws: null,
+          mbai: 'prod' as const
+        },
+        shadow_service_enabled: sourceContainer.shadow_service_enabled || false,
+        robotics_simulation_enabled: sourceContainer.robotics_simulation_enabled || false
+      };
+    } catch (error) {
+      console.error('Failed to copy environment from container:', error);
+      throw new Error('Failed to copy environment settings');
+    }
   }
 
   /**

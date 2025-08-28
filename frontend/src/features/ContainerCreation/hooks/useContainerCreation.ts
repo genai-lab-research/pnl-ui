@@ -112,6 +112,29 @@ export const useContainerCreation = () => {
     });
   }, []);
 
+  const copyEnvironmentFromContainer = useCallback(async (containerId: number) => {
+    try {
+      const environmentSettings = await containerCreationService.copyEnvironmentFromContainer(containerId);
+      
+      setFormState(prev => ({
+        ...prev,
+        data: {
+          ...prev.data,
+          ...environmentSettings
+        }
+      }));
+    } catch (error) {
+      console.error('Failed to copy environment settings:', error);
+      setFormState(prev => ({
+        ...prev,
+        errors: {
+          ...prev.errors,
+          general: 'Failed to copy environment settings from the selected container'
+        }
+      }));
+    }
+  }, []);
+
   const validateForm = useCallback((): boolean => {
     const validation = formValidationService.validateForm(formState.data);
     
@@ -198,6 +221,7 @@ export const useContainerCreation = () => {
     updateFormData,
     updateContainerType,
     updateEcosystemSettings,
+    copyEnvironmentFromContainer,
     validateForm,
     validateFormAsync,
     submitForm,

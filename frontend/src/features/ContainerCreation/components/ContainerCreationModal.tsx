@@ -36,6 +36,7 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
     updateFormData,
     updateContainerType,
     updateEcosystemSettings,
+    copyEnvironmentFromContainer,
     submitForm,
     resetForm
   } = useContainerCreation();
@@ -393,12 +394,26 @@ export const ContainerCreationModal: React.FC<ContainerCreationModalProps> = ({
                         select
                         label="Copy Environment from Container"
                         value={localFormData.copied_environment_from || ''}
-                        onChange={(e) => updateLocalFormData({ 
-                          copied_environment_from: e.target.value ? parseInt(e.target.value) : null 
-                        })}
+                        onChange={async (e) => {
+                          const value = e.target.value;
+                          const containerId = value ? parseInt(value) : null;
+                          
+                          updateLocalFormData({ 
+                            copied_environment_from: containerId 
+                          });
+                          
+                          // Copy environment settings from the selected container
+                          if (containerId) {
+                            try {
+                              await copyEnvironmentFromContainer(containerId);
+                            } catch (error) {
+                              console.error('Failed to copy environment:', error);
+                            }
+                          }
+                        }}
                         fullWidth
                         size="small"
-                        helperText="Only for Virtual containers"
+                        helperText="Select a container to copy its environment settings"
                         sx={{
                           '& .MuiInputLabel-root': {
                             fontSize: '14px',
