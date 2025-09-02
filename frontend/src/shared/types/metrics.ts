@@ -13,6 +13,6 @@ export interface StatData {
 }
 
 export interface MetricData {
-  date: string;
+  day: string;
   value: number;
 }

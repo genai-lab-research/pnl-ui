@@ -1,5 +1,6 @@
 // Mock data for containers matching the reference image exactly
-import { ContainerStatus, ContainerType, RowData } from '../../shared/types/containers';
+import { ContainerStatus, ContainerType, RowData } from '../../../shared/types/containers';
+
 
 // Mock container data matching the reference UI
 export const mockContainers = [

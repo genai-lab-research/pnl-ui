@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Button, Container, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Paper, Typography } from '@mui/material';
 
 import { CreateContainerButton } from '../../shared/components/ui/Button';
 import { Chip } from '../../shared/components/ui/Chip';
@@ -99,10 +99,10 @@ const ContainerListPage: React.FC = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
             <SearchInput
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              onChange={(e) => setSearchTerm(e)}
+
               placeholder="Search containers..."
-              fullWidth
+             
             />
             <Button variant="contained" sx={{ ml: 2 }} onClick={handleSearch}>
               Search

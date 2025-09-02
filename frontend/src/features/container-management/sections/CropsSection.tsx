@@ -4,10 +4,10 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Box, Card, CardContent, Chip, IconButton, Typography } from '@mui/material';
 
-import { ContainerCrop } from '../../services/containerService';
-import { PaginatorButton } from '../../shared/components/ui/Button';
-import { PaginatorContainer } from '../../shared/components/ui/Container';
-import { DataTable } from '../../shared/components/ui/Table';
+import { ContainerCrop } from '../../../services/containerService';
+import { PaginatorButton } from '../../../shared/components/ui/Button';
+import { PaginatorContainer } from '../../../shared/components/ui/Container';
+import { DataTable } from '../../../shared/components/ui/Table';
 
 export interface CropsSectionProps {
   crops: ContainerCrop[];
