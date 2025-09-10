@@ -35,6 +35,37 @@ export type {
   DashboardSummaryResponse,
 } from './containerApiService';
 
+// Environment types
+export type {
+  EnvironmentStatus,
+  EnvironmentLinks,
+  IframeConfiguration,
+  ExternalUrlConfiguration,
+  EnvironmentConnectionRequest,
+  EnvironmentConnectionResponse,
+  EnvironmentSystemHealth,
+  SessionRefreshResponse,
+  UpdateEnvironmentLinksRequest,
+  UpdateEnvironmentLinksResponse,
+  ConnectionDetails,
+  ContainerContext,
+  MaintenanceWindow,
+  PlaceholderState,
+} from '../types/environment';
+
+// Recipe types
+export type {
+  ActiveRecipe,
+  RecipeApplication,
+  RecipeVersion,
+  ApplyRecipeRequest,
+  ApplyRecipeResponse,
+  RecipeHistoryQueryParams,
+  AvailableRecipesQueryParams,
+  EnvironmentParameters,
+  RecipeManagementIntegration,
+} from '../types/recipes';
+
 // Tenant service
 export {
   tenantService,
@@ -147,6 +178,16 @@ export {
   getAvailablePanels,
   adjustPanelLighting,
 } from './panelService';
+
+// Inventory service
+export {
+  inventoryService,
+  getContainerInventory,
+  getContainerTrays,
+  getContainerPanels,
+  InventoryService,
+} from './inventoryService';
+export type { InventoryData, TraySlotData } from './inventoryService';
 
 // Metric Snapshot service
 export {

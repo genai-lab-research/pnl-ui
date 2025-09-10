@@ -1,0 +1,1 @@
+export { TrayManagementCard } from './TrayManagementCard';

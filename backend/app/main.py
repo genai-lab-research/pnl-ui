@@ -23,6 +23,7 @@ from app.api.routes.recipes import router as recipes_router
 from app.api.routes.recipe_versions import router as recipe_versions_router
 from app.api.routes.rfid import router as rfid_router
 from app.api.routes.nursery_station import router as nursery_station_router
+from app.api.routes.environment import router as environment_router
 
 # Configure logging
 logging.basicConfig(
@@ -176,6 +177,13 @@ app.include_router(
     nursery_station_router,
     prefix=settings.API_V1_STR,
     tags=["nursery-station"]
+)
+
+# Environment and Recipe Management routes
+app.include_router(
+    environment_router,
+    prefix=settings.API_V1_STR,
+    tags=["environment", "recipes"]
 )
 
 # Additional API routes (you can add more routers here)

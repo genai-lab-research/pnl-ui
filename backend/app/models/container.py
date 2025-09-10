@@ -43,4 +43,5 @@ class Container(BaseModel):
     tray_snapshots = relationship("TraySnapshot", back_populates="container")
     panel_snapshots = relationship("PanelSnapshot", back_populates="container")
     environment_links = relationship("EnvironmentLink", back_populates="container", uselist=False)
+    recipe_applications = relationship("RecipeApplication", back_populates="container")
 

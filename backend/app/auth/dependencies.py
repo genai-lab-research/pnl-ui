@@ -138,6 +138,10 @@ async def validate_api_key(
     if not api_key:
         return False
     
-    # In a real app, you'd validate against a database or config
-    valid_api_keys = ["demo-api-key", "internal-service-key"]
+    # Load valid API keys from environment variables
+    from app.core.config import settings
+    valid_api_keys = getattr(settings, 'VALID_API_KEYS', [])
+    if not valid_api_keys:
+        # Fallback for demo/testing - should be configured in production
+        valid_api_keys = [settings.DEFAULT_API_KEY] if hasattr(settings, 'DEFAULT_API_KEY') else []
     return api_key in valid_api_keys

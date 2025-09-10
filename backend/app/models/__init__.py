@@ -13,6 +13,7 @@ from .activity_log import ActivityLog
 from .snapshots import MetricSnapshot, ContainerSnapshot, TraySnapshot, PanelSnapshot, CropSnapshot
 from .crop_history import CropHistory
 from .environment_link import EnvironmentLink
+from .recipe_application import RecipeApplication
 
 __all__ = [
     "BaseModel",
@@ -35,5 +36,6 @@ __all__ = [
     "PanelSnapshot",
     "CropSnapshot",
     "CropHistory",
-    "EnvironmentLink"
+    "EnvironmentLink",
+    "RecipeApplication"
 ]

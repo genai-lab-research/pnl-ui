@@ -46,6 +46,30 @@ from .container import (
     ActivityLogCreate,
     DashboardSummary,
 )
+from .environment import (
+    ConnectionDetails,
+    EnvironmentStatus,
+    EnvironmentLinksResponse,
+    EnvironmentLinksUpdate,
+    EnvironmentLinksUpdateResponse,
+    ContainerContext,
+    IframeUrlResponse,
+    ExternalUrlResponse,
+    EnvironmentConnectionRequest,
+    EnvironmentConnectionResponse,
+    MaintenanceWindow,
+    EnvironmentSystemHealth,
+    SessionRefreshResponse,
+    PlaceholderState,
+)
+from .recipe import (
+    EnvironmentParameters,
+    ActiveRecipe,
+    RecipeApplicationRequest,
+    RecipeApplicationResponse,
+    RecipeApplicationHistory,
+    AvailableRecipeVersion,
+)
 
 __all__ = [
     "BaseSchema",
@@ -102,4 +126,24 @@ __all__ = [
     "EnvironmentLinksUpdateResponse",
     "ActivityLogCreate",
     "DashboardSummary",
+    # Environment schemas
+    "ConnectionDetails",
+    "EnvironmentStatus",
+    "EnvironmentLinksResponse",
+    "ContainerContext",
+    "IframeUrlResponse",
+    "ExternalUrlResponse",
+    "EnvironmentConnectionRequest",
+    "EnvironmentConnectionResponse",
+    "MaintenanceWindow",
+    "EnvironmentSystemHealth",
+    "SessionRefreshResponse",
+    "PlaceholderState",
+    # Recipe management schemas
+    "EnvironmentParameters",
+    "ActiveRecipe",
+    "RecipeApplicationRequest",
+    "RecipeApplicationResponse",
+    "RecipeApplicationHistory",
+    "AvailableRecipeVersion",
 ]

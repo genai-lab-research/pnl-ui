@@ -25,6 +25,11 @@ import {
   ContainerPagination,
   ContainerMetricCard
 } from './components';
+import { EnvironmentRecipesTab } from './components/EnvironmentRecipesTab';
+import { InventoryTab } from './components/InventoryTab';
+// Toggle between real and mock implementation for testing
+// import { useFarmHandIntegration } from './hooks/useFarmHandIntegration';
+import { useFarmHandIntegrationMock as useFarmHandIntegration } from './hooks/useFarmHandIntegrationMock';
 import {
   StyledPageContainer,
   StyledHeaderSection,
@@ -107,6 +112,19 @@ export const ContainerDetailPage: React.FC = () => {
     isLoading,
     errors
   } = useContainerOverview(containerIdNum);
+
+  // FarmHand integration for Environment tab
+  const {
+    isConnected,
+    isIframeLoading,
+    isConnectionInitializing,
+    error: farmHandError,
+    iframeUrl,
+    openInFarmHand,
+    initializeConnection,
+    environmentSystem,
+    lastSync
+  } = useFarmHandIntegration();
 
   // Navigation handlers
   const handleTabChange = (tab: TabValue) => {
@@ -739,30 +757,44 @@ export const ContainerDetailPage: React.FC = () => {
         </>
       )}
 
-      {/* Other Tab Content Placeholders */}
+      {/* Environment & Recipes Tab */}
       {activeTab === 'environment' && (
         <StyledContentSection>
-          <StyledTabPlaceholder>
-            <Typography variant="h5" gutterBottom>
-              Environment & Recipes
-            </Typography>
-            <Typography color="text.secondary">
-              Environment and recipes content will be implemented in future iterations.
-            </Typography>
-          </StyledTabPlaceholder>
+          <EnvironmentRecipesTab
+            containerId={containerIdNum}
+            containerName={containerInfo?.name}
+            onExternalOpen={() => openInFarmHand()}
+            onInitiateConnection={() => initializeConnection('FarmHand')}
+            environmentStatus={{
+              is_connected: isConnected,
+              environment_system: environmentSystem || 'FarmHand',
+              iframe_url: iframeUrl,
+              external_url: '', // Will be handled by openInFarmHand
+              last_sync: lastSync || undefined,
+              connection_details: {
+                system_version: '1.0.0'
+              }
+            }}
+            iframeUrl={iframeUrl}
+            isLoading={isIframeLoading || isConnectionInitializing}
+            error={farmHandError?.message || null}
+            userRole={
+              // Determine user role based on permissions or default to viewer
+              containerInfo?.permissions?.includes('admin') ? 'admin' :
+              containerInfo?.permissions?.includes('technician') ? 'technician' :
+              'viewer'
+            }
+            refreshInterval={300000} // 5 minutes
+          />
         </StyledContentSection>
       )}
 
       {activeTab === 'inventory' && (
         <StyledContentSection>
-          <StyledTabPlaceholder>
-            <Typography variant="h5" gutterBottom>
-              Inventory
-            </Typography>
-            <Typography color="text.secondary">
-              Inventory management content will be implemented in future iterations.
-            </Typography>
-          </StyledTabPlaceholder>
+          <InventoryTab 
+            containerId={containerIdNum}
+            containerName={containerInfo?.name}
+          />
         </StyledContentSection>
       )}
 

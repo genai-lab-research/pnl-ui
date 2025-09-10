@@ -154,11 +154,18 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 def setup_middleware(app: FastAPI) -> None:
     """Set up all middleware for the FastAPI application."""
     
-    # CORS middleware - Allow all origins for development
+    # CORS middleware - Allow specific origins for development with credentials
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  # Allow all origins for development
-        allow_credentials=False,  # Set to False when using allow_origins=["*"]
+        allow_origins=[
+            "http://localhost:5173",
+            "http://localhost:5174", 
+            "http://localhost:5175",
+            "http://127.0.0.1:5173",
+            "http://127.0.0.1:5174",
+            "http://127.0.0.1:5175"
+        ],  # Allow specific origins for development
+        allow_credentials=True,  # Allow credentials for authentication
         allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
         allow_headers=["*"],
     )

@@ -91,3 +91,34 @@ class RecipeVersionRepository(BaseRepository[RecipeVersion, RecipeVersionCreate,
         result = await self.db.execute(query)
         existing = result.scalar_one_or_none()
         return existing is None
+    
+    async def get_available_versions(
+        self, 
+        crop_type: Optional[str] = None,
+        active_only: bool = True
+    ) -> List[RecipeVersion]:
+        """Get available recipe versions with optional filtering."""
+        from datetime import datetime
+        
+        query = select(RecipeVersion).options(selectinload(RecipeVersion.recipe_master))
+        
+        if active_only:
+            current_time = datetime.utcnow()
+            query = query.where(
+                and_(
+                    RecipeVersion.valid_from <= current_time,
+                    or_(
+                        RecipeVersion.valid_to.is_(None),
+                        RecipeVersion.valid_to >= current_time
+                    )
+                )
+            )
+        
+        if crop_type:
+            # Join with recipe master to filter by crop type
+            from app.models.recipe import RecipeMaster
+            query = query.join(RecipeMaster).where(RecipeMaster.crop_type == crop_type)
+        
+        query = query.order_by(RecipeVersion.valid_from.desc())
+        result = await self.db.execute(query)
+        return list(result.scalars().all())

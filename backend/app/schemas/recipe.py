@@ -183,3 +183,68 @@ class CropFilterCriteria(BaseModel):
 class CropSnapshotFilterCriteria(BaseModel):
     start_date: Optional[datetime] = Field(None, description="Filter from start date")
     end_date: Optional[datetime] = Field(None, description="Filter to end date")
+
+
+class EnvironmentParameters(BaseModel):
+    """Environment parameters from recipe versions"""
+    tray_density: Optional[float] = Field(None, description="Tray density setting")
+    air_temperature: Optional[float] = Field(None, description="Air temperature setting")
+    humidity: Optional[float] = Field(None, description="Humidity setting")
+    co2: Optional[float] = Field(None, description="CO2 level setting")
+    water_temperature: Optional[float] = Field(None, description="Water temperature setting")
+    ec: Optional[float] = Field(None, description="Electrical conductivity setting")
+    ph: Optional[float] = Field(None, description="pH level setting")
+    water_hours: Optional[float] = Field(None, description="Water hours setting")
+    light_hours: Optional[float] = Field(None, description="Light hours setting")
+
+
+class ActiveRecipe(BaseModel):
+    """Currently active recipe version"""
+    recipe_version_id: int = Field(..., description="Recipe version identifier")
+    recipe_name: str = Field(..., description="Recipe master name")
+    version: str = Field(..., description="Version identifier")
+    crop_type: str = Field(..., description="Target crop type")
+    applied_at: datetime = Field(..., description="When recipe was applied")
+    applied_by: str = Field(..., description="Who applied the recipe")
+    environment_parameters: EnvironmentParameters = Field(..., description="Current environment settings")
+
+
+class RecipeApplicationRequest(BaseModel):
+    """Request to apply a recipe version"""
+    recipe_version_id: int = Field(..., description="Recipe version to apply")
+    applied_by: str = Field(..., description="User applying the recipe")
+    environment_sync: bool = Field(default=True, description="Sync with environment system")
+
+
+class RecipeApplicationResponse(BaseModel):
+    """Response after applying a recipe"""
+    success: bool = Field(..., description="Application success status")
+    message: str = Field(..., description="Status message")
+    application_id: int = Field(..., description="Application record ID")
+    environment_sync_status: str = Field(..., description="External system sync status")
+    applied_at: datetime = Field(..., description="Application timestamp")
+
+
+class RecipeApplicationHistory(BaseModel):
+    """Historical recipe application record"""
+    id: int = Field(..., description="Application record identifier")
+    container_id: int = Field(..., description="Related container")
+    recipe_version_id: int = Field(..., description="Applied recipe version")
+    applied_at: datetime = Field(..., description="Application timestamp")
+    applied_by: str = Field(..., description="User who applied recipe")
+    previous_recipe_version_id: Optional[int] = Field(None, description="Previous recipe version")
+    changes_summary: Optional[dict] = Field(None, description="Summary of parameter changes")
+    environment_sync_status: Optional[str] = Field(None, description="External system sync status")
+
+
+class AvailableRecipeVersion(BaseModel):
+    """Available recipe version for application"""
+    recipe_version_id: int = Field(..., description="Recipe version identifier")
+    recipe_id: int = Field(..., description="Recipe master identifier")
+    recipe_name: str = Field(..., description="Recipe master name")
+    version: str = Field(..., description="Version identifier")
+    crop_type: str = Field(..., description="Target crop type")
+    valid_from: datetime = Field(..., description="Version validity start")
+    valid_to: Optional[datetime] = Field(None, description="Version validity end")
+    created_by: str = Field(..., description="Version creator")
+    environment_parameters: EnvironmentParameters = Field(..., description="Environment settings")

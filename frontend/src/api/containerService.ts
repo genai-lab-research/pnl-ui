@@ -13,6 +13,27 @@ import {
   PerformanceMetrics,
   MetricsFilterCriteria,
 } from '../types/metrics';
+import {
+  EnvironmentStatus,
+  EnvironmentLinks,
+  IframeConfiguration,
+  ExternalUrlConfiguration,
+  EnvironmentConnectionRequest,
+  EnvironmentConnectionResponse,
+  EnvironmentSystemHealth,
+  SessionRefreshResponse,
+  UpdateEnvironmentLinksRequest,
+  UpdateEnvironmentLinksResponse,
+} from '../types/environment';
+import {
+  ActiveRecipe,
+  RecipeApplication,
+  RecipeVersion,
+  ApplyRecipeRequest,
+  ApplyRecipeResponse,
+  RecipeHistoryQueryParams,
+  AvailableRecipesQueryParams,
+} from '../types/recipes';
 import { tokenStorage } from '../utils/tokenStorage';
 import { getApiBaseUrl } from '../utils/env';
 
@@ -363,22 +384,6 @@ export class ContainerService {
     return this.makeAuthenticatedRequest<any>(`/containers/${id}/activity-logs${queryString}`);
   }
 
-  /**
-   * Get environment links for ecosystem connectivity
-   */
-  public async getEnvironmentLinks(id: number): Promise<any> {
-    return this.makeAuthenticatedRequest<any>(`/containers/${id}/environment-links`);
-  }
-
-  /**
-   * Update environment links for ecosystem connectivity
-   */
-  public async updateEnvironmentLinks(id: number, links: any): Promise<any> {
-    return this.makeAuthenticatedRequest<any>(`/containers/${id}/environment-links`, {
-      method: 'PUT',
-      body: JSON.stringify(links),
-    });
-  }
 
   /**
    * Update container settings from the overview tab
@@ -405,6 +410,155 @@ export class ContainerService {
       method: 'POST',
       body: JSON.stringify(activity),
     });
+  }
+
+  // ==================== Environment Management Endpoints ====================
+
+  /**
+   * Get container environment status
+   */
+  public async getEnvironmentStatus(id: number): Promise<EnvironmentStatus> {
+    return this.makeAuthenticatedRequest<EnvironmentStatus>(`/containers/${id}/environment/status`);
+  }
+
+  /**
+   * Get environment links for a container
+   */
+  public async getEnvironmentLinks(id: number): Promise<EnvironmentLinks> {
+    return this.makeAuthenticatedRequest<EnvironmentLinks>(`/containers/${id}/environment-links`);
+  }
+
+  /**
+   * Update environment links for a container
+   */
+  public async updateEnvironmentLinks(
+    id: number, 
+    links: UpdateEnvironmentLinksRequest
+  ): Promise<UpdateEnvironmentLinksResponse> {
+    return this.makeAuthenticatedRequest<UpdateEnvironmentLinksResponse>(`/containers/${id}/environment-links`, {
+      method: 'PUT',
+      body: JSON.stringify(links),
+    });
+  }
+
+  /**
+   * Get FarmHand iframe URL for embedding
+   */
+  public async getIframeUrl(
+    id: number, 
+    tab?: string, 
+    refresh?: boolean
+  ): Promise<IframeConfiguration> {
+    const params = new URLSearchParams();
+    if (tab) params.append('tab', tab);
+    if (refresh !== undefined) params.append('refresh', refresh.toString());
+    
+    const queryString = params.toString();
+    const url = `/containers/${id}/environment/iframe-url${queryString ? `?${queryString}` : ''}`;
+    
+    return this.makeAuthenticatedRequest<IframeConfiguration>(url);
+  }
+
+  /**
+   * Get FarmHand external URL for opening in new tab
+   */
+  public async getExternalUrl(
+    id: number, 
+    tab?: string
+  ): Promise<ExternalUrlConfiguration> {
+    const params = new URLSearchParams();
+    if (tab) params.append('tab', tab);
+    
+    const queryString = params.toString();
+    const url = `/containers/${id}/environment/external-url${queryString ? `?${queryString}` : ''}`;
+    
+    return this.makeAuthenticatedRequest<ExternalUrlConfiguration>(url);
+  }
+
+  /**
+   * Initialize environment connection for a container
+   */
+  public async connectEnvironment(
+    id: number, 
+    connectionData: EnvironmentConnectionRequest
+  ): Promise<EnvironmentConnectionResponse> {
+    return this.makeAuthenticatedRequest<EnvironmentConnectionResponse>(`/containers/${id}/environment/connect`, {
+      method: 'POST',
+      body: JSON.stringify(connectionData),
+    });
+  }
+
+  /**
+   * Get environment system health status
+   */
+  public async getEnvironmentHealth(id: number): Promise<EnvironmentSystemHealth> {
+    return this.makeAuthenticatedRequest<EnvironmentSystemHealth>(`/containers/${id}/environment/health`);
+  }
+
+  /**
+   * Refresh environment session
+   */
+  public async refreshEnvironmentSession(id: number): Promise<SessionRefreshResponse> {
+    return this.makeAuthenticatedRequest<SessionRefreshResponse>(`/containers/${id}/environment/refresh-session`, {
+      method: 'POST',
+    });
+  }
+
+  // ==================== Recipe Management Endpoints ====================
+
+  /**
+   * Get active recipes for a container
+   */
+  public async getActiveRecipes(id: number): Promise<ActiveRecipe[]> {
+    return this.makeAuthenticatedRequest<ActiveRecipe[]>(`/containers/${id}/recipes/active`);
+  }
+
+  /**
+   * Apply a recipe version to a container
+   */
+  public async applyRecipe(
+    id: number, 
+    recipeData: ApplyRecipeRequest
+  ): Promise<ApplyRecipeResponse> {
+    return this.makeAuthenticatedRequest<ApplyRecipeResponse>(`/containers/${id}/recipes/apply`, {
+      method: 'POST',
+      body: JSON.stringify(recipeData),
+    });
+  }
+
+  /**
+   * Get recipe application history for a container
+   */
+  public async getRecipeHistory(
+    id: number, 
+    params?: RecipeHistoryQueryParams
+  ): Promise<RecipeApplication[]> {
+    const queryParams = new URLSearchParams();
+    if (params?.limit) queryParams.append('limit', params.limit.toString());
+    if (params?.start_date) queryParams.append('start_date', params.start_date);
+    if (params?.end_date) queryParams.append('end_date', params.end_date);
+    
+    const queryString = queryParams.toString();
+    const url = `/containers/${id}/recipes/history${queryString ? `?${queryString}` : ''}`;
+    
+    return this.makeAuthenticatedRequest<RecipeApplication[]>(url);
+  }
+
+  /**
+   * Get available recipe versions for a container
+   */
+  public async getAvailableRecipes(
+    id: number, 
+    params?: AvailableRecipesQueryParams
+  ): Promise<RecipeVersion[]> {
+    const queryParams = new URLSearchParams();
+    if (params?.crop_type) queryParams.append('crop_type', params.crop_type);
+    if (params?.active_only !== undefined) queryParams.append('active_only', params.active_only.toString());
+    
+    const queryString = queryParams.toString();
+    const url = `/containers/${id}/recipes/available${queryString ? `?${queryString}` : ''}`;
+    
+    return this.makeAuthenticatedRequest<RecipeVersion[]>(url);
   }
 }
 
