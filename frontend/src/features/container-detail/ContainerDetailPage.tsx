@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Grid, Typography, Alert, Skeleton, Box, Button, IconButton, Collapse } from '@mui/material';
 import { 
@@ -81,7 +82,7 @@ const formatEcosystemSettingValue = (value: any, defaultValue: string = 'N/A'): 
  * crops data, settings, and activity timeline. Features sticky header with
  * navigation and tabbed content sections.
  */
-export const ContainerDetailPage: React.FC = () => {
+export const ContainerDetailPage: React.FC = observer(() => {
   const { containerId } = useParams<{ containerId: string }>();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabValue>('overview');
@@ -815,6 +816,6 @@ export const ContainerDetailPage: React.FC = () => {
       />
     </StyledPageContainer>
   );
-};
+});
 
 export default ContainerDetailPage;

@@ -9,6 +9,7 @@ import {
 } from '../types';
 import { containerDetailService } from '../services';
 import { transformMetricsToDisplay, transformMetricsToCardModels } from '../services/dataTransformers';
+import { makeAutoObservable } from 'mobx';
 
 /**
  * Main ViewModel for Container Detail page
@@ -36,6 +37,12 @@ export class ContainerDetailViewModel {
         canUpdateEnvironment: false,
       },
     };
+
+    // Enable MobX reactivity for this ViewModel
+    makeAutoObservable(this, {
+      listeners: false,
+      realTimeCleanup: false,
+    }, { autoBind: true });
   }
 
   // State Management

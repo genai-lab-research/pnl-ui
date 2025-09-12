@@ -22,6 +22,7 @@ export const theme = {
     textMuted: '#71717A',
     textOnPrimary: '#FAFAFA',
     textOnSecondary: '#18181B',
+    text: '#000000',
     
     // Border colors
     borderPrimary: '#E9EDF4',

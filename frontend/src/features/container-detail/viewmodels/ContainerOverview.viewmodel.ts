@@ -8,6 +8,7 @@ import {
   ContainerMetricCardProps,
 } from '../types';
 import { containerDetailApiAdaptor } from '../services';
+import { makeAutoObservable } from 'mobx';
 
 export interface ContainerOverviewState {
   overview: ContainerOverview | null;
@@ -45,6 +46,12 @@ export class ContainerOverviewViewModel {
       cropsPage: 1,
       cropsLimit: 2,
     };
+
+    // Make this ViewModel observable and auto-bind actions
+    makeAutoObservable(this, {
+      listeners: false,
+      metricsPollingInterval: false,
+    }, { autoBind: true });
   }
 
   // State Management

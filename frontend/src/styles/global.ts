@@ -8,10 +8,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', 'Arial', sans-serif;
+    font-family: ${({ theme }) => (theme as any).fonts?.primary || 'Inter, Arial, sans-serif'};
     line-height: 1.6;
-    color: #333;
-    background-color: #fafafa;
+    color: ${({ theme }) => (theme as any).colors?.textPrimary || '#333'};
+    background-color: ${({ theme }) => (theme as any).colors?.background || '#fafafa'};
   }
 
   h1, h2, h3, h4, h5, h6 {

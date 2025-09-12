@@ -26,18 +26,23 @@ export const ShelfSection = styled(Box)(({ theme }) => ({
 
 export const ShelfGrid = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-  gap: theme.spacing(2),
+  /* Use fixed card column width so items align like the mock */
+  gridTemplateColumns: 'repeat(auto-fill, minmax(162px, 1fr))',
+  gap: theme.spacing(2.5),
+  alignItems: 'start',
+  /* Prevent odd spacing by keeping content left-aligned */
+  justifyItems: 'start',
   [theme.breakpoints.down('sm')]: {
-    gridTemplateColumns: '1fr',
+    gridTemplateColumns: 'repeat(2, minmax(140px, 1fr))',
+    gap: theme.spacing(2),
   },
   [theme.breakpoints.between('sm', 'md')]: {
-    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateColumns: 'repeat(3, minmax(162px, 1fr))',
   },
   [theme.breakpoints.between('md', 'lg')]: {
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(4, minmax(162px, 1fr))',
   },
   [theme.breakpoints.up('lg')]: {
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(6, minmax(162px, 1fr))',
   },
 }));
