@@ -48,13 +48,13 @@ export const TimeRangeSelector: React.FC<TimeRangeSelectorProps> = ({
       clearTimeout(timeoutRef.current);
     }
 
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       onValueChange(value);
     }, 100); // 100ms debounce delay for direct selections
   }, [onValueChange]);
 
   const handleOptionClick = (value: TimeRange) => {
-    if (!disabled && onValueChange) {
+    if (!disabled) {
       // Update local state immediately
       setLocalSelectedValue(value);
       // Debounced notification to parent component

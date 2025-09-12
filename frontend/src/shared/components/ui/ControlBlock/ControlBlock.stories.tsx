@@ -99,7 +99,9 @@ export const DatabaseControl: Story = {
 };
 
 export const AllSizes: Story = {
-  args: {},
+  args: {
+    label: 'Control Block Sizes',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <ControlBlock
@@ -122,7 +124,9 @@ export const AllSizes: Story = {
 };
 
 export const AllVariants: Story = {
-  args: {},
+  args: {
+    label: 'Control Block Variants',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <ControlBlock
@@ -177,7 +181,9 @@ export const ErrorState: Story = {
 };
 
 export const DifferentMetrics: Story = {
-  args: {},
+  args: {
+    label: 'Different Metrics Examples',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <ControlBlock

@@ -51,7 +51,7 @@ const SegmentedToggleWrapper = (args: SegmentedToggleProps) => {
 
 // Default Physical/Virtual toggle (matching the original design)
 export const PhysicalVirtual: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
     options: [
       { id: '1', label: 'Physical', value: 'physical' },
@@ -72,7 +72,7 @@ export const PhysicalVirtual: Story = {
 
 // Alternative with Virtual selected to show the inverse state
 export const VirtualSelected: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
     options: [
       { id: '1', label: 'Physical', value: 'physical' },
@@ -93,7 +93,7 @@ export const VirtualSelected: Story = {
 
 // Generic binary toggle
 export const ModeToggle: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
     options: [
       { id: '1', label: 'Light', value: 'light' },
@@ -107,7 +107,7 @@ export const ModeToggle: Story = {
 
 // Multiple options
 export const ViewSelector: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
     options: [
       { id: '1', label: 'List', value: 'list' },
@@ -122,65 +122,103 @@ export const ViewSelector: Story = {
 
 // Different sizes
 export const SmallSize: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
+    variant: 'default',
     size: 'sm',
   },
 };
 
 export const LargeSize: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
+    variant: 'default',
     size: 'lg',
   },
 };
 
 // Different variants
 export const OutlinedVariant: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
     variant: 'outlined',
+    size: 'md',
   },
 };
 
 export const ElevatedVariant: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
     variant: 'elevated',
+    size: 'md',
   },
 };
 
 // States
 export const DisabledState: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
+    variant: 'default',
+    size: 'md',
     disabled: true,
   },
 };
 
 export const LoadingState: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
+    variant: 'default',
+    size: 'md',
     loading: true,
   },
 };
 
 export const WithError: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
-    ...PhysicalVirtual.args,
+    options: [
+      { id: '1', label: 'Physical', value: 'physical' },
+      { id: '2', label: 'Virtual', value: 'virtual' },
+    ],
+    value: 'physical',
+    variant: 'default',
+    size: 'md',
     error: 'Please select a valid option',
   },
 };
 
 export const DisabledOption: Story = {
-  render: (args) => <SegmentedToggleWrapper {...args} />,
+  render: (args) => <SegmentedToggleWrapper {...(args as SegmentedToggleProps)} />,
   args: {
     options: [
       { id: '1', label: 'Available', value: 'available' },

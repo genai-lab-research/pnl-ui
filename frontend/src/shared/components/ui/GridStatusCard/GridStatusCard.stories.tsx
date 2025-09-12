@@ -138,12 +138,14 @@ export const InventoryManagement: Story = {
 
 export const LoadingState: Story = {
   args: {
+    title: 'LOADING-GRID',
     loading: true,
   }
 };
 
 export const ErrorState: Story = {
   args: {
+    title: 'ERROR-GRID',
     error: 'Failed to load grid data. Please try again.',
   }
 };

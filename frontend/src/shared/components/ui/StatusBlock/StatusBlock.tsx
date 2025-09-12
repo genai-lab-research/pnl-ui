@@ -19,10 +19,10 @@ import {
 export const StatusBlock: React.FC<StatusBlockProps> = ({
   title,
   icon,
-  status = 'Active',
-  statusVariant = 'active',
-  size = 'md',
-  variant = 'default',
+  status,
+  statusVariant,
+  size,
+  variant,
   loading = false,
   error,
   className,
@@ -31,23 +31,28 @@ export const StatusBlock: React.FC<StatusBlockProps> = ({
   disabled = false,
   footerSlot,
 }) => {
+  // Set defaults within the function body to avoid type issues
+  const effectiveStatus = status ?? 'Active';
+  const effectiveStatusVariant = statusVariant ?? 'active';
+  const effectiveSize = size ?? 'md';
+  const effectiveVariant = variant ?? 'default';
   // Handle loading state
   if (loading) {
     return (
       <LoadingContainer className={className} aria-label={ariaLabel || 'Loading status block'}>
         <Skeleton 
           variant="circular" 
-          width={size === 'sm' ? 14 : size === 'lg' ? 20 : 16} 
-          height={size === 'sm' ? 14 : size === 'lg' ? 20 : 16} 
+          width={effectiveSize === 'sm' ? 14 : effectiveSize === 'lg' ? 20 : 16} 
+          height={effectiveSize === 'sm' ? 14 : effectiveSize === 'lg' ? 20 : 16} 
         />
         <Skeleton 
           variant="text" 
-          sx={{ flex: 1, height: size === 'sm' ? 16 : size === 'lg' ? 24 : 20 }} 
+          sx={{ flex: 1, height: effectiveSize === 'sm' ? 16 : effectiveSize === 'lg' ? 24 : 20 }} 
         />
         <Skeleton 
           variant="rounded" 
           width={60} 
-          height={size === 'sm' ? 18 : size === 'lg' ? 28 : 22} 
+          height={effectiveSize === 'sm' ? 18 : effectiveSize === 'lg' ? 28 : 22} 
         />
       </LoadingContainer>
     );
@@ -65,19 +70,19 @@ export const StatusBlock: React.FC<StatusBlockProps> = ({
   return (
     <Box>
       <StatusBlockContainer
-        variant={variant}
-        size={size}
+        variant={effectiveVariant}
+        size={effectiveSize}
         disabled={disabled}
         clickable={!!onClick}
         className={className}
         onClick={!disabled ? onClick : undefined}
         role={onClick ? 'button' : undefined}
         tabIndex={onClick && !disabled ? 0 : undefined}
-        aria-label={ariaLabel || `${title} - ${status}`}
+        aria-label={ariaLabel || `${title} - ${effectiveStatus}`}
       >
         {/* Icon */}
         {icon && (
-          <IconContainer size={size}>
+          <IconContainer size={effectiveSize}>
             {typeof icon === 'string' ? (
               <Box component="span" aria-hidden="true">
                 {icon}
@@ -89,17 +94,19 @@ export const StatusBlock: React.FC<StatusBlockProps> = ({
         )}
 
         {/* Description */}
-        <DescriptionText size={size} noWrap>
+        <DescriptionText size={effectiveSize} noWrap>
           {title}
         </DescriptionText>
 
         {/* Status Badge */}
-        <StatusBadge
-          label={status}
-          variant={statusVariant}
-          size={size}
-          aria-label={`Status: ${status}`}
-        />
+        {effectiveStatus && (
+          <StatusBadge
+            label={effectiveStatus}
+            variant={effectiveStatusVariant as any}
+            size={effectiveSize as any}
+            aria-label={`Status: ${effectiveStatus}`}
+          />
+        )}
       </StatusBlockContainer>
 
       {/* Footer slot */}

@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import ContainerManagementDashboardPage from '../features/ContainerManagement/ContainerManagementDashboardPage';
-import ContainerDetailPage from '../features/ContainerDetail/ContainerDetailPage';
+import ContainerManagementDashboardPage from '../features/container-management/ContainerManagementDashboardPage';
+import ContainerDetailPage from '../features/container-detail/ContainerDetailPage';
 
 export const AppRouter = () => {
   return (

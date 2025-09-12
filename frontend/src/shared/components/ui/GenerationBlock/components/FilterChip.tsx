@@ -57,7 +57,7 @@ export const FilterChip: React.FC<FilterChipProps> = ({
   };
 
   // Add debouncing for filter changes
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Cleanup on unmount
   useEffect(() => {

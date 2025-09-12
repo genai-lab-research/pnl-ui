@@ -19,7 +19,7 @@ export const StyledSegmentedOption = styled.button<SegmentedToggleStyleProps>`
   background: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-family: ${({ theme }) => theme.fonts?.secondary || 'Roboto, sans-serif'};
+  font-family: 'Roboto, sans-serif';
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -86,24 +86,24 @@ export const StyledSegmentedOption = styled.button<SegmentedToggleStyleProps>`
       min-width: ${$fullWidth ? 'auto' : '120px'};
     `}
 
-  ${({ $variant, theme }) =>
+  ${({ $variant }) =>
     $variant === 'outlined' &&
     css`
-      border: 1px solid ${theme.colors?.borderPrimary || '#E9EDF4'};
+      border: 1px solid #E9EDF4;
       border-radius: 4px;
       margin: 2px;
     `}
 
-  ${({ $variant, theme }) =>
+  ${({ $variant }) =>
     $variant === 'elevated' &&
     css`
-      box-shadow: ${theme.shadows?.sm || '0 1px 3px 0 rgba(76, 78, 100, 0.1)'};
+      box-shadow: 0 1px 3px 0 rgba(76, 78, 100, 0.1);
       margin: 2px;
       border-radius: 4px;
     `}
 
   &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors?.focus || '#4CAF50'};
+    outline: 2px solid #4CAF50;
     outline-offset: 2px;
   }
 `;
@@ -118,7 +118,7 @@ export const LoadingWrapper = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  color: ${({ theme }) => theme.colors?.danger || '#f44336'};
+  color: #f44336;
   font-size: 12px;
   margin-top: 4px;
 `;

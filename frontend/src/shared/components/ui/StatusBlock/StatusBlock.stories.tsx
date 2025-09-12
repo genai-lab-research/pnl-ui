@@ -75,6 +75,11 @@ export const Default: Story = {
 
 // Different status variants
 export const StatusVariants: Story = {
+  args: {
+    title: 'Status Variants',
+    status: 'Active',
+    statusVariant: 'active',
+  },
   render: () => (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
@@ -131,6 +136,11 @@ export const StatusVariants: Story = {
 
 // Different sizes
 export const Sizes: Story = {
+  args: {
+    title: 'Size Examples',
+    status: 'Active', 
+    statusVariant: 'active',
+  },
   render: () => (
     <Box display="flex" flexDirection="column" gap={2}>
       <StatusBlock
@@ -160,6 +170,11 @@ export const Sizes: Story = {
 
 // Different variants
 export const Variants: Story = {
+  args: {
+    title: 'Default Status Block',
+    status: 'Active',
+    statusVariant: 'active',
+  },
   render: () => (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
@@ -204,6 +219,11 @@ export const Variants: Story = {
 
 // Different use cases with realistic data
 export const UseCases: Story = {
+  args: {
+    title: 'Default Status Block',
+    status: 'Active',
+    statusVariant: 'active',
+  },
   render: () => (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -297,6 +317,11 @@ export const WithFooter: Story = {
 
 // Responsive showcase
 export const ResponsiveShowcase: Story = {
+  args: {
+    title: 'Default Status Block',
+    status: 'Active',
+    statusVariant: 'active',
+  },
   render: () => (
     <Box>
       <Box mb={2}>

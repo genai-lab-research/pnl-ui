@@ -17,7 +17,7 @@ export const AlertsToggle: React.FC<AlertsToggleProps> = ({
   }, [checked]);
   
   // Add debouncing for toggle changes
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Cleanup on unmount
   useEffect(() => {

@@ -36,7 +36,7 @@ export const StatusBlockContainer = styled(Box, {
     },
   };
 
-  const config = sizeConfig[size || 'md'];
+  const config = sizeConfig[size ?? 'md'];
 
   return {
     display: 'flex',
@@ -79,7 +79,7 @@ export const StatusBlockContainer = styled(Box, {
     
     // Responsive adjustments
     [theme.breakpoints.down('sm')]: {
-      gap: config.gap * 0.75,
+      gap: theme.spacing(0.75),
       padding: theme.spacing(1),
       minHeight: theme.spacing(4.5),
     },
@@ -152,6 +152,13 @@ export const StatusBadge = styled(Chip, {
 }>(({ theme, variant, size }) => {
   // Get colors from theme palette
   const getVariantColors = () => {
+    if (!variant) {
+      return {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+      };
+    }
+    
     switch (variant) {
       case 'active':
       case 'success':
@@ -208,7 +215,7 @@ export const StatusBadge = styled(Chip, {
     },
   };
 
-  const config = sizeConfig[size || 'md'];
+  const config = sizeConfig[size ?? 'md'];
   
   return {
     ...colors,
@@ -216,7 +223,7 @@ export const StatusBadge = styled(Chip, {
     borderRadius: theme.spacing(125), // 9999px equivalent
     height: config.height,
     fontSize: config.fontSize,
-    fontWeight: theme.typography.fontWeightSemiBold || 600,
+    fontWeight: 600,
     fontFamily: theme.typography.fontFamily,
     
     '& .MuiChip-label': {
