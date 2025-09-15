@@ -644,7 +644,7 @@ export const ContainerDetailPage: React.FC = observer(() => {
               <Grid container spacing={4}>
               {/* Container Information Column */}
               <Grid item xs={12} md={4}>
-                <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ color: '#111827', mb: 1 }}>
                   Container Information
                 </Typography>
                 <ContainerInfoPanel
@@ -677,7 +677,7 @@ export const ContainerDetailPage: React.FC = observer(() => {
 
               {/* System Settings Column */}
               <Grid item xs={12} md={4}>
-                <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ color: '#111827', mb: 1 }}>
                   System Settings
                 </Typography>
                 <ContainerInfoPanel
@@ -696,7 +696,7 @@ export const ContainerDetailPage: React.FC = observer(() => {
 
               {/* Activity Log Column */}
               <Grid item xs={12} md={4}>
-                <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+                <Typography variant="subtitle2" fontWeight={700} sx={{ color: '#111827', mb: 1 }}>
                   Activity Log
                 </Typography>
                 

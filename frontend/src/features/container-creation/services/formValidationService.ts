@@ -26,8 +26,8 @@ export class FormValidationService {
       errors.name = 'Container name must be at least 2 characters';
     } else if (formData.name.trim().length > 100) {
       errors.name = 'Container name must not exceed 100 characters';
-    } else if (!/^[a-zA-Z0-9\s\-_]+$/.test(formData.name.trim())) {
-      errors.name = 'Container name can only contain letters, numbers, spaces, hyphens, and underscores';
+    } else if (!/^[a-zA-Z0-9\s'\-_]+$/.test(formData.name.trim())) {
+      errors.name = "Container name can include letters, numbers, spaces, hyphens, underscores, and apostrophes";
     }
 
     // Tenant validation

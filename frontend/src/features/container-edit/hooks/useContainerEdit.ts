@@ -34,19 +34,24 @@ export const useContainerEdit = (containerId?: number) => {
     try {
       setFormState(prev => ({ ...prev, loading: true, errors: {} }));
       
-      // Load both container data and form options in parallel
-      const [container, options] = await Promise.all([
-        containerEditService.getContainer(id),
-        containerEditService.loadFormOptions()
-      ]);
+      // Start both requests but do not block UI on options
+      const containerPromise = containerEditService.getContainer(id);
+      const optionsPromise = containerEditService.loadFormOptions();
 
+      // Update container data as soon as it arrives
+      const container = await containerPromise;
       const formData = containerEditService.populateFormFromContainer(container);
-      
       setFormState(prev => ({ 
         ...prev, 
         data: formData,
-        options, 
         loading: false 
+      }));
+
+      // Then update options when ready (do not toggle loading)
+      const options = await optionsPromise;
+      setFormState(prev => ({ 
+        ...prev, 
+        options
       }));
     } catch (error) {
       setFormState(prev => ({ 
@@ -92,6 +97,19 @@ export const useContainerEdit = (containerId?: number) => {
 
     console.log('✅ Authentication ready, loading form options...');
     if (containerId) {
+      // Immediately clear key fields and set loading to show spinner while fetching
+      setFormState(prev => ({
+        ...prev,
+        loading: true,
+        errors: {},
+        data: {
+          ...prev.data,
+          container_id: containerId,
+          purpose: undefined,
+          seed_type_ids: [],
+          location: { city: '', country: '', address: '' }
+        }
+      }));
       loadContainerAndOptions(containerId);
     } else {
       loadFormOptions();
@@ -234,20 +252,23 @@ export const useContainerEdit = (containerId?: number) => {
     }
   }, []);
 
-  const resetForm = useCallback((containerId?: number) => {
-    if (containerId) {
-      loadContainerAndOptions(containerId);
-    } else {
-      setFormState(prev => ({
-        ...prev,
-        data: {
-          ...containerEditService.getDefaultFormData(),
-          container_id: prev.data.container_id
-        },
-        errors: {}
-      }));
-    }
-  }, [loadContainerAndOptions]);
+  const resetForm = useCallback(() => {
+    setFormState(prev => ({
+      ...prev,
+      loading: false,
+      errors: {},
+      data: {
+        ...containerEditService.getDefaultFormData(),
+        container_id: 0
+      },
+      options: {
+        tenants: [],
+        purposes: [],
+        seedTypes: [],
+        virtualContainers: []
+      }
+    }));
+  }, []);
 
   return {
     formState,

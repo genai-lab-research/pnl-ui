@@ -10,7 +10,7 @@ export const RowContainer = styled.div<{
 }>`
   display: flex;
   width: 100%;
-  min-height: 52px;
+  min-height: 44px;
   background-color: ${theme.colors.backgroundWhite};
   border: 1px solid ${props => props.variant === 'bordered' 
     ? `rgba(76, 78, 100, 0.1)` 

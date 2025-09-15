@@ -67,8 +67,8 @@ export const ContainerDataTable: React.FC<ContainerDataTableProps> = ({
       alerts: filters.alerts ? true : undefined,
       page: currentPage,
       limit: 10 as const,
-      field: 'name' as const,
-      order: 'asc' as const
+      sort: 'created_at' as const,
+      order: 'desc' as const
     };
 
     console.log('Search API call with params:', params);

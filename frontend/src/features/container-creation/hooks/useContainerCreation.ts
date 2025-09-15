@@ -191,10 +191,13 @@ export const useContainerCreation = () => {
         errorMessage = error.message;
         
         // Parse backend validation errors for specific fields
-        if (error.message.includes("Invalid value") && error.message.includes("for field 'name'")) {
-          fieldErrors.name = 'Invalid container name. Please use a meaningful name with letters and numbers.';
-        } else if (error.message.includes('name')) {
-          fieldErrors.name = 'Container name is invalid or already exists. Please choose a different name.';
+        const msg = error.message.toLowerCase();
+        if (msg.includes("already exists") && msg.includes('container')) {
+          fieldErrors.name = 'A container with this name already exists. Please choose a different name.';
+        } else if (msg.includes("invalid value") && msg.includes("name")) {
+          fieldErrors.name = 'Invalid container name. Please use letters, numbers, spaces, hyphens, underscores, or apostrophes.';
+        } else if (msg.includes('name')) {
+          fieldErrors.name = 'Container name is invalid. Please adjust and try again.';
         }
       }
       

@@ -365,14 +365,15 @@ export const StyledSectionHeader = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginBottom: theme.spacing(2.5),
-  paddingBottom: theme.spacing(1),
-  borderBottom: `1px solid ${theme.palette.divider}`,
+  marginBottom: theme.spacing(2),
+  paddingBottom: theme.spacing(0.5),
+  borderBottom: 'none',
   
   '& h5, & h6': {
-    color: '#1a1a1a',
+    color: '#111827',
     fontWeight: 600,
     margin: 0,
+    letterSpacing: '-0.01em',
   },
   
   // Responsive behavior

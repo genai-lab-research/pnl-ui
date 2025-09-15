@@ -84,9 +84,10 @@ export class ContainerCreationService {
     try {
       return await validateContainerName({ name: name.trim() });
     } catch (error) {
-      console.error('Name validation failed:', error);
+      console.warn('Name validation endpoint unavailable; proceeding without uniqueness check');
+      // Treat as valid when endpoint is unavailable to avoid blocking creation
       return {
-        is_valid: false,
+        is_valid: true,
         suggestions: []
       };
     }

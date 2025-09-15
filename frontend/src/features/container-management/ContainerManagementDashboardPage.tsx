@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Fade, Skeleton, Alert } from '@mui/material';
+import { useAuthState } from '../../context/AuthContext';
+import { ContainerUserProfile } from '../container-detail/components';
 import { useSearchParams } from 'react-router-dom';
 import { ContainerSearchFilters } from './components/ContainerSearchFilters';
 import { ContainerMetricsOverview } from './components/ContainerMetricsOverview';
@@ -7,6 +9,7 @@ import { ContainerDataTable } from './components/ContainerDataTable';
 import { useContainerFilters } from './hooks/useContainerFilters';
 
 const ContainerManagementDashboardPage: React.FC = () => {
+  const auth = useAuthState();
   const [searchParams, setSearchParams] = useSearchParams();
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -95,20 +98,26 @@ const ContainerManagementDashboardPage: React.FC = () => {
   return (
     <Fade in={!isInitialLoading} timeout={800}>
       <Box sx={{ p: 3, minHeight: '100vh', backgroundColor: '#f8fafc' }}>
-        <Typography 
-          variant="h4" 
-          component="h1" 
-          sx={{ 
-            mb: 3, 
-            fontWeight: 600,
-            background: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}
-        >
-          Container Management Dashboard
-        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
+          <Box>
+            <Typography 
+              component="h1" 
+              sx={{ 
+                fontSize: { xs: 22, sm: 26, md: 28 },
+                fontWeight: 700,
+                letterSpacing: '-0.02em',
+                color: '#0f172a'
+              }}
+            >
+              Container Managements
+            </Typography>
+          </Box>
+          <ContainerUserProfile 
+            userName={auth.user?.username || 'User'}
+            avatarUrl={undefined}
+            size="medium"
+          />
+        </Box>
         
         <Fade in timeout={1000} style={{ transitionDelay: '200ms' }}>
           <Box sx={{ mb: 4 }}>

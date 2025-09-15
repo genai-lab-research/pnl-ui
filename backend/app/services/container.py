@@ -11,6 +11,7 @@ from app.repositories.container import ContainerRepository
 from app.core.exceptions import (
     ContainerNotFoundException,
     ContainerValidationException,
+    ContainerAlreadyExistsException,
     ContainerShutdownException,
     DatabaseException
 )
@@ -137,9 +138,8 @@ class ContainerService:
             existing = await self.repository.get_by_field("name", container_data.name)
             if existing:
                 logger.warning(f"Container name already exists: {container_data.name}")
-                raise ContainerValidationException(
-                    field="name",
-                    value=container_data.name,
+                raise ContainerAlreadyExistsException(
+                    container_name=container_data.name,
                     details={"existing_id": existing.id}
                 )
             
@@ -153,7 +153,7 @@ class ContainerService:
             )
             return Container.model_validate(container_orm, from_attributes=True)
         
-        except ContainerValidationException:
+        except (ContainerValidationException, ContainerAlreadyExistsException):
             raise
         except Exception as e:
             logger.error(f"Database error creating container: {e}")

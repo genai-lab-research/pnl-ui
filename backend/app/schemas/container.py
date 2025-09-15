@@ -7,8 +7,8 @@ from app.schemas.alert import Alert
 
 class Location(BaseModel):
     """Location schema"""
-    city: str
-    country: str
+    city: Optional[str] = None
+    country: Optional[str] = None
     address: Optional[str] = None
 
 

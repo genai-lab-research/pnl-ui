@@ -111,8 +111,8 @@ class DefaultValues:
     # Pagination defaults
     DEFAULT_PAGE = 1
     DEFAULT_LIMIT = 10
-    DEFAULT_SORT_FIELD = "name"
-    DEFAULT_SORT_ORDER = "asc"
+    DEFAULT_SORT_FIELD = "created_at"
+    DEFAULT_SORT_ORDER = "desc"
     
     # Metrics defaults
     DEFAULT_TIME_RANGE = "week"

@@ -51,6 +51,18 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
     setLocalFormData(formState.data);
   }, [formState.data]);
 
+  // Clear sensitive fields on open while data is loading to avoid showing previous container data
+  useEffect(() => {
+    if (open) {
+      setLocalFormData(prev => ({
+        ...prev,
+        purpose: undefined,
+        seed_type_ids: [],
+        location: { city: '', country: '', address: '' }
+      }));
+    }
+  }, [open]);
+
   const updateLocalFormData = useCallback((updates: Partial<ContainerEditFormData>) => {
     console.log('📝 EditContainerModal: Form data updated:', updates);
     setLocalFormData(prev => {
@@ -62,11 +74,10 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
   }, [updateFormData]);
 
   const handleClose = useCallback(() => {
-    if (containerId) {
-      resetForm(containerId);
-    }
+    // Fully clear hook state so next open starts clean
+    resetForm();
     onClose();
-  }, [resetForm, onClose, containerId]);
+  }, [resetForm, onClose]);
 
   const handleSubmit = useCallback(async () => {
     try {
@@ -209,7 +220,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                   {/* Container Name - Read Only */}
                   <TextField
                     label="Container Name"
-                    value={localFormData.name}
+                    value={formState.loading ? '' : localFormData.name}
                     disabled
                     fullWidth
                     size="small"
@@ -232,7 +243,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                   <TextField
                     select
                     label="Tenant"
-                    value={localFormData.tenant_id || ''}
+                    value={formState.loading ? '' : (localFormData.tenant_id || '')}
                     onChange={(e) => updateLocalFormData({ tenant_id: parseInt(e.target.value) })}
                     error={!!formState.errors.tenant_id}
                     helperText={formState.errors.tenant_id}
@@ -274,7 +285,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                     </Typography>
                     <SegmentedToggle
                       options={containerTypeOptions}
-                      value={localFormData.type}
+                      value={formState.loading ? 'physical' : localFormData.type}
                       onChange={handleContainerTypeChange}
                       size="md"
                       fullWidth
@@ -285,7 +296,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                   <TextField
                     select
                     label="Purpose"
-                    value={localFormData.purpose || ''}
+                    value={formState.loading ? '' : (localFormData.purpose || '')}
                     onChange={(e) => updateLocalFormData({ purpose: e.target.value as 'development' | 'research' | 'production' })}
                     error={!!formState.errors.purpose}
                     helperText={formState.errors.purpose}
@@ -300,94 +311,43 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                     ))}
                   </TextField>
 
-                  {/* Seed Type Variant(s) */}
+                  {/* Seed Type Variant(s) - match Create Container modal styling */}
                   <Autocomplete
                     multiple
                     options={formState.options.seedTypes}
-                    groupBy={(option) => option.variety || 'Other'}
-                    getOptionLabel={(option) => {
-                      // Display format: "Name - Variety (Supplier)"
-                      const label = option.name;
-                      const details = [];
-                      if (option.variety) details.push(option.variety);
-                      if (option.supplier) details.push(`by ${option.supplier}`);
-                      return details.length > 0 ? `${label} - ${details.join(' ')}` : label;
-                    }}
-                    value={selectedSeedTypes}
+                    getOptionLabel={(option) => `${option.name} (${option.variety})`}
+                    value={formState.loading ? [] as any : selectedSeedTypes}
                     onChange={handleSeedTypesChange}
                     renderTags={(value, getTagProps) =>
-                      value.map((option, index) => {
-                        const label = option.variety ? `${option.name} (${option.variety})` : option.name;
-                        return (
-                          <Chip
-                            variant="outlined"
-                            label={label}
-                            size="small"
-                            {...getTagProps({ index })}
-                            key={option.id}
-                            sx={{
-                              '& .MuiChip-label': {
-                                fontSize: '12px',
-                                fontFamily: 'Inter, sans-serif'
-                              }
-                            }}
-                          />
-                        );
-                      })
+                      value.map((option, index) => (
+                        <Chip
+                          variant="outlined"
+                          label={option.name}
+                          size="small"
+                          {...getTagProps({ index })}
+                          key={option.id}
+                        />
+                      ))
                     }
-                    renderOption={(props, option) => (
-                      <Box component="li" {...props} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                        <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                          {option.name}
-                        </Typography>
-                        {(option.variety || option.supplier) && (
-                          <Typography variant="caption" color="text.secondary">
-                            {option.variety && `Variety: ${option.variety}`}
-                            {option.variety && option.supplier && ' • '}
-                            {option.supplier && `Supplier: ${option.supplier}`}
-                          </Typography>
-                        )}
-                      </Box>
-                    )}
                     renderInput={(params) => (
                       <TextField
                         {...params}
                         label="Seed Type Variant(s)"
                         error={!!formState.errors.seed_type_ids}
-                        helperText={formState.errors.seed_type_ids || "Select one or more seed types with their variants"}
-                        required
+                        helperText={formState.errors.seed_type_ids}
                         size="small"
-                        placeholder={selectedSeedTypes.length === 0 ? "Search seed types..." : ""}
-                        sx={{
-                          '& .MuiInputLabel-root': {
-                            fontSize: '14px',
-                            fontFamily: 'Inter, sans-serif'
-                          },
-                          '& .MuiOutlinedInput-root': {
-                            fontSize: '14px',
-                            fontFamily: 'Inter, sans-serif',
-                            borderRadius: '6px'
-                          }
-                        }}
                       />
                     )}
                     isOptionEqualToValue={(option, value) => option.id === value.id}
                     filterSelectedOptions
                     disableCloseOnSelect
-                    loading={formState.loading}
-                    noOptionsText="No seed types available"
-                    sx={{
-                      '& .MuiAutocomplete-tag': {
-                        margin: '2px'
-                      }
-                    }}
                   />
 
                   {/* Location (Physical containers only) */}
                   {localFormData.type === 'physical' && (
                     <TextField
                       label="Location"
-                      value={localFormData.location?.address || ''}
+                      value={formState.loading ? '' : (localFormData.location?.address || '')}
                       onChange={(e) => updateLocalFormData({
                         location: {
                           ...localFormData.location,
@@ -407,7 +367,7 @@ export const EditContainerModal: React.FC<EditContainerModalProps> = ({
                   {/* Notes */}
                   <TextField
                     label="Notes (optional)"
-                    value={localFormData.notes}
+                    value={formState.loading ? '' : localFormData.notes}
                     onChange={(e) => updateLocalFormData({ notes: e.target.value })}
                     multiline
                     rows={3}
